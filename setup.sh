@@ -79,6 +79,7 @@ echo_time_diff "setup-slave" "$setup_slave_start_time" "$setup_slave_end_time"
 # for older versions of the scripts.
 if [[ ! $MODULES =~ *scala* ]]; then
   MODULES=$(printf "%s\n%s\n" "scala" $MODULES)
+  MODULES=$(printf "%s\n%s\n" $MODULES "user_profile_daily_job" )
 fi
 
 # Install / Init module
