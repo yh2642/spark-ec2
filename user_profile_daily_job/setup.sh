@@ -45,12 +45,16 @@ cd ~/mongo-hadoop/
 cd ~
 cp /root/mongo-hadoop/spark/src/main/python/pymongo_spark.py /usr/local/lib64/python2.7/site-packages/
 
-export PYSPARK_PYTHON=`which python27`
 
 #./spark/bin/pyspark  --py-files /root/mongo-hadoop/spark/src/main/python/pymongo_spark.py --jars /root/mongo-hadoop/spark/build/libs/mongo-hadoop-spark-1.5.0-SNAPSHOT.jar --driver-memory=13G --executor-memory=13G
 
-
 #./spark/bin/pyspark --jars RedshiftJDBC41-1.1.10.1010.jar --packages com.databricks:spark-redshift_2.10:0.6.0
+
+root/spark-ec2/copy-dir /usr/local/lib64/python2.7/site-packages
+root/spark-ec2/copy-dir /usr/local/lib/python2.7/site-packages
+
+
+export PYSPARK_PYTHON=`which python27`
 
 spark_url=spark://`cat /root/spark-ec2/masters`:7077
 mongo_hadoop_jar_path=/root/mongo-hadoop/spark/build/libs/`ls /root/mongo-hadoop/spark/build/libs/`
@@ -58,8 +62,6 @@ mongo_hadoop_package=org.mongodb:mongodb-driver:3.2.1
 #./spark/bin/spark-submit spark_tag_goods_by_title.py $pdate --master $spark_url \
 # --driver-memory 13G --executor-memory 13G
 
-root/spark-ec2/copy-dir /usr/local/lib64/python2.7/site-packages
-root/spark-ec2/copy-dir /usr/local/lib/python2.7/site-packages
 
 ## Get time
 if [ $# -lt 1 ]; then
@@ -80,7 +82,7 @@ else
 fi
 
 
-echo "./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path spark_user_profile_longterm_daily.py $pdate"
-#./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path spark_user_profile_longterm_daily.py $pdate
-echo "./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path --packages $mongo_hadoop_package spark_merge_user_profile.py $pdate"
-#./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path --packages $mongo_hadoop_package spark_merge_user_profile.py $pdate
+#echo "./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path spark_user_profile_longterm_daily.py $pdate"
+./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path spark_user_profile_longterm_daily.py $pdate
+#echo "./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path --packages $mongo_hadoop_package spark_merge_user_profile.py $pdate"
+./spark/bin/spark-submit --driver-memory 13G --executor-memory 13G --jars $mongo_hadoop_jar_path --packages $mongo_hadoop_package spark_merge_user_profile.py $pdate
