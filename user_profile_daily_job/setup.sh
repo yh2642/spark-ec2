@@ -50,8 +50,8 @@ cp /root/mongo-hadoop/spark/src/main/python/pymongo_spark.py /usr/local/lib64/py
 
 #./spark/bin/pyspark --jars RedshiftJDBC41-1.1.10.1010.jar --packages com.databricks:spark-redshift_2.10:0.6.0
 
-root/spark-ec2/copy-dir /usr/local/lib64/python2.7/site-packages
-root/spark-ec2/copy-dir /usr/local/lib/python2.7/site-packages
+/root/spark-ec2/copy-dir /usr/local/lib64/python2.7/site-packages
+/root/spark-ec2/copy-dir /usr/local/lib/python2.7/site-packages
 
 
 export PYSPARK_PYTHON=`which python27`
