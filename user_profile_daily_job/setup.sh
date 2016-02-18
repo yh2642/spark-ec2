@@ -34,7 +34,6 @@ pip2.7 install ipython[all]
 pip2.7 install gevent
 pip2.7 install boto
 pip2.7 install numpy
-pip2.7 install bson
 
 cd ~
 git clone https://github.com/mongodb/mongo-hadoop.git
