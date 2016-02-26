@@ -1,0 +1,1723 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Amazon ElastiCache &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Elastic Transcoder" href="elastictranscoder.html" />
+    <link rel="prev" title="ECS" href="ecs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elastictranscoder.html" title="Elastic Transcoder"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ecs.html" title="ECS"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="amazon-elasticache">
+<h1>Amazon ElastiCache<a class="headerlink" href="#amazon-elasticache" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.elasticache">
+<span id="boto-elasticache"></span><h2>boto.elasticache<a class="headerlink" href="#module-boto.elasticache" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.elasticache.connect_to_region">
+<tt class="descclassname">boto.elasticache.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.elasticache.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.elasticache.regions">
+<tt class="descclassname">boto.elasticache.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.elasticache.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the AWS ElastiCache service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.elasticache.layer1">
+<span id="boto-elasticache-layer1"></span><h2>boto.elasticache.layer1<a class="headerlink" href="#module-boto.elasticache.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection">
+<em class="property">class </em><tt class="descclassname">boto.elasticache.layer1.</tt><tt class="descname">ElastiCacheConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon ElastiCache
+Amazon ElastiCache is a web service that makes it easier to set
+up, operate, and scale a distributed cache in the cloud.</p>
+<p>With ElastiCache, customers gain all of the benefits of a high-
+performance, in-memory cache with far less of the administrative
+burden of launching and managing a distributed cache. The service
+makes set-up, scaling, and cluster failure handling much simpler
+than in a self-managed cache deployment.</p>
+<p>In addition, through integration with Amazon CloudWatch, customers
+get enhanced visibility into the key performance statistics
+associated with their cache and can receive alarms if a part of
+their cache runs hot.</p>
+<dl class="attribute">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2013-06-15'</em><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'elasticache.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.authorize_cache_security_group_ingress">
+<tt class="descname">authorize_cache_security_group_ingress</tt><big>(</big><em>cache_security_group_name</em>, <em>ec2_security_group_name</em>, <em>ec2_security_group_owner_id</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.authorize_cache_security_group_ingress" title="Permalink to this definition">¶</a></dt>
+<dd><p>The AuthorizeCacheSecurityGroupIngress operation allows
+network ingress to a cache security group. Applications using
+ElastiCache must be running on Amazon EC2, and Amazon EC2
+security groups are used as the authorization mechanism.
+You cannot authorize ingress from an Amazon EC2 security group
+in one Region to an ElastiCache cluster in another Region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache security group which will
+allow network ingress.</li>
+<li><strong>ec2_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon EC2 security group to be
+authorized for ingress to the cache security group.</li>
+<li><strong>ec2_security_group_owner_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The AWS account number of the
+Amazon EC2 security group owner. Note that this is not the same
+thing as an AWS access key ID - you must provide a valid AWS
+account number for this parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.create_cache_cluster">
+<tt class="descname">create_cache_cluster</tt><big>(</big><em>cache_cluster_id</em>, <em>num_cache_nodes=None</em>, <em>cache_node_type=None</em>, <em>engine=None</em>, <em>replication_group_id=None</em>, <em>engine_version=None</em>, <em>cache_parameter_group_name=None</em>, <em>cache_subnet_group_name=None</em>, <em>cache_security_group_names=None</em>, <em>security_group_ids=None</em>, <em>snapshot_arns=None</em>, <em>preferred_availability_zone=None</em>, <em>preferred_maintenance_window=None</em>, <em>port=None</em>, <em>notification_topic_arn=None</em>, <em>auto_minor_version_upgrade=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.create_cache_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CreateCacheCluster operation creates a new cache cluster.
+All nodes in the cache cluster run the same protocol-compliant
+cache engine software - either Memcached or Redis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The cache cluster identifier. This parameter is stored as a lowercase</dt>
+<dd>string.</dd>
+</dl>
+<p>Constraints:</p>
+<ul class="simple">
+<li>Must contain from 1 to 20 alphanumeric characters or hyphens.</li>
+<li>First character must be a letter.</li>
+<li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>replication_group_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The replication group to which this cache
+cluster should belong. If this parameter is specified, the cache
+cluster will be added to the specified replication group as a read
+replica; otherwise, the cache cluster will be a standalone primary
+that is not part of any replication group.</li>
+<li><strong>num_cache_nodes</strong> (<em>integer</em>) &#8211; The initial number of cache nodes that the
+cache cluster will have.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>For a Memcached cluster, valid values are between 1 and 20. If you need</dt>
+<dd>to exceed this limit, please fill out the ElastiCache Limit
+Increase Request form at <a href="#id1"><span class="problematic" id="id2">``</span></a>_ .</dd>
+<dt>For Redis, only single-node cache clusters are supported at this time,</dt>
+<dd>so the value for this parameter must be 1.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_node_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The compute and memory capacity of the nodes in
+the cache cluster.</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values for Memcached:</p>
+<dl class="docutils">
+<dt><cite>cache.t1.micro</cite> | <cite>cache.m1.small</cite> | <cite>cache.m1.medium</cite> |</dt>
+<dd><cite>cache.m1.large</cite> | <cite>cache.m1.xlarge</cite> | <cite>cache.m3.xlarge</cite> |
+<cite>cache.m3.2xlarge</cite> | <cite>cache.m2.xlarge</cite> | <cite>cache.m2.2xlarge</cite> |
+<cite>cache.m2.4xlarge</cite> | <cite>cache.c1.xlarge</cite></dd>
+</dl>
+<p>Valid values for Redis:</p>
+<dl class="docutils">
+<dt><cite>cache.t1.micro</cite> | <cite>cache.m1.small</cite> | <cite>cache.m1.medium</cite> |</dt>
+<dd><cite>cache.m1.large</cite> | <cite>cache.m1.xlarge</cite> | <cite>cache.m2.xlarge</cite> |
+<cite>cache.m2.2xlarge</cite> | <cite>cache.m2.4xlarge</cite> | <cite>cache.c1.xlarge</cite></dd>
+</dl>
+<p>For a complete listing of cache node types and specifications, see <a href="#id3"><span class="problematic" id="id4">`</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>engine</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache engine to be used for this cache
+cluster.</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values for this parameter are:</p>
+<p><cite>memcached</cite> | <cite>redis</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>engine_version</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The version number of the cache engine to be
+used for this cluster. To view the supported cache engine versions,
+use the DescribeCacheEngineVersions operation.</li>
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group to associate with this cache cluster. If this argument is
+omitted, the default cache parameter group for the specified engine
+will be used.</li>
+<li><strong>cache_subnet_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache subnet group to
+be used for the cache cluster.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Use this parameter only when you are creating a cluster in an Amazon</dt>
+<dd>Virtual Private Cloud (VPC).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_security_group_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of cache security group names
+to associate with this cache cluster.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Use this parameter only when you are creating a cluster outside of an</dt>
+<dd>Amazon Virtual Private Cloud (VPC).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; One or more VPC security groups associated
+with the cache cluster.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Use this parameter only when you are creating a cluster in an Amazon</dt>
+<dd>Virtual Private Cloud (VPC).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>snapshot_arns</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A single-element string list containing an Amazon
+Resource Name (ARN) that uniquely identifies a Redis RDB snapshot
+file stored in Amazon S3. The snapshot file will be used to
+populate the Redis cache in the new cache cluster. The Amazon S3
+object name in the ARN cannot contain any commas.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Here is an example of an Amazon S3 ARN:</dt>
+<dd><cite>arn:aws:s3:::my_bucket/snapshot1.rdb</cite></dd>
+<dt><strong>Note:</strong> This parameter is only valid if the <cite>Engine</cite> parameter is</dt>
+<dd><cite>redis</cite>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preferred_availability_zone</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The EC2 Availability Zone in which
+the cache cluster will be created.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>All cache nodes belonging to a cache cluster are placed in the</dt>
+<dd>preferred availability zone.</dd>
+</dl>
+<p>Default: System chosen availability zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preferred_maintenance_window</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The weekly time range (in UTC)
+during which system maintenance can occur.</td>
+</tr>
+</tbody>
+</table>
+<p>Example: <cite>sun:05:00-sun:09:00</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>port</strong> (<em>integer</em>) &#8211; The port number on which each of the cache nodes will
+accept connections.</li>
+<li><strong>notification_topic_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The Amazon Resource Name (ARN) of the Amazon Simple Notification</dt>
+<dd>Service (SNS) topic to which notifications will be sent.</dd>
+</dl>
+<p>The Amazon SNS topic owner must be the same as the cache cluster owner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>auto_minor_version_upgrade</strong> (<em>boolean</em>) &#8211; Determines whether minor engine
+upgrades will be applied automatically to the cache cluster during
+the maintenance window. A value of <cite>True</cite> allows these upgrades to
+occur; <cite>False</cite> disables automatic upgrades.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: <cite>True</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.create_cache_parameter_group">
+<tt class="descname">create_cache_parameter_group</tt><big>(</big><em>cache_parameter_group_name</em>, <em>cache_parameter_group_family</em>, <em>description</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.create_cache_parameter_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CreateCacheParameterGroup operation creates a new cache
+parameter group. A cache parameter group is a collection of
+parameters that you apply to all of the nodes in a cache
+cluster.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A user-specified name for the cache
+parameter group.</li>
+<li><strong>cache_parameter_group_family</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group family the cache parameter group can be used with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values are: <cite>memcached1.4</cite> | <cite>redis2.6</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A user-specified description for the cache
+parameter group.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.create_cache_security_group">
+<tt class="descname">create_cache_security_group</tt><big>(</big><em>cache_security_group_name</em>, <em>description</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.create_cache_security_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CreateCacheSecurityGroup operation creates a new cache
+security group. Use a cache security group to control access
+to one or more cache clusters.</p>
+<p>Cache security groups are only used when you are creating a
+cluster outside of an Amazon Virtual Private Cloud (VPC). If
+you are creating a cluster inside of a VPC, use a cache subnet
+group instead. For more information, see
+CreateCacheSubnetGroup .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name for the cache security group.
+This value is stored as a lowercase string.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Constraints: Must contain no more than 255 alphanumeric characters.</dt>
+<dd>Must not be the word &#8220;Default&#8221;.</dd>
+</dl>
+<p>Example: <cite>mysecuritygroup</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description for the cache security group.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.create_cache_subnet_group">
+<tt class="descname">create_cache_subnet_group</tt><big>(</big><em>cache_subnet_group_name</em>, <em>cache_subnet_group_description</em>, <em>subnet_ids</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.create_cache_subnet_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CreateCacheSubnetGroup operation creates a new cache
+subnet group.</p>
+<p>Use this parameter only when you are creating a cluster in an
+Amazon Virtual Private Cloud (VPC).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_subnet_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name for the cache subnet group. This
+value is stored as a lowercase string.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Constraints: Must contain no more than 255 alphanumeric characters or</dt>
+<dd>hyphens.</dd>
+</dl>
+<p>Example: <cite>mysubnetgroup</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_subnet_group_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description for the cache
+subnet group.</li>
+<li><strong>subnet_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of VPC subnet IDs for the cache subnet group.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.create_replication_group">
+<tt class="descname">create_replication_group</tt><big>(</big><em>replication_group_id</em>, <em>primary_cluster_id</em>, <em>replication_group_description</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.create_replication_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CreateReplicationGroup operation creates a replication
+group. A replication group is a collection of cache clusters,
+where one of the clusters is a read/write primary and the
+other clusters are read-only replicas. Writes to the primary
+are automatically propagated to the replicas.</p>
+<p>When you create a replication group, you must specify an
+existing cache cluster that is in the primary role. When the
+replication group has been successfully created, you can add
+one or more read replica replicas to it, up to a total of five
+read replicas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replication_group_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The replication group identifier. This parameter is stored as a</dt>
+<dd>lowercase string.</dd>
+</dl>
+<p>Constraints:</p>
+<ul class="simple">
+<li>Must contain from 1 to 20 alphanumeric characters or hyphens.</li>
+<li>First character must be a letter.</li>
+<li>Cannot end with a hyphen or contain two consecutive hyphens.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>primary_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identifier of the cache cluster that
+will serve as the primary for this replication group. This cache
+cluster must already exist and have a status of available .</li>
+<li><strong>replication_group_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A user-specified description for
+the replication group.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.delete_cache_cluster">
+<tt class="descname">delete_cache_cluster</tt><big>(</big><em>cache_cluster_id</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.delete_cache_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DeleteCacheCluster operation deletes a previously
+provisioned cache cluster. DeleteCacheCluster deletes all
+associated cache nodes, node endpoints and the cache cluster
+itself. When you receive a successful response from this
+operation, Amazon ElastiCache immediately begins deleting the
+cache cluster; you cannot cancel or revert this operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache cluster identifier for the cluster
+to be deleted. This parameter is not case sensitive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.delete_cache_parameter_group">
+<tt class="descname">delete_cache_parameter_group</tt><big>(</big><em>cache_parameter_group_name</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.delete_cache_parameter_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DeleteCacheParameterGroup operation deletes the specified
+cache parameter group. You cannot delete a cache parameter
+group if it is associated with any cache clusters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<p>The name of the cache parameter group to delete.</p>
+<dl class="docutils">
+<dt>The specified cache security group must not be associated with any</dt>
+<dd>cache clusters.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.delete_cache_security_group">
+<tt class="descname">delete_cache_security_group</tt><big>(</big><em>cache_security_group_name</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.delete_cache_security_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DeleteCacheSecurityGroup operation deletes a cache
+security group.
+You cannot delete a cache security group if it is associated
+with any cache clusters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<p>The name of the cache security group to delete.</p>
+<p>You cannot delete the default security group.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.delete_cache_subnet_group">
+<tt class="descname">delete_cache_subnet_group</tt><big>(</big><em>cache_subnet_group_name</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.delete_cache_subnet_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DeleteCacheSubnetGroup operation deletes a cache subnet
+group.
+You cannot delete a cache subnet group if it is associated
+with any cache clusters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_subnet_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache subnet group to
+delete.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Constraints: Must contain no more than 255 alphanumeric characters or</dt>
+<dd>hyphens.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.delete_replication_group">
+<tt class="descname">delete_replication_group</tt><big>(</big><em>replication_group_id</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.delete_replication_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DeleteReplicationGroup operation deletes an existing
+replication group. DeleteReplicationGroup deletes the primary
+cache cluster and all of the read replicas in the replication
+group. When you receive a successful response from this
+operation, Amazon ElastiCache immediately begins deleting the
+entire replication group; you cannot cancel or revert this
+operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replication_group_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identifier for the replication group
+to be deleted. This parameter is not case sensitive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_clusters">
+<tt class="descname">describe_cache_clusters</tt><big>(</big><em>cache_cluster_id=None</em>, <em>max_records=None</em>, <em>marker=None</em>, <em>show_cache_node_info=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_clusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheClusters operation returns information about
+all provisioned cache clusters if no cache cluster identifier
+is specified, or about a specific cache cluster if a cache
+cluster identifier is supplied.</p>
+<p>By default, abbreviated information about the cache
+clusters(s) will be returned. You can use the optional
+ShowDetails flag to retrieve detailed information about the
+cache nodes associated with the cache clusters. These details
+include the DNS address and port for the cache node endpoint.</p>
+<p>If the cluster is in the CREATING state, only cluster level
+information will be displayed until all of the nodes are
+successfully provisioned.</p>
+<p>If the cluster is in the DELETING state, only cluster level
+information will be displayed.</p>
+<p>If cache nodes are currently being added to the cache cluster,
+node endpoint information and creation time for the additional
+nodes will not be displayed until they are completely
+provisioned. When the cache cluster state is available , the
+cluster is ready for use.</p>
+<p>If cache nodes are currently being removed from the cache
+cluster, no endpoint information for the removed nodes is
+displayed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user-supplied cluster identifier. If this
+parameter is specified, only information about that specific cache
+cluster is returned. This parameter isn&#8217;t case sensitive.</li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</li>
+<li><strong>show_cache_node_info</strong> (<em>boolean</em>) &#8211; An optional flag that can be included in
+the DescribeCacheCluster request to retrieve information about the
+individual cache nodes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_engine_versions">
+<tt class="descname">describe_cache_engine_versions</tt><big>(</big><em>engine=None</em>, <em>engine_version=None</em>, <em>cache_parameter_group_family=None</em>, <em>max_records=None</em>, <em>marker=None</em>, <em>default_only=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_engine_versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheEngineVersions operation returns a list of
+the available cache engines and their versions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>engine</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache engine to return. Valid values: <cite>memcached</cite> |
+<cite>redis</cite></li>
+<li><strong>engine_version</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache engine version to return.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example: <cite>1.4.14</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_parameter_group_family</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The name of a specific cache parameter group family to return details</dt>
+<dd>for.</dd>
+</dl>
+<p>Constraints:</p>
+<ul class="simple">
+<li>Must be 1 to 255 alphanumeric characters</li>
+<li>First character must be a letter</li>
+<li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</li>
+<li><strong>default_only</strong> (<em>boolean</em>) &#8211; If true , specifies that only the default version
+of the specified engine or engine and major version combination is
+to be returned.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_parameter_groups">
+<tt class="descname">describe_cache_parameter_groups</tt><big>(</big><em>cache_parameter_group_name=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_parameter_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheParameterGroups operation returns a list of
+cache parameter group descriptions. If a cache parameter group
+name is specified, the list will contain only the descriptions
+for that group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of a specific cache
+parameter group to return details for.</li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_parameters">
+<tt class="descname">describe_cache_parameters</tt><big>(</big><em>cache_parameter_group_name</em>, <em>source=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheParameters operation returns the detailed
+parameter list for a particular cache parameter group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of a specific cache
+parameter group to return details for.</li>
+<li><strong>source</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The parameter types to return.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values: <cite>user</cite> | <cite>system</cite> | <cite>engine-default</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_security_groups">
+<tt class="descname">describe_cache_security_groups</tt><big>(</big><em>cache_security_group_name=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_security_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheSecurityGroups operation returns a list of
+cache security group descriptions. If a cache security group
+name is specified, the list will contain only the description
+of that group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache security group
+to return details for.</li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_cache_subnet_groups">
+<tt class="descname">describe_cache_subnet_groups</tt><big>(</big><em>cache_subnet_group_name=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_cache_subnet_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeCacheSubnetGroups operation returns a list of
+cache subnet group descriptions. If a subnet group name is
+specified, the list will contain only the description of that
+group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_subnet_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache subnet group to
+return details for.</li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_engine_default_parameters">
+<tt class="descname">describe_engine_default_parameters</tt><big>(</big><em>cache_parameter_group_family</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_engine_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeEngineDefaultParameters operation returns the
+default engine and system parameter information for the
+specified cache engine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_family</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group family. Valid values are: <cite>memcached1.4</cite> | <cite>redis2.6</cite></li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_events">
+<tt class="descname">describe_events</tt><big>(</big><em>source_identifier=None</em>, <em>source_type=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>duration=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeEvents operation returns events related to cache
+clusters, cache security groups, and cache parameter groups.
+You can obtain events specific to a particular cache cluster,
+cache security group, or cache parameter group by providing
+the name as a parameter.</p>
+<p>By default, only the events occurring within the last hour are
+returned; however, you can retrieve up to 14 days&#8217; worth of
+events if necessary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_identifier</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identifier of the event source for which
+events will be returned. If not specified, then all sources are
+included in the response.</li>
+<li><strong>source_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The event source to retrieve events for. If no
+value is specified, all events are returned.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Valid values are: <cite>cache-cluster</cite> | <cite>cache-parameter-group</cite> | <a href="#id5"><span class="problematic" id="id6">`</span></a>cache-</dt>
+<dd>security-group` | <cite>cache-subnet-group</cite></dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start_time</strong> (<em>timestamp</em>) &#8211; The beginning of the time interval to retrieve
+events for, specified in ISO 8601 format.</li>
+<li><strong>end_time</strong> (<em>timestamp</em>) &#8211; The end of the time interval for which to retrieve
+events, specified in ISO 8601 format.</li>
+<li><strong>duration</strong> (<em>integer</em>) &#8211; The number of minutes&#8217; worth of events to retrieve.</li>
+<li><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_replication_groups">
+<tt class="descname">describe_replication_groups</tt><big>(</big><em>replication_group_id=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_replication_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeReplicationGroups operation returns information
+about a particular replication group. If no identifier is
+specified, DescribeReplicationGroups returns information about
+all replication groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replication_group_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identifier for the replication group
+to be described. This parameter is not case sensitive.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If you do not specify this parameter, information about all replication</dt>
+<dd>groups is returned.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_reserved_cache_nodes">
+<tt class="descname">describe_reserved_cache_nodes</tt><big>(</big><em>reserved_cache_node_id=None</em>, <em>reserved_cache_nodes_offering_id=None</em>, <em>cache_node_type=None</em>, <em>duration=None</em>, <em>product_description=None</em>, <em>offering_type=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_reserved_cache_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeReservedCacheNodes operation returns information
+about reserved cache nodes for this account, or about a
+specified reserved cache node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>reserved_cache_node_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The reserved cache node identifier
+filter value. Use this parameter to show only the reservation that
+matches the specified reservation ID.</li>
+<li><strong>reserved_cache_nodes_offering_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The offering identifier filter
+value. Use this parameter to show only purchased reservations
+matching the specified offering identifier.</li>
+<li><strong>cache_node_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache node type filter value. Use this
+parameter to show only those reservations matching the specified
+cache node type.</li>
+<li><strong>duration</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The duration filter value, specified in years or
+seconds. Use this parameter to show only reservations for this
+duration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid Values: <cite>1 | 3 | 31536000 | 94608000</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>product_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The product description filter value. Use
+this parameter to show only those reservations matching the
+specified product description.</li>
+<li><strong>offering_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The offering type filter value. Use this
+parameter to show only the available offerings matching the
+specified offering type.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Valid values: <a href="#id7"><span class="problematic" id="id8">`</span></a>&#8220;Light Utilization&#8221; | &#8220;Medium Utilization&#8221; | &#8220;Heavy</dt>
+<dd>Utilization&#8221; `</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.describe_reserved_cache_nodes_offerings">
+<tt class="descname">describe_reserved_cache_nodes_offerings</tt><big>(</big><em>reserved_cache_nodes_offering_id=None</em>, <em>cache_node_type=None</em>, <em>duration=None</em>, <em>product_description=None</em>, <em>offering_type=None</em>, <em>max_records=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.describe_reserved_cache_nodes_offerings" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DescribeReservedCacheNodesOfferings operation lists
+available reserved cache node offerings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reserved_cache_nodes_offering_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The offering identifier filter
+value. Use this parameter to show only the available offering that
+matches the specified reservation identifier.</td>
+</tr>
+</tbody>
+</table>
+<p>Example: <cite>438012d3-4052-4cc7-b2e3-8d3372e0e706</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_node_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache node type filter value. Use this
+parameter to show only the available offerings matching the
+specified cache node type.</li>
+<li><strong>duration</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Duration filter value, specified in years or seconds.
+Use this parameter to show only reservations for a given duration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid Values: <cite>1 | 3 | 31536000 | 94608000</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>product_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The product description filter value. Use
+this parameter to show only the available offerings matching the
+specified product description.</li>
+<li><strong>offering_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The offering type filter value. Use this
+parameter to show only the available offerings matching the
+specified offering type.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Valid Values: <a href="#id9"><span class="problematic" id="id10">`</span></a>&#8220;Light Utilization&#8221; | &#8220;Medium Utilization&#8221; | &#8220;Heavy</dt>
+<dd>Utilization&#8221; `</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_records</strong> (<em>integer</em>) &#8211; The maximum number of records to include in the
+response. If more records exist than the specified <cite>MaxRecords</cite>
+value, a marker is included in the response so that the remaining
+results can be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: 100</p>
+<p>Constraints: minimum 20; maximum 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An optional marker returned from a prior request. Use
+this marker for pagination of results from this operation. If this
+parameter is specified, the response includes only records beyond
+the marker, up to the value specified by MaxRecords .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.modify_cache_cluster">
+<tt class="descname">modify_cache_cluster</tt><big>(</big><em>cache_cluster_id</em>, <em>num_cache_nodes=None</em>, <em>cache_node_ids_to_remove=None</em>, <em>cache_security_group_names=None</em>, <em>security_group_ids=None</em>, <em>preferred_maintenance_window=None</em>, <em>notification_topic_arn=None</em>, <em>cache_parameter_group_name=None</em>, <em>notification_topic_status=None</em>, <em>apply_immediately=None</em>, <em>engine_version=None</em>, <em>auto_minor_version_upgrade=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.modify_cache_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ModifyCacheCluster operation modifies the settings for a
+cache cluster. You can use this operation to change one or
+more cluster configuration parameters by specifying the
+parameters and the new values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache cluster identifier. This value is
+stored as a lowercase string.</li>
+<li><strong>num_cache_nodes</strong> (<em>integer</em>) &#8211; The number of cache nodes that the cache
+cluster should have. If the value for NumCacheNodes is greater than
+the existing number of cache nodes, then more nodes will be added.
+If the value is less than the existing number of cache nodes, then
+cache nodes will be removed.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If you are removing cache nodes, you must use the CacheNodeIdsToRemove</dt>
+<dd>parameter to provide the IDs of the specific cache nodes to be
+removed.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_node_ids_to_remove</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of cache node IDs to be
+removed. A node ID is a numeric identifier (0001, 0002, etc.). This
+parameter is only valid when NumCacheNodes is less than the
+existing number of cache nodes. The number of cache node IDs
+supplied in this parameter must match the difference between the
+existing number of cache nodes in the cluster and the value of
+NumCacheNodes in the request.</li>
+<li><strong>cache_security_group_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of cache security group names
+to authorize on this cache cluster. This change is asynchronously
+applied as soon as possible.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>This parameter can be used only with clusters that are created outside</dt>
+<dd>of an Amazon Virtual Private Cloud (VPC).</dd>
+<dt>Constraints: Must contain no more than 255 alphanumeric characters.</dt>
+<dd>Must not be &#8220;Default&#8221;.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Specifies the VPC Security Groups associated
+with the cache cluster.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>This parameter can be used only with clusters that are created in an</dt>
+<dd>Amazon Virtual Private Cloud (VPC).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>preferred_maintenance_window</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The weekly time range (in UTC)
+during which system maintenance can occur. Note that system
+maintenance may result in an outage. This change is made
+immediately. If you are moving this window to the current time,
+there must be at least 120 minutes between the current time and end
+of the window to ensure that pending changes are applied.</li>
+<li><strong>notification_topic_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The Amazon Resource Name (ARN) of the SNS topic to which notifications</dt>
+<dd>will be sent.</dd>
+</dl>
+<p>The SNS topic owner must be same as the cache cluster owner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group to apply to this cache cluster. This change is asynchronously
+applied as soon as possible for parameters when the
+ApplyImmediately parameter is specified as true for this request.</li>
+<li><strong>notification_topic_status</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The status of the Amazon SNS
+notification topic. Notifications are sent only if the status is
+active .</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values: <cite>active</cite> | <cite>inactive</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>apply_immediately</strong> (<em>boolean</em>) &#8211; If <cite>True</cite>, this parameter causes the
+modifications in this request and any pending modifications to be
+applied, asynchronously and as soon as possible, regardless of the
+PreferredMaintenanceWindow setting for the cache cluster.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If <cite>False</cite>, then changes to the cache cluster are applied on the next</dt>
+<dd>maintenance reboot, or the next failure reboot, whichever occurs
+first.</dd>
+</dl>
+<p>Valid values: <cite>True</cite> | <cite>False</cite></p>
+<p>Default: <cite>False</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>engine_version</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The upgraded version of the cache engine to be
+run on the cache cluster nodes.</li>
+<li><strong>auto_minor_version_upgrade</strong> (<em>boolean</em>) &#8211; If <cite>True</cite>, then minor engine
+upgrades will be applied automatically to the cache cluster during
+the maintenance window.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values: <cite>True</cite> | <cite>False</cite></p>
+<p>Default: <cite>True</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.modify_cache_parameter_group">
+<tt class="descname">modify_cache_parameter_group</tt><big>(</big><em>cache_parameter_group_name</em>, <em>parameter_name_values</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.modify_cache_parameter_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ModifyCacheParameterGroup operation modifies the
+parameters of a cache parameter group. You can modify up to 20
+parameters in a single request by submitting a list parameter
+name and value pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group to modify.</li>
+<li><strong>parameter_name_values</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of parameter names and values
+for the parameter update. You must supply at least one parameter
+name and value; subsequent arguments are optional. A maximum of 20
+parameters may be modified per request.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.modify_cache_subnet_group">
+<tt class="descname">modify_cache_subnet_group</tt><big>(</big><em>cache_subnet_group_name</em>, <em>cache_subnet_group_description=None</em>, <em>subnet_ids=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.modify_cache_subnet_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ModifyCacheSubnetGroup operation modifies an existing
+cache subnet group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_subnet_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name for the cache subnet group.
+This value is stored as a lowercase string.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Constraints: Must contain no more than 255 alphanumeric characters or</dt>
+<dd>hyphens.</dd>
+</dl>
+<p>Example: <cite>mysubnetgroup</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_subnet_group_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description for the cache
+subnet group.</li>
+<li><strong>subnet_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The EC2 subnet IDs for the cache subnet group.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.modify_replication_group">
+<tt class="descname">modify_replication_group</tt><big>(</big><em>replication_group_id</em>, <em>replication_group_description=None</em>, <em>cache_security_group_names=None</em>, <em>security_group_ids=None</em>, <em>preferred_maintenance_window=None</em>, <em>notification_topic_arn=None</em>, <em>cache_parameter_group_name=None</em>, <em>notification_topic_status=None</em>, <em>apply_immediately=None</em>, <em>engine_version=None</em>, <em>auto_minor_version_upgrade=None</em>, <em>primary_cluster_id=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.modify_replication_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ModifyReplicationGroup operation modifies the settings for
+a replication group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>replication_group_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identifier of the replication group to
+modify.</li>
+<li><strong>replication_group_description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description for the replication
+group. Maximum length is 255 characters.</li>
+<li><strong>cache_security_group_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of cache security group names
+to authorize for the clusters in this replication group. This
+change is asynchronously applied as soon as possible.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>This parameter can be used only with replication groups containing</dt>
+<dd>cache clusters running outside of an Amazon Virtual Private Cloud
+(VPC).</dd>
+<dt>Constraints: Must contain no more than 255 alphanumeric characters.</dt>
+<dd>Must not be &#8220;Default&#8221;.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Specifies the VPC Security Groups associated
+with the cache clusters in the replication group.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>This parameter can be used only with replication groups containing</dt>
+<dd>cache clusters running in an Amazon Virtual Private Cloud (VPC).</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>preferred_maintenance_window</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The weekly time range (in UTC)
+during which replication group system maintenance can occur. Note
+that system maintenance may result in an outage. This change is
+made immediately. If you are moving this window to the current
+time, there must be at least 120 minutes between the current time
+and end of the window to ensure that pending changes are applied.</li>
+<li><strong>notification_topic_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The Amazon Resource Name (ARN) of the SNS topic to which notifications</dt>
+<dd>will be sent.</dd>
+</dl>
+<p>The SNS topic owner must be same as the replication group owner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group to apply to all of the cache nodes in this replication group.
+This change is asynchronously applied as soon as possible for
+parameters when the ApplyImmediately parameter is specified as true
+for this request.</li>
+<li><strong>notification_topic_status</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The status of the Amazon SNS
+notification topic for the replication group. Notifications are
+sent only if the status is active .</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values: <cite>active</cite> | <cite>inactive</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>apply_immediately</strong> (<em>boolean</em>) &#8211; If <cite>True</cite>, this parameter causes the
+modifications in this request and any pending modifications to be
+applied, asynchronously and as soon as possible, regardless of the
+PreferredMaintenanceWindow setting for the replication group.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If <cite>False</cite>, then changes to the nodes in the replication group are</dt>
+<dd>applied on the next maintenance reboot, or the next failure reboot,
+whichever occurs first.</dd>
+</dl>
+<p>Valid values: <cite>True</cite> | <cite>False</cite></p>
+<p>Default: <cite>False</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>engine_version</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The upgraded version of the cache engine to be
+run on the nodes in the replication group..</li>
+<li><strong>auto_minor_version_upgrade</strong> (<em>boolean</em>) &#8211; Determines whether minor engine
+upgrades will be applied automatically to all of the cache nodes in
+the replication group during the maintenance window. A value of
+<cite>True</cite> allows these upgrades to occur; <cite>False</cite> disables automatic
+upgrades.</li>
+<li><strong>primary_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; If this parameter is specified, ElastiCache
+will promote each of the nodes in the specified cache cluster to
+the primary role. The nodes of all other clusters in the
+replication group will be read replicas.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.purchase_reserved_cache_nodes_offering">
+<tt class="descname">purchase_reserved_cache_nodes_offering</tt><big>(</big><em>reserved_cache_nodes_offering_id</em>, <em>reserved_cache_node_id=None</em>, <em>cache_node_count=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.purchase_reserved_cache_nodes_offering" title="Permalink to this definition">¶</a></dt>
+<dd><p>The PurchaseReservedCacheNodesOffering operation allows you to
+purchase a reserved cache node offering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reserved_cache_nodes_offering_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the reserved cache
+node offering to purchase.</td>
+</tr>
+</tbody>
+</table>
+<p>Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reserved_cache_node_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A customer-specified identifier to track
+this reservation.</td>
+</tr>
+</tbody>
+</table>
+<p>Example: myreservationID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cache_node_count</strong> (<em>integer</em>) &#8211; The number of cache node instances to reserve.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: <cite>1</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.reboot_cache_cluster">
+<tt class="descname">reboot_cache_cluster</tt><big>(</big><em>cache_cluster_id</em>, <em>cache_node_ids_to_reboot</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.reboot_cache_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>The RebootCacheCluster operation reboots some, or all, of the
+cache cluster nodes within a provisioned cache cluster. This
+API will apply any modified cache parameter groups to the
+cache cluster. The reboot action takes place as soon as
+possible, and results in a momentary outage to the cache
+cluster. During the reboot, the cache cluster status is set to
+REBOOTING.</p>
+<p>The reboot causes the contents of the cache (for each cache
+cluster node being rebooted) to be lost.</p>
+<p>When the reboot is complete, a cache cluster event is created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_cluster_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cache cluster identifier. This parameter
+is stored as a lowercase string.</li>
+<li><strong>cache_node_ids_to_reboot</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of cache cluster node IDs to
+reboot. A node ID is a numeric identifier (0001, 0002, etc.). To
+reboot an entire cache cluster, specify all of the cache cluster
+node IDs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.reset_cache_parameter_group">
+<tt class="descname">reset_cache_parameter_group</tt><big>(</big><em>cache_parameter_group_name</em>, <em>parameter_name_values</em>, <em>reset_all_parameters=None</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.reset_cache_parameter_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ResetCacheParameterGroup operation modifies the parameters
+of a cache parameter group to the engine or system default
+value. You can reset specific parameters by submitting a list
+of parameter names. To reset the entire cache parameter group,
+specify the ResetAllParameters and CacheParameterGroupName
+parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_parameter_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache parameter
+group to reset.</li>
+<li><strong>reset_all_parameters</strong> (<em>boolean</em>) &#8211; If true , all parameters in the cache
+parameter group will be reset to default values. If false , no such
+action occurs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values: <cite>True</cite> | <cite>False</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameter_name_values</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of parameter names to be reset.
+If you are not resetting the entire cache parameter group, you must
+specify at least one parameter name.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.elasticache.layer1.ElastiCacheConnection.revoke_cache_security_group_ingress">
+<tt class="descname">revoke_cache_security_group_ingress</tt><big>(</big><em>cache_security_group_name</em>, <em>ec2_security_group_name</em>, <em>ec2_security_group_owner_id</em><big>)</big><a class="headerlink" href="#boto.elasticache.layer1.ElastiCacheConnection.revoke_cache_security_group_ingress" title="Permalink to this definition">¶</a></dt>
+<dd><p>The RevokeCacheSecurityGroupIngress operation revokes ingress
+from a cache security group. Use this operation to disallow
+access from an Amazon EC2 security group that had been
+previously authorized.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cache_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the cache security group
+to revoke ingress from.</li>
+<li><strong>ec2_security_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the Amazon EC2 security
+group to revoke access from.</li>
+<li><strong>ec2_security_group_owner_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The AWS account number of the
+Amazon EC2 security group owner. Note that this is not the same
+thing as an AWS access key ID - you must provide a valid AWS
+account number for this parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Amazon ElastiCache</a><ul>
+<li><a class="reference internal" href="#module-boto.elasticache">boto.elasticache</a></li>
+<li><a class="reference internal" href="#module-boto.elasticache.layer1">boto.elasticache.layer1</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ecs.html"
+                        title="previous chapter">ECS</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elastictranscoder.html"
+                        title="next chapter">Elastic Transcoder</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/elasticache.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elastictranscoder.html" title="Elastic Transcoder"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ecs.html" title="ECS"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.11.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.12.0" href="v2.12.0.html" />
+    <link rel="prev" title="boto v2.10.0" href="v2.10.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.12.0.html" title="boto v2.12.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.10.0.html" title="boto v2.10.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-11-0">
+<h1>boto v2.11.0<a class="headerlink" href="#boto-v2-11-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/08/29</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds Public IP address support for VPCs created by EC2. It also
+makes the GovCloud region available for all services. Finally, this release
+also fixes a number of bugs.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added Public IP address support within VPCs created by EC2. (<a class="reference external" href="https://github.com/boto/boto/commit/be132d1">commit be132d1</a>)</li>
+<li>All services can now easily use GovCloud. (<a class="reference external" href="https://github.com/boto/boto/issues/1651">issue 1651</a>, <a class="reference external" href="https://github.com/boto/boto/commit/542a301">commit 542a301</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/3c56121">commit 3c56121</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9167d89">commit 9167d89</a>)</li>
+<li>Added <tt class="docutils literal"><span class="pre">db_subnet_group</span></tt> to
+<tt class="docutils literal"><span class="pre">RDSConnection.restore_dbinstance_from_point_in_time</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1640">issue 1640</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/06592b9">commit 06592b9</a>)</li>
+<li>Added <tt class="docutils literal"><span class="pre">monthly_backups</span></tt> to EC2&#8217;s <tt class="docutils literal"><span class="pre">trim_snapshots</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1688">issue 1688</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/a2ad606">commit a2ad606</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2998c11">commit 2998c11</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e32d033">commit e32d033</a>)</li>
+<li>Added <tt class="docutils literal"><span class="pre">get_all_reservations</span></tt> &amp; <tt class="docutils literal"><span class="pre">get_only_instances</span></tt> methods to EC2.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1572">issue 1572</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ffc6cc0">commit ffc6cc0</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Fixed the parsing of CloudFormation&#8217;s <tt class="docutils literal"><span class="pre">LastUpdatedTime</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1667">issue 1667</a>,
+:sha:` 70f363a`)</p>
+</li>
+<li><p class="first">Fixed STS&#8217; <tt class="docutils literal"><span class="pre">assume_role_with_web_identity</span></tt> to work correctly.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1671">issue 1671</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ed1f403">commit ed1f403</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ca794d5">commit ca794d5</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ed7e563">commit ed7e563</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/859762d">commit 859762d</a>)</p>
+</li>
+<li><p class="first">Fixed how VPC security group filtering is done in EC2. (<a class="reference external" href="https://github.com/boto/boto/issues/1665">issue 1665</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1677">issue 1677</a>, <a class="reference external" href="https://github.com/boto/boto/commit/be00956">commit be00956</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5e85dd1">commit 5e85dd1</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e63aae8">commit e63aae8</a>)</p>
+</li>
+<li><p class="first">Fixed fetching more than 100 records with <tt class="docutils literal"><span class="pre">ResourceRecordSet</span></tt>.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1647">issue 1647</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1648">issue 1648</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1680">issue 1680</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b64dd4f">commit b64dd4f</a>, <a class="reference external" href="https://github.com/boto/boto/commit/276df7e">commit 276df7e</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/e57cab0">commit e57cab0</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e62a58b">commit e62a58b</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4c81bea">commit 4c81bea</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a3c635b">commit a3c635b</a>)</p>
+</li>
+<li><p class="first">Fixed how VPC Security Groups are referred to when working with RDS.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1602">issue 1602</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1683">issue 1683</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1685">issue 1685</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1694">issue 1694</a>, <a class="reference external" href="https://github.com/boto/boto/commit/012aa0c">commit 012aa0c</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/d5c6dfa">commit d5c6dfa</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7841230">commit 7841230</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0a90627">commit 0a90627</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ed4fd8c">commit ed4fd8c</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/61d394b">commit 61d394b</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ebe84c9">commit ebe84c9</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a6b0f7e">commit a6b0f7e</a>)</p>
+</li>
+<li><p class="first">Google Storage <tt class="docutils literal"><span class="pre">Key</span></tt> now uses transcoding-invariant headers where possible.
+(<a class="reference external" href="https://github.com/boto/boto/commit/d36eac3">commit d36eac3</a>)</p>
+</li>
+<li><p class="first">Doing non-multipart uploads when using <tt class="docutils literal"><span class="pre">s3put</span></tt> no longer requires having
+the <tt class="docutils literal"><span class="pre">ListBucket</span></tt> permission. (<a class="reference external" href="https://github.com/boto/boto/issues/1642">issue 1642</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1693">issue 1693</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f35e914">commit f35e914</a>)</p>
+</li>
+<li><p class="first">Fixed the serialization of <tt class="docutils literal"><span class="pre">attributes</span></tt> in a variety of SNS methods.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1686">issue 1686</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4afb3dd">commit 4afb3dd</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a58af54">commit a58af54</a>)</p>
+</li>
+<li><p class="first">Fixed SNS to be better behaved when constructing an mobile push notification.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1692">issue 1692</a>, <a class="reference external" href="https://github.com/boto/boto/commit/62fdf34">commit 62fdf34</a>)</p>
+</li>
+<li><p class="first">Moved SWF to SigV4. (<a class="reference external" href="https://github.com/boto/boto/commit/ef7d255">commit ef7d255</a>)</p>
+</li>
+<li><p class="first">Several documentation improvements/fixes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Updated the DynamoDB v2 docs to correct how the connection is built.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1662">issue 1662</a>, <a class="reference external" href="https://github.com/boto/boto/commit/047962d">commit 047962d</a>)</li>
+<li>Fixed a typo in the DynamoDB v2 docstring for <tt class="docutils literal"><span class="pre">Table.create</span></tt>.
+(<a class="reference external" href="https://github.com/boto/boto/commit/be00956">commit be00956</a>)</li>
+<li>Fixed a typo in the DynamoDB v2 docstring for <tt class="docutils literal"><span class="pre">Table</span></tt> for custom
+connections. (<a class="reference external" href="https://github.com/boto/boto/issues/1681">issue 1681</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6a53020">commit 6a53020</a>)</li>
+<li>Fixed incorrect parameter names for <tt class="docutils literal"><span class="pre">DBParameterGroup</span></tt> in RDS.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1682">issue 1682</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0d46aed">commit 0d46aed</a>)</li>
+<li>Fixed a typo in the SQS tutorial. (<a class="reference external" href="https://github.com/boto/boto/issues/1684">issue 1684</a>, <a class="reference external" href="https://github.com/boto/boto/commit/38b7889">commit 38b7889</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.11.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.10.0.html"
+                        title="previous chapter">boto v2.10.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.12.0.html"
+                        title="next chapter">boto v2.12.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.11.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.12.0.html" title="boto v2.12.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.10.0.html" title="boto v2.10.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

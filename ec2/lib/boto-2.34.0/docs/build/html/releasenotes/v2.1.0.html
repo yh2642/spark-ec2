@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.1.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.1.1" href="v2.1.1.html" />
+    <link rel="prev" title="Major changes for release 2.0b1" href="v2.0b1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.1.1.html" title="boto v2.1.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.0b1.html" title="Major changes for release 2.0b1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-1-0">
+<h1>boto v2.1.0<a class="headerlink" href="#boto-v2-1-0" title="Permalink to this headline">¶</a></h1>
+<p>The 2.1.0 release of boto is now available on <a class="reference external" href="http://pypi.python.org/pypi/boto">PyPI</a> and <a class="reference external" href="http://code.google.com/p/boto/downloads/">Google Code</a>.</p>
+<p>You can view a list of issues that have been closed in this release at
+<a class="reference external" href="https://github.com/boto/boto/issues?milestone=4&amp;state=closed">https://github.com/boto/boto/issues?milestone=4&amp;state=closed</a>)</p>
+<p>You can get a comprehensive list of all commits made between the 2.0 release
+and the 2.1.0 release at <a class="reference external" href="https://github.com/boto/boto/compare/033457f30d...a0a1fd54ef">https://github.com/boto/boto/compare/033457f30d...a0a1fd54ef</a>.</p>
+<p>Some highlights of this release:</p>
+<ul class="simple">
+<li>Server-side encryption now supported in S3.</li>
+<li>Better support for VPC in EC2.</li>
+<li>Support for combiner in StreamingStep for EMR.</li>
+<li>Support for CloudFormations.</li>
+<li>Support for streaming uploads to Google Storage.</li>
+<li>Support for generating signed URL&#8217;s in CloudFront.</li>
+<li>MTurk connection now uses HTTPS by default, like all other Connection objects.</li>
+<li>You can now PUT multiple data points to CloudWatch in one call.</li>
+<li>CloudWatch Dimension object now correctly supports multiple values for same
+dimension name.</li>
+<li>Lots of documentation fixes/additions</li>
+</ul>
+<p>There were 235 commits in this release from 35 different authors.  The authors
+are listed below, in no particular order:</p>
+<ul class="simple">
+<li>Erick Fejta</li>
+<li>Joel Barciauskas</li>
+<li>Matthew Tai</li>
+<li>Hyunjung Park</li>
+<li>Mitch Garnaat</li>
+<li>Victor Trac</li>
+<li>Andy Grimm</li>
+<li>ZerothAngel</li>
+<li>Dan Lecocq</li>
+<li>jmallen</li>
+<li>Greg Taylor</li>
+<li>Brian Grossman</li>
+<li>Marc Brinkmann</li>
+<li>Hunter Blanks</li>
+<li>Steve Johnson</li>
+<li>Keith Fitzgerald</li>
+<li>Kamil Klimkiewicz</li>
+<li>Eddie Hebert</li>
+<li>garnaat</li>
+<li>Samuel Lucidi</li>
+<li>Kazuhiro Ogura</li>
+<li>David Arthur</li>
+<li>Michael Budde</li>
+<li>Vineeth Pillai</li>
+<li>Trevor Pounds</li>
+<li>Mike Schwartz</li>
+<li>Ryan Brown</li>
+<li>Mark</li>
+<li>Chetan Sarva</li>
+<li>Dan Callahan</li>
+<li>INADA Naoki</li>
+<li>Mitchell Hashimoto</li>
+<li>Chris Moyer</li>
+<li>Riobard</li>
+<li>Ted Romer</li>
+<li>Justin Riley</li>
+<li>Brian Beach</li>
+<li>Simon Ratner</li>
+</ul>
+<p>We processed 60 pull requests for this release from 40 different contributors.  Here are the github user id&#8217;s for all of the pull request authors:</p>
+<ul class="simple">
+<li>jtriley</li>
+<li>mbr</li>
+<li>jbarciauskas</li>
+<li>hyunjung</li>
+<li>bugi</li>
+<li>ryansb</li>
+<li>gtaylor</li>
+<li>ehazlett</li>
+<li>secretmike</li>
+<li>riobard</li>
+<li>simonratner</li>
+<li>irskep</li>
+<li>sanbornm</li>
+<li>methane</li>
+<li>jumping</li>
+<li>mansam</li>
+<li>miGlanz</li>
+<li>dlecocq</li>
+<li>fdr</li>
+<li>mitchellh</li>
+<li>ehebert</li>
+<li>memory</li>
+<li>hblanks</li>
+<li>mbudde</li>
+<li>ZerothAngel</li>
+<li>goura</li>
+<li>natedub</li>
+<li>tpounds</li>
+<li>bwbeach</li>
+<li>mumrah</li>
+<li>chetan</li>
+<li>jmallen</li>
+<li>a13m</li>
+<li>mtai</li>
+<li>fejta</li>
+<li>jibs</li>
+<li>callahad</li>
+<li>vineethrp</li>
+<li>JDrosdeck</li>
+<li>gholms</li>
+</ul>
+<p>If you are trying to reconcile that data (i.e. 35 different authors and 40 users with pull requests), well so am I.  I&#8217;m just reporting on the data that I get from the Github api 8^)</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.0b1.html"
+                        title="previous chapter">Major changes for release 2.0b1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.1.1.html"
+                        title="next chapter">boto v2.1.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.1.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.1.1.html" title="boto v2.1.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.0b1.html" title="Major changes for release 2.0b1"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

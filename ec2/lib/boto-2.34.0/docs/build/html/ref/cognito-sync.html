@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cognito Sync &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="contrib" href="contrib.html" />
+    <link rel="prev" title="Cognito Identity" href="cognito-identity.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contrib.html" title="contrib"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cognito-identity.html" title="Cognito Identity"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cognito-sync">
+<h1>Cognito Sync<a class="headerlink" href="#cognito-sync" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.cognito.sync">
+<span id="boto-cognito-sync"></span><h2>boto.cognito.sync<a class="headerlink" href="#module-boto.cognito.sync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.cognito.sync.connect_to_region">
+<tt class="descclassname">boto.cognito.sync.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.cognito.sync.regions">
+<tt class="descclassname">boto.cognito.sync.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cognito.sync.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon Cognito Sync service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cognito.sync.layer1">
+<span id="boto-cognito-sync-layer1"></span><h2>boto.cognito.sync.layer1<a class="headerlink" href="#module-boto.cognito.sync.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection">
+<em class="property">class </em><tt class="descclassname">boto.cognito.sync.layer1.</tt><tt class="descname">CognitoSyncConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon Cognito Sync
+Amazon Cognito Sync provides an AWS service and client library
+that enable cross-device syncing of application-related user data.
+High-level client libraries are available for both iOS and
+Android. You can use these libraries to persist data locally so
+that it&#8217;s available even if the device is offline. Developer
+credentials don&#8217;t need to be stored on the mobile device to access
+the service. You can use Amazon Cognito to obtain a normalized
+user ID and credentials. User data is persisted in a dataset that
+can store up to 1 MB of key-value pairs, and you can have up to 20
+datasets per user identity.</p>
+<dl class="attribute">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2014-06-30'</em><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'cognito-sync.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.delete_dataset">
+<tt class="descname">delete_dataset</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em>, <em>dataset_name</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.delete_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the specific dataset. The dataset will be deleted
+permanently, and the action can&#8217;t be undone. Datasets that
+this dataset was merged with will no longer report the merge.
+Any consequent operation on this dataset will result in a
+ResourceNotFoundException.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>dataset_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string of up to 128 characters. Allowed
+characters are a-z, A-Z, 0-9, &#8216;_&#8217; (underscore), &#8216;-&#8216; (dash), and &#8216;.&#8217;
+(dot).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.describe_dataset">
+<tt class="descname">describe_dataset</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em>, <em>dataset_name</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.describe_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets metadata about a dataset by identity and dataset name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>dataset_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string of up to 128 characters. Allowed
+characters are a-z, A-Z, 0-9, &#8216;_&#8217; (underscore), &#8216;-&#8216; (dash), and &#8216;.&#8217;
+(dot).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.describe_identity_pool_usage">
+<tt class="descname">describe_identity_pool_usage</tt><big>(</big><em>identity_pool_id</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.describe_identity_pool_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets usage details (for example, data storage) about a
+particular identity pool.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.describe_identity_usage">
+<tt class="descname">describe_identity_usage</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.describe_identity_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets usage information for an identity, including number of
+datasets and data usage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.list_datasets">
+<tt class="descname">list_datasets</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em>, <em>next_token=None</em>, <em>max_results=None</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.list_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists datasets for an identity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A pagination token for obtaining the next page of
+results.</li>
+<li><strong>max_results</strong> (<em>integer</em>) &#8211; The maximum number of results to be returned.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.list_identity_pool_usage">
+<tt class="descname">list_identity_pool_usage</tt><big>(</big><em>next_token=None</em>, <em>max_results=None</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.list_identity_pool_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of identity pools registered with Cognito.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A pagination token for obtaining the next page of
+results.</li>
+<li><strong>max_results</strong> (<em>integer</em>) &#8211; The maximum number of results to be returned.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.list_records">
+<tt class="descname">list_records</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em>, <em>dataset_name</em>, <em>last_sync_count=None</em>, <em>next_token=None</em>, <em>max_results=None</em>, <em>sync_session_token=None</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.list_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets paginated records, optionally changed after a particular
+sync count for a dataset and identity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>dataset_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string of up to 128 characters. Allowed
+characters are a-z, A-Z, 0-9, &#8216;_&#8217; (underscore), &#8216;-&#8216; (dash), and &#8216;.&#8217;
+(dot).</li>
+<li><strong>last_sync_count</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#long" title="(in Python v2.7)"><em>long</em></a>) &#8211; The last server sync count for this record.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A pagination token for obtaining the next page of
+results.</li>
+<li><strong>max_results</strong> (<em>integer</em>) &#8211; The maximum number of results to be returned.</li>
+<li><strong>sync_session_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A token containing a session ID, identity
+ID, and expiration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>verb</em>, <em>resource</em>, <em>headers=None</em>, <em>data=''</em>, <em>expected_status=None</em>, <em>params=None</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.sync.layer1.CognitoSyncConnection.update_records">
+<tt class="descname">update_records</tt><big>(</big><em>identity_pool_id</em>, <em>identity_id</em>, <em>dataset_name</em>, <em>sync_session_token</em>, <em>record_patches=None</em>, <em>client_context=None</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.layer1.CognitoSyncConnection.update_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Posts updates to records and add and delete records for a
+dataset and user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name-spaced GUID (for example, us-
+east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.</li>
+<li><strong>dataset_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string of up to 128 characters. Allowed
+characters are a-z, A-Z, 0-9, &#8216;_&#8217; (underscore), &#8216;-&#8216; (dash), and &#8216;.&#8217;
+(dot).</li>
+<li><strong>record_patches</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; </li>
+<li><strong>sync_session_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The SyncSessionToken returned by a previous
+call to ListRecords for this dataset and identity.</li>
+<li><strong>client_context</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cognito.sync.exceptions">
+<span id="boto-cognito-sync-exceptions"></span><h2>boto.cognito.sync.exceptions<a class="headerlink" href="#module-boto.cognito.sync.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.InternalErrorException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">InternalErrorException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.InternalErrorException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.InvalidParameterException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">InvalidParameterException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.InvalidParameterException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.LimitExceededException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">LimitExceededException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.LimitExceededException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.NotAuthorizedException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">NotAuthorizedException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.NotAuthorizedException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.ResourceConflictException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">ResourceConflictException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.ResourceConflictException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.ResourceNotFoundException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">ResourceNotFoundException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.ResourceNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.sync.exceptions.TooManyRequestsException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.sync.exceptions.</tt><tt class="descname">TooManyRequestsException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.sync.exceptions.TooManyRequestsException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cognito Sync</a><ul>
+<li><a class="reference internal" href="#module-boto.cognito.sync">boto.cognito.sync</a></li>
+<li><a class="reference internal" href="#module-boto.cognito.sync.layer1">boto.cognito.sync.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.cognito.sync.exceptions">boto.cognito.sync.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cognito-identity.html"
+                        title="previous chapter">Cognito Identity</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contrib.html"
+                        title="next chapter">contrib</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/cognito-sync.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contrib.html" title="contrib"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cognito-identity.html" title="Cognito Identity"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

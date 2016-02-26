@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An Introduction to boto’s Support interface &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="An Introduction to boto’s DynamoDB v2 interface" href="dynamodb2_tut.html" />
+    <link rel="prev" title="Command Line Tools" href="commandline.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dynamodb2_tut.html" title="An Introduction to boto’s DynamoDB v2 interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command Line Tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="an-introduction-to-boto-s-support-interface">
+<span id="support-tut"></span><h1>An Introduction to boto&#8217;s Support interface<a class="headerlink" href="#an-introduction-to-boto-s-support-interface" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial focuses on the boto interface to Amazon Web Services Support,
+allowing you to programmatically interact with cases created with Support.
+This tutorial assumes that you have already downloaded and installed <tt class="docutils literal"><span class="pre">boto</span></tt>.</p>
+<div class="section" id="creating-a-connection">
+<h2>Creating a Connection<a class="headerlink" href="#creating-a-connection" title="Permalink to this headline">¶</a></h2>
+<p>The first step in accessing Support is to create a connection
+to the service.  There are two ways to do this in boto.  The first is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.support.connection</span> <span class="kn">import</span> <span class="n">SupportConnection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">SupportConnection</span><span class="p">(</span><span class="s">&#39;&lt;aws access key&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;aws secret key&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At this point the variable <tt class="docutils literal"><span class="pre">conn</span></tt> will point to a <tt class="docutils literal"><span class="pre">SupportConnection</span></tt>
+object. In this example, the AWS access key and AWS secret key are passed in to
+the method explicitly. Alternatively, you can set the environment variables:</p>
+<dl class="docutils">
+<dt><strong>AWS_ACCESS_KEY_ID</strong></dt>
+<dd>Your AWS Access Key ID</dd>
+<dt><strong>AWS_SECRET_ACCESS_KEY</strong></dt>
+<dd>Your AWS Secret Access Key</dd>
+</dl>
+<p>and then call the constructor without any arguments, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">SupportConnection</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There is also a shortcut function in boto
+that makes it easy to create Support connections:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.support</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">support</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In either case, <tt class="docutils literal"><span class="pre">conn</span></tt> points to a <tt class="docutils literal"><span class="pre">SupportConnection</span></tt> object which we will
+use throughout the remainder of this tutorial.</p>
+</div>
+<div class="section" id="describing-existing-cases">
+<h2>Describing Existing Cases<a class="headerlink" href="#describing-existing-cases" title="Permalink to this headline">¶</a></h2>
+<p>If you have existing cases or want to fetch cases in the future, you&#8217;ll
+use the <tt class="docutils literal"><span class="pre">SupportConnection.describe_cases</span></tt> method. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_cases</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">])</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="go">&#39;A test case.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;caseId&#39;</span><span class="p">]</span>
+<span class="go">&#39;case-...&#39;</span>
+</pre></div>
+</div>
+<p>You can also fetch a set of cases (or single case) by providing a
+<tt class="docutils literal"><span class="pre">case_id_list</span></tt> parameter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_cases</span><span class="p">(</span><span class="n">case_id_list</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;case-1&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">])</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="go">&#39;A test case.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cases</span><span class="p">[</span><span class="s">&#39;cases&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;caseId&#39;</span><span class="p">]</span>
+<span class="go">&#39;case-...&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="describing-service-codes">
+<h2>Describing Service Codes<a class="headerlink" href="#describing-service-codes" title="Permalink to this headline">¶</a></h2>
+<p>In order to create a new case, you&#8217;ll need to fetch the service (&amp; category)
+codes available to you. Fetching them is a simple call to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">services</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_services</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">services</span><span class="p">[</span><span class="s">&#39;services&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;code&#39;</span><span class="p">]</span>
+<span class="go">&#39;amazon-cloudsearch&#39;</span>
+</pre></div>
+</div>
+<p>If you only care about certain services, you can pass a list of service codes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">service_details</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_services</span><span class="p">(</span><span class="n">service_code_list</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="s">&#39;amazon-cloudsearch&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;amazon-dynamodb&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="describing-severity-levels">
+<h2>Describing Severity Levels<a class="headerlink" href="#describing-severity-levels" title="Permalink to this headline">¶</a></h2>
+<p>In order to create a new case, you&#8217;ll also need to fetch the severity levels
+available to you. Fetching them looks like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">severities</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_severity_levels</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">severities</span><span class="p">[</span><span class="s">&#39;severityLevels&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;code&#39;</span><span class="p">]</span>
+<span class="go">&#39;low&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-case">
+<h2>Creating a Case<a class="headerlink" href="#creating-a-case" title="Permalink to this headline">¶</a></h2>
+<p>Upon creating a connection to Support, you can now work with existing Support
+cases, create new cases or resolve them. We&#8217;ll start with creating a new case:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">new_case</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_case</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">subject</span><span class="o">=</span><span class="s">&#39;This is a test case.&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">service_code</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">category_code</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">communication_body</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">severity_code</span><span class="o">=</span><span class="s">&#39;low&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_case</span><span class="p">[</span><span class="s">&#39;caseId&#39;</span><span class="p">]</span>
+<span class="go">&#39;case-...&#39;</span>
+</pre></div>
+</div>
+<p>For the <tt class="docutils literal"><span class="pre">service_code/category_code</span></tt> parameters, you&#8217;ll need to do a
+<tt class="docutils literal"><span class="pre">SupportConnection.describe_services</span></tt> call, then select the appropriate
+service code (&amp; appropriate category code within that service) from the
+response.</p>
+<p>For the <tt class="docutils literal"><span class="pre">severity_code</span></tt> parameter, you&#8217;ll need to do a
+<tt class="docutils literal"><span class="pre">SupportConnection.describe_severity_levels</span></tt> call, then select the appropriate
+severity code from the response.</p>
+</div>
+<div class="section" id="adding-to-a-case">
+<h2>Adding to a Case<a class="headerlink" href="#adding-to-a-case" title="Permalink to this headline">¶</a></h2>
+<p>Since the purpose of a support case involves back-and-forth communication,
+you can add additional communication to the case as well. Providing a response
+might look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">add_communication_to_case</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">communication_body</span><span class="o">=</span><span class="s">&quot;This is a followup. It&#39;s working now.&quot;</span>
+<span class="gp">... </span>    <span class="n">case_id</span><span class="o">=</span><span class="s">&#39;case-...&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fetching-all-communications-for-a-case">
+<h2>Fetching all Communications for a Case<a class="headerlink" href="#fetching-all-communications-for-a-case" title="Permalink to this headline">¶</a></h2>
+<p>Getting all communications for a given case looks like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">communications</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">describe_communications</span><span class="p">(</span><span class="s">&#39;case-...&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolving-a-case">
+<h2>Resolving a Case<a class="headerlink" href="#resolving-a-case" title="Permalink to this headline">¶</a></h2>
+<p>Once a case is finished, you should mark it as resolved to close it out.
+Resolving a case looks like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">closed</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">resolve_case</span><span class="p">(</span><span class="n">case_id</span><span class="o">=</span><span class="s">&#39;case-...&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">closed</span><span class="p">[</span><span class="s">&#39;result&#39;</span><span class="p">]</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">An Introduction to boto&#8217;s Support interface</a><ul>
+<li><a class="reference internal" href="#creating-a-connection">Creating a Connection</a></li>
+<li><a class="reference internal" href="#describing-existing-cases">Describing Existing Cases</a></li>
+<li><a class="reference internal" href="#describing-service-codes">Describing Service Codes</a></li>
+<li><a class="reference internal" href="#describing-severity-levels">Describing Severity Levels</a></li>
+<li><a class="reference internal" href="#creating-a-case">Creating a Case</a></li>
+<li><a class="reference internal" href="#adding-to-a-case">Adding to a Case</a></li>
+<li><a class="reference internal" href="#fetching-all-communications-for-a-case">Fetching all Communications for a Case</a></li>
+<li><a class="reference internal" href="#resolving-a-case">Resolving a Case</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="commandline.html"
+                        title="previous chapter">Command Line Tools</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dynamodb2_tut.html"
+                        title="next chapter">An Introduction to boto&#8217;s DynamoDB v2 interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/support_tut.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dynamodb2_tut.html" title="An Introduction to boto’s DynamoDB v2 interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command Line Tools"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

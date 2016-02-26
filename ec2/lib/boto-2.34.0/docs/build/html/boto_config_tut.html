@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Boto Config &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="About the Documentation" href="documentation.html" />
+    <link rel="prev" title="An Introduction to boto’s Route53 interface" href="route53_tut.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="documentation.html" title="About the Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="route53_tut.html" title="An Introduction to boto’s Route53 interface"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-config">
+<span id="ref-boto-config"></span><h1>Boto Config<a class="headerlink" href="#boto-config" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>There is a growing list of configuration options for the boto library. Many of
+these options can be passed into the constructors for top-level objects such as
+connections. Some options, such as credentials, can also be read from
+environment variables (e.g. <tt class="docutils literal"><span class="pre">AWS_ACCESS_KEY_ID</span></tt>, <tt class="docutils literal"><span class="pre">AWS_SECRET_ACCESS_KEY</span></tt>,
+<tt class="docutils literal"><span class="pre">AWS_SECURITY_TOKEN</span></tt> and <tt class="docutils literal"><span class="pre">AWS_PROFILE</span></tt>). It is also possible to manage
+these options in a central place through the use of boto config files.</p>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>A boto config file is a text file formatted like an .ini configuration file that specifies
+values for options that control the behavior of the boto library. In Unix/Linux systems,
+on startup, the boto library looks for configuration files in the following locations
+and in the following order:</p>
+<ul class="simple">
+<li>/etc/boto.cfg - for site-wide settings that all users on this machine will use</li>
+<li>~/.boto - for user-specific settings</li>
+<li>~/.aws/credentials - for credentials shared between SDKs</li>
+</ul>
+<p>In Windows, create a text file that has any name (e.g. boto.config). It&#8217;s
+recommended that you put this file in your user folder. Then set
+a user environment variable named BOTO_CONFIG to the full path of that file.</p>
+<p>The options in the config file are merged into a single, in-memory configuration
+that is available as <tt class="xref py py-mod docutils literal"><span class="pre">boto.config</span></tt>. The <a class="reference internal" href="ref/pyami.html#boto.pyami.config.Config" title="boto.pyami.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">boto.pyami.config.Config</span></tt></a>
+class is a subclass of the standard Python
+<a class="reference external" href="http://docs.python.org/library/configparser.html#ConfigParser.SafeConfigParser" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">ConfigParser.SafeConfigParser</span></tt></a> object and inherits all of the
+methods of that object. In addition, the boto
+<a class="reference internal" href="ref/pyami.html#boto.pyami.config.Config" title="boto.pyami.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">Config</span></tt></a> class defines additional
+methods that are described on the PyamiConfigMethods page.</p>
+<p>An example boto config file might look like:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Credentials]
+aws_access_key_id = &lt;your_access_key_here&gt;
+aws_secret_access_key = &lt;your_secret_key_here&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">¶</a></h2>
+<p>The following sections and options are currently recognized within the
+boto config file.</p>
+<div class="section" id="credentials">
+<h3>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h3>
+<p>The Credentials section is used to specify the AWS credentials used for all
+boto requests. The order of precedence for authentication credentials is:</p>
+<ul class="simple">
+<li>Credentials passed into the Connection class constructor.</li>
+<li>Credentials specified by environment variables</li>
+<li>Credentials specified as named profiles in the shared credential file.</li>
+<li>Credentials specified by default in the shared credential file.</li>
+<li>Credentials specified as named profiles in the config file.</li>
+<li>Credentials specified by default in the config file.</li>
+</ul>
+<p>This section defines the following options: <tt class="docutils literal"><span class="pre">aws_access_key_id</span></tt> and
+<tt class="docutils literal"><span class="pre">aws_secret_access_key</span></tt>. The former being your AWS key id and the latter
+being the secret key.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[profile name_goes_here]
+aws_access_key_id = &lt;access key for this profile&gt;
+aws_secret_access_key = &lt;secret key for this profile&gt;
+
+[Credentials]
+aws_access_key_id = &lt;your default access key&gt;
+aws_secret_access_key = &lt;your default secret key&gt;
+</pre></div>
+</div>
+<p>Please notice that quote characters are not used to either side of the &#8216;=&#8217;
+operator even when both your AWS access key ID and secret key are strings.</p>
+<p>If you have multiple AWS keypairs that you use for different purposes,
+use the <tt class="docutils literal"><span class="pre">profile</span></tt> style shown above. You can set an arbitrary number
+of profiles within your configuration files and then reference them by name
+when you instantiate your connection. If you specify a profile that does not
+exist in the configuration, the keys used under the <tt class="docutils literal"><span class="pre">[Credentials]</span></tt> heading
+will be applied by default.</p>
+<p>The shared credentials file in <tt class="docutils literal"><span class="pre">~/.aws/credentials</span></tt> uses a slightly
+different format. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[default]
+aws_access_key_id = &lt;your default access key&gt;
+aws_secret_access_key = &lt;your default secret key&gt;
+
+[name_goes_here]
+aws_access_key_id = &lt;access key for this profile&gt;
+aws_secret_access_key = &lt;secret key for this profile&gt;
+
+[another_profile]
+aws_access_key_id = &lt;access key for this profile&gt;
+aws_secret_access_key = &lt;secret key for this profile&gt;
+aws_security_token = &lt;optional security token for this profile&gt;
+</pre></div>
+</div>
+<p>For greater security, the secret key can be stored in a keyring and
+retrieved via the keyring package.  To use a keyring, use <tt class="docutils literal"><span class="pre">keyring</span></tt>,
+rather than <tt class="docutils literal"><span class="pre">aws_secret_access_key</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Credentials]
+aws_access_key_id = &lt;your access key&gt;
+keyring = &lt;keyring name&gt;
+</pre></div>
+</div>
+<p>To use a keyring, you must have the Python <a class="reference external" href="http://pypi.python.org/pypi/keyring">keyring</a> package installed and in the
+Python path. To learn about setting up keyrings, see the <a class="reference external" href="http://pypi.python.org/pypi/keyring#installing-and-using-python-keyring-lib">keyring
+documentation</a></p>
+<p>Credentials can also be supplied for a Eucalyptus service:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Credentials]
+euca_access_key_id = &lt;your access key&gt;
+euca_secret_access_key = &lt;your secret key&gt;
+</pre></div>
+</div>
+<p>Finally, this section is also be used to provide credentials for the Internet Archive API:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Credentials]
+ia_access_key_id = &lt;your access key&gt;
+ia_secret_access_key = &lt;your secret key&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="boto">
+<h3>Boto<a class="headerlink" href="#boto" title="Permalink to this headline">¶</a></h3>
+<p>The Boto section is used to specify options that control the operation of
+boto itself. This section defines the following options:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">debug:</th><td class="field-body"><p class="first">Controls the level of debug messages that will be printed by the boto library.
+The following values are defined:</p>
+<div class="highlight-python"><div class="highlight"><pre>0 - no debug messages are printed
+1 - basic debug messages from boto are printed
+2 - all boto debugging messages plus request/response messages from httplib
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">proxy:</th><td class="field-body"><p class="first">The name of the proxy host to use for connecting to AWS.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">proxy_port:</th><td class="field-body"><p class="first">The port number to use to connect to the proxy host.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">proxy_user:</th><td class="field-body"><p class="first">The user name to use when authenticating with proxy host.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">proxy_pass:</th><td class="field-body"><p class="first">The password to use when authenticating with proxy host.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">num_retries:</th><td class="field-body"><p class="first last">The number of times to retry failed requests to an AWS server.
+If boto receives an error from AWS, it will attempt to recover and retry the
+request. The default number of retries is 5 but you can change the default
+with this option.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Boto</span><span class="p">]</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_retries</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">proxy</span> <span class="o">=</span> <span class="n">myproxy</span><span class="o">.</span><span class="n">com</span>
+<span class="n">proxy_port</span> <span class="o">=</span> <span class="mi">8080</span>
+<span class="n">proxy_user</span> <span class="o">=</span> <span class="n">foo</span>
+<span class="n">proxy_pass</span> <span class="o">=</span> <span class="n">bar</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">connection_stale_duration:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Amount of time to wait in seconds before a
+connection will stop getting reused. AWS will disconnect connections which
+have been idle for 180 seconds.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">is_secure:</th><td class="field-body">Is the connection over SSL. This setting will overide passed in
+values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">https_validate_certificates:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Validate HTTPS certificates. This is on by default</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">ca_certificates_file:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Location of CA certificates or the keyword &#8220;system&#8221;.
+Using the system keyword lets boto get out of the way and makes the
+SSL certificate validation the responsibility the underlying SSL
+implementation provided by the system.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">http_socket_timeout:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Timeout used to overwrite the system default socket
+timeout for httplib .</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">send_crlf_after_proxy_auth_headers:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Change line ending behaviour with proxies.
+For more details see this <a class="reference external" href="https://groups.google.com/forum/?fromgroups=#!topic/boto-dev/teenFvOq2Cc">discussion</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">endpoints_path:</th><td class="field-body">Allows customizing the regions/endpoints available in Boto.
+Provide an absolute path to a custom JSON file, which gets merged into the
+defaults. (This can also be specified with the <tt class="docutils literal"><span class="pre">BOTO_ENDPOINTS</span></tt>
+environment variable instead.)</td>
+</tr>
+</tbody>
+</table>
+<p>These settings will default to:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+connection_stale_duration = 180
+is_secure = True
+https_validate_certificates = True
+ca_certificates_file = cacerts.txt
+http_socket_timeout = 60
+send_crlf_after_proxy_auth_headers = False
+endpoints_path = /path/to/my/boto/endpoints.json
+</pre></div>
+</div>
+<p>You can control the timeouts and number of retries used when retrieving
+information from the Metadata Service (this is used for retrieving credentials
+for IAM roles on EC2 instances):</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">metadata_service_timeout:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Number of seconds until requests to the metadata
+service will timeout (float).</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">metadata_service_num_attempts:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Number of times to attempt to retrieve
+information from the metadata service before giving up (int).</td>
+</tr>
+</tbody>
+</table>
+<p>These settings will default to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Boto</span><span class="p">]</span>
+<span class="n">metadata_service_timeout</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">metadata_service_num_attempts</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This section is also used for specifying endpoints for non-AWS services such as
+Eucalyptus and Walrus.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">eucalyptus_host:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Select a default endpoint host for eucalyptus</td>
+</tr>
+<tr class="field-even field"><th class="field-name">walrus_host:</th><td class="field-body">Select a default host for Walrus</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Boto</span><span class="p">]</span>
+<span class="n">eucalyptus_host</span> <span class="o">=</span> <span class="n">somehost</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">walrus_host</span> <span class="o">=</span> <span class="n">somehost</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Finally, the Boto section is used to set defaults versions for many AWS services</p>
+<p>AutoScale settings:</p>
+<p>options:
+:autoscale_version: Set the API version
+:autoscale_endpoint: Endpoint to use
+:autoscale_region_name: Default region to use</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+autoscale_version = 2011-01-01
+autoscale_endpoint = autoscaling.us-west-2.amazonaws.com
+autoscale_region_name = us-west-2
+</pre></div>
+</div>
+<p>Cloudformation settings can also be defined:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">cfn_version:</th><td class="field-body">Cloud formation API version</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">cfn_region_name:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default region name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">cfn_region_endpoint:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Default endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+cfn_version = 2010-05-15
+cfn_region_name = us-west-2
+cfn_region_endpoint = cloudformation.us-west-2.amazonaws.com
+</pre></div>
+</div>
+<p>Cloudsearch settings:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">cs_region_name:</th><td class="field-body">Default cloudsearch region</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">cs_region_endpoint:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default cloudsearch endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+cs_region_name = us-west-2
+cs_region_endpoint = cloudsearch.us-west-2.amazonaws.com
+</pre></div>
+</div>
+<p>Cloudwatch settings:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">cloudwatch_version:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Cloudwatch API version</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">cloudwatch_region_name:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default region name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">cloudwatch_region_endpoint:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Default endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+cloudwatch_version = 2010-08-01
+cloudwatch_region_name = us-west-2
+cloudwatch_region_endpoint = monitoring.us-west-2.amazonaws.com
+</pre></div>
+</div>
+<p>EC2 settings:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ec2_version:</th><td class="field-body">EC2 API version</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">ec2_region_name:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default region name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">ec2_region_endpoint:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Default endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+ec2_version = 2012-12-01
+ec2_region_name = us-west-2
+ec2_region_endpoint = ec2.us-west-2.amazonaws.com
+</pre></div>
+</div>
+<p>ELB settings:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">elb_version:</th><td class="field-body">ELB API version</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">elb_region_name:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default region name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">elb_region_endpoint:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Default endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+elb_version = 2012-06-01
+elb_region_name = us-west-2
+elb_region_endpoint = elasticloadbalancing.us-west-2.amazonaws.com
+</pre></div>
+</div>
+<p>EMR settings:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">emr_version:</th><td class="field-body">EMR API version</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">emr_region_name:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Default region name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">emr_region_endpoint:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Default endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Boto]
+emr_version = 2009-03-31
+emr_region_name = us-west-2
+emr_region_endpoint = elasticmapreduce.us-west-2.amazonaws.com
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="precedence">
+<h2>Precedence<a class="headerlink" href="#precedence" title="Permalink to this headline">¶</a></h2>
+<p>Even if you have your boto config setup, you can also have credentials and
+options stored in environmental variables or you can explicitly pass them to
+method calls i.e.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">boto</span><span class="o">.</span><span class="n">ec2</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s">&#39;us-west-2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s">&#39;foo&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In these cases where these options can be found in more than one place boto
+will first use the explicitly supplied arguments, if none found it will then
+look for them amidst environment variables and if that fails it will use the
+ones in boto config.</p>
+<div class="section" id="notification">
+<h3>Notification<a class="headerlink" href="#notification" title="Permalink to this headline">¶</a></h3>
+<p>If you are using notifications for boto.pyami, you can specify the email
+details through the following variables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">smtp_from:</th><td class="field-body">Used as the sender in notification emails.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">smtp_to:</th><td class="field-body">Destination to which emails should be sent</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">smtp_host:</th><td class="field-body">Host to connect to when sending notification emails.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">smtp_port:</th><td class="field-body">Port to connect to when connecting to the :smtp_host:</td>
+</tr>
+</tbody>
+</table>
+<p>Default values are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">notification</span><span class="p">]</span>
+<span class="n">smtp_from</span> <span class="o">=</span> <span class="n">boto</span>
+<span class="n">smtp_to</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">smtp_host</span> <span class="o">=</span> <span class="n">localhost</span>
+<span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">smtp_tls</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">smtp_user</span> <span class="o">=</span> <span class="n">john</span>
+<span class="n">smtp_pass</span> <span class="o">=</span> <span class="n">hunter2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="swf">
+<h3>SWF<a class="headerlink" href="#swf" title="Permalink to this headline">¶</a></h3>
+<p>The SWF section allows you to configure the default region to be used for the
+Amazon Simple Workflow service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">region:</th><td class="field-body">Set the default region</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">SWF</span><span class="p">]</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyami">
+<h3>Pyami<a class="headerlink" href="#pyami" title="Permalink to this headline">¶</a></h3>
+<p>The Pyami section is used to configure the working directory for PyAMI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">working_dir:</th><td class="field-body">Working directory used by PyAMI</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>[Pyami]
+working_dir = /home/foo/
+</pre></div>
+</div>
+</div>
+<div class="section" id="db">
+<h3>DB<a class="headerlink" href="#db" title="Permalink to this headline">¶</a></h3>
+<p>The DB section is used to configure access to databases through the
+<a class="reference internal" href="ref/sdb_db.html#boto.sdb.db.manager.get_manager" title="boto.sdb.db.manager.get_manager"><tt class="xref py py-func docutils literal"><span class="pre">boto.sdb.db.manager.get_manager()</span></tt></a> function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">db_type:</th><td class="field-body">Type of the database. Current allowed values are <cite>SimpleDB</cite> and
+<cite>XML</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">db_user:</th><td class="field-body">AWS access key id.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">db_passwd:</th><td class="field-body">AWS secret access key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">db_name:</th><td class="field-body">Database that will be connected to.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">db_table:</th><td class="field-body">Table name :note: This doesn&#8217;t appear to be used.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">db_host:</th><td class="field-body">Host to connect to</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">db_port:</th><td class="field-body">Port to connect to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">enable_ssl:</th><td class="field-body">Use SSL</td>
+</tr>
+</tbody>
+</table>
+<p>More examples:</p>
+<div class="highlight-python"><div class="highlight"><pre>[DB]
+db_type = SimpleDB
+db_user = &lt;aws access key id&gt;
+db_passwd = &lt;aws secret access key&gt;
+db_name = my_domain
+db_table = table
+db_host = sdb.amazonaws.com
+enable_ssl = True
+debug = True
+
+[DB_TestBasic]
+db_type = SimpleDB
+db_user = &lt;another aws access key id&gt;
+db_passwd = &lt;another aws secret access key&gt;
+db_name = basic_domain
+db_port = 1111
+</pre></div>
+</div>
+</div>
+<div class="section" id="sdb">
+<h3>SDB<a class="headerlink" href="#sdb" title="Permalink to this headline">¶</a></h3>
+<p>This section is used to configure SimpleDB</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">region:</th><td class="field-body">Set the region to which SDB should connect</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">SDB</span><span class="p">]</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamodb">
+<h3>DynamoDB<a class="headerlink" href="#dynamodb" title="Permalink to this headline">¶</a></h3>
+<p>This section is used to configure DynamoDB</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">region:</th><td class="field-body">Choose the default region</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">validate_checksums:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Check checksums returned by DynamoDB</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">DynamoDB</span><span class="p">]</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">validate_checksums</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Boto Config</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#details">Details</a></li>
+<li><a class="reference internal" href="#sections">Sections</a><ul>
+<li><a class="reference internal" href="#credentials">Credentials</a></li>
+<li><a class="reference internal" href="#boto">Boto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#precedence">Precedence</a><ul>
+<li><a class="reference internal" href="#notification">Notification</a></li>
+<li><a class="reference internal" href="#swf">SWF</a></li>
+<li><a class="reference internal" href="#pyami">Pyami</a></li>
+<li><a class="reference internal" href="#db">DB</a></li>
+<li><a class="reference internal" href="#sdb">SDB</a></li>
+<li><a class="reference internal" href="#dynamodb">DynamoDB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="route53_tut.html"
+                        title="previous chapter">An Introduction to boto&#8217;s Route53 interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="documentation.html"
+                        title="next chapter">About the Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/boto_config_tut.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="documentation.html" title="About the Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="route53_tut.html" title="An Introduction to boto’s Route53 interface"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

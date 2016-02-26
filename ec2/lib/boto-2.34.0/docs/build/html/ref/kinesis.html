@@ -1,0 +1,775 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Kinesis &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="CloudWatch Logs" href="logs.html" />
+    <link rel="prev" title="VPC" href="vpc.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="logs.html" title="CloudWatch Logs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="vpc.html" title="VPC"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="kinesis">
+<h1>Kinesis<a class="headerlink" href="#kinesis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.kinesis">
+<span id="boto-kinesis"></span><h2>boto.kinesis<a class="headerlink" href="#module-boto.kinesis" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.kinesis.connect_to_region">
+<tt class="descclassname">boto.kinesis.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.kinesis.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.kinesis.regions">
+<tt class="descclassname">boto.kinesis.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.kinesis.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon Kinesis service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.kinesis.layer1">
+<span id="boto-kinesis-layer1"></span><h2>boto.kinesis.layer1<a class="headerlink" href="#module-boto.kinesis.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.kinesis.layer1.KinesisConnection">
+<em class="property">class </em><tt class="descclassname">boto.kinesis.layer1.</tt><tt class="descname">KinesisConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon Kinesis Service API Reference
+Amazon Kinesis is a managed service that scales elastically for
+real time processing of streaming big data.</p>
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2013-12-02'</em><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'kinesis.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.ServiceName">
+<tt class="descname">ServiceName</tt><em class="property"> = 'Kinesis'</em><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.ServiceName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.kinesis.layer1.KinesisConnection.TargetPrefix">
+<tt class="descname">TargetPrefix</tt><em class="property"> = 'Kinesis_20131202'</em><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.TargetPrefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.create_stream">
+<tt class="descname">create_stream</tt><big>(</big><em>stream_name</em>, <em>shard_count</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.create_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation adds a new Amazon Kinesis stream to your AWS
+account. A stream captures and transports data records that
+are continuously emitted from different data sources or
+producers . Scale-out within an Amazon Kinesis stream is
+explicitly supported by means of shards, which are uniquely
+identified groups of data records in an Amazon Kinesis stream.</p>
+<p>You specify and control the number of shards that a stream is
+composed of. Each shard can support up to 5 read transactions
+per second up to a maximum total of 2 MB of data read per
+second. Each shard can support up to 1000 write transactions
+per second up to a maximum total of 1 MB data written per
+second. You can add shards to a stream if the amount of data
+input increases and you can remove shards if the amount of
+data input decreases.</p>
+<p>The stream name identifies the stream. The name is scoped to
+the AWS account used by the application. It is also scoped by
+region. That is, two streams in two different accounts can
+have the same name, and two streams in the same account, but
+in two different regions, can have the same name.</p>
+<p><cite>CreateStream</cite> is an asynchronous operation. Upon receiving a
+<cite>CreateStream</cite> request, Amazon Kinesis immediately returns and
+sets the stream status to CREATING. After the stream is
+created, Amazon Kinesis sets the stream status to ACTIVE. You
+should perform read and write operations only on an ACTIVE
+stream.</p>
+<p>You receive a <cite>LimitExceededException</cite> when making a
+<cite>CreateStream</cite> request if you try to do one of the following:</p>
+<ul class="simple">
+<li>Have more than five streams in the CREATING state at any
+point in time.</li>
+<li>Create more shards than are authorized for your account.</li>
+</ul>
+<p><strong>Note:</strong> The default limit for an AWS account is two shards
+per stream. If you need to create a stream with more than two
+shards, contact AWS Support to increase the limit on your
+account.</p>
+<p>You can use the <cite>DescribeStream</cite> operation to check the stream
+status, which is returned in <cite>StreamStatus</cite>.</p>
+<p><cite>CreateStream</cite> has a limit of 5 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name to identify the stream. The stream name is
+scoped to the AWS account used by the application that creates the
+stream. It is also scoped by region. That is, two streams in two
+different AWS accounts can have the same name, and two streams in
+the same AWS account, but in two different regions, can have the
+same name.</li>
+<li><strong>shard_count</strong> (<em>integer</em>) &#8211; The number of shards that the stream will use. The
+throughput of the stream is a function of the number of shards;
+more shards are required for greater provisioned throughput.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>Note:</strong> The default limit for an AWS account is two shards per</dt>
+<dd>stream. If you need to create a stream with more than two shards,
+contact AWS Support to increase the limit on your account.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.delete_stream">
+<tt class="descname">delete_stream</tt><big>(</big><em>stream_name</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.delete_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation deletes a stream and all of its shards and
+data. You must shut down any applications that are operating
+on the stream before you delete the stream. If an application
+attempts to operate on a deleted stream, it will receive the
+exception <cite>ResourceNotFoundException</cite>.</p>
+<p>If the stream is in the ACTIVE state, you can delete it. After
+a <cite>DeleteStream</cite> request, the specified stream is in the
+DELETING state until Amazon Kinesis completes the deletion.</p>
+<p><strong>Note:</strong> Amazon Kinesis might continue to accept data read
+and write operations, such as PutRecord and GetRecords, on a
+stream in the DELETING state until the stream deletion is
+complete.</p>
+<p>When you delete a stream, any shards in that stream are also
+deleted.</p>
+<p>You can use the DescribeStream operation to check the state of
+the stream, which is returned in <cite>StreamStatus</cite>.</p>
+<p><cite>DeleteStream</cite> has a limit of 5 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream to delete.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.describe_stream">
+<tt class="descname">describe_stream</tt><big>(</big><em>stream_name</em>, <em>limit=None</em>, <em>exclusive_start_shard_id=None</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.describe_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns the following information about the
+stream: the current status of the stream, the stream Amazon
+Resource Name (ARN), and an array of shard objects that
+comprise the stream. For each shard object there is
+information about the hash key and sequence number ranges that
+the shard spans, and the IDs of any earlier shards that played
+in a role in a MergeShards or SplitShard operation that
+created the shard. A sequence number is the identifier
+associated with every record ingested in the Amazon Kinesis
+stream. The sequence number is assigned by the Amazon Kinesis
+service when a record is put into the stream.</p>
+<p>You can limit the number of returned shards using the <cite>Limit</cite>
+parameter. The number of shards in a stream may be too large
+to return from a single call to <cite>DescribeStream</cite>. You can
+detect this by using the <cite>HasMoreShards</cite> flag in the returned
+output. <cite>HasMoreShards</cite> is set to <cite>True</cite> when there is more
+data available.</p>
+<p>If there are more shards available, you can request more
+shards by using the shard ID of the last shard returned by the
+<cite>DescribeStream</cite> request, in the <cite>ExclusiveStartShardId</cite>
+parameter in a subsequent request to <cite>DescribeStream</cite>.
+<cite>DescribeStream</cite> is a paginated operation.</p>
+<p><cite>DescribeStream</cite> has a limit of 10 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream to describe.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of shards to return.</li>
+<li><strong>exclusive_start_shard_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shard ID of the shard to start
+with for the stream description.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.get_records">
+<tt class="descname">get_records</tt><big>(</big><em>shard_iterator</em>, <em>limit=None</em>, <em>b64_decode=True</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.get_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns one or more data records from a shard.
+A <cite>GetRecords</cite> operation request can retrieve up to 10 MB of
+data.</p>
+<p>You specify a shard iterator for the shard that you want to
+read data from in the <cite>ShardIterator</cite> parameter. The shard
+iterator specifies the position in the shard from which you
+want to start reading data records sequentially. A shard
+iterator specifies this position using the sequence number of
+a data record in the shard. For more information about the
+shard iterator, see GetShardIterator.</p>
+<p><cite>GetRecords</cite> may return a partial result if the response size
+limit is exceeded. You will get an error, but not a partial
+result if the shard&#8217;s provisioned throughput is exceeded, the
+shard iterator has expired, or an internal processing failure
+has occurred. Clients can request a smaller amount of data by
+specifying a maximum number of returned records using the
+<cite>Limit</cite> parameter. The <cite>Limit</cite> parameter can be set to an
+integer value of up to 10,000. If you set the value to an
+integer greater than 10,000, you will receive
+<cite>InvalidArgumentException</cite>.</p>
+<p>A new shard iterator is returned by every <cite>GetRecords</cite> request
+in <cite>NextShardIterator</cite>, which you use in the <cite>ShardIterator</cite>
+parameter of the next <cite>GetRecords</cite> request. When you
+repeatedly read from an Amazon Kinesis stream use a
+GetShardIterator request to get the first shard iterator to
+use in your first <cite>GetRecords</cite> request and then use the shard
+iterator returned in <cite>NextShardIterator</cite> for subsequent reads.</p>
+<p><cite>GetRecords</cite> can return <cite>null</cite> for the <cite>NextShardIterator</cite> to
+reflect that the shard has been closed and that the requested
+shard iterator would never have returned more data.</p>
+<p>If no items can be processed because of insufficient
+provisioned throughput on the shard involved in the request,
+<cite>GetRecords</cite> throws <cite>ProvisionedThroughputExceededException</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>shard_iterator</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The position in the shard from which you want to
+start sequentially reading data records.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of records to return, which can be set
+to a value of up to 10,000.</li>
+<li><strong>b64_decode</strong> (<em>boolean</em>) &#8211; Decode the Base64-encoded <tt class="docutils literal"><span class="pre">Data</span></tt> field of records.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.get_shard_iterator">
+<tt class="descname">get_shard_iterator</tt><big>(</big><em>stream_name</em>, <em>shard_id</em>, <em>shard_iterator_type</em>, <em>starting_sequence_number=None</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.get_shard_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns a shard iterator in <cite>ShardIterator</cite>.
+The shard iterator specifies the position in the shard from
+which you want to start reading data records sequentially. A
+shard iterator specifies this position using the sequence
+number of a data record in a shard. A sequence number is the
+identifier associated with every record ingested in the Amazon
+Kinesis stream. The sequence number is assigned by the Amazon
+Kinesis service when a record is put into the stream.</p>
+<p>You must specify the shard iterator type in the
+<cite>GetShardIterator</cite> request. For example, you can set the
+<cite>ShardIteratorType</cite> parameter to read exactly from the
+position denoted by a specific sequence number by using the
+AT_SEQUENCE_NUMBER shard iterator type, or right after the
+sequence number by using the AFTER_SEQUENCE_NUMBER shard
+iterator type, using sequence numbers returned by earlier
+PutRecord, GetRecords or DescribeStream requests. You can
+specify the shard iterator type TRIM_HORIZON in the request to
+cause <cite>ShardIterator</cite> to point to the last untrimmed record in
+the shard in the system, which is the oldest data record in
+the shard. Or you can point to just after the most recent
+record in the shard, by using the shard iterator type LATEST,
+so that you always read the most recent data in the shard.</p>
+<p><strong>Note:</strong> Each shard iterator expires five minutes after it is
+returned to the requester.</p>
+<p>When you repeatedly read from an Amazon Kinesis stream use a
+GetShardIterator request to get the first shard iterator to to
+use in your first <cite>GetRecords</cite> request and then use the shard
+iterator returned by the <cite>GetRecords</cite> request in
+<cite>NextShardIterator</cite> for subsequent reads. A new shard iterator
+is returned by every <cite>GetRecords</cite> request in
+<cite>NextShardIterator</cite>, which you use in the <cite>ShardIterator</cite>
+parameter of the next <cite>GetRecords</cite> request.</p>
+<p>If a <cite>GetShardIterator</cite> request is made too often, you will
+receive a <cite>ProvisionedThroughputExceededException</cite>. For more
+information about throughput limits, see the <a href="#id1"><span class="problematic" id="id2">`Amazon Kinesis
+Developer Guide`_</span></a>.</p>
+<p><cite>GetShardIterator</cite> can return <cite>null</cite> for its <cite>ShardIterator</cite>
+to indicate that the shard has been closed and that the
+requested iterator will return no more data. A shard can be
+closed by a SplitShard or MergeShards operation.</p>
+<p><cite>GetShardIterator</cite> has a limit of 5 transactions per second
+per account per shard.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream.</li>
+<li><strong>shard_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shard ID of the shard to get the iterator for.</li>
+<li><strong>shard_iterator_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Determines how the shard iterator is used to start reading data records</dt>
+<dd>from the shard.</dd>
+</dl>
+<p>The following are the valid shard iterator types:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>AT_SEQUENCE_NUMBER - Start reading exactly from the position denoted</dt>
+<dd><p class="first last">by a specific sequence number.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AFTER_SEQUENCE_NUMBER - Start reading right after the position</dt>
+<dd><p class="first last">denoted by a specific sequence number.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TRIM_HORIZON - Start reading at the last untrimmed record in the</dt>
+<dd><p class="first last">shard in the system, which is the oldest data record in the shard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>LATEST - Start reading just after the most recent record in the</dt>
+<dd><p class="first last">shard, so that you always read the most recent data in the shard.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>starting_sequence_number</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The sequence number of the data record
+in the shard from which to start reading from.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.list_streams">
+<tt class="descname">list_streams</tt><big>(</big><em>limit=None</em>, <em>exclusive_start_stream_name=None</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.list_streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns an array of the names of all the
+streams that are associated with the AWS account making the
+<cite>ListStreams</cite> request. A given AWS account can have many
+streams active at one time.</p>
+<p>The number of streams may be too large to return from a single
+call to <cite>ListStreams</cite>. You can limit the number of returned
+streams using the <cite>Limit</cite> parameter. If you do not specify a
+value for the <cite>Limit</cite> parameter, Amazon Kinesis uses the
+default limit, which is currently 10.</p>
+<p>You can detect if there are more streams available to list by
+using the <cite>HasMoreStreams</cite> flag from the returned output. If
+there are more streams available, you can request more streams
+by using the name of the last stream returned by the
+<cite>ListStreams</cite> request in the <cite>ExclusiveStartStreamName</cite>
+parameter in a subsequent request to <cite>ListStreams</cite>. The group
+of stream names returned by the subsequent request is then
+added to the list. You can continue this process until all the
+stream names have been collected in the list.</p>
+<p><cite>ListStreams</cite> has a limit of 5 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of streams to list.</li>
+<li><strong>exclusive_start_stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream to start the
+list with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>action</em>, <em>body</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.merge_shards">
+<tt class="descname">merge_shards</tt><big>(</big><em>stream_name</em>, <em>shard_to_merge</em>, <em>adjacent_shard_to_merge</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.merge_shards" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation merges two adjacent shards in a stream and
+combines them into a single shard to reduce the stream&#8217;s
+capacity to ingest and transport data. Two shards are
+considered adjacent if the union of the hash key ranges for
+the two shards form a contiguous set with no gaps. For
+example, if you have two shards, one with a hash key range of
+276...381 and the other with a hash key range of 382...454,
+then you could merge these two shards into a single shard that
+would have a hash key range of 276...454. After the merge, the
+single child shard receives data for all hash key values
+covered by the two parent shards.</p>
+<p><cite>MergeShards</cite> is called when there is a need to reduce the
+overall capacity of a stream because of excess capacity that
+is not being used. The operation requires that you specify the
+shard to be merged and the adjacent shard for a given stream.
+For more information about merging shards, see the <a href="#id3"><span class="problematic" id="id4">`Amazon
+Kinesis Developer Guide`_</span></a>.</p>
+<p>If the stream is in the ACTIVE state, you can call
+<cite>MergeShards</cite>. If a stream is in CREATING or UPDATING or
+DELETING states, then Amazon Kinesis returns a
+<cite>ResourceInUseException</cite>. If the specified stream does not
+exist, Amazon Kinesis returns a <cite>ResourceNotFoundException</cite>.</p>
+<p>You can use the DescribeStream operation to check the state of
+the stream, which is returned in <cite>StreamStatus</cite>.</p>
+<p><cite>MergeShards</cite> is an asynchronous operation. Upon receiving a
+<cite>MergeShards</cite> request, Amazon Kinesis immediately returns a
+response and sets the <cite>StreamStatus</cite> to UPDATING. After the
+operation is completed, Amazon Kinesis sets the <cite>StreamStatus</cite>
+to ACTIVE. Read and write operations continue to work while
+the stream is in the UPDATING state.</p>
+<p>You use the DescribeStream operation to determine the shard
+IDs that are specified in the <cite>MergeShards</cite> request.</p>
+<p>If you try to operate on too many streams in parallel using
+CreateStream, DeleteStream, <cite>MergeShards</cite> or SplitShard, you
+will receive a <cite>LimitExceededException</cite>.</p>
+<p><cite>MergeShards</cite> has limit of 5 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream for the merge.</li>
+<li><strong>shard_to_merge</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shard ID of the shard to combine with the
+adjacent shard for the merge.</li>
+<li><strong>adjacent_shard_to_merge</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shard ID of the adjacent shard for
+the merge.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.put_record">
+<tt class="descname">put_record</tt><big>(</big><em>stream_name</em>, <em>data</em>, <em>partition_key</em>, <em>explicit_hash_key=None</em>, <em>sequence_number_for_ordering=None</em>, <em>exclusive_minimum_sequence_number=None</em>, <em>b64_encode=True</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.put_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation puts a data record into an Amazon Kinesis
+stream from a producer. This operation must be called to send
+data from the producer into the Amazon Kinesis stream for
+real-time ingestion and subsequent processing. The <cite>PutRecord</cite>
+operation requires the name of the stream that captures,
+stores, and transports the data; a partition key; and the data
+blob itself. The data blob could be a segment from a log file,
+geographic/location data, website clickstream data, or any
+other data type.</p>
+<p>The partition key is used to distribute data across shards.
+Amazon Kinesis segregates the data records that belong to a
+data stream into multiple shards, using the partition key
+associated with each data record to determine which shard a
+given data record belongs to.</p>
+<p>Partition keys are Unicode strings, with a maximum length
+limit of 256 bytes. An MD5 hash function is used to map
+partition keys to 128-bit integer values and to map associated
+data records to shards using the hash key ranges of the
+shards. You can override hashing the partition key to
+determine the shard by explicitly specifying a hash value
+using the <cite>ExplicitHashKey</cite> parameter. For more information,
+see the <a href="#id5"><span class="problematic" id="id6">`Amazon Kinesis Developer Guide`_</span></a>.</p>
+<p><cite>PutRecord</cite> returns the shard ID of where the data record was
+placed and the sequence number that was assigned to the data
+record.</p>
+<p>Sequence numbers generally increase over time. To guarantee
+strictly increasing ordering, use the
+<cite>SequenceNumberForOrdering</cite> parameter. For more information,
+see the <a href="#id7"><span class="problematic" id="id8">`Amazon Kinesis Developer Guide`_</span></a>.</p>
+<p>If a <cite>PutRecord</cite> request cannot be processed because of
+insufficient provisioned throughput on the shard involved in
+the request, <cite>PutRecord</cite> throws
+<cite>ProvisionedThroughputExceededException</cite>.</p>
+<p>Data records are accessible for only 24 hours from the time
+that they are added to an Amazon Kinesis stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream to put the data record into.</li>
+<li><strong>data</strong> (<em>blob</em>) &#8211; The data blob to put into the record, which is
+Base64-encoded when the blob is serialized.
+The maximum size of the data blob (the payload after
+Base64-decoding) is 50 kilobytes (KB)
+Set <cite>b64_encode</cite> to disable automatic Base64 encoding.</li>
+<li><strong>partition_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Determines which shard in the stream the data
+record is assigned to. Partition keys are Unicode strings with a
+maximum length limit of 256 bytes. Amazon Kinesis uses the
+partition key as input to a hash function that maps the partition
+key and associated data to a specific shard. Specifically, an MD5
+hash function is used to map partition keys to 128-bit integer
+values and to map associated data records to shards. As a result of
+this hashing mechanism, all data records with the same partition
+key will map to the same shard within the stream.</li>
+<li><strong>explicit_hash_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The hash value used to explicitly determine
+the shard the data record is assigned to by overriding the
+partition key hash.</li>
+<li><strong>sequence_number_for_ordering</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Guarantees strictly increasing
+sequence numbers, for puts from the same client and to the same
+partition key. Usage: set the <cite>SequenceNumberForOrdering</cite> of record
+n to the sequence number of record n-1 (as returned in the
+PutRecordResult when putting record n-1 ). If this parameter is not
+set, records will be coarsely ordered based on arrival time.</li>
+<li><strong>b64_encode</strong> (<em>boolean</em>) &#8211; Whether to Base64 encode <cite>data</cite>. Can be set to
+<tt class="docutils literal"><span class="pre">False</span></tt> if <cite>data</cite> is already encoded to prevent double encoding.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.kinesis.layer1.KinesisConnection.split_shard">
+<tt class="descname">split_shard</tt><big>(</big><em>stream_name</em>, <em>shard_to_split</em>, <em>new_starting_hash_key</em><big>)</big><a class="headerlink" href="#boto.kinesis.layer1.KinesisConnection.split_shard" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation splits a shard into two new shards in the
+stream, to increase the stream&#8217;s capacity to ingest and
+transport data. <cite>SplitShard</cite> is called when there is a need to
+increase the overall capacity of stream because of an expected
+increase in the volume of data records being ingested.</p>
+<p><cite>SplitShard</cite> can also be used when a given shard appears to be
+approaching its maximum utilization, for example, when the set
+of producers sending data into the specific shard are suddenly
+sending more than previously anticipated. You can also call
+the <cite>SplitShard</cite> operation to increase stream capacity, so
+that more Amazon Kinesis applications can simultaneously read
+data from the stream for real-time processing.</p>
+<p>The <cite>SplitShard</cite> operation requires that you specify the shard
+to be split and the new hash key, which is the position in the
+shard where the shard gets split in two. In many cases, the
+new hash key might simply be the average of the beginning and
+ending hash key, but it can be any hash key value in the range
+being mapped into the shard. For more information about
+splitting shards, see the <a href="#id9"><span class="problematic" id="id10">`Amazon Kinesis Developer Guide`_</span></a>.</p>
+<p>You can use the DescribeStream operation to determine the
+shard ID and hash key values for the <cite>ShardToSplit</cite> and
+<cite>NewStartingHashKey</cite> parameters that are specified in the
+<cite>SplitShard</cite> request.</p>
+<p><cite>SplitShard</cite> is an asynchronous operation. Upon receiving a
+<cite>SplitShard</cite> request, Amazon Kinesis immediately returns a
+response and sets the stream status to UPDATING. After the
+operation is completed, Amazon Kinesis sets the stream status
+to ACTIVE. Read and write operations continue to work while
+the stream is in the UPDATING state.</p>
+<p>You can use <cite>DescribeStream</cite> to check the status of the
+stream, which is returned in <cite>StreamStatus</cite>. If the stream is
+in the ACTIVE state, you can call <cite>SplitShard</cite>. If a stream is
+in CREATING or UPDATING or DELETING states, then Amazon
+Kinesis returns a <cite>ResourceInUseException</cite>.</p>
+<p>If the specified stream does not exist, Amazon Kinesis returns
+a <cite>ResourceNotFoundException</cite>. If you try to create more
+shards than are authorized for your account, you receive a
+<cite>LimitExceededException</cite>.</p>
+<p><strong>Note:</strong> The default limit for an AWS account is two shards
+per stream. If you need to create a stream with more than two
+shards, contact AWS Support to increase the limit on your
+account.</p>
+<p>If you try to operate on too many streams in parallel using
+CreateStream, DeleteStream, MergeShards or SplitShard, you
+will receive a <cite>LimitExceededException</cite>.</p>
+<p><cite>SplitShard</cite> has limit of 5 transactions per second per
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the stream for the shard split.</li>
+<li><strong>shard_to_split</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shard ID of the shard to split.</li>
+<li><strong>new_starting_hash_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A hash key value for the starting hash
+key of one of the child shards created by the split. The hash key
+range for a given shard constitutes a set of ordered contiguous
+positive integers. The value for <cite>NewStartingHashKey</cite> must be in
+the range of hash keys being mapped into the shard. The
+<cite>NewStartingHashKey</cite> hash key value and all higher hash key values
+in hash key range are distributed to one of the child shards. All
+the lower hash key values in the range are distributed to the other
+child shard.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.kinesis.exceptions">
+<span id="boto-kinesis-exceptions"></span><h2>boto.kinesis.exceptions<a class="headerlink" href="#module-boto.kinesis.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.ExpiredIteratorException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">ExpiredIteratorException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.ExpiredIteratorException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.InvalidArgumentException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">InvalidArgumentException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.InvalidArgumentException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.LimitExceededException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">LimitExceededException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.LimitExceededException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.ProvisionedThroughputExceededException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">ProvisionedThroughputExceededException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.ProvisionedThroughputExceededException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.ResourceInUseException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">ResourceInUseException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.ResourceInUseException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.ResourceNotFoundException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">ResourceNotFoundException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.ResourceNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.kinesis.exceptions.SubscriptionRequiredException">
+<em class="property">exception </em><tt class="descclassname">boto.kinesis.exceptions.</tt><tt class="descname">SubscriptionRequiredException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.kinesis.exceptions.SubscriptionRequiredException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Kinesis</a><ul>
+<li><a class="reference internal" href="#module-boto.kinesis">boto.kinesis</a></li>
+<li><a class="reference internal" href="#module-boto.kinesis.layer1">boto.kinesis.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.kinesis.exceptions">boto.kinesis.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="vpc.html"
+                        title="previous chapter">VPC</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="logs.html"
+                        title="next chapter">CloudWatch Logs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/kinesis.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="logs.html" title="CloudWatch Logs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="vpc.html" title="VPC"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

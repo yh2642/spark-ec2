@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.25.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.26.0" href="v2.26.0.html" />
+    <link rel="prev" title="boto v2.24.0" href="v2.24.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.26.0.html" title="boto v2.26.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.24.0.html" title="boto v2.24.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-25-0">
+<h1>boto v2.25.0<a class="headerlink" href="#boto-v2-25-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/02/07</td>
+</tr>
+</tbody>
+</table>
+<p>This release includes Amazon Route53 service and documentation updates,
+preliminary log file support for Amazon Relational Database Service (RDS), as
+well as various other small fixes. Also included is an opt-in to use signature
+version 4 with Amazon EC2.</p>
+<p><strong>IMPORTANT</strong> - This release also include a <strong>SIGNIFICANT</strong> underlying change
+to the Amazon S3 <tt class="docutils literal"><span class="pre">get_bucket</span></tt> method, to addresses the blog post by <a class="reference external" href="http://www.appneta.com/blog/s3-list-get-bucket-default/">AppNeta</a>.
+We&#8217;ve altered the default behavior to now perform a <tt class="docutils literal"><span class="pre">HEAD</span></tt> on the bucket, in
+place of the old <tt class="docutils literal"><span class="pre">GET</span></tt> behavior (which would fetch a zero-length list of
+keys).</p>
+<p>This should reduce all users costs &amp; should also be <em>mostly</em>
+backward-compatible. <strong>HOWEVER</strong>, if you were previously parsing the exception
+message from <tt class="docutils literal"><span class="pre">S3Connection.get_bucket</span></tt>, you <em>will</em> have to change your code
+(see the S3 tutorial for details). <tt class="docutils literal"><span class="pre">HEAD</span></tt> does <em>not</em> return as detailed of
+error messages &amp; while we&#8217;ve attempted to patch over as much of the differences
+as we can, there may still be edge-cases over the prior behavior.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for Route53 API version 2013-04-01 (<a class="reference external" href="https://github.com/boto/boto/issues/2080">issue 2080</a>, <a class="reference external" href="https://github.com/boto/boto/commit/600dcd0">commit 600dcd0</a>)</li>
+<li>Add option to opt-in for EC2 SigV4 (<a class="reference external" href="https://github.com/boto/boto/issues/2074">issue 2074</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4d780bd">commit 4d780bd</a>)</li>
+<li>Add Autoscale feature to get all adjustment types (<a class="reference external" href="https://github.com/boto/boto/issues/2058">issue 2058</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1538">issue 1538</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b9c7e15">commit b9c7e15</a>)</li>
+<li>Add Route53 unit tests (<a class="reference external" href="https://github.com/boto/boto/issues/2066">issue 2066</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e859576">commit e859576</a>)</li>
+<li>Add a basic Route53 tutorial (<a class="reference external" href="https://github.com/boto/boto/issues/2060">issue 2060</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f0ad46b">commit f0ad46b</a>)</li>
+<li>Add Autoscale associated public IP to launch configuration (<a class="reference external" href="https://github.com/boto/boto/issues/2051">issue 2051</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2028">issue 2028</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2029">issue 2029</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c58bda6">commit c58bda6</a>)</li>
+<li>Add option to pass VPC zone identifiers as a Python list (<a class="reference external" href="https://github.com/boto/boto/issues/2047">issue 2047</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1772">issue 1772</a>, <a class="reference external" href="https://github.com/boto/boto/commit/07ef9e1">commit 07ef9e1</a>)</li>
+<li>Add RDS call to get all log files (<a class="reference external" href="https://github.com/boto/boto/issues/2040">issue 2040</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1994">issue 1994</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/925b8cb">commit 925b8cb</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Changed S3 <tt class="docutils literal"><span class="pre">get_bucket</span></tt> to use <tt class="docutils literal"><span class="pre">HEAD</span></tt> in place of <tt class="docutils literal"><span class="pre">GET</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/2078">issue 2078</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2082">issue 2082</a>, <a class="reference external" href="https://github.com/boto/boto/commit/016be83">commit 016be83</a>)</li>
+<li>Fix EMR&#8217;s describe_cluster_command. (<a class="reference external" href="https://github.com/boto/boto/issues/2034">issue 2034</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1c5621e">commit 1c5621e</a>)</li>
+<li>Tutorial small code fix (<a class="reference external" href="https://github.com/boto/boto/issues/2072">issue 2072</a>, <a class="reference external" href="https://github.com/boto/boto/commit/38e7db1">commit 38e7db1</a>)</li>
+<li>Fix CloudFront string representation (<a class="reference external" href="https://github.com/boto/boto/issues/2069">issue 2069</a>, <a class="reference external" href="https://github.com/boto/boto/commit/885c397">commit 885c397</a>)</li>
+<li>Route53 doc cleanup (<a class="reference external" href="https://github.com/boto/boto/issues/2059">issue 2059</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d2fc38e">commit d2fc38e</a>)</li>
+<li>Fix MWS parsing of GetProductCategoriesForASIN response. (<a class="reference external" href="https://github.com/boto/boto/issues/2024">issue 2024</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/0af08ce">commit 0af08ce</a>)</li>
+<li>Fix SQS docs for get_queue_attributes (<a class="reference external" href="https://github.com/boto/boto/issues/2061">issue 2061</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1cdc326">commit 1cdc326</a>)</li>
+<li>Don&#8217;t insert a &#8216;?&#8217; in URLs unless there is a query string (<a class="reference external" href="https://github.com/boto/boto/issues/2042">issue 2042</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1943">issue 1943</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c15ce60">commit c15ce60</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.25.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.24.0.html"
+                        title="previous chapter">boto v2.24.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.26.0.html"
+                        title="next chapter">boto v2.26.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.25.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.26.0.html" title="boto v2.26.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.24.0.html" title="boto v2.24.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

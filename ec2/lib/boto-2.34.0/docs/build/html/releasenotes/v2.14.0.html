@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.14.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.15.0" href="v2.15.0.html" />
+    <link rel="prev" title="boto v2.13.3" href="v2.13.3.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.15.0.html" title="boto v2.15.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.13.3.html" title="boto v2.13.3"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-14-0">
+<h1>boto v2.14.0<a class="headerlink" href="#boto-v2-14-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/10/09</td>
+</tr>
+</tbody>
+</table>
+<p>This release makes <tt class="docutils literal"><span class="pre">s3put</span></tt> region-aware, adds some missing features to
+EC2 and SNS, enables EPUB documentation output, and makes the HTTP(S)
+connection pooling port-aware, which in turn enables connecting to
+e.g. mock services running on <tt class="docutils literal"><span class="pre">localhost</span></tt>. It also includes support
+for the latest EC2 and OpsWorks features, as well as several
+important bugfixes for EC2, DynamoDB, MWS, and Python 2.5 support.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>Add support for a <tt class="docutils literal"><span class="pre">--region</span></tt> argument to <tt class="docutils literal"><span class="pre">s3put</span></tt> and auto-detect bucket</dt>
+<dd><p class="first last">regions if possible (<a class="reference external" href="https://github.com/boto/boto/issues/1731">issue 1731</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d9c28f6">commit d9c28f6</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Add <tt class="docutils literal"><span class="pre">delete_notification_configuration</span></tt> for EC2 autoscaling</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/issues/1717">issue 1717</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ebb7ace">commit ebb7ace</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add support for registering HVM instances (<a class="reference external" href="https://github.com/boto/boto/issues/1733">issue 1733</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2afc68e">commit 2afc68e</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Add support for <tt class="docutils literal"><span class="pre">ReplaceRouteTableAssociation</span></tt> for EC2 (<a class="reference external" href="https://github.com/boto/boto/issues/1736">issue 1736</a>,</dt>
+<dd><p class="first last"><a class="reference external" href="https://github.com/boto/boto/commit/4296835">commit 4296835</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">sms</span></tt> as an option for SNS subscribe (<a class="reference external" href="https://github.com/boto/boto/issues/1744">issue 1744</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8ff08e5">commit 8ff08e5</a>)</p>
+</li>
+<li><p class="first">Allow overriding <tt class="docutils literal"><span class="pre">has_google_credentials</span></tt> (<a class="reference external" href="https://github.com/boto/boto/issues/1752">issue 1752</a>, <a class="reference external" href="https://github.com/boto/boto/commit/052cc91">commit 052cc91</a>)</p>
+</li>
+<li><p class="first">Add EPUB output format for docs (<a class="reference external" href="https://github.com/boto/boto/issues/1759">issue 1759</a>, <a class="reference external" href="https://github.com/boto/boto/commit/def7c67">commit def7c67</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Add handling of <tt class="docutils literal"><span class="pre">Connection:</span> <span class="pre">close</span></tt> HTTP headers in responses</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/issues/1773">issue 1773</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1a38f32">commit 1a38f32</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Make connection pooling port-aware (<a class="reference external" href="https://github.com/boto/boto/issues/1764">issue 1764</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1737">issue 1737</a>,</dt>
+<dd><p class="first last"><a class="reference external" href="https://github.com/boto/boto/commit/b6c7330">commit b6c7330</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Add support for <tt class="docutils literal"><span class="pre">instance_type</span></tt> to <tt class="docutils literal"><span class="pre">modify_reserved_instances</span></tt></dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/commit/bf07eee">commit bf07eee</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add support for new OpsWorks features (<a class="reference external" href="https://github.com/boto/boto/commit/f512898">commit f512898</a>)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Remove erroneous <tt class="docutils literal"><span class="pre">dry_run</span></tt> parameter (<a class="reference external" href="https://github.com/boto/boto/issues/1729">issue 1729</a>, <a class="reference external" href="https://github.com/boto/boto/commit/35a516e">commit 35a516e</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Fix task_list override in poll methods of SWF Deciders and Workers (</dt>
+<dd><p class="first last"><a class="reference external" href="https://github.com/boto/boto/issues/1724">issue 1724</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fa8d871">commit fa8d871</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Remove Content-Encoding header from metadata test (<a class="reference external" href="https://github.com/boto/boto/issues/1735">issue 1735</a>,</dt>
+<dd><p class="first last"><a class="reference external" href="https://github.com/boto/boto/commit/c8b0130">commit c8b0130</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Fix the ability to override DynamoDBv2 host and port when creating</dt>
+<dd><p class="first last">connections (<a class="reference external" href="https://github.com/boto/boto/issues/1734">issue 1734</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8d2b492">commit 8d2b492</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Fix UnboundLocalError (<a class="reference external" href="https://github.com/boto/boto/commit/e0e6aeb">commit e0e6aeb</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">self.rules</span></tt> is of type IPPermissionsList, remove takes no kwargs</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/commit/3c56b3f">commit 3c56b3f</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Nicer error messages for 403s (<a class="reference external" href="https://github.com/boto/boto/issues/1753">issue 1753</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d3d9eab">commit d3d9eab</a>)</p>
+</li>
+<li><p class="first">Various documentation fixes (<a class="reference external" href="https://github.com/boto/boto/issues/1762">issue 1762</a>, <a class="reference external" href="https://github.com/boto/boto/commit/76aef10">commit 76aef10</a>)</p>
+</li>
+<li><p class="first">Various Python 2.5 fixes (<a class="reference external" href="https://github.com/boto/boto/commit/150aef6">commit 150aef6</a>, <a class="reference external" href="https://github.com/boto/boto/commit/67ae9ff">commit 67ae9ff</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Prevent certificate tests from failing for non-govcloud accounts</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/commit/2d3d9f6">commit 2d3d9f6</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Fix flaky resumable upload test (<a class="reference external" href="https://github.com/boto/boto/issues/1768">issue 1768</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6aa8ae2">commit 6aa8ae2</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Force the Host HTTP header to fix an issue with older httplibs</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/commit/202c456">commit 202c456</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Blacklist S3 from forced Host HTTP header (<a class="reference external" href="https://github.com/boto/boto/commit/9193226">commit 9193226</a>)</p>
+</li>
+<li><p class="first">Fix <tt class="docutils literal"><span class="pre">propagate_at_launch</span></tt> spelling error (<a class="reference external" href="https://github.com/boto/boto/issues/1739">issue 1739</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e78d88a">commit e78d88a</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Remove unused code that causes exceptions with bad response data</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/issues/1771">issue 1771</a>, <a class="reference external" href="https://github.com/boto/boto/commit/bec5e70">commit bec5e70</a>)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Fix <tt class="docutils literal"><span class="pre">detach_subnets</span></tt> typo (<a class="reference external" href="https://github.com/boto/boto/issues/1760">issue 1760</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4424e1b">commit 4424e1b</a>)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Fix result list handling of <tt class="docutils literal"><span class="pre">GetMatchingProductForIdResponse</span></tt> for MWS</dt>
+<dd><p class="first last">(<a class="reference external" href="https://github.com/boto/boto/issues/1751">issue 1751</a>, <a class="reference external" href="https://github.com/boto/boto/commit/977b7dc">commit 977b7dc</a>)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.14.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.13.3.html"
+                        title="previous chapter">boto v2.13.3</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.15.0.html"
+                        title="next chapter">boto v2.15.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.14.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.15.0.html" title="boto v2.15.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.13.3.html" title="boto v2.13.3"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

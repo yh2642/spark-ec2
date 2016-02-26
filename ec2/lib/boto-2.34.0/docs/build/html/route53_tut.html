@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An Introduction to boto’s Route53 interface &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="Boto Config" href="boto_config_tut.html" />
+    <link rel="prev" title="An Introduction to boto’s S3 interface" href="s3_tut.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="boto_config_tut.html" title="Boto Config"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="s3_tut.html" title="An Introduction to boto’s S3 interface"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="an-introduction-to-boto-s-route53-interface">
+<span id="route53-tut-rst"></span><h1>An Introduction to boto&#8217;s Route53 interface<a class="headerlink" href="#an-introduction-to-boto-s-route53-interface" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial focuses on the boto interface to Route53 from Amazon Web
+Services.  This tutorial assumes that you have already downloaded and installed
+boto.</p>
+<p>Route53 is a Domain Name System (DNS) web service. It can be used to route
+requests to services running on AWS such as EC2 instances or load balancers, as
+well as to external services. Route53 also allows you to have automated checks
+to send requests where you require them.</p>
+<p>In this tutorial, we will be setting up our services for <em>example.com</em>.</p>
+<div class="section" id="creating-a-connection">
+<h2>Creating a connection<a class="headerlink" href="#creating-a-connection" title="Permalink to this headline">¶</a></h2>
+<p>To start using Route53 you will need to create a connection to the service as
+normal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.route53</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">route53</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will be using this conn object for the remainder of the tutorial to send
+commands to Route53.</p>
+</div>
+<div class="section" id="working-with-domain-names">
+<h2>Working with domain names<a class="headerlink" href="#working-with-domain-names" title="Permalink to this headline">¶</a></h2>
+<p>You can manipulate domains through a zone object. For example, you can create a
+domain name:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zone</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_zone</span><span class="p">(</span><span class="s">&quot;example.com.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that trailing dot on that domain name is significant. This is known as a
+fully qualified domain name (<a class="reference external" href="http://en.wikipedia.org/wiki/Fully_qualified_domain_name">FQDN</a>).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zone</span>
+<span class="go">&lt;Zone:example.com.&gt;</span>
+</pre></div>
+</div>
+<p>You can also retrieve all your domain names:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">get_zones</span><span class="p">()</span>
+<span class="go">[&lt;Zone:example.com.&gt;]</span>
+</pre></div>
+</div>
+<p>Or you can retrieve a single domain:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">get_zone</span><span class="p">(</span><span class="s">&quot;example.com.&quot;</span><span class="p">)</span>
+<span class="go">&lt;Zone:example.com.&gt;</span>
+</pre></div>
+</div>
+<p>Finally, you can retrieve the list of nameservers that AWS has setup for this
+domain name as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">zone</span><span class="o">.</span><span class="n">get_nameservers</span><span class="p">()</span>
+<span class="go">[u&#39;ns-1000.awsdns-42.org.&#39;, u&#39;ns-1001.awsdns-30.com.&#39;, u&#39;ns-1002.awsdns-59.net.&#39;, u&#39;ns-1003.awsdns-09.co.uk.&#39;]</span>
+</pre></div>
+</div>
+<p>Once you have finished configuring your domain name, you will need to change
+your nameservers at your registrar to point to those nameservers for Route53 to
+work.</p>
+</div>
+<div class="section" id="setting-up-dumb-records">
+<h2>Setting up dumb records<a class="headerlink" href="#setting-up-dumb-records" title="Permalink to this headline">¶</a></h2>
+<p>You can also add, update and delete records on a zone:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">status</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">add_record</span><span class="p">(</span><span class="s">&quot;MX&quot;</span><span class="p">,</span> <span class="s">&quot;example.com.&quot;</span><span class="p">,</span> <span class="s">&quot;10 mail.isp.com&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When you send a change request through, the status of the update will be
+<em>PENDING</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">status</span>
+<span class="go">&lt;Status:PENDING&gt;</span>
+</pre></div>
+</div>
+<p>You can call the API again and ask for the current status as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">status</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="go">&#39;INSYNC&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">status</span>
+<span class="go">&lt;Status:INSYNC&gt;</span>
+</pre></div>
+</div>
+<p>When the status has changed to <em>INSYNC</em>, the change has been propagated to
+remote servers</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">An Introduction to boto&#8217;s Route53 interface</a><ul>
+<li><a class="reference internal" href="#creating-a-connection">Creating a connection</a></li>
+<li><a class="reference internal" href="#working-with-domain-names">Working with domain names</a></li>
+<li><a class="reference internal" href="#setting-up-dumb-records">Setting up dumb records</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="s3_tut.html"
+                        title="previous chapter">An Introduction to boto&#8217;s S3 interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="boto_config_tut.html"
+                        title="next chapter">Boto Config</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/route53_tut.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="boto_config_tut.html" title="Boto Config"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="s3_tut.html" title="An Introduction to boto’s S3 interface"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

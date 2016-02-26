@@ -1,0 +1,1016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>route53 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Route 53 Domains" href="route53domains.html" />
+    <link rel="prev" title="Redshift" href="redshift.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="route53domains.html" title="Route 53 Domains"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="redshift.html" title="Redshift"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="route53">
+<h1>route53<a class="headerlink" href="#route53" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.route53.connection">
+<span id="boto-route53-connection"></span><h2>boto.route53.connection<a class="headerlink" href="#module-boto.route53.connection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.route53.connection.Route53Connection">
+<em class="property">class </em><tt class="descclassname">boto.route53.connection.</tt><tt class="descname">Route53Connection</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>host='route53.amazonaws.com'</em>, <em>debug=0</em>, <em>security_token=None</em>, <em>validate_certs=True</em>, <em>https_connection_factory=None</em>, <em>profile_name=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.route53.connection.Route53Connection.DefaultHost">
+<tt class="descname">DefaultHost</tt><em class="property"> = 'route53.amazonaws.com'</em><a class="headerlink" href="#boto.route53.connection.Route53Connection.DefaultHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default Route53 API endpoint to connect to.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.connection.Route53Connection.POSTHCXMLBody">
+<tt class="descname">POSTHCXMLBody</tt><em class="property"> = '&lt;CreateHealthCheckRequest xmlns=&quot;%(xmlns)s&quot;&gt;\n    &lt;CallerReference&gt;%(caller_ref)s&lt;/CallerReference&gt;\n    %(health_check)s\n    &lt;/CreateHealthCheckRequest&gt;'</em><a class="headerlink" href="#boto.route53.connection.Route53Connection.POSTHCXMLBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.connection.Route53Connection.Version">
+<tt class="descname">Version</tt><em class="property"> = '2013-04-01'</em><a class="headerlink" href="#boto.route53.connection.Route53Connection.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Route53 API version.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.connection.Route53Connection.XMLNameSpace">
+<tt class="descname">XMLNameSpace</tt><em class="property"> = 'https://route53.amazonaws.com/doc/2013-04-01/'</em><a class="headerlink" href="#boto.route53.connection.Route53Connection.XMLNameSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>XML schema for this Route53 API version.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.change_rrsets">
+<tt class="descname">change_rrsets</tt><big>(</big><em>hosted_zone_id</em>, <em>xml_body</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.change_rrsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create or change the authoritative DNS information for this
+Hosted Zone.
+Returns a Python data structure with information about the set of
+changes, including the Change ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hosted_zone_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The unique identifier for the Hosted Zone</li>
+<li><strong>xml_body</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The list of changes to be made, defined in the
+XML schema defined by the Route53 service.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.create_health_check">
+<tt class="descname">create_health_check</tt><big>(</big><em>health_check</em>, <em>caller_ref=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.create_health_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Health Check</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>health_check</strong> (<em>HealthCheck</em>) &#8211; HealthCheck object</li>
+<li><strong>caller_ref</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A unique string that identifies the request
+and that allows failed CreateHealthCheckRequest requests to be retried
+without the risk of executing the operation twice.  If you don&#8217;t
+provide a value for this, boto will generate a Type 4 UUID and
+use that.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.create_hosted_zone">
+<tt class="descname">create_hosted_zone</tt><big>(</big><em>domain_name</em>, <em>caller_ref=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.create_hosted_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Hosted Zone.  Returns a Python data structure with
+information about the newly created Hosted Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the domain. This should be a
+fully-specified domain, and should end with a final period
+as the last label indication.  If you omit the final period,
+Amazon Route 53 assumes the domain is relative to the root.
+This is the name you have registered with your DNS registrar.
+It is also the name you will delegate from your registrar to
+the Amazon Route 53 delegation servers returned in
+response to this request.A list of strings with the image
+IDs wanted.</li>
+<li><strong>caller_ref</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A unique string that identifies the request
+and that allows failed CreateHostedZone requests to be retried
+without the risk of executing the operation twice.  If you don&#8217;t
+provide a value for this, boto will generate a Type 4 UUID and
+use that.</li>
+<li><strong>comment</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Any comments you want to include about the hosted
+zone.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.create_zone">
+<tt class="descname">create_zone</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.create_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Hosted Zone.  Returns a Zone object for the newly
+created Hosted Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the domain. This should be a
+fully-specified domain, and should end with a final period
+as the last label indication.  If you omit the final period,
+Amazon Route 53 assumes the domain is relative to the root.
+This is the name you have registered with your DNS registrar.
+It is also the name you will delegate from your registrar to
+the Amazon Route 53 delegation servers returned in
+response to this request.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.delete_health_check">
+<tt class="descname">delete_health_check</tt><big>(</big><em>health_check_id</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.delete_health_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a health check</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>health_check_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; ID of the health check to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.delete_hosted_zone">
+<tt class="descname">delete_hosted_zone</tt><big>(</big><em>hosted_zone_id</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.delete_hosted_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the hosted zone specified by the given id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hosted_zone_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The hosted zone&#8217;s id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_all_hosted_zones">
+<tt class="descname">get_all_hosted_zones</tt><big>(</big><em>start_marker=None</em>, <em>zone_list=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_all_hosted_zones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Python data structure with information about all
+Hosted Zones defined for the AWS account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start_marker</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; start marker to pass when fetching additional
+results after a truncated list</li>
+<li><strong>zone_list</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; a HostedZones list to prepend to results</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_all_rrsets">
+<tt class="descname">get_all_rrsets</tt><big>(</big><em>hosted_zone_id</em>, <em>type=None</em>, <em>name=None</em>, <em>identifier=None</em>, <em>maxitems=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_all_rrsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the Resource Record Sets defined for this Hosted Zone.
+Returns the raw XML data returned by the Route53 call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hosted_zone_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The unique identifier for the Hosted Zone</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <p>The type of resource record set to begin the record
+listing from.  Valid choices are:</p>
+<blockquote>
+<div><ul>
+<li>A</li>
+<li>AAAA</li>
+<li>CNAME</li>
+<li>MX</li>
+<li>NS</li>
+<li>PTR</li>
+<li>SOA</li>
+<li>SPF</li>
+<li>SRV</li>
+<li>TXT</li>
+</ul>
+</div></blockquote>
+<p>Valid values for weighted resource record sets:</p>
+<blockquote>
+<div><ul>
+<li>A</li>
+<li>AAAA</li>
+<li>CNAME</li>
+<li>TXT</li>
+</ul>
+</div></blockquote>
+<p>Valid values for Zone Apex Aliases:</p>
+<blockquote>
+<div><ul>
+<li>A</li>
+<li>AAAA</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The first name in the lexicographic ordering of domain
+names to be retrieved</li>
+<li><strong>identifier</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; In a hosted zone that includes weighted resource
+record sets (multiple resource record sets with the same DNS
+name and type that are differentiated only by SetIdentifier),
+if results were truncated for a given DNS name and type,
+the value of SetIdentifier for the next resource record
+set that has the current DNS name and type</li>
+<li><strong>maxitems</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The maximum number of records</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_change">
+<tt class="descname">get_change</tt><big>(</big><em>change_id</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about a proposed set of changes, as submitted
+by the change_rrsets method.
+Returns a Python data structure with status information about the
+changes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>change_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The unique identifier for the set of changes.
+This ID is returned in the response to the change_rrsets method.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_hosted_zone">
+<tt class="descname">get_hosted_zone</tt><big>(</big><em>hosted_zone_id</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_hosted_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get detailed information about a particular Hosted Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hosted_zone_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The unique identifier for the Hosted Zone</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_hosted_zone_by_name">
+<tt class="descname">get_hosted_zone_by_name</tt><big>(</big><em>hosted_zone_name</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_hosted_zone_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get detailed information about a particular Hosted Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hosted_zone_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The fully qualified domain name for the Hosted
+Zone</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_list_health_checks">
+<tt class="descname">get_list_health_checks</tt><big>(</big><em>maxitems=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_list_health_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of health checks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>maxitems</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Maximum number of items to return</li>
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; marker to get next set of items to list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_zone">
+<tt class="descname">get_zone</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Zone object for the specified Hosted Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; The name of the domain. This should be a
+fully-specified domain, and should end with a final period
+as the last label indication.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.get_zones">
+<tt class="descname">get_zones</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.get_zones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of Zone objects, one for each of the Hosted
+Zones defined for the AWS account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of Zone objects.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.connection.Route53Connection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>action</em>, <em>path</em>, <em>headers=None</em>, <em>data=''</em>, <em>params=None</em><big>)</big><a class="headerlink" href="#boto.route53.connection.Route53Connection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.exception">
+<span id="boto-route53-exception"></span><h2>boto.route53.exception<a class="headerlink" href="#module-boto.route53.exception" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.route53.exception.DNSServerError">
+<em class="property">exception </em><tt class="descclassname">boto.route53.exception.</tt><tt class="descname">DNSServerError</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.route53.exception.DNSServerError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.healthcheck">
+<span id="boto-route53-healthcheck"></span><h2>boto.route53.healthcheck<a class="headerlink" href="#module-boto.route53.healthcheck" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="http://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHealthCheck.html">http://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHealthCheck.html</a></p>
+<p>POST /2013-04-01/healthcheck HTTP/1.1</p>
+<p>&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;UTF-8&#8221;?&gt;
+&lt;CreateHealthCheckRequest xmlns=&#8221;<a class="reference external" href="https://route53.amazonaws.com/doc/2013-04-01/">https://route53.amazonaws.com/doc/2013-04-01/</a>&#8220;&gt;</p>
+<blockquote>
+<div><p>&lt;CallerReference&gt;unique description&lt;/CallerReference&gt;
+&lt;HealthCheckConfig&gt;</p>
+<blockquote>
+<div><p>&lt;IPAddress&gt;IP address of the endpoint to check&lt;/IPAddress&gt;
+&lt;Port&gt;port on the endpoint to check&lt;/Port&gt;
+&lt;Type&gt;HTTP | HTTPS | HTTP_STR_MATCH | HTTPS_STR_MATCH | TCP&lt;/Type&gt;
+&lt;ResourcePath&gt;path of the file that</p>
+<blockquote>
+<div>you want Amazon Route 53 to request&lt;/ResourcePath&gt;</div></blockquote>
+<dl class="docutils">
+<dt>&lt;FullyQualifiedDomainName&gt;domain name of the</dt>
+<dd>endpoint to check&lt;/FullyQualifiedDomainName&gt;</dd>
+<dt>&lt;SearchString&gt;if Type is HTTP_STR_MATCH or HTTPS_STR_MATCH,</dt>
+<dd>the string to search for in the response body
+from the specified resource&lt;/SearchString&gt;</dd>
+</dl>
+<p>&lt;RequestInterval&gt;10 | 30&lt;/RequestInterval&gt;
+&lt;FailureThreshold&gt;integer between 1 and 10&lt;/FailureThreshold&gt;</p>
+</div></blockquote>
+<p>&lt;/HealthCheckConfig&gt;</p>
+</div></blockquote>
+<p>&lt;/CreateHealthCheckRequest&gt;</p>
+<dl class="class">
+<dt id="boto.route53.healthcheck.HealthCheck">
+<em class="property">class </em><tt class="descclassname">boto.route53.healthcheck.</tt><tt class="descname">HealthCheck</tt><big>(</big><em>ip_addr</em>, <em>port</em>, <em>hc_type</em>, <em>resource_path</em>, <em>fqdn=None</em>, <em>string_match=None</em>, <em>request_interval=30</em>, <em>failure_threshold=3</em><big>)</big><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>An individual health check</p>
+<p>HealthCheck object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ip_addr</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Optional IP Address</li>
+<li><strong>port</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Port to check</li>
+<li><strong>hc_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; One of HTTP | HTTPS | HTTP_STR_MATCH | HTTPS_STR_MATCH | TCP</li>
+<li><strong>resource_path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Path to check</li>
+<li><strong>fqdn</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; domain name of the endpoint to check</li>
+<li><strong>string_match</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; if hc_type is HTTP_STR_MATCH or HTTPS_STR_MATCH, the string to search for in the response body from the specified resource</li>
+<li><strong>request_interval</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of seconds between the time that Amazon Route 53 gets a response from your endpoint and the time that it sends the next health-check request.</li>
+<li><strong>failure_threshold</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.POSTXMLBody">
+<tt class="descname">POSTXMLBody</tt><em class="property"> = '\n        &lt;HealthCheckConfig&gt;\n            %(ip_addr_part)s\n            &lt;Port&gt;%(port)s&lt;/Port&gt;\n            &lt;Type&gt;%(type)s&lt;/Type&gt;\n            &lt;ResourcePath&gt;%(resource_path)s&lt;/ResourcePath&gt;\n            %(fqdn_part)s\n            %(string_match_part)s\n            %(request_interval)s\n            &lt;FailureThreshold&gt;%(failure_threshold)s&lt;/FailureThreshold&gt;\n        &lt;/HealthCheckConfig&gt;\n    '</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.POSTXMLBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.XMLFQDNPart">
+<tt class="descname">XMLFQDNPart</tt><em class="property"> = '&lt;FullyQualifiedDomainName&gt;%(fqdn)s&lt;/FullyQualifiedDomainName&gt;'</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.XMLFQDNPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.XMLIpAddrPart">
+<tt class="descname">XMLIpAddrPart</tt><em class="property"> = '&lt;IPAddress&gt;%(ip_addr)s&lt;/IPAddress&gt;'</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.XMLIpAddrPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.XMLRequestIntervalPart">
+<tt class="descname">XMLRequestIntervalPart</tt><em class="property"> = '&lt;RequestInterval&gt;%(request_interval)d&lt;/RequestInterval&gt;'</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.XMLRequestIntervalPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.XMLStringMatchPart">
+<tt class="descname">XMLStringMatchPart</tt><em class="property"> = '&lt;SearchString&gt;%(string_match)s&lt;/SearchString&gt;'</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.XMLStringMatchPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.healthcheck.HealthCheck.to_xml">
+<tt class="descname">to_xml</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.to_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.healthcheck.HealthCheck.valid_request_intervals">
+<tt class="descname">valid_request_intervals</tt><em class="property"> = (10, 30)</em><a class="headerlink" href="#boto.route53.healthcheck.HealthCheck.valid_request_intervals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.hostedzone">
+<span id="boto-route53-hostedzone"></span><h2>boto.route53.hostedzone<a class="headerlink" href="#module-boto.route53.hostedzone" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.route53.hostedzone.HostedZone">
+<em class="property">class </em><tt class="descclassname">boto.route53.hostedzone.</tt><tt class="descname">HostedZone</tt><big>(</big><em>id=None</em>, <em>name=None</em>, <em>owner=None</em>, <em>version=None</em>, <em>caller_reference=None</em>, <em>config=None</em><big>)</big><a class="headerlink" href="#boto.route53.hostedzone.HostedZone" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.route53.hostedzone.HostedZone.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.route53.hostedzone.HostedZone.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.hostedzone.HostedZone.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.route53.hostedzone.HostedZone.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.record">
+<span id="boto-route53-record"></span><h2>boto.route53.record<a class="headerlink" href="#module-boto.route53.record" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.route53.record.Record">
+<em class="property">class </em><tt class="descclassname">boto.route53.record.</tt><tt class="descname">Record</tt><big>(</big><em>name=None</em>, <em>type=None</em>, <em>ttl=600</em>, <em>resource_records=None</em>, <em>alias_hosted_zone_id=None</em>, <em>alias_dns_name=None</em>, <em>identifier=None</em>, <em>weight=None</em>, <em>region=None</em>, <em>alias_evaluate_target_health=None</em>, <em>health_check=None</em>, <em>failover=None</em><big>)</big><a class="headerlink" href="#boto.route53.record.Record" title="Permalink to this definition">¶</a></dt>
+<dd><p>An individual ResourceRecordSet</p>
+<dl class="attribute">
+<dt id="boto.route53.record.Record.AliasBody">
+<tt class="descname">AliasBody</tt><em class="property"> = '&lt;AliasTarget&gt;\n        &lt;HostedZoneId&gt;%(hosted_zone_id)s&lt;/HostedZoneId&gt;\n        &lt;DNSName&gt;%(dns_name)s&lt;/DNSName&gt;\n        %(eval_target_health)s\n    &lt;/AliasTarget&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.AliasBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.EvaluateTargetHealth">
+<tt class="descname">EvaluateTargetHealth</tt><em class="property"> = '&lt;EvaluateTargetHealth&gt;%s&lt;/EvaluateTargetHealth&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.EvaluateTargetHealth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.FailoverBody">
+<tt class="descname">FailoverBody</tt><em class="property"> = '\n        &lt;SetIdentifier&gt;%(identifier)s&lt;/SetIdentifier&gt;\n        &lt;Failover&gt;%(failover)s&lt;/Failover&gt;\n    '</em><a class="headerlink" href="#boto.route53.record.Record.FailoverBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.HealthCheckBody">
+<tt class="descname">HealthCheckBody</tt><em class="property"> = '&lt;HealthCheckId&gt;%s&lt;/HealthCheckId&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.HealthCheckBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.RRRBody">
+<tt class="descname">RRRBody</tt><em class="property"> = '\n        &lt;SetIdentifier&gt;%(identifier)s&lt;/SetIdentifier&gt;\n        &lt;Region&gt;%(region)s&lt;/Region&gt;\n    '</em><a class="headerlink" href="#boto.route53.record.Record.RRRBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.ResourceRecordBody">
+<tt class="descname">ResourceRecordBody</tt><em class="property"> = '&lt;ResourceRecord&gt;\n        &lt;Value&gt;%s&lt;/Value&gt;\n    &lt;/ResourceRecord&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.ResourceRecordBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.ResourceRecordsBody">
+<tt class="descname">ResourceRecordsBody</tt><em class="property"> = '\n        &lt;TTL&gt;%(ttl)s&lt;/TTL&gt;\n        &lt;ResourceRecords&gt;\n            %(records)s\n        &lt;/ResourceRecords&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.ResourceRecordsBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.WRRBody">
+<tt class="descname">WRRBody</tt><em class="property"> = '\n        &lt;SetIdentifier&gt;%(identifier)s&lt;/SetIdentifier&gt;\n        &lt;Weight&gt;%(weight)s&lt;/Weight&gt;\n    '</em><a class="headerlink" href="#boto.route53.record.Record.WRRBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.Record.XMLBody">
+<tt class="descname">XMLBody</tt><em class="property"> = '&lt;ResourceRecordSet&gt;\n        &lt;Name&gt;%(name)s&lt;/Name&gt;\n        &lt;Type&gt;%(type)s&lt;/Type&gt;\n        %(weight)s\n        %(body)s\n        %(health_check)s\n    &lt;/ResourceRecordSet&gt;'</em><a class="headerlink" href="#boto.route53.record.Record.XMLBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.add_value">
+<tt class="descname">add_value</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#boto.route53.record.Record.add_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a resource record value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.route53.record.Record.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.set_alias">
+<tt class="descname">set_alias</tt><big>(</big><em>alias_hosted_zone_id</em>, <em>alias_dns_name</em>, <em>alias_evaluate_target_health=False</em><big>)</big><a class="headerlink" href="#boto.route53.record.Record.set_alias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make this an alias resource record set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.route53.record.Record.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.to_print">
+<tt class="descname">to_print</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.record.Record.to_print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.Record.to_xml">
+<tt class="descname">to_xml</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.record.Record.to_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spit this resource record set out as XML</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.route53.record.ResourceRecordSets">
+<em class="property">class </em><tt class="descclassname">boto.route53.record.</tt><tt class="descname">ResourceRecordSets</tt><big>(</big><em>connection=None</em>, <em>hosted_zone_id=None</em>, <em>comment=None</em><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of resource records.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hosted_zone_id</strong> &#8211; The ID of the hosted zone.</li>
+<li><strong>comment</strong> &#8211; A comment that will be stored with the change.</li>
+<li><strong>changes</strong> &#8211; A list of changes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="boto.route53.record.ResourceRecordSets.ChangeResourceRecordSetsBody">
+<tt class="descname">ChangeResourceRecordSetsBody</tt><em class="property"> = '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n    &lt;ChangeResourceRecordSetsRequest xmlns=&quot;https://route53.amazonaws.com/doc/2013-04-01/&quot;&gt;\n            &lt;ChangeBatch&gt;\n                &lt;Comment&gt;%(comment)s&lt;/Comment&gt;\n                &lt;Changes&gt;%(changes)s&lt;/Changes&gt;\n            &lt;/ChangeBatch&gt;\n        &lt;/ChangeResourceRecordSetsRequest&gt;'</em><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.ChangeResourceRecordSetsBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.route53.record.ResourceRecordSets.ChangeXML">
+<tt class="descname">ChangeXML</tt><em class="property"> = '&lt;Change&gt;\n        &lt;Action&gt;%(action)s&lt;/Action&gt;\n        %(record)s\n    &lt;/Change&gt;'</em><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.ChangeXML" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.ResourceRecordSets.add_change">
+<tt class="descname">add_change</tt><big>(</big><em>action</em>, <em>name</em>, <em>type</em>, <em>ttl=600</em>, <em>alias_hosted_zone_id=None</em>, <em>alias_dns_name=None</em>, <em>identifier=None</em>, <em>weight=None</em>, <em>region=None</em>, <em>alias_evaluate_target_health=None</em>, <em>health_check=None</em>, <em>failover=None</em><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.add_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a change request to the set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>action</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The action to perform (&#8216;CREATE&#8217;|&#8217;DELETE&#8217;|&#8217;UPSERT&#8217;)</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the domain you want to perform the action on.</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <p>The DNS record type.  Valid values are:</p>
+<ul>
+<li>A</li>
+<li>AAAA</li>
+<li>CNAME</li>
+<li>MX</li>
+<li>NS</li>
+<li>PTR</li>
+<li>SOA</li>
+<li>SPF</li>
+<li>SRV</li>
+<li>TXT</li>
+</ul>
+</li>
+<li><strong>ttl</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The resource record cache time to live (TTL), in seconds.</li>
+<li><strong>alias_dns_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <em>Alias resource record sets only</em> The value
+of the hosted zone ID, CanonicalHostedZoneNameId, for
+the LoadBalancer.</li>
+<li><strong>alias_hosted_zone_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <em>Alias resource record sets only</em>
+Information about the domain to which you are redirecting traffic.</li>
+<li><strong>identifier</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <em>Weighted and latency-based resource record sets
+only</em> An identifier that differentiates among multiple resource
+record sets that have the same combination of DNS name and type.</li>
+<li><strong>weight</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; <em>Weighted resource record sets only</em> Among resource
+record sets that have the same combination of DNS name and type,
+a value that determines what portion of traffic for the current
+resource record set is routed to the associated location</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <em>Latency-based resource record sets only</em> Among resource
+record sets that have the same combination of DNS name and type,
+a value that determines which region this should be associated with
+for the latency-based routing</li>
+<li><strong>alias_evaluate_target_health</strong> (<em>Boolean</em>) &#8211; <em>Required for alias resource record
+sets</em> Indicates whether this Resource Record Set should respect the
+health status of any health checks associated with the ALIAS target
+record which it is linked to.</li>
+<li><strong>health_check</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Health check to associate with this record</li>
+<li><strong>failover</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; <em>Failover resource record sets only</em> Whether this is the
+primary or secondary resource record set.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.ResourceRecordSets.add_change_record">
+<tt class="descname">add_change_record</tt><big>(</big><em>action</em>, <em>change</em><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.add_change_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an existing record to a change set with the specified action</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.ResourceRecordSets.commit">
+<tt class="descname">commit</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commit this change</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.ResourceRecordSets.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.endElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwritten to also add the NextRecordName,
+NextRecordType and NextRecordIdentifier to the base object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.record.ResourceRecordSets.to_xml">
+<tt class="descname">to_xml</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.record.ResourceRecordSets.to_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this ResourceRecordSet into XML
+to be saved via the ChangeResourceRecordSetsRequest</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.status">
+<span id="boto-route53-status"></span><h2>boto.route53.status<a class="headerlink" href="#module-boto.route53.status" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.route53.status.Status">
+<em class="property">class </em><tt class="descclassname">boto.route53.status.</tt><tt class="descname">Status</tt><big>(</big><em>route53connection</em>, <em>change_dict</em><big>)</big><a class="headerlink" href="#boto.route53.status.Status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.route53.status.Status.update">
+<tt class="descname">update</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.status.Status.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the status of this request.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.route53.zone">
+<span id="boto-route53-zone"></span><h2>boto.route53.zone<a class="headerlink" href="#module-boto.route53.zone" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.route53.zone.Zone">
+<em class="property">class </em><tt class="descclassname">boto.route53.zone.</tt><tt class="descname">Zone</tt><big>(</big><em>route53connection</em>, <em>zone_dict</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Route53 Zone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>route53connection</strong> &#8211; A <a class="reference internal" href="#boto.route53.connection.Route53Connection" title="boto.route53.connection.Route53Connection"><tt class="xref py py-class docutils literal"><span class="pre">boto.route53.connection.Route53Connection</span></tt></a> connection</li>
+<li><a class="reference external" href="http://docs.python.org/library/functions.html#id" title="(in Python v2.7)"><strong>id</strong></a> &#8211; The ID of the hosted zone</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.route53.zone.Zone.add_a">
+<tt class="descname">add_a</tt><big>(</big><em>name</em>, <em>value</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.add_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new A record to this Zone.  See _new_record for
+parameter documentation.  Returns a Status object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.add_cname">
+<tt class="descname">add_cname</tt><big>(</big><em>name</em>, <em>value</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.add_cname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new CNAME record to this Zone.  See _new_record for
+parameter documentation.  Returns a Status object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.add_mx">
+<tt class="descname">add_mx</tt><big>(</big><em>name</em>, <em>records</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.add_mx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new MX record to this Zone.  See _new_record for
+parameter documentation.  Returns a Status object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.add_record">
+<tt class="descname">add_record</tt><big>(</big><em>resource_type</em>, <em>name</em>, <em>value</em>, <em>ttl=60</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.add_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new record to this Zone.  See _new_record for parameter
+documentation.  Returns a Status object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.delete">
+<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request that this zone be deleted by Amazon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.delete_a">
+<tt class="descname">delete_a</tt><big>(</big><em>name</em>, <em>identifier=None</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.delete_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an A record matching name and identifier from this
+Zone.  Returns a Status object.</p>
+<p>If there is more than one match delete all matching records if
+all is True, otherwise throws TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.delete_cname">
+<tt class="descname">delete_cname</tt><big>(</big><em>name</em>, <em>identifier=None</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.delete_cname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a CNAME record matching name and identifier from
+this Zone.  Returns a Status object.</p>
+<p>If there is more than one match delete all matching records if
+all is True, otherwise throws TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.delete_mx">
+<tt class="descname">delete_mx</tt><big>(</big><em>name</em>, <em>identifier=None</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.delete_mx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an MX record matching name and identifier from this
+Zone.  Returns a Status object.</p>
+<p>If there is more than one match delete all matching records if
+all is True, otherwise throws TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.delete_record">
+<tt class="descname">delete_record</tt><big>(</big><em>record</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.delete_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete one or more records from this Zone.  Returns a Status object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>record</strong> &#8211; A ResourceRecord (e.g. returned by
+find_records) or list, tuple, or set of ResourceRecords.</li>
+<li><strong>comment</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A comment that will be stored with the change.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.find_records">
+<tt class="descname">find_records</tt><big>(</big><em>name</em>, <em>type</em>, <em>desired=1</em>, <em>all=False</em>, <em>identifier=None</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.find_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search this Zone for records that match given parameters.
+Returns None if no results, a ResourceRecord if one result, or
+a ResourceRecordSets if more than one result.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the records should match this parameter</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The type of the records should match this parameter</li>
+<li><strong>desired</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of desired results.  If the number of
+matching records in the Zone exceeds the value of this parameter,
+throw TooManyRecordsException</li>
+<li><strong>all</strong> (<em>Boolean</em>) &#8211; If true return all records that match name, type, and
+identifier parameters</li>
+<li><strong>identifier</strong> (<em>Tuple</em>) &#8211; <p>A tuple specifying WRR or LBR attributes.  Valid
+forms are:</p>
+<ul>
+<li>(str, int): WRR record [e.g. (&#8216;foo&#8217;,10)]</li>
+<li>(str, str): LBR record [e.g. (&#8216;foo&#8217;,&#8217;us-east-1&#8217;)</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.get_a">
+<tt class="descname">get_a</tt><big>(</big><em>name</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.get_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search this Zone for A records that match name.</p>
+<p>Returns a ResourceRecord.</p>
+<p>If there is more than one match return all as a
+ResourceRecordSets if all is True, otherwise throws
+TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.get_cname">
+<tt class="descname">get_cname</tt><big>(</big><em>name</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.get_cname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search this Zone for CNAME records that match name.</p>
+<p>Returns a ResourceRecord.</p>
+<p>If there is more than one match return all as a
+ResourceRecordSets if all is True, otherwise throws
+TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.get_mx">
+<tt class="descname">get_mx</tt><big>(</big><em>name</em>, <em>all=False</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.get_mx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search this Zone for MX records that match name.</p>
+<p>Returns a ResourceRecord.</p>
+<p>If there is more than one match return all as a
+ResourceRecordSets if all is True, otherwise throws
+TooManyRecordsException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.get_nameservers">
+<tt class="descname">get_nameservers</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.get_nameservers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of nameservers for this zone.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.get_records">
+<tt class="descname">get_records</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.get_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a ResourceRecordsSets for all of the records in this zone.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.update_a">
+<tt class="descname">update_a</tt><big>(</big><em>name</em>, <em>value</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.update_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the given A record in this Zone to a new value, ttl,
+and identifier.  Returns a Status object.</p>
+<p>Will throw TooManyRecordsException is name, value does not match
+a single record.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.update_cname">
+<tt class="descname">update_cname</tt><big>(</big><em>name</em>, <em>value</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.update_cname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the given CNAME record in this Zone to a new value, ttl,
+and identifier.  Returns a Status object.</p>
+<p>Will throw TooManyRecordsException is name, value does not match
+a single record.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.update_mx">
+<tt class="descname">update_mx</tt><big>(</big><em>name</em>, <em>value</em>, <em>ttl=None</em>, <em>identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.update_mx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the given MX record in this Zone to a new value, ttl,
+and identifier.  Returns a Status object.</p>
+<p>Will throw TooManyRecordsException is name, value does not match
+a single record.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.route53.zone.Zone.update_record">
+<tt class="descname">update_record</tt><big>(</big><em>old_record</em>, <em>new_value</em>, <em>new_ttl=None</em>, <em>new_identifier=None</em>, <em>comment=''</em><big>)</big><a class="headerlink" href="#boto.route53.zone.Zone.update_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update an existing record in this Zone.  Returns a Status object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>old_record</strong> (<em>ResourceRecord</em>) &#8211; A ResourceRecord (e.g. returned by find_records)</td>
+</tr>
+</tbody>
+</table>
+<p>See _new_record for additional parameter documentation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">route53</a><ul>
+<li><a class="reference internal" href="#module-boto.route53.connection">boto.route53.connection</a></li>
+<li><a class="reference internal" href="#module-boto.route53.exception">boto.route53.exception</a></li>
+<li><a class="reference internal" href="#module-boto.route53.healthcheck">boto.route53.healthcheck</a></li>
+<li><a class="reference internal" href="#module-boto.route53.hostedzone">boto.route53.hostedzone</a></li>
+<li><a class="reference internal" href="#module-boto.route53.record">boto.route53.record</a></li>
+<li><a class="reference internal" href="#module-boto.route53.status">boto.route53.status</a></li>
+<li><a class="reference internal" href="#module-boto.route53.zone">boto.route53.zone</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="redshift.html"
+                        title="previous chapter">Redshift</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="route53domains.html"
+                        title="next chapter">Route 53 Domains</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/route53.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="route53domains.html" title="Route 53 Domains"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="redshift.html" title="Redshift"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

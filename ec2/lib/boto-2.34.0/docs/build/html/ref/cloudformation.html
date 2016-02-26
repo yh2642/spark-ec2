@@ -1,0 +1,1196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cloudformation &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="up" title="API Reference" href="index.html" />
+    <link rel="next" title="CloudFront" href="cloudfront.html" />
+    <link rel="prev" title="Elastic Beanstalk" href="beanstalk.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudfront.html" title="CloudFront"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="beanstalk.html" title="Elastic Beanstalk"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cloudformation">
+<h1>cloudformation<a class="headerlink" href="#cloudformation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.cloudformation">
+<span id="boto-cloudformation"></span><h2>boto.cloudformation<a class="headerlink" href="#module-boto.cloudformation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.cloudformation.connect_to_region">
+<tt class="descclassname">boto.cloudformation.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a valid region name, return a
+<tt class="xref py py-class docutils literal"><span class="pre">boto.cloudformation.CloudFormationConnection</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the region to connect to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudformation.CloudFormationConnection</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A connection to the given region, or None if an invalid region
+name is given</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.cloudformation.regions">
+<tt class="descclassname">boto.cloudformation.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudformation.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the CloudFormation service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.RegionInfo</span></tt> instances</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudformation.connection">
+<span id="boto-cloudformation-connection"></span><h2>boto.cloudformation.connection<a class="headerlink" href="#module-boto.cloudformation.connection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudformation.connection.CloudFormationConnection">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.connection.</tt><tt class="descname">CloudFormationConnection</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>is_secure=True</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>proxy_user=None</em>, <em>proxy_pass=None</em>, <em>debug=0</em>, <em>https_connection_factory=None</em>, <em>region=None</em>, <em>path='/'</em>, <em>converter=None</em>, <em>security_token=None</em>, <em>validate_certs=True</em>, <em>profile_name=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>AWS CloudFormation
+AWS CloudFormation enables you to create and manage AWS
+infrastructure deployments predictably and repeatedly. AWS
+CloudFormation helps you leverage AWS products such as Amazon EC2,
+EBS, Amazon SNS, ELB, and Auto Scaling to build highly-reliable,
+highly scalable, cost effective applications without worrying
+about creating and configuring the underlying AWS infrastructure.</p>
+<p>With AWS CloudFormation, you declare all of your resources and
+dependencies in a template file. The template defines a collection
+of resources as a single unit called a stack. AWS CloudFormation
+creates and deletes all member resources of the stack together and
+manages all dependencies between the resources for you.</p>
+<p>For more information about this product, go to the <a href="#id5"><span class="problematic" id="id6">`CloudFormation
+Product Page`_</span></a>.</p>
+<p>Amazon CloudFormation makes use of other AWS products. If you need
+additional technical information about a specific AWS product, you
+can find the product&#8217;s technical documentation at
+<a href="#id7"><span class="problematic" id="id8">`http://aws.amazon.com/documentation/`_</span></a>.</p>
+<dl class="attribute">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2010-05-15'</em><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'cloudformation.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.cancel_update_stack">
+<tt class="descname">cancel_update_stack</tt><big>(</big><em>stack_name_or_id=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.cancel_update_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels an update on the specified stack. If the call
+completes successfully, the stack will roll back the update
+and revert to the previous stack configuration.
+Only stacks that are in the UPDATE_IN_PROGRESS state can be
+canceled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated with
+the stack.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.create_stack">
+<tt class="descname">create_stack</tt><big>(</big><em>stack_name</em>, <em>template_body=None</em>, <em>template_url=None</em>, <em>parameters=None</em>, <em>notification_arns=None</em>, <em>disable_rollback=None</em>, <em>timeout_in_minutes=None</em>, <em>capabilities=None</em>, <em>tags=None</em>, <em>on_failure=None</em>, <em>stack_policy_body=None</em>, <em>stack_policy_url=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.create_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a stack as specified in the template. After the call
+completes successfully, the stack creation starts. You can
+check the status of the stack via the DescribeStacks API.
+Currently, the limit for stacks is 20 stacks per account per
+region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The name associated with the stack. The name must be unique within your</dt>
+<dd>AWS account.</dd>
+<dt>Must contain only alphanumeric characters (case sensitive) and start</dt>
+<dd>with an alpha character. Maximum length of the name is 255
+characters.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the template body. (For more
+information, go to <a href="#id9"><span class="problematic" id="id10">`Template Anatomy`_</span></a> in the AWS CloudFormation
+User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateBody</cite> or <cite>TemplateURL</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of file containing the template body. The
+URL must point to a template (max size: 307,200 bytes) located in
+an S3 bucket in the same region as the stack. For more information,
+go to the <a href="#id11"><span class="problematic" id="id12">`Template Anatomy`_</span></a> in the AWS CloudFormation User Guide.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parameters</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of key/value tuples that specify input
+parameters for the stack.</li>
+<li><strong>disable_rollback</strong> (<em>boolean</em>) &#8211; Set to <cite>True</cite> to disable rollback of the stack
+if stack creation failed. You can specify either <cite>DisableRollback</cite>
+or <cite>OnFailure</cite>, but not both.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: <cite>False</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>timeout_in_minutes</strong> (<em>integer</em>) &#8211; The amount of time that can pass before the
+stack status becomes CREATE_FAILED; if <cite>DisableRollback</cite> is not set
+or is set to <cite>False</cite>, the stack will be rolled back.</li>
+<li><strong>notification_arns</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The Simple Notification Service (SNS) topic
+ARNs to publish stack related events. You can find your SNS topic
+ARNs using the <a href="#id13"><span class="problematic" id="id14">`SNS console`_</span></a> or your Command Line Interface (CLI).</li>
+<li><strong>capabilities</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The list of capabilities that you want to allow in
+the stack. If your template contains certain resources, you must
+specify the CAPABILITY_IAM value for this parameter; otherwise,
+this action returns an InsufficientCapabilities error. The
+following resources require you to specify the capabilities
+parameter: <a href="#id15"><span class="problematic" id="id16">`AWS::CloudFormation::Stack`_</span></a>, <a href="#id17"><span class="problematic" id="id18">`AWS::IAM::AccessKey`_</span></a>,
+<a href="#id19"><span class="problematic" id="id20">`AWS::IAM::Group`_</span></a>, <a href="#id21"><span class="problematic" id="id22">`AWS::IAM::InstanceProfile`_</span></a>,
+<a href="#id23"><span class="problematic" id="id24">`AWS::IAM::Policy`_</span></a>, <a href="#id25"><span class="problematic" id="id26">`AWS::IAM::Role`_</span></a>, <a href="#id27"><span class="problematic" id="id28">`AWS::IAM::User`_</span></a>, and
+<a href="#id29"><span class="problematic" id="id30">`AWS::IAM::UserToGroupAddition`_</span></a>.</li>
+<li><strong>on_failure</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Determines what action will be taken if stack
+creation fails. This must be one of: DO_NOTHING, ROLLBACK, or
+DELETE. You can specify either <cite>OnFailure</cite> or <cite>DisableRollback</cite>,
+but not both.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default: <cite>ROLLBACK</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the stack policy body.
+(For more information, go to ` Prevent Updates to Stack Resources`_
+in the AWS CloudFormation User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If you pass <cite>StackPolicyBody</cite> and <cite>StackPolicyURL</cite>, only</dt>
+<dd><cite>StackPolicyBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_policy_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of a file containing the stack
+policy. The URL must point to a policy (max size: 16KB) located in
+an S3 bucket in the same region as the stack. If you pass
+<cite>StackPolicyBody</cite> and <cite>StackPolicyURL</cite>, only <cite>StackPolicyBody</cite> is
+used.</li>
+<li><strong>tags</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A set of user-defined <cite>Tags</cite> to associate with this stack,
+represented by key/value pairs. Tags defined for the stack are
+propagated to EC2 resources that are created as part of the stack.
+A maximum number of 10 tags can be specified.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.delete_stack">
+<tt class="descname">delete_stack</tt><big>(</big><em>stack_name_or_id</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.delete_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a specified stack. Once the call completes
+successfully, stack deletion starts. Deleted stacks do not
+show up in the DescribeStacks API if the deletion has been
+completed successfully.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.describe_stack_events">
+<tt class="descname">describe_stack_events</tt><big>(</big><em>stack_name_or_id=None</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.describe_stack_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all stack related events for a specified stack. For
+more information about a stack&#8217;s event history, go to
+<a href="#id31"><span class="problematic" id="id32">`Stacks`_</span></a> in the AWS CloudFormation User Guide.
+Events are returned, even if the stack never existed or has
+been successfully deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; String that identifies the start of the next list of
+events, if there is one.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.describe_stack_resource">
+<tt class="descname">describe_stack_resource</tt><big>(</big><em>stack_name_or_id</em>, <em>logical_resource_id</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.describe_stack_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a description of the specified resource in the
+specified stack.</p>
+<p>For deleted stacks, DescribeStackResource returns resource
+information for up to 90 days after the stack has been
+deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>logical_resource_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The logical name of the resource as
+specified in the template.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.describe_stack_resources">
+<tt class="descname">describe_stack_resources</tt><big>(</big><em>stack_name_or_id=None</em>, <em>logical_resource_id=None</em>, <em>physical_resource_id=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.describe_stack_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns AWS resource descriptions for running and deleted
+stacks. If <cite>StackName</cite> is specified, all the associated
+resources that are part of the stack are returned. If
+<cite>PhysicalResourceId</cite> is specified, the associated resources of
+the stack that the resource belongs to are returned.
+Only the first 100 resources will be returned. If your stack
+has more resources than this, you should use
+<cite>ListStackResources</cite> instead.
+For deleted stacks, <cite>DescribeStackResources</cite> returns resource
+information for up to 90 days after the stack has been
+deleted.</p>
+<p>You must specify either <cite>StackName</cite> or <cite>PhysicalResourceId</cite>,
+but not both. In addition, you can specify <cite>LogicalResourceId</cite>
+to filter the returned result. For more information about
+resources, the <cite>LogicalResourceId</cite> and <cite>PhysicalResourceId</cite>,
+go to the <a href="#id33"><span class="problematic" id="id34">`AWS CloudFormation User Guide`_</span></a>.
+A <cite>ValidationError</cite> is returned if you specify both
+<cite>StackName</cite> and <cite>PhysicalResourceId</cite> in the same request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Required: Conditional. If you do not specify <cite>StackName</cite>, you must</dt>
+<dd>specify <cite>PhysicalResourceId</cite>.</dd>
+</dl>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>logical_resource_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The logical name of the resource as
+specified in the template.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>physical_resource_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or unique identifier that
+corresponds to a physical instance ID of a resource supported by
+AWS CloudFormation.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>For example, for an Amazon Elastic Compute Cloud (EC2) instance,</dt>
+<dd><cite>PhysicalResourceId</cite> corresponds to the <cite>InstanceId</cite>. You can pass
+the EC2 <cite>InstanceId</cite> to <cite>DescribeStackResources</cite> to find which
+stack the instance belongs to and what other resources are part of
+the stack.</dd>
+<dt>Required: Conditional. If you do not specify <cite>PhysicalResourceId</cite>, you</dt>
+<dd>must specify <cite>StackName</cite>.</dd>
+</dl>
+<p>Default: There is no default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.describe_stacks">
+<tt class="descname">describe_stacks</tt><big>(</big><em>stack_name_or_id=None</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.describe_stacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the description for the specified stack; if no stack
+name was specified, then it returns the description for all
+the stacks created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; String that identifies the start of the next list of
+stacks, if there is one.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.encode_bool">
+<tt class="descname">encode_bool</tt><big>(</big><em>v</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.encode_bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.estimate_template_cost">
+<tt class="descname">estimate_template_cost</tt><big>(</big><em>template_body=None</em>, <em>template_url=None</em>, <em>parameters=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.estimate_template_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the estimated monthly cost of a template. The return
+value is an AWS Simple Monthly Calculator URL with a query
+string that describes the resources required to run the
+template.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the template body. (For more
+information, go to <a href="#id35"><span class="problematic" id="id36">`Template Anatomy`_</span></a> in the AWS CloudFormation
+User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateBody</cite> or <cite>TemplateURL</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of file containing the template body. The
+URL must point to a template located in an S3 bucket in the same
+region as the stack. For more information, go to <a href="#id37"><span class="problematic" id="id38">`Template
+Anatomy`_</span></a> in the AWS CloudFormation User Guide.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameters</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of key/value tuples that specify input
+parameters for the template.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">URL to pre-filled cost calculator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.get_stack_policy">
+<tt class="descname">get_stack_policy</tt><big>(</big><em>stack_name_or_id</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.get_stack_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stack policy for a specified stack. If a stack
+doesn&#8217;t have a policy, a null value is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or stack ID that is associated with
+the stack whose policy you want to get.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The policy JSON document</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.get_template">
+<tt class="descname">get_template</tt><big>(</big><em>stack_name_or_id</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.get_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the template body for a specified stack. You can get
+the template for running or deleted stacks.</p>
+<p>For deleted stacks, GetTemplate returns the template for up to
+90 days after the stack has been deleted.
+If the template does not exist, a <cite>ValidationError</cite> is
+returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack, which are not always interchangeable:</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><dl class="first docutils">
+<dt>Running stacks: You can specify either the stack&#8217;s name or its unique</dt>
+<dd><p class="first last">stack ID.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Deleted stacks: You must specify the unique stack ID.</p>
+</li>
+</ul>
+<p>Default: There is no default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.list_stack_resources">
+<tt class="descname">list_stack_resources</tt><big>(</big><em>stack_name_or_id</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.list_stack_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns descriptions of all resources of the specified stack.</p>
+<p>For deleted stacks, ListStackResources returns resource
+information for up to 90 days after the stack has been
+deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or the unique identifier associated
+with the stack, which are not always interchangeable:</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><dl class="first docutils">
+<dt>Running stacks: You can specify either the stack&#8217;s name or its unique</dt>
+<dd><p class="first last">stack ID.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Deleted stacks: You must specify the unique stack ID.</p>
+</li>
+</ul>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; String that identifies the start of the next list of
+stack resource summaries, if there is one.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.list_stacks">
+<tt class="descname">list_stacks</tt><big>(</big><em>stack_status_filters=None</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.list_stacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the summary information for stacks whose status
+matches the specified StackStatusFilter. Summary information
+for stacks that have been deleted is kept for 90 days after
+the stack is deleted. If no StackStatusFilter is specified,
+summary information for all stacks is returned (including
+existing stacks and stacks that have been deleted).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; String that identifies the start of the next list of
+stacks, if there is one.</td>
+</tr>
+</tbody>
+</table>
+<p>Default: There is no default value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_status_filter</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Stack status to use as a filter. Specify
+one or more stack status codes to list only stacks with the
+specified status codes. For a complete list of stack status codes,
+see the <cite>StackStatus</cite> parameter of the Stack data type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.set_stack_policy">
+<tt class="descname">set_stack_policy</tt><big>(</big><em>stack_name_or_id</em>, <em>stack_policy_body=None</em>, <em>stack_policy_url=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.set_stack_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a stack policy for a specified stack.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_name_or_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name or stack ID that you want to
+associate a policy with.</li>
+<li><strong>stack_policy_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the stack policy body.
+(For more information, go to ` Prevent Updates to Stack Resources`_
+in the AWS CloudFormation User Guide.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>You must pass <cite>StackPolicyBody</cite> or <cite>StackPolicyURL</cite>. If both are</dt>
+<dd>passed, only <cite>StackPolicyBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of a file containing the stack
+policy. The URL must point to a policy (max size: 16KB) located in
+an S3 bucket in the same region as the stack. You must pass
+<cite>StackPolicyBody</cite> or <cite>StackPolicyURL</cite>. If both are passed, only
+<cite>StackPolicyBody</cite> is used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.update_stack">
+<tt class="descname">update_stack</tt><big>(</big><em>stack_name</em>, <em>template_body=None</em>, <em>template_url=None</em>, <em>parameters=None</em>, <em>notification_arns=None</em>, <em>disable_rollback=False</em>, <em>timeout_in_minutes=None</em>, <em>capabilities=None</em>, <em>tags=None</em>, <em>stack_policy_during_update_body=None</em>, <em>stack_policy_during_update_url=None</em>, <em>stack_policy_body=None</em>, <em>stack_policy_url=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.update_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a stack as specified in the template. After the call
+completes successfully, the stack update starts. You can check
+the status of the stack via the DescribeStacks action.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Note: <a href="#id3"><span class="problematic" id="id4">**</span></a>You cannot update <a href="#id39"><span class="problematic" id="id40">`AWS::S3::Bucket`_</span></a> resources, for
+example, to add or modify tags.</p>
+<p>To get a copy of the template for an existing stack, you can
+use the GetTemplate action.</p>
+<p>Tags that were associated with this stack during creation time
+will still be associated with the stack after an <cite>UpdateStack</cite>
+operation.</p>
+<p>For more information about creating an update template,
+updating a stack, and monitoring the progress of the update,
+see <a href="#id41"><span class="problematic" id="id42">`Updating a Stack`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<p>The name or stack ID of the stack to update.</p>
+<dl class="docutils">
+<dt>Must contain only alphanumeric characters (case sensitive) and start</dt>
+<dd>with an alpha character. Maximum length of the name is 255
+characters.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the template body. (For more
+information, go to <a href="#id43"><span class="problematic" id="id44">`Template Anatomy`_</span></a> in the AWS CloudFormation
+User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateBody</cite> or <cite>TemplateURL</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of file containing the template body. The
+URL must point to a template located in an S3 bucket in the same
+region as the stack. For more information, go to <a href="#id45"><span class="problematic" id="id46">`Template
+Anatomy`_</span></a> in the AWS CloudFormation User Guide.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parameters</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of key/value tuples that specify input
+parameters for the stack.</li>
+<li><strong>notification_arns</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The Simple Notification Service (SNS) topic
+ARNs to publish stack related events. You can find your SNS topic
+ARNs using the <a href="#id47"><span class="problematic" id="id48">`SNS console`_</span></a> or your Command Line Interface (CLI).</li>
+<li><strong>disable_rollback</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Indicates whether or not to rollback on
+failure.</li>
+<li><strong>timeout_in_minutes</strong> (<em>integer</em>) &#8211; The amount of time that can pass before the
+stack status becomes CREATE_FAILED; if <cite>DisableRollback</cite> is not set
+or is set to <cite>False</cite>, the stack will be rolled back.</li>
+<li><strong>capabilities</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The list of capabilities you want to allow in
+the stack.  Currently, the only valid capability is
+&#8216;CAPABILITY_IAM&#8217;.</li>
+<li><strong>tags</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A set of user-defined <cite>Tags</cite> to associate with this stack,
+represented by key/value pairs. Tags defined for the stack are
+propagated to EC2 resources that are created as part of the stack.
+A maximum number of 10 tags can be specified.</li>
+<li><strong>template_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of file containing the template body. The
+URL must point to a template located in an S3 bucket in the same
+region as the stack. For more information, go to <a href="#id49"><span class="problematic" id="id50">`Template
+Anatomy`_</span></a> in the AWS CloudFormation User Guide.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_during_update_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the
+temporary overriding stack policy body. If you pass
+<cite>StackPolicyDuringUpdateBody</cite> and <cite>StackPolicyDuringUpdateURL</cite>,
+only <cite>StackPolicyDuringUpdateBody</cite> is used.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If you want to update protected resources, specify a temporary</dt>
+<dd>overriding stack policy during this update. If you do not specify a
+stack policy, the current policy that associated with the stack
+will be used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_during_update_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of a file containing
+the temporary overriding stack policy. The URL must point to a
+policy (max size: 16KB) located in an S3 bucket in the same region
+as the stack. If you pass <cite>StackPolicyDuringUpdateBody</cite> and
+<cite>StackPolicyDuringUpdateURL</cite>, only <cite>StackPolicyDuringUpdateBody</cite> is
+used.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>If you want to update protected resources, specify a temporary</dt>
+<dd>overriding stack policy during this update. If you do not specify a
+stack policy, the current policy that is associated with the stack
+will be used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The unique Stack ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.valid_states">
+<tt class="descname">valid_states</tt><em class="property"> = ('CREATE_IN_PROGRESS', 'CREATE_FAILED', 'CREATE_COMPLETE', 'ROLLBACK_IN_PROGRESS', 'ROLLBACK_FAILED', 'ROLLBACK_COMPLETE', 'DELETE_IN_PROGRESS', 'DELETE_FAILED', 'DELETE_COMPLETE', 'UPDATE_IN_PROGRESS', 'UPDATE_COMPLETE_CLEANUP_IN_PROGRESS', 'UPDATE_COMPLETE', 'UPDATE_ROLLBACK_IN_PROGRESS', 'UPDATE_ROLLBACK_FAILED', 'UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS', 'UPDATE_ROLLBACK_COMPLETE')</em><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.valid_states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.connection.CloudFormationConnection.validate_template">
+<tt class="descname">validate_template</tt><big>(</big><em>template_body=None</em>, <em>template_url=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.connection.CloudFormationConnection.validate_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates a specified template.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; String containing the template body. (For more
+information, go to <a href="#id51"><span class="problematic" id="id52">`Template Anatomy`_</span></a> in the AWS CloudFormation
+User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>template_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of file containing the template body. The
+URL must point to a template (max size: 307,200 bytes) located in
+an S3 bucket in the same region as the stack. For more information,
+go to <a href="#id53"><span class="problematic" id="id54">`Template Anatomy`_</span></a> in the AWS CloudFormation User Guide.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Conditional: You must pass <cite>TemplateURL</cite> or <cite>TemplateBody</cite>. If both are</dt>
+<dd>passed, only <cite>TemplateBody</cite> is used.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudformation.stack">
+<span id="boto-cloudformation-stack"></span><h2>boto.cloudformation.stack<a class="headerlink" href="#module-boto.cloudformation.stack" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudformation.stack.Capability">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">Capability</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Capability" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.Capability.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Capability.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Capability.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Capability.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.NotificationARN">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">NotificationARN</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.NotificationARN" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.NotificationARN.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.NotificationARN.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.NotificationARN.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.NotificationARN.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.Output">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">Output</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Output" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.Output.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Output.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Output.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Output.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.Parameter">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">Parameter</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.Parameter.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Parameter.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Parameter.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Parameter.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.Stack">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">Stack</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.Stack.delete">
+<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.describe_events">
+<tt class="descname">describe_events</tt><big>(</big><em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.describe_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.describe_resource">
+<tt class="descname">describe_resource</tt><big>(</big><em>logical_resource_id</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.describe_resource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.describe_resources">
+<tt class="descname">describe_resources</tt><big>(</big><em>logical_resource_id=None</em>, <em>physical_resource_id=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.describe_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.get_policy">
+<tt class="descname">get_policy</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.get_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stack policy for this stack. If it has no policy
+then, a null value is returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.get_template">
+<tt class="descname">get_template</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.get_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.list_resources">
+<tt class="descname">list_resources</tt><big>(</big><em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.list_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.set_policy">
+<tt class="descname">set_policy</tt><big>(</big><em>stack_policy_body=None</em>, <em>stack_policy_url=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.set_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a stack policy for this stack.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_body</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Structure containing the stack policy body.
+(For more information, go to ` Prevent Updates to Stack Resources`_
+in the AWS CloudFormation User Guide.)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>You must pass <cite>StackPolicyBody</cite> or <cite>StackPolicyURL</cite>. If both are</dt>
+<dd>passed, only <cite>StackPolicyBody</cite> is used.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_policy_url</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Location of a file containing the stack
+policy. The URL must point to a policy (max size: 16KB) located in
+an S3 bucket in the same region as the stack. You must pass
+<cite>StackPolicyBody</cite> or <cite>StackPolicyURL</cite>. If both are passed, only
+<cite>StackPolicyBody</cite> is used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Stack.update">
+<tt class="descname">update</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Stack.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.StackEvent">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">StackEvent</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackEvent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.StackEvent.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackEvent.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.StackEvent.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackEvent.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudformation.stack.StackEvent.valid_states">
+<tt class="descname">valid_states</tt><em class="property"> = ('CREATE_IN_PROGRESS', 'CREATE_FAILED', 'CREATE_COMPLETE', 'DELETE_IN_PROGRESS', 'DELETE_FAILED', 'DELETE_COMPLETE')</em><a class="headerlink" href="#boto.cloudformation.stack.StackEvent.valid_states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.StackResource">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">StackResource</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.StackResource.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResource.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.StackResource.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResource.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.StackResourceSummary">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">StackResourceSummary</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResourceSummary" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.StackResourceSummary.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResourceSummary.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.StackResourceSummary.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackResourceSummary.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.StackSummary">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">StackSummary</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackSummary" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.StackSummary.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackSummary.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.StackSummary.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.StackSummary.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.stack.Tag">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.stack.</tt><tt class="descname">Tag</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Tag" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.stack.Tag.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Tag.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.stack.Tag.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.stack.Tag.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudformation.template">
+<span id="boto-cloudformation-template"></span><h2>boto.cloudformation.template<a class="headerlink" href="#module-boto.cloudformation.template" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudformation.template.Template">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.template.</tt><tt class="descname">Template</tt><big>(</big><em>connection=None</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.Template" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.template.Template.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.Template.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.template.Template.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.Template.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudformation.template.TemplateParameter">
+<em class="property">class </em><tt class="descclassname">boto.cloudformation.template.</tt><tt class="descname">TemplateParameter</tt><big>(</big><em>parent</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.TemplateParameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudformation.template.TemplateParameter.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.TemplateParameter.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudformation.template.TemplateParameter.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.cloudformation.template.TemplateParameter.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">cloudformation</a><ul>
+<li><a class="reference internal" href="#module-boto.cloudformation">boto.cloudformation</a></li>
+<li><a class="reference internal" href="#module-boto.cloudformation.connection">boto.cloudformation.connection</a></li>
+<li><a class="reference internal" href="#module-boto.cloudformation.stack">boto.cloudformation.stack</a></li>
+<li><a class="reference internal" href="#module-boto.cloudformation.template">boto.cloudformation.template</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="beanstalk.html"
+                        title="previous chapter">Elastic Beanstalk</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudfront.html"
+                        title="next chapter">CloudFront</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/cloudformation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudfront.html" title="CloudFront"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="beanstalk.html" title="Elastic Beanstalk"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li>
+          <li><a href="index.html" >API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

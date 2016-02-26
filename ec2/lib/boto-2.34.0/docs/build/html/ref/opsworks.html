@@ -1,0 +1,2501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Opsworks &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="pyami" href="pyami.html" />
+    <link rel="prev" title="mws" href="mws.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyami.html" title="pyami"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mws.html" title="mws"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opsworks">
+<h1>Opsworks<a class="headerlink" href="#opsworks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="boto-opsworks">
+<h2>boto.opsworks<a class="headerlink" href="#boto-opsworks" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-boto.opsworks"></span><dl class="function">
+<dt id="boto.opsworks.connect_to_region">
+<tt class="descclassname">boto.opsworks.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.opsworks.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.opsworks.regions">
+<tt class="descclassname">boto.opsworks.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.opsworks.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon OpsWorks service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="boto-opsworks-layer1">
+<h2>boto.opsworks.layer1<a class="headerlink" href="#boto-opsworks-layer1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-boto.opsworks.layer1"></span><dl class="class">
+<dt id="boto.opsworks.layer1.OpsWorksConnection">
+<em class="property">class </em><tt class="descclassname">boto.opsworks.layer1.</tt><tt class="descname">OpsWorksConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>AWS OpsWorks
+Welcome to the AWS OpsWorks API Reference . This guide provides
+descriptions, syntax, and usage examples about AWS OpsWorks
+actions and data types, including common parameters and error
+codes.</p>
+<p>AWS OpsWorks is an application management service that provides an
+integrated experience for overseeing the complete application
+lifecycle. For information about this product, go to the <a href="#id9"><span class="problematic" id="id10">`AWS
+OpsWorks`_</span></a> details page.</p>
+<p><strong>SDKs and CLI</strong></p>
+<p>The most common way to use the AWS OpsWorks API is by using the
+AWS Command Line Interface (CLI) or by using one of the AWS SDKs
+to implement applications in your preferred language. For more
+information, see:</p>
+<ul class="simple">
+<li><a href="#id11"><span class="problematic" id="id12">`AWS CLI`_</span></a></li>
+<li><a href="#id13"><span class="problematic" id="id14">`AWS SDK for Java`_</span></a></li>
+<li><a href="#id15"><span class="problematic" id="id16">`AWS SDK for .NET`_</span></a></li>
+<li><a href="#id17"><span class="problematic" id="id18">`AWS SDK for PHP 2`_</span></a></li>
+<li><a href="#id19"><span class="problematic" id="id20">`AWS SDK for Ruby`_</span></a></li>
+<li><a href="#id21"><span class="problematic" id="id22">`AWS SDK for Node.js`_</span></a></li>
+<li><a href="#id23"><span class="problematic" id="id24">`AWS SDK for Python(Boto)`_</span></a></li>
+</ul>
+<p><strong>Endpoints</strong></p>
+<p>AWS OpsWorks supports only one endpoint, opsworks.us-
+east-1.amazonaws.com (HTTPS), so you must connect to that
+endpoint. You can then use the API to direct AWS OpsWorks to
+create stacks in any AWS Region.</p>
+<p><strong>Chef Version</strong></p>
+<p>When you call CreateStack, CloneStack, or UpdateStack we recommend
+you use the <cite>ConfigurationManager</cite> parameter to specify the Chef
+version, 0.9, 11.4, or 11.10. The default value is currently 11.4.
+For more information, see <a href="#id25"><span class="problematic" id="id26">`Chef Versions`_</span></a>.</p>
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2013-02-18'</em><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'opsworks.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.ServiceName">
+<tt class="descname">ServiceName</tt><em class="property"> = 'OpsWorks'</em><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.ServiceName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.TargetPrefix">
+<tt class="descname">TargetPrefix</tt><em class="property"> = 'OpsWorks_20130218'</em><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.TargetPrefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.assign_volume">
+<tt class="descname">assign_volume</tt><big>(</big><em>volume_id</em>, <em>instance_id=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.assign_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns one of the stack&#8217;s registered Amazon EBS volumes to a
+specified instance. The volume must first be registered with
+the stack by calling RegisterVolume. For more information, see
+<a href="#id27"><span class="problematic" id="id28">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id29"><span class="problematic" id="id30">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volume_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The volume ID.</li>
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.associate_elastic_ip">
+<tt class="descname">associate_elastic_ip</tt><big>(</big><em>elastic_ip</em>, <em>instance_id=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.associate_elastic_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates one of the stack&#8217;s registered Elastic IP addresses
+with a specified instance. The address must first be
+registered with the stack by calling RegisterElasticIp. For
+more information, see <a href="#id31"><span class="problematic" id="id32">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id33"><span class="problematic" id="id34">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elastic_ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic IP address.</li>
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.attach_elastic_load_balancer">
+<tt class="descname">attach_elastic_load_balancer</tt><big>(</big><em>elastic_load_balancer_name</em>, <em>layer_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.attach_elastic_load_balancer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attaches an Elastic Load Balancing load balancer to a
+specified layer. For more information, see <a href="#id35"><span class="problematic" id="id36">`Elastic Load
+Balancing`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id37"><span class="problematic" id="id38">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elastic_load_balancer_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic Load Balancing
+instance&#8217;s name.</li>
+<li><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the layer that the Elastic Load Balancing
+instance is to be attached to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.clone_stack">
+<tt class="descname">clone_stack</tt><big>(</big><em>source_stack_id</em>, <em>service_role_arn</em>, <em>name=None</em>, <em>region=None</em>, <em>vpc_id=None</em>, <em>attributes=None</em>, <em>default_instance_profile_arn=None</em>, <em>default_os=None</em>, <em>hostname_theme=None</em>, <em>default_availability_zone=None</em>, <em>default_subnet_id=None</em>, <em>custom_json=None</em>, <em>configuration_manager=None</em>, <em>chef_configuration=None</em>, <em>use_custom_cookbooks=None</em>, <em>use_opsworks_security_groups=None</em>, <em>custom_cookbooks_source=None</em>, <em>default_ssh_key_name=None</em>, <em>clone_permissions=None</em>, <em>clone_app_ids=None</em>, <em>default_root_device_type=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.clone_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a clone of a specified stack. For more information,
+see <a href="#id39"><span class="problematic" id="id40">`Clone a Stack`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id41"><span class="problematic" id="id42">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The source stack ID.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cloned stack name.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cloned stack AWS region, such as &#8220;us-east-1&#8221;. For
+more information about AWS regions, see <a href="#id43"><span class="problematic" id="id44">`Regions and Endpoints`_</span></a>.</li>
+<li><strong>vpc_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the VPC that the cloned stack is to be
+launched into. It must be in the specified region. All instances
+will be launched into this VPC, and you cannot change the ID later.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">If your account supports EC2 Classic, the default value is no VPC.</p>
+</li>
+<li><dl class="first docutils">
+<dt>If your account does not support EC2 Classic, the default value is</dt>
+<dd><p class="first last">the default VPC for the specified region.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="docutils">
+<dt>If the VPC ID corresponds to a default VPC and you have specified</dt>
+<dd>either the <cite>DefaultAvailabilityZone</cite> or the <cite>DefaultSubnetId</cite>
+parameter only, AWS OpsWorks infers the value of the other
+parameter. If you specify neither parameter, AWS OpsWorks sets
+these parameters to the first valid Availability Zone for the
+specified region and the corresponding default VPC subnet ID,
+respectively.</dd>
+</dl>
+<p>If you specify a nondefault VPC ID, note the following:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>It must belong to a VPC in your account that is in the specified</dt>
+<dd><p class="first last">region.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">You must specify a value for <cite>DefaultSubnetId</cite>.</p>
+</li>
+</ul>
+<dl class="docutils">
+<dt>For more information on how to use AWS OpsWorks with a VPC, see</dt>
+<dd><a href="#id45"><span class="problematic" id="id46">`Running a Stack in a VPC`_</span></a>. For more information on default VPC
+and EC2 Classic, see <a href="#id47"><span class="problematic" id="id48">`Supported Platforms`_</span></a>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; A list of stack attributes and values as key/value
+pairs to be added to the cloned stack.</li>
+<li><strong>service_role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack AWS Identity and Access Management
+(IAM) role, which allows AWS OpsWorks to work with AWS resources on
+your behalf. You must set this parameter to the Amazon Resource
+Name (ARN) for an existing IAM role. If you create a stack by using
+the AWS OpsWorks console, it creates the role for you. You can
+obtain an existing stack&#8217;s IAM ARN programmatically by calling
+DescribePermissions. For more information about IAM ARNs, see
+<a href="#id49"><span class="problematic" id="id50">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_instance_profile_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of an IAM profile that is
+the default profile for all of the stack&#8217;s EC2 instances. For more
+information about IAM ARNs, see <a href="#id51"><span class="problematic" id="id52">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_os</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cloned stack&#8217;s default operating system, which
+must be set to <cite>Amazon Linux</cite> or <cite>Ubuntu 12.04 LTS</cite>. The default
+option is <cite>Amazon Linux</cite>.</li>
+<li><strong>hostname_theme</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s host name theme, with spaces are
+replaced by underscores. The theme is used to generate host names
+for the stack&#8217;s instances. By default, <cite>HostnameTheme</cite> is set to
+<cite>Layer_Dependent</cite>, which creates host names by appending integers
+to the layer&#8217;s short name. The other themes are:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><cite>Baked_Goods</cite></li>
+<li><cite>Clouds</cite></li>
+<li><cite>European_Cities</cite></li>
+<li><cite>Fruits</cite></li>
+<li><cite>Greek_Deities</cite></li>
+<li><cite>Legendary_Creatures_from_Japan</cite></li>
+<li><cite>Planets_and_Moons</cite></li>
+<li><cite>Roman_Deities</cite></li>
+<li><cite>Scottish_Islands</cite></li>
+<li><cite>US_Cities</cite></li>
+<li><cite>Wild_Cats</cite></li>
+</ul>
+<dl class="docutils">
+<dt>To obtain a generated host name, call <cite>GetHostNameSuggestion</cite>, which</dt>
+<dd>returns a host name based on the current theme.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>default_availability_zone</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The cloned stack&#8217;s default
+Availability Zone, which must be in the specified region. For more
+information, see <a href="#id53"><span class="problematic" id="id54">`Regions and Endpoints`_</span></a>. If you also specify a
+value for <cite>DefaultSubnetId</cite>, the subnet must be in the same zone.
+For more information, see the <cite>VpcId</cite> parameter description.</li>
+<li><strong>default_subnet_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default subnet ID. All instances
+will be launched into this subnet unless you specify otherwise when
+you create the instance. If you also specify a value for
+<cite>DefaultAvailabilityZone</cite>, the subnet must be in the same zone. For
+information on default values and when this parameter is required,
+see the <cite>VpcId</cite> parameter description.</li>
+<li><strong>custom_json</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that contains user-defined, custom JSON.
+It is used to override the corresponding default stack
+configuration JSON values. The string should be in the following
+format and must escape characters such as &#8216;&#8221;&#8217;.:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>&#8220;{&#8220;key1&#8221;: &#8220;value1&#8221;, &#8220;key2&#8221;: &#8220;value2&#8221;,...}&#8221;</cite></p>
+<dl class="docutils">
+<dt>For more information on custom JSON, see <a href="#id1"><span class="problematic" id="id2">`</span></a>Use Custom JSON to Modify the</dt>
+<dd>Stack Configuration JSON`_</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>configuration_manager</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The configuration manager. When you clone
+a stack we recommend that you use the configuration manager to
+specify the Chef version, 0.9, 11.4, or 11.10. The default value is
+currently 11.4.</li>
+<li><strong>chef_configuration</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>ChefConfiguration</cite> object that specifies
+whether to enable Berkshelf and the Berkshelf version on Chef 11.10
+stacks. For more information, see <a href="#id55"><span class="problematic" id="id56">`Create a New Stack`_</span></a>.</li>
+<li><strong>use_custom_cookbooks</strong> (<em>boolean</em>) &#8211; Whether to use custom cookbooks.</li>
+<li><strong>use_opsworks_security_groups</strong> (<em>boolean</em>) &#8211; Whether to associate the AWS
+OpsWorks built-in security groups with the stack&#8217;s layers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>AWS OpsWorks provides a standard set of built-in security groups, one</dt>
+<dd>for each layer, which are associated with layers by default. With
+<cite>UseOpsworksSecurityGroups</cite> you can instead provide your own custom
+security groups. <cite>UseOpsworksSecurityGroups</cite> has the following
+settings:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>True - AWS OpsWorks automatically associates the appropriate built-in</dt>
+<dd><p class="first last">security group with each layer (default setting). You can associate
+additional security groups with a layer after you create it but you
+cannot delete the built-in security group.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>False - AWS OpsWorks does not associate built-in security groups with</dt>
+<dd><p class="first last">layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create.
+However, you can still manually associate a built-in security group
+with a layer on creation; custom security groups are required only
+for those layers that need custom settings.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For more information, see <a href="#id57"><span class="problematic" id="id58">`Create a New Stack`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>custom_cookbooks_source</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Contains the information required to
+retrieve an app or cookbook from a repository. For more
+information, see <a href="#id59"><span class="problematic" id="id60">`Creating Apps`_</span></a> or <a href="#id61"><span class="problematic" id="id62">`Custom Recipes and
+Cookbooks`_</span></a>.</li>
+<li><strong>default_ssh_key_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A default SSH key for the stack instances.
+You can override this value when you create or update an instance.</li>
+<li><strong>clone_permissions</strong> (<em>boolean</em>) &#8211; Whether to clone the source stack&#8217;s
+permissions.</li>
+<li><strong>clone_app_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of source stack app IDs to be included in
+the cloned stack.</li>
+<li><strong>default_root_device_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The default root device type. This
+value is used by default for all instances in the cloned stack, but
+you can override it when you create an instance. For more
+information, see <a href="#id63"><span class="problematic" id="id64">`Storage for the Root Device`_</span></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_app">
+<tt class="descname">create_app</tt><big>(</big><em>stack_id</em>, <em>name</em>, <em>type</em>, <em>shortname=None</em>, <em>description=None</em>, <em>data_sources=None</em>, <em>app_source=None</em>, <em>domains=None</em>, <em>enable_ssl=None</em>, <em>ssl_configuration=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an app for a specified stack. For more information,
+see <a href="#id65"><span class="problematic" id="id66">`Creating Apps`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id67"><span class="problematic" id="id68">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>shortname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app&#8217;s short name.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app name.</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description of the app.</li>
+<li><strong>data_sources</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The app&#8217;s data source.</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app type. Each supported type is associated with a
+particular layer. For example, PHP applications are associated with
+a PHP layer. AWS OpsWorks deploys an application to those instances
+that are members of the corresponding layer.</li>
+<li><strong>app_source</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>Source</cite> object that specifies the app repository.</li>
+<li><strong>domains</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The app virtual host settings, with multiple domains
+separated by commas. For example: <cite>&#8216;www.example.com, example.com&#8217;</cite></li>
+<li><strong>enable_ssl</strong> (<em>boolean</em>) &#8211; Whether to enable SSL for the app.</li>
+<li><strong>ssl_configuration</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; An <cite>SslConfiguration</cite> object with the SSL
+configuration.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_deployment">
+<tt class="descname">create_deployment</tt><big>(</big><em>stack_id</em>, <em>command</em>, <em>app_id=None</em>, <em>instance_ids=None</em>, <em>comment=None</em>, <em>custom_json=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_deployment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deploys a stack or app.</p>
+<ul class="simple">
+<li>App deployment generates a <cite>deploy</cite> event, which runs the
+associated recipes and passes them a JSON stack configuration
+object that includes information about the app.</li>
+<li>Stack deployment runs the <cite>deploy</cite> recipes but does not
+raise an event.</li>
+</ul>
+<p>For more information, see <a href="#id69"><span class="problematic" id="id70">`Deploying Apps`_</span></a> and <a href="#id71"><span class="problematic" id="id72">`Run Stack
+Commands`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Deploy or Manage permissions level for the stack, or an
+attached policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id73"><span class="problematic" id="id74">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>app_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app ID. This parameter is required for app
+deployments, but not for other deployment commands.</li>
+<li><strong>instance_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The instance IDs for the deployment targets.</li>
+<li><strong>command</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>DeploymentCommand</cite> object that specifies the
+deployment command and any associated arguments.</li>
+<li><strong>comment</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A user-defined comment.</li>
+<li><strong>custom_json</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that contains user-defined, custom JSON.
+It is used to override the corresponding default stack
+configuration JSON values. The string should be in the following
+format and must escape characters such as &#8216;&#8221;&#8217;.:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>&#8220;{&#8220;key1&#8221;: &#8220;value1&#8221;, &#8220;key2&#8221;: &#8220;value2&#8221;,...}&#8221;</cite></p>
+<dl class="docutils">
+<dt>For more information on custom JSON, see <a href="#id3"><span class="problematic" id="id4">`</span></a>Use Custom JSON to Modify the</dt>
+<dd>Stack Configuration JSON`_.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_instance">
+<tt class="descname">create_instance</tt><big>(</big><em>stack_id</em>, <em>layer_ids</em>, <em>instance_type</em>, <em>auto_scaling_type=None</em>, <em>hostname=None</em>, <em>os=None</em>, <em>ami_id=None</em>, <em>ssh_key_name=None</em>, <em>availability_zone=None</em>, <em>virtualization_type=None</em>, <em>subnet_id=None</em>, <em>architecture=None</em>, <em>root_device_type=None</em>, <em>install_updates_on_boot=None</em>, <em>ebs_optimized=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance in a specified stack. For more
+information, see <a href="#id75"><span class="problematic" id="id76">`Adding an Instance to a Layer`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id77"><span class="problematic" id="id78">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>layer_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array that contains the instance layer IDs.</li>
+<li><strong>instance_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance type. AWS OpsWorks supports all
+instance types except Cluster Compute, Cluster GPU, and High Memory
+Cluster. For more information, see <a href="#id79"><span class="problematic" id="id80">`Instance Families and Types`_</span></a>.
+The parameter values that you use to specify the various types are
+in the API Name column of the Available Instance Types table.</li>
+<li><strong>auto_scaling_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The instance auto scaling type, which has three possible values:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>AlwaysRunning</strong>: A 24/7 instance, which is not affected by auto</dt>
+<dd><p class="first last">scaling.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>TimeBasedAutoScaling</strong>: A time-based auto scaling instance, which</dt>
+<dd><p class="first last">is started and stopped based on a specified schedule. To specify
+the schedule, call SetTimeBasedAutoScaling.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>LoadBasedAutoScaling</strong>: A load-based auto scaling instance, which</dt>
+<dd><p class="first last">is started and stopped based on load metrics. To use load-based
+auto scaling, you must enable it for the instance layer and
+configure the thresholds by calling SetLoadBasedAutoScaling.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hostname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance host name.</li>
+<li><strong>os</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance operating system, which must be set to one of
+the following.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Standard operating systems: <cite>Amazon Linux</cite> or <cite>Ubuntu 12.04 LTS</cite></li>
+<li>Custom AMIs: <cite>Custom</cite></li>
+</ul>
+<dl class="docutils">
+<dt>The default option is <cite>Amazon Linux</cite>. If you set this parameter to</dt>
+<dd><cite>Custom</cite>, you must use the CreateInstance action&#8217;s AmiId parameter
+to specify the custom AMI that you want to use. For more
+information on the standard operating systems, see <a href="#id81"><span class="problematic" id="id82">`Operating
+Systems`_For more information on how to use custom AMIs with
+OpsWorks, see `Using Custom AMIs`_</span></a>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ami_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A custom AMI ID to be used to create the instance. The
+AMI should be based on one of the standard AWS OpsWorks APIs:
+Amazon Linux or Ubuntu 12.04 LTS. For more information, see
+<a href="#id83"><span class="problematic" id="id84">`Instances`_</span></a></li>
+<li><strong>ssh_key_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance SSH key name.</li>
+<li><strong>availability_zone</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance Availability Zone. For more
+information, see <a href="#id85"><span class="problematic" id="id86">`Regions and Endpoints`_</span></a>.</li>
+<li><strong>virtualization_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance&#8217;s virtualization type,
+<cite>paravirtual</cite> or <cite>hvm</cite>.</li>
+<li><strong>subnet_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the instance&#8217;s subnet. If the stack is
+running in a VPC, you can use this parameter to override the
+stack&#8217;s default subnet ID value and direct AWS OpsWorks to launch
+the instance in a different subnet.</li>
+<li><strong>architecture</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance architecture. The default option is
+<cite>x86_64</cite>. Instance types do not necessarily support both
+architectures. For a list of the architectures that are supported
+by the different instance types, see <a href="#id87"><span class="problematic" id="id88">`Instance Families and
+Types`_</span></a>.</li>
+<li><strong>root_device_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance root device type. For more
+information, see <a href="#id89"><span class="problematic" id="id90">`Storage for the Root Device`_</span></a>.</li>
+<li><strong>install_updates_on_boot</strong> (<em>boolean</em>) &#8211; Whether to install operating system and
+package updates when the instance boots. The default value is
+<cite>True</cite>. To control when updates are installed, set this value to
+<cite>False</cite>. You must then update your instances manually by using
+CreateDeployment to run the <cite>update_dependencies</cite> stack command or
+manually running <cite>yum</cite> (Amazon Linux) or <cite>apt-get</cite> (Ubuntu) on the
+instances.</li>
+<li><strong>ebs_optimized</strong> (<em>boolean</em>) &#8211; Whether to create an Amazon EBS-optimized
+instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_layer">
+<tt class="descname">create_layer</tt><big>(</big><em>stack_id</em>, <em>type</em>, <em>name</em>, <em>shortname</em>, <em>attributes=None</em>, <em>custom_instance_profile_arn=None</em>, <em>custom_security_group_ids=None</em>, <em>packages=None</em>, <em>volume_configurations=None</em>, <em>enable_auto_healing=None</em>, <em>auto_assign_elastic_ips=None</em>, <em>auto_assign_public_ips=None</em>, <em>custom_recipes=None</em>, <em>install_updates_on_boot=None</em>, <em>use_ebs_optimized_instances=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a layer. For more information, see <a href="#id91"><span class="problematic" id="id92">`How to Create a
+Layer`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id93"><span class="problematic" id="id94">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer stack ID.</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The layer type. A stack cannot have more than one built-in layer of the</dt>
+<dd>same type. It can have any number of custom layers. This parameter
+must be set to one of the following:</dd>
+</dl>
+<ul class="simple">
+<li>custom: A custom layer</li>
+<li>db-master: A MySQL layer</li>
+<li>java-app: A Java App Server layer</li>
+<li>rails-app: A Rails App Server layer</li>
+<li>lb: An HAProxy layer</li>
+<li>memcached: A Memcached layer</li>
+<li>monitoring-master: A Ganglia layer</li>
+<li>nodejs-app: A Node.js App Server layer</li>
+<li>php-app: A PHP App Server layer</li>
+<li>web: A Static Web Server layer</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer name, which is used by the console.</li>
+<li><strong>shortname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer short name, which is used internally by AWS
+OpsWorks and by Chef recipes. The short name is also used as the
+name for the directory where your app files are installed. It can
+have a maximum of 200 characters, which are limited to the
+alphanumeric characters, &#8216;-&#8216;, &#8216;_&#8217;, and &#8216;.&#8217;.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+<li><strong>custom_instance_profile_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of an IAM profile that to
+be used for the layer&#8217;s EC2 instances. For more information about
+IAM ARNs, see <a href="#id95"><span class="problematic" id="id96">`Using Identifiers`_</span></a>.</li>
+<li><strong>custom_security_group_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array containing the layer custom
+security group IDs.</li>
+<li><strong>packages</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of <cite>Package</cite> objects that describe the layer
+packages.</li>
+<li><strong>volume_configurations</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A <cite>VolumeConfigurations</cite> object that
+describes the layer&#8217;s Amazon EBS volumes.</li>
+<li><strong>enable_auto_healing</strong> (<em>boolean</em>) &#8211; Whether to disable auto healing for the
+layer.</li>
+<li><strong>auto_assign_elastic_ips</strong> (<em>boolean</em>) &#8211; Whether to automatically assign an
+<a href="#id97"><span class="problematic" id="id98">`Elastic IP address`_</span></a> to the layer&#8217;s instances. For more
+information, see <a href="#id99"><span class="problematic" id="id100">`How to Edit a Layer`_</span></a>.</li>
+<li><strong>auto_assign_public_ips</strong> (<em>boolean</em>) &#8211; For stacks that are running in a VPC,
+whether to automatically assign a public IP address to the layer&#8217;s
+instances. For more information, see <a href="#id101"><span class="problematic" id="id102">`How to Edit a Layer`_</span></a>.</li>
+<li><strong>custom_recipes</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>LayerCustomRecipes</cite> object that specifies the
+layer custom recipes.</li>
+<li><strong>install_updates_on_boot</strong> (<em>boolean</em>) &#8211; Whether to install operating system and
+package updates when the instance boots. The default value is
+<cite>True</cite>. To control when updates are installed, set this value to
+<cite>False</cite>. You must then update your instances manually by using
+CreateDeployment to run the <cite>update_dependencies</cite> stack command or
+manually running <cite>yum</cite> (Amazon Linux) or <cite>apt-get</cite> (Ubuntu) on the
+instances.</li>
+<li><strong>use_ebs_optimized_instances</strong> (<em>boolean</em>) &#8211; Whether to use Amazon EBS-optimized
+instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_stack">
+<tt class="descname">create_stack</tt><big>(</big><em>name</em>, <em>region</em>, <em>service_role_arn</em>, <em>default_instance_profile_arn</em>, <em>vpc_id=None</em>, <em>attributes=None</em>, <em>default_os=None</em>, <em>hostname_theme=None</em>, <em>default_availability_zone=None</em>, <em>default_subnet_id=None</em>, <em>custom_json=None</em>, <em>configuration_manager=None</em>, <em>chef_configuration=None</em>, <em>use_custom_cookbooks=None</em>, <em>use_opsworks_security_groups=None</em>, <em>custom_cookbooks_source=None</em>, <em>default_ssh_key_name=None</em>, <em>default_root_device_type=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new stack. For more information, see <a href="#id103"><span class="problematic" id="id104">`Create a New
+Stack`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id105"><span class="problematic" id="id106">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack name.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack AWS region, such as &#8220;us-east-1&#8221;. For more
+information about Amazon regions, see <a href="#id107"><span class="problematic" id="id108">`Regions and Endpoints`_</span></a>.</li>
+<li><strong>vpc_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the VPC that the stack is to be launched into.
+It must be in the specified region. All instances will be launched
+into this VPC, and you cannot change the ID later.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">If your account supports EC2 Classic, the default value is no VPC.</p>
+</li>
+<li><dl class="first docutils">
+<dt>If your account does not support EC2 Classic, the default value is</dt>
+<dd><p class="first last">the default VPC for the specified region.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="docutils">
+<dt>If the VPC ID corresponds to a default VPC and you have specified</dt>
+<dd>either the <cite>DefaultAvailabilityZone</cite> or the <cite>DefaultSubnetId</cite>
+parameter only, AWS OpsWorks infers the value of the other
+parameter. If you specify neither parameter, AWS OpsWorks sets
+these parameters to the first valid Availability Zone for the
+specified region and the corresponding default VPC subnet ID,
+respectively.</dd>
+</dl>
+<p>If you specify a nondefault VPC ID, note the following:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>It must belong to a VPC in your account that is in the specified</dt>
+<dd><p class="first last">region.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">You must specify a value for <cite>DefaultSubnetId</cite>.</p>
+</li>
+</ul>
+<dl class="docutils">
+<dt>For more information on how to use AWS OpsWorks with a VPC, see</dt>
+<dd><a href="#id109"><span class="problematic" id="id110">`Running a Stack in a VPC`_</span></a>. For more information on default VPC
+and EC2 Classic, see <a href="#id111"><span class="problematic" id="id112">`Supported Platforms`_</span></a>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+<li><strong>service_role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack AWS Identity and Access Management
+(IAM) role, which allows AWS OpsWorks to work with AWS resources on
+your behalf. You must set this parameter to the Amazon Resource
+Name (ARN) for an existing IAM role. For more information about IAM
+ARNs, see <a href="#id113"><span class="problematic" id="id114">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_instance_profile_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of an IAM profile that is
+the default profile for all of the stack&#8217;s EC2 instances. For more
+information about IAM ARNs, see <a href="#id115"><span class="problematic" id="id116">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_os</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default operating system, which must be
+set to <cite>Amazon Linux</cite> or <cite>Ubuntu 12.04 LTS</cite>. The default option is
+<cite>Amazon Linux</cite>.</li>
+<li><strong>hostname_theme</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s host name theme, with spaces are
+replaced by underscores. The theme is used to generate host names
+for the stack&#8217;s instances. By default, <cite>HostnameTheme</cite> is set to
+<cite>Layer_Dependent</cite>, which creates host names by appending integers
+to the layer&#8217;s short name. The other themes are:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><cite>Baked_Goods</cite></li>
+<li><cite>Clouds</cite></li>
+<li><cite>European_Cities</cite></li>
+<li><cite>Fruits</cite></li>
+<li><cite>Greek_Deities</cite></li>
+<li><cite>Legendary_Creatures_from_Japan</cite></li>
+<li><cite>Planets_and_Moons</cite></li>
+<li><cite>Roman_Deities</cite></li>
+<li><cite>Scottish_Islands</cite></li>
+<li><cite>US_Cities</cite></li>
+<li><cite>Wild_Cats</cite></li>
+</ul>
+<dl class="docutils">
+<dt>To obtain a generated host name, call <cite>GetHostNameSuggestion</cite>, which</dt>
+<dd>returns a host name based on the current theme.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>default_availability_zone</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default Availability
+Zone, which must be in the specified region. For more information,
+see <a href="#id117"><span class="problematic" id="id118">`Regions and Endpoints`_</span></a>. If you also specify a value for
+<cite>DefaultSubnetId</cite>, the subnet must be in the same zone. For more
+information, see the <cite>VpcId</cite> parameter description.</li>
+<li><strong>default_subnet_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default subnet ID. All instances
+will be launched into this subnet unless you specify otherwise when
+you create the instance. If you also specify a value for
+<cite>DefaultAvailabilityZone</cite>, the subnet must be in that zone. For
+information on default values and when this parameter is required,
+see the <cite>VpcId</cite> parameter description.</li>
+<li><strong>custom_json</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that contains user-defined, custom JSON.
+It is used to override the corresponding default stack
+configuration JSON values. The string should be in the following
+format and must escape characters such as &#8216;&#8221;&#8217;.:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>&#8220;{&#8220;key1&#8221;: &#8220;value1&#8221;, &#8220;key2&#8221;: &#8220;value2&#8221;,...}&#8221;</cite></p>
+<dl class="docutils">
+<dt>For more information on custom JSON, see <a href="#id5"><span class="problematic" id="id6">`</span></a>Use Custom JSON to Modify the</dt>
+<dd>Stack Configuration JSON`_.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>configuration_manager</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The configuration manager. When you clone
+a stack we recommend that you use the configuration manager to
+specify the Chef version, 0.9, 11.4, or 11.10. The default value is
+currently 11.4.</li>
+<li><strong>chef_configuration</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>ChefConfiguration</cite> object that specifies
+whether to enable Berkshelf and the Berkshelf version on Chef 11.10
+stacks. For more information, see <a href="#id119"><span class="problematic" id="id120">`Create a New Stack`_</span></a>.</li>
+<li><strong>use_custom_cookbooks</strong> (<em>boolean</em>) &#8211; Whether the stack uses custom cookbooks.</li>
+<li><strong>use_opsworks_security_groups</strong> (<em>boolean</em>) &#8211; Whether to associate the AWS
+OpsWorks built-in security groups with the stack&#8217;s layers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>AWS OpsWorks provides a standard set of built-in security groups, one</dt>
+<dd>for each layer, which are associated with layers by default. With
+<cite>UseOpsworksSecurityGroups</cite> you can instead provide your own custom
+security groups. <cite>UseOpsworksSecurityGroups</cite> has the following
+settings:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>True - AWS OpsWorks automatically associates the appropriate built-in</dt>
+<dd><p class="first last">security group with each layer (default setting). You can associate
+additional security groups with a layer after you create it but you
+cannot delete the built-in security group.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>False - AWS OpsWorks does not associate built-in security groups with</dt>
+<dd><p class="first last">layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create.
+However, you can still manually associate a built-in security group
+with a layer on creation; custom security groups are required only
+for those layers that need custom settings.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For more information, see <a href="#id121"><span class="problematic" id="id122">`Create a New Stack`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>custom_cookbooks_source</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Contains the information required to
+retrieve an app or cookbook from a repository. For more
+information, see <a href="#id123"><span class="problematic" id="id124">`Creating Apps`_</span></a> or <a href="#id125"><span class="problematic" id="id126">`Custom Recipes and
+Cookbooks`_</span></a>.</li>
+<li><strong>default_ssh_key_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A default SSH key for the stack instances.
+You can override this value when you create or update an instance.</li>
+<li><strong>default_root_device_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The default root device type. This
+value is used by default for all instances in the stack, but you
+can override it when you create an instance. The default option is
+<cite>instance-store</cite>. For more information, see <a href="#id127"><span class="problematic" id="id128">`Storage for the Root
+Device`_</span></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.create_user_profile">
+<tt class="descname">create_user_profile</tt><big>(</big><em>iam_user_arn</em>, <em>ssh_username=None</em>, <em>ssh_public_key=None</em>, <em>allow_self_management=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.create_user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new user profile.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id129"><span class="problematic" id="id130">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>iam_user_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s IAM ARN.</li>
+<li><strong>ssh_username</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s SSH user name. The allowable characters
+are [a-z], [A-Z], [0-9], &#8216;-&#8216;, and &#8216;_&#8217;. If the specified name
+includes other punctuation marks, AWS OpsWorks removes them. For
+example, <cite>my.name</cite> will be changed to <cite>myname</cite>. If you do not
+specify an SSH user name, AWS OpsWorks generates one from the IAM
+user name.</li>
+<li><strong>ssh_public_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s public SSH key.</li>
+<li><strong>allow_self_management</strong> (<em>boolean</em>) &#8211; Whether users can specify their own SSH
+public key through the My Settings page. For more information, see
+<a href="#id131"><span class="problematic" id="id132">`Setting an IAM User&#8217;s Public SSH Key`_</span></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.delete_app">
+<tt class="descname">delete_app</tt><big>(</big><em>app_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.delete_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a specified app.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id133"><span class="problematic" id="id134">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>app_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.delete_instance">
+<tt class="descname">delete_instance</tt><big>(</big><em>instance_id</em>, <em>delete_elastic_ip=None</em>, <em>delete_volumes=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.delete_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a specified instance. You must stop an instance before
+you can delete it. For more information, see <a href="#id135"><span class="problematic" id="id136">`Deleting
+Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id137"><span class="problematic" id="id138">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</li>
+<li><strong>delete_elastic_ip</strong> (<em>boolean</em>) &#8211; Whether to delete the instance Elastic IP
+address.</li>
+<li><strong>delete_volumes</strong> (<em>boolean</em>) &#8211; Whether to delete the instance&#8217;s Amazon EBS
+volumes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.delete_layer">
+<tt class="descname">delete_layer</tt><big>(</big><em>layer_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.delete_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a specified layer. You must first stop and then delete
+all associated instances. For more information, see <a href="#id139"><span class="problematic" id="id140">`How to
+Delete a Layer`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id141"><span class="problematic" id="id142">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.delete_stack">
+<tt class="descname">delete_stack</tt><big>(</big><em>stack_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.delete_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a specified stack. You must first delete all
+instances, layers, and apps. For more information, see <a href="#id143"><span class="problematic" id="id144">`Shut
+Down a Stack`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id145"><span class="problematic" id="id146">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.delete_user_profile">
+<tt class="descname">delete_user_profile</tt><big>(</big><em>iam_user_arn</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.delete_user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a user profile.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id147"><span class="problematic" id="id148">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iam_user_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s IAM ARN.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.deregister_elastic_ip">
+<tt class="descname">deregister_elastic_ip</tt><big>(</big><em>elastic_ip</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.deregister_elastic_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deregisters a specified Elastic IP address. The address can
+then be registered by another stack. For more information, see
+<a href="#id149"><span class="problematic" id="id150">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id151"><span class="problematic" id="id152">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elastic_ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic IP address.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.deregister_rds_db_instance">
+<tt class="descname">deregister_rds_db_instance</tt><big>(</big><em>rds_db_instance_arn</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.deregister_rds_db_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deregisters an Amazon RDS instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rds_db_instance_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon RDS instance&#8217;s ARN.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.deregister_volume">
+<tt class="descname">deregister_volume</tt><big>(</big><em>volume_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.deregister_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deregisters an Amazon EBS volume. The volume can then be
+registered by another stack. For more information, see
+<a href="#id153"><span class="problematic" id="id154">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id155"><span class="problematic" id="id156">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>volume_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The volume ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_apps">
+<tt class="descname">describe_apps</tt><big>(</big><em>stack_id=None</em>, <em>app_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a description of a specified set of apps.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id157"><span class="problematic" id="id158">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app stack ID. If you use this parameter,
+<cite>DescribeApps</cite> returns a description of the apps in the specified
+stack.</li>
+<li><strong>app_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of app IDs for the apps to be described. If
+you use this parameter, <cite>DescribeApps</cite> returns a description of the
+specified apps. Otherwise, it returns a description of every app.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_commands">
+<tt class="descname">describe_commands</tt><big>(</big><em>deployment_id=None</em>, <em>instance_id=None</em>, <em>command_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes the results of specified commands.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id159"><span class="problematic" id="id160">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>deployment_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The deployment ID. If you include this parameter,
+<cite>DescribeCommands</cite> returns a description of the commands associated
+with the specified deployment.</li>
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID. If you include this parameter,
+<cite>DescribeCommands</cite> returns a description of the commands associated
+with the specified instance.</li>
+<li><strong>command_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of command IDs. If you include this
+parameter, <cite>DescribeCommands</cite> returns a description of the
+specified commands. Otherwise, it returns a description of every
+command.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_deployments">
+<tt class="descname">describe_deployments</tt><big>(</big><em>stack_id=None</em>, <em>app_id=None</em>, <em>deployment_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a description of a specified set of deployments.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id161"><span class="problematic" id="id162">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID. If you include this parameter,
+<cite>DescribeDeployments</cite> returns a description of the commands
+associated with the specified stack.</li>
+<li><strong>app_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app ID. If you include this parameter,
+<cite>DescribeDeployments</cite> returns a description of the commands
+associated with the specified app.</li>
+<li><strong>deployment_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of deployment IDs to be described. If
+you include this parameter, <cite>DescribeDeployments</cite> returns a
+description of the specified deployments. Otherwise, it returns a
+description of every deployment.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_elastic_ips">
+<tt class="descname">describe_elastic_ips</tt><big>(</big><em>instance_id=None</em>, <em>stack_id=None</em>, <em>ips=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_elastic_ips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes <a href="#id163"><span class="problematic" id="id164">`Elastic IP addresses`_</span></a>.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id165"><span class="problematic" id="id166">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID. If you include this parameter,
+<cite>DescribeElasticIps</cite> returns a description of the Elastic IP
+addresses associated with the specified instance.</li>
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A stack ID. If you include this parameter,
+<cite>DescribeElasticIps</cite> returns a description of the Elastic IP
+addresses that are registered with the specified stack.</li>
+<li><strong>ips</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of Elastic IP addresses to be described. If you
+include this parameter, <cite>DescribeElasticIps</cite> returns a description
+of the specified Elastic IP addresses. Otherwise, it returns a
+description of every Elastic IP address.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_elastic_load_balancers">
+<tt class="descname">describe_elastic_load_balancers</tt><big>(</big><em>stack_id=None</em>, <em>layer_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_elastic_load_balancers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes a stack&#8217;s Elastic Load Balancing instances.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id167"><span class="problematic" id="id168">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A stack ID. The action describes the stack&#8217;s Elastic
+Load Balancing instances.</li>
+<li><strong>layer_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of layer IDs. The action describes the Elastic
+Load Balancing instances for the specified layers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_instances">
+<tt class="descname">describe_instances</tt><big>(</big><em>stack_id=None</em>, <em>layer_id=None</em>, <em>instance_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a description of a set of instances.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id169"><span class="problematic" id="id170">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A stack ID. If you use this parameter,
+<cite>DescribeInstances</cite> returns descriptions of the instances
+associated with the specified stack.</li>
+<li><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A layer ID. If you use this parameter,
+<cite>DescribeInstances</cite> returns descriptions of the instances
+associated with the specified layer.</li>
+<li><strong>instance_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of instance IDs to be described. If you
+use this parameter, <cite>DescribeInstances</cite> returns a description of
+the specified instances. Otherwise, it returns a description of
+every instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_layers">
+<tt class="descname">describe_layers</tt><big>(</big><em>stack_id=None</em>, <em>layer_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_layers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a description of one or more layers in a specified
+stack.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id171"><span class="problematic" id="id172">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>layer_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of layer IDs that specify the layers to be
+described. If you omit this parameter, <cite>DescribeLayers</cite> returns a
+description of every layer in the specified stack.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_load_based_auto_scaling">
+<tt class="descname">describe_load_based_auto_scaling</tt><big>(</big><em>layer_ids</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_load_based_auto_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes load-based auto scaling configurations for specified
+layers.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id173"><span class="problematic" id="id174">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layer_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of layer IDs.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_my_user_profile">
+<tt class="descname">describe_my_user_profile</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_my_user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes a user&#8217;s SSH information.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have self-management enabled or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see <a href="#id175"><span class="problematic" id="id176">`Managing User Permissions`_</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_permissions">
+<tt class="descname">describe_permissions</tt><big>(</big><em>iam_user_arn=None</em>, <em>stack_id=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes the permissions for a specified stack.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id177"><span class="problematic" id="id178">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>iam_user_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s IAM ARN. For more information about IAM
+ARNs, see <a href="#id179"><span class="problematic" id="id180">`Using Identifiers`_</span></a>.</li>
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_raid_arrays">
+<tt class="descname">describe_raid_arrays</tt><big>(</big><em>instance_id=None</em>, <em>raid_array_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_raid_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describe an instance&#8217;s RAID arrays.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id181"><span class="problematic" id="id182">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID. If you use this parameter,
+<cite>DescribeRaidArrays</cite> returns descriptions of the RAID arrays
+associated with the specified instance.</li>
+<li><strong>raid_array_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of RAID array IDs. If you use this
+parameter, <cite>DescribeRaidArrays</cite> returns descriptions of the
+specified arrays. Otherwise, it returns a description of every
+array.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_rds_db_instances">
+<tt class="descname">describe_rds_db_instances</tt><big>(</big><em>stack_id</em>, <em>rds_db_instance_arns=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_rds_db_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes Amazon RDS instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID that the instances are registered with.
+The operation returns descriptions of all registered Amazon RDS
+instances.</li>
+<li><strong>rds_db_instance_arns</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array containing the ARNs of the
+instances to be described.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_service_errors">
+<tt class="descname">describe_service_errors</tt><big>(</big><em>stack_id=None</em>, <em>instance_id=None</em>, <em>service_error_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_service_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes AWS OpsWorks service errors.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id183"><span class="problematic" id="id184">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID. If you use this parameter,
+<cite>DescribeServiceErrors</cite> returns descriptions of the errors
+associated with the specified stack.</li>
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID. If you use this parameter,
+<cite>DescribeServiceErrors</cite> returns descriptions of the errors
+associated with the specified instance.</li>
+<li><strong>service_error_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of service error IDs. If you use
+this parameter, <cite>DescribeServiceErrors</cite> returns descriptions of the
+specified errors. Otherwise, it returns a description of every
+error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_stack_summary">
+<tt class="descname">describe_stack_summary</tt><big>(</big><em>stack_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_stack_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes the number of layers and apps in a specified stack,
+and the number of instances in each state, such as
+<cite>running_setup</cite> or <cite>online</cite>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id185"><span class="problematic" id="id186">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_stacks">
+<tt class="descname">describe_stacks</tt><big>(</big><em>stack_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_stacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests a description of one or more stacks.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id187"><span class="problematic" id="id188">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of stack IDs that specify the stacks to be
+described. If you omit this parameter, <cite>DescribeStacks</cite> returns a
+description of every stack.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_time_based_auto_scaling">
+<tt class="descname">describe_time_based_auto_scaling</tt><big>(</big><em>instance_ids</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_time_based_auto_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes time-based auto scaling configurations for specified
+instances.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id189"><span class="problematic" id="id190">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of instance IDs.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_user_profiles">
+<tt class="descname">describe_user_profiles</tt><big>(</big><em>iam_user_arns=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_user_profiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describe specified users.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id191"><span class="problematic" id="id192">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iam_user_arns</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of IAM user ARNs that identify the users
+to be described.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.describe_volumes">
+<tt class="descname">describe_volumes</tt><big>(</big><em>instance_id=None</em>, <em>stack_id=None</em>, <em>raid_array_id=None</em>, <em>volume_ids=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.describe_volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes an instance&#8217;s Amazon EBS volumes.</p>
+<p>You must specify at least one of the parameters.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Show, Deploy, or Manage permissions level for the
+stack, or an attached policy that explicitly grants
+permissions. For more information on user permissions, see
+<a href="#id193"><span class="problematic" id="id194">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID. If you use this parameter,
+<cite>DescribeVolumes</cite> returns descriptions of the volumes associated
+with the specified instance.</li>
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A stack ID. The action describes the stack&#8217;s
+registered Amazon EBS volumes.</li>
+<li><strong>raid_array_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The RAID array ID. If you use this parameter,
+<cite>DescribeVolumes</cite> returns descriptions of the volumes associated
+with the specified RAID array.</li>
+<li><strong>volume_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Am array of volume IDs. If you use this parameter,
+<cite>DescribeVolumes</cite> returns descriptions of the specified volumes.
+Otherwise, it returns a description of every volume.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.detach_elastic_load_balancer">
+<tt class="descname">detach_elastic_load_balancer</tt><big>(</big><em>elastic_load_balancer_name</em>, <em>layer_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.detach_elastic_load_balancer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches a specified Elastic Load Balancing instance from its
+layer.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id195"><span class="problematic" id="id196">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elastic_load_balancer_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic Load Balancing
+instance&#8217;s name.</li>
+<li><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the layer that the Elastic Load Balancing
+instance is attached to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.disassociate_elastic_ip">
+<tt class="descname">disassociate_elastic_ip</tt><big>(</big><em>elastic_ip</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.disassociate_elastic_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disassociates an Elastic IP address from its instance. The
+address remains registered with the stack. For more
+information, see <a href="#id197"><span class="problematic" id="id198">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id199"><span class="problematic" id="id200">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>elastic_ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic IP address.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.get_hostname_suggestion">
+<tt class="descname">get_hostname_suggestion</tt><big>(</big><em>layer_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.get_hostname_suggestion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a generated host name for the specified layer, based on
+the current host name theme.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id201"><span class="problematic" id="id202">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>action</em>, <em>body</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.reboot_instance">
+<tt class="descname">reboot_instance</tt><big>(</big><em>instance_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.reboot_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reboots a specified instance. For more information, see
+<a href="#id203"><span class="problematic" id="id204">`Starting, Stopping, and Rebooting Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id205"><span class="problematic" id="id206">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.register_elastic_ip">
+<tt class="descname">register_elastic_ip</tt><big>(</big><em>elastic_ip</em>, <em>stack_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.register_elastic_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers an Elastic IP address with a specified stack. An
+address can be registered with only one stack at a time. If
+the address is already registered, you must first deregister
+it by calling DeregisterElasticIp. For more information, see
+<a href="#id207"><span class="problematic" id="id208">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id209"><span class="problematic" id="id210">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elastic_ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Elastic IP address.</li>
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.register_rds_db_instance">
+<tt class="descname">register_rds_db_instance</tt><big>(</big><em>stack_id</em>, <em>rds_db_instance_arn</em>, <em>db_user</em>, <em>db_password</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.register_rds_db_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers an Amazon RDS instance with a stack.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>rds_db_instance_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon RDS instance&#8217;s ARN.</li>
+<li><strong>db_user</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The database&#8217;s master user name.</li>
+<li><strong>db_password</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The database password.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.register_volume">
+<tt class="descname">register_volume</tt><big>(</big><em>stack_id</em>, <em>ec_2_volume_id=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.register_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers an Amazon EBS volume with a specified stack. A
+volume can be registered with only one stack at a time. If the
+volume is already registered, you must first deregister it by
+calling DeregisterVolume. For more information, see <a href="#id211"><span class="problematic" id="id212">`Resource
+Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id213"><span class="problematic" id="id214">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ec_2_volume_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon EBS volume ID.</li>
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.set_load_based_auto_scaling">
+<tt class="descname">set_load_based_auto_scaling</tt><big>(</big><em>layer_id</em>, <em>enable=None</em>, <em>up_scaling=None</em>, <em>down_scaling=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.set_load_based_auto_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the load-based auto scaling configuration for a
+specified layer. For more information, see <a href="#id215"><span class="problematic" id="id216">`Managing Load with
+Time-based and Load-based Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id217"><span class="problematic" id="id218">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer ID.</li>
+<li><strong>enable</strong> (<em>boolean</em>) &#8211; Enables load-based auto scaling for the layer.</li>
+<li><strong>up_scaling</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; An <cite>AutoScalingThresholds</cite> object with the upscaling
+threshold configuration. If the load exceeds these thresholds for a
+specified amount of time, AWS OpsWorks starts a specified number of
+instances.</li>
+<li><strong>down_scaling</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; An <cite>AutoScalingThresholds</cite> object with the
+downscaling threshold configuration. If the load falls below these
+thresholds for a specified amount of time, AWS OpsWorks stops a
+specified number of instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.set_permission">
+<tt class="descname">set_permission</tt><big>(</big><em>stack_id</em>, <em>iam_user_arn</em>, <em>allow_ssh=None</em>, <em>allow_sudo=None</em>, <em>level=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.set_permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies a user&#8217;s permissions. For more information, see
+<a href="#id219"><span class="problematic" id="id220">`Security and Permissions`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id221"><span class="problematic" id="id222">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>iam_user_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s IAM ARN.</li>
+<li><strong>allow_ssh</strong> (<em>boolean</em>) &#8211; The user is allowed to use SSH to communicate with
+the instance.</li>
+<li><strong>allow_sudo</strong> (<em>boolean</em>) &#8211; The user is allowed to use <strong>sudo</strong> to elevate
+privileges.</li>
+<li><strong>level</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s permission level, which must be set to one of
+the following strings. You cannot set your own permissions level.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><cite>deny</cite></li>
+<li><cite>show</cite></li>
+<li><cite>deploy</cite></li>
+<li><cite>manage</cite></li>
+<li><cite>iam_only</cite></li>
+</ul>
+<dl class="docutils">
+<dt>For more information on the permissions associated with these levels,</dt>
+<dd>see <a href="#id223"><span class="problematic" id="id224">`Managing User Permissions`_</span></a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.set_time_based_auto_scaling">
+<tt class="descname">set_time_based_auto_scaling</tt><big>(</big><em>instance_id</em>, <em>auto_scaling_schedule=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.set_time_based_auto_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the time-based auto scaling configuration for a
+specified instance. For more information, see <a href="#id225"><span class="problematic" id="id226">`Managing Load
+with Time-based and Load-based Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id227"><span class="problematic" id="id228">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</li>
+<li><strong>auto_scaling_schedule</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; An <cite>AutoScalingSchedule</cite> with the
+instance schedule.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.start_instance">
+<tt class="descname">start_instance</tt><big>(</big><em>instance_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.start_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a specified instance. For more information, see
+<a href="#id229"><span class="problematic" id="id230">`Starting, Stopping, and Rebooting Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id231"><span class="problematic" id="id232">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.start_stack">
+<tt class="descname">start_stack</tt><big>(</big><em>stack_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.start_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a stack&#8217;s instances.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id233"><span class="problematic" id="id234">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.stop_instance">
+<tt class="descname">stop_instance</tt><big>(</big><em>instance_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.stop_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops a specified instance. When you stop a standard instance,
+the data disappears and must be reinstalled when you restart
+the instance. You can stop an Amazon EBS-backed instance
+without losing data. For more information, see <a href="#id235"><span class="problematic" id="id236">`Starting,
+Stopping, and Rebooting Instances`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id237"><span class="problematic" id="id238">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.stop_stack">
+<tt class="descname">stop_stack</tt><big>(</big><em>stack_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.stop_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops a specified stack.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id239"><span class="problematic" id="id240">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.unassign_volume">
+<tt class="descname">unassign_volume</tt><big>(</big><em>volume_id</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.unassign_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unassigns an assigned Amazon EBS volume. The volume remains
+registered with the stack. For more information, see <a href="#id241"><span class="problematic" id="id242">`Resource
+Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id243"><span class="problematic" id="id244">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>volume_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The volume ID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_app">
+<tt class="descname">update_app</tt><big>(</big><em>app_id</em>, <em>name=None</em>, <em>description=None</em>, <em>data_sources=None</em>, <em>type=None</em>, <em>app_source=None</em>, <em>domains=None</em>, <em>enable_ssl=None</em>, <em>ssl_configuration=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a specified app.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Deploy or Manage permissions level for the stack, or an
+attached policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id245"><span class="problematic" id="id246">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>app_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app ID.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app name.</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A description of the app.</li>
+<li><strong>data_sources</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The app&#8217;s data sources.</li>
+<li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The app type.</li>
+<li><strong>app_source</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>Source</cite> object that specifies the app repository.</li>
+<li><strong>domains</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The app&#8217;s virtual host settings, with multiple domains
+separated by commas. For example: <cite>&#8216;www.example.com, example.com&#8217;</cite></li>
+<li><strong>enable_ssl</strong> (<em>boolean</em>) &#8211; Whether SSL is enabled for the app.</li>
+<li><strong>ssl_configuration</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; An <cite>SslConfiguration</cite> object with the SSL
+configuration.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_elastic_ip">
+<tt class="descname">update_elastic_ip</tt><big>(</big><em>elastic_ip</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_elastic_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a registered Elastic IP address&#8217;s name. For more
+information, see <a href="#id247"><span class="problematic" id="id248">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id249"><span class="problematic" id="id250">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elastic_ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The address.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The new name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_instance">
+<tt class="descname">update_instance</tt><big>(</big><em>instance_id</em>, <em>layer_ids=None</em>, <em>instance_type=None</em>, <em>auto_scaling_type=None</em>, <em>hostname=None</em>, <em>os=None</em>, <em>ami_id=None</em>, <em>ssh_key_name=None</em>, <em>architecture=None</em>, <em>install_updates_on_boot=None</em>, <em>ebs_optimized=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a specified instance.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id251"><span class="problematic" id="id252">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance ID.</li>
+<li><strong>layer_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The instance&#8217;s layer IDs.</li>
+<li><strong>instance_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance type. AWS OpsWorks supports all
+instance types except Cluster Compute, Cluster GPU, and High Memory
+Cluster. For more information, see <a href="#id253"><span class="problematic" id="id254">`Instance Families and Types`_</span></a>.
+The parameter values that you use to specify the various types are
+in the API Name column of the Available Instance Types table.</li>
+<li><strong>auto_scaling_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The instance&#8217;s auto scaling type, which has three possible values:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>AlwaysRunning</strong>: A 24/7 instance, which is not affected by auto</dt>
+<dd><p class="first last">scaling.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>TimeBasedAutoScaling</strong>: A time-based auto scaling instance, which</dt>
+<dd><p class="first last">is started and stopped based on a specified schedule.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>LoadBasedAutoScaling</strong>: A load-based auto scaling instance, which</dt>
+<dd><p class="first last">is started and stopped based on load metrics.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hostname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance host name.</li>
+<li><strong>os</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance operating system, which must be set to one of
+the following.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Standard operating systems: <cite>Amazon Linux</cite> or <cite>Ubuntu 12.04 LTS</cite></li>
+<li>Custom AMIs: <cite>Custom</cite></li>
+</ul>
+<dl class="docutils">
+<dt>The default option is <cite>Amazon Linux</cite>. If you set this parameter to</dt>
+<dd><cite>Custom</cite>, you must use the CreateInstance action&#8217;s AmiId parameter
+to specify the custom AMI that you want to use. For more
+information on the standard operating systems, see <a href="#id255"><span class="problematic" id="id256">`Operating
+Systems`_For more information on how to use custom AMIs with
+OpsWorks, see `Using Custom AMIs`_</span></a>.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ami_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A custom AMI ID to be used to create the instance. The
+AMI should be based on one of the standard AWS OpsWorks APIs:
+Amazon Linux or Ubuntu 12.04 LTS. For more information, see
+<a href="#id257"><span class="problematic" id="id258">`Instances`_</span></a></li>
+<li><strong>ssh_key_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance SSH key name.</li>
+<li><strong>architecture</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The instance architecture. Instance types do not
+necessarily support both architectures. For a list of the
+architectures that are supported by the different instance types,
+see <a href="#id259"><span class="problematic" id="id260">`Instance Families and Types`_</span></a>.</li>
+<li><strong>install_updates_on_boot</strong> (<em>boolean</em>) &#8211; Whether to install operating system and
+package updates when the instance boots. The default value is
+<cite>True</cite>. To control when updates are installed, set this value to
+<cite>False</cite>. You must then update your instances manually by using
+CreateDeployment to run the <cite>update_dependencies</cite> stack command or
+manually running <cite>yum</cite> (Amazon Linux) or <cite>apt-get</cite> (Ubuntu) on the
+instances.</li>
+<li><strong>ebs_optimized</strong> (<em>boolean</em>) &#8211; Whether this is an Amazon EBS-optimized instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_layer">
+<tt class="descname">update_layer</tt><big>(</big><em>layer_id</em>, <em>name=None</em>, <em>shortname=None</em>, <em>attributes=None</em>, <em>custom_instance_profile_arn=None</em>, <em>custom_security_group_ids=None</em>, <em>packages=None</em>, <em>volume_configurations=None</em>, <em>enable_auto_healing=None</em>, <em>auto_assign_elastic_ips=None</em>, <em>auto_assign_public_ips=None</em>, <em>custom_recipes=None</em>, <em>install_updates_on_boot=None</em>, <em>use_ebs_optimized_instances=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a specified layer.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id261"><span class="problematic" id="id262">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>layer_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer ID.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer name, which is used by the console.</li>
+<li><strong>shortname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The layer short name, which is used internally by AWS
+OpsWorksand by Chef. The short name is also used as the name for
+the directory where your app files are installed. It can have a
+maximum of 200 characters and must be in the following format:
+/A[a-z0-9-_.]+Z/.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+<li><strong>custom_instance_profile_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of an IAM profile to be
+used for all of the layer&#8217;s EC2 instances. For more information
+about IAM ARNs, see <a href="#id263"><span class="problematic" id="id264">`Using Identifiers`_</span></a>.</li>
+<li><strong>custom_security_group_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array containing the layer&#8217;s
+custom security group IDs.</li>
+<li><strong>packages</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; An array of <cite>Package</cite> objects that describe the
+layer&#8217;s packages.</li>
+<li><strong>volume_configurations</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A <cite>VolumeConfigurations</cite> object that
+describes the layer&#8217;s Amazon EBS volumes.</li>
+<li><strong>enable_auto_healing</strong> (<em>boolean</em>) &#8211; Whether to disable auto healing for the
+layer.</li>
+<li><strong>auto_assign_elastic_ips</strong> (<em>boolean</em>) &#8211; Whether to automatically assign an
+<a href="#id265"><span class="problematic" id="id266">`Elastic IP address`_</span></a> to the layer&#8217;s instances. For more
+information, see <a href="#id267"><span class="problematic" id="id268">`How to Edit a Layer`_</span></a>.</li>
+<li><strong>auto_assign_public_ips</strong> (<em>boolean</em>) &#8211; For stacks that are running in a VPC,
+whether to automatically assign a public IP address to the layer&#8217;s
+instances. For more information, see <a href="#id269"><span class="problematic" id="id270">`How to Edit a Layer`_</span></a>.</li>
+<li><strong>custom_recipes</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>LayerCustomRecipes</cite> object that specifies the
+layer&#8217;s custom recipes.</li>
+<li><strong>install_updates_on_boot</strong> (<em>boolean</em>) &#8211; Whether to install operating system and
+package updates when the instance boots. The default value is
+<cite>True</cite>. To control when updates are installed, set this value to
+<cite>False</cite>. You must then update your instances manually by using
+CreateDeployment to run the <cite>update_dependencies</cite> stack command or
+manually running <cite>yum</cite> (Amazon Linux) or <cite>apt-get</cite> (Ubuntu) on the
+instances.</li>
+<li><strong>use_ebs_optimized_instances</strong> (<em>boolean</em>) &#8211; Whether to use Amazon EBS-optimized
+instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_my_user_profile">
+<tt class="descname">update_my_user_profile</tt><big>(</big><em>ssh_public_key=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_my_user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a user&#8217;s SSH public key.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have self-management enabled or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see <a href="#id271"><span class="problematic" id="id272">`Managing User Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ssh_public_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s SSH public key.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_rds_db_instance">
+<tt class="descname">update_rds_db_instance</tt><big>(</big><em>rds_db_instance_arn</em>, <em>db_user=None</em>, <em>db_password=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_rds_db_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates an Amazon RDS instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rds_db_instance_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon RDS instance&#8217;s ARN.</li>
+<li><strong>db_user</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The master user name.</li>
+<li><strong>db_password</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The database password.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_stack">
+<tt class="descname">update_stack</tt><big>(</big><em>stack_id</em>, <em>name=None</em>, <em>attributes=None</em>, <em>service_role_arn=None</em>, <em>default_instance_profile_arn=None</em>, <em>default_os=None</em>, <em>hostname_theme=None</em>, <em>default_availability_zone=None</em>, <em>default_subnet_id=None</em>, <em>custom_json=None</em>, <em>configuration_manager=None</em>, <em>chef_configuration=None</em>, <em>use_custom_cookbooks=None</em>, <em>custom_cookbooks_source=None</em>, <em>default_ssh_key_name=None</em>, <em>default_root_device_type=None</em>, <em>use_opsworks_security_groups=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a specified stack.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id273"><span class="problematic" id="id274">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stack_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack ID.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s new name.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; One or more user-defined key/value pairs to be added
+to the stack attributes.</li>
+<li><strong>service_role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack AWS Identity and Access Management
+(IAM) role, which allows AWS OpsWorks to work with AWS resources on
+your behalf. You must set this parameter to the Amazon Resource
+Name (ARN) for an existing IAM role. For more information about IAM
+ARNs, see <a href="#id275"><span class="problematic" id="id276">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_instance_profile_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of an IAM profile that is
+the default profile for all of the stack&#8217;s EC2 instances. For more
+information about IAM ARNs, see <a href="#id277"><span class="problematic" id="id278">`Using Identifiers`_</span></a>.</li>
+<li><strong>default_os</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default operating system, which must be
+set to <cite>Amazon Linux</cite> or <cite>Ubuntu 12.04 LTS</cite>. The default option is
+<cite>Amazon Linux</cite>.</li>
+<li><strong>hostname_theme</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s new host name theme, with spaces are
+replaced by underscores. The theme is used to generate host names
+for the stack&#8217;s instances. By default, <cite>HostnameTheme</cite> is set to
+<cite>Layer_Dependent</cite>, which creates host names by appending integers
+to the layer&#8217;s short name. The other themes are:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><cite>Baked_Goods</cite></li>
+<li><cite>Clouds</cite></li>
+<li><cite>European_Cities</cite></li>
+<li><cite>Fruits</cite></li>
+<li><cite>Greek_Deities</cite></li>
+<li><cite>Legendary_Creatures_from_Japan</cite></li>
+<li><cite>Planets_and_Moons</cite></li>
+<li><cite>Roman_Deities</cite></li>
+<li><cite>Scottish_Islands</cite></li>
+<li><cite>US_Cities</cite></li>
+<li><cite>Wild_Cats</cite></li>
+</ul>
+<dl class="docutils">
+<dt>To obtain a generated host name, call <cite>GetHostNameSuggestion</cite>, which</dt>
+<dd>returns a host name based on the current theme.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>default_availability_zone</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default Availability
+Zone, which must be in the specified region. For more information,
+see <a href="#id279"><span class="problematic" id="id280">`Regions and Endpoints`_</span></a>. If you also specify a value for
+<cite>DefaultSubnetId</cite>, the subnet must be in the same zone. For more
+information, see CreateStack.</li>
+<li><strong>default_subnet_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The stack&#8217;s default subnet ID. All instances
+will be launched into this subnet unless you specify otherwise when
+you create the instance. If you also specify a value for
+<cite>DefaultAvailabilityZone</cite>, the subnet must be in that zone. For
+more information, see CreateStack.</li>
+<li><strong>custom_json</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that contains user-defined, custom JSON.
+It is used to override the corresponding default stack
+configuration JSON values. The string should be in the following
+format and must escape characters such as &#8216;&#8221;&#8217;.:</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><cite>&#8220;{&#8220;key1&#8221;: &#8220;value1&#8221;, &#8220;key2&#8221;: &#8220;value2&#8221;,...}&#8221;</cite></p>
+<dl class="docutils">
+<dt>For more information on custom JSON, see <a href="#id7"><span class="problematic" id="id8">`</span></a>Use Custom JSON to Modify the</dt>
+<dd>Stack Configuration JSON`_.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>configuration_manager</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The configuration manager. When you clone
+a stack we recommend that you use the configuration manager to
+specify the Chef version, 0.9, 11.4, or 11.10. The default value is
+currently 11.4.</li>
+<li><strong>chef_configuration</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A <cite>ChefConfiguration</cite> object that specifies
+whether to enable Berkshelf and the Berkshelf version on Chef 11.10
+stacks. For more information, see <a href="#id281"><span class="problematic" id="id282">`Create a New Stack`_</span></a>.</li>
+<li><strong>use_custom_cookbooks</strong> (<em>boolean</em>) &#8211; Whether the stack uses custom cookbooks.</li>
+<li><strong>custom_cookbooks_source</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Contains the information required to
+retrieve an app or cookbook from a repository. For more
+information, see <a href="#id283"><span class="problematic" id="id284">`Creating Apps`_</span></a> or <a href="#id285"><span class="problematic" id="id286">`Custom Recipes and
+Cookbooks`_</span></a>.</li>
+<li><strong>default_ssh_key_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A default SSH key for the stack instances.
+You can override this value when you create or update an instance.</li>
+<li><strong>default_root_device_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The default root device type. This
+value is used by default for all instances in the stack, but you
+can override it when you create an instance. For more information,
+see <a href="#id287"><span class="problematic" id="id288">`Storage for the Root Device`_</span></a>.</li>
+<li><strong>use_opsworks_security_groups</strong> (<em>boolean</em>) &#8211; Whether to associate the AWS
+OpsWorks built-in security groups with the stack&#8217;s layers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>AWS OpsWorks provides a standard set of built-in security groups, one</dt>
+<dd>for each layer, which are associated with layers by default.
+<cite>UseOpsworksSecurityGroups</cite> allows you to instead provide your own
+custom security groups. <cite>UseOpsworksSecurityGroups</cite> has the
+following settings:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>True - AWS OpsWorks automatically associates the appropriate built-in</dt>
+<dd><p class="first last">security group with each layer (default setting). You can associate
+additional security groups with a layer after you create it but you
+cannot delete the built-in security group.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>False - AWS OpsWorks does not associate built-in security groups with</dt>
+<dd><p class="first last">layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create.
+However, you can still manually associate a built-in security group
+with a layer on creation; custom security groups are required only
+for those layers that need custom settings.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For more information, see <a href="#id289"><span class="problematic" id="id290">`Create a New Stack`_</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_user_profile">
+<tt class="descname">update_user_profile</tt><big>(</big><em>iam_user_arn</em>, <em>ssh_username=None</em>, <em>ssh_public_key=None</em>, <em>allow_self_management=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a specified user profile.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have an attached policy that explicitly grants permissions.
+For more information on user permissions, see <a href="#id291"><span class="problematic" id="id292">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>iam_user_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user IAM ARN.</li>
+<li><strong>ssh_username</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s SSH user name. The allowable characters
+are [a-z], [A-Z], [0-9], &#8216;-&#8216;, and &#8216;_&#8217;. If the specified name
+includes other punctuation marks, AWS OpsWorks removes them. For
+example, <cite>my.name</cite> will be changed to <cite>myname</cite>. If you do not
+specify an SSH user name, AWS OpsWorks generates one from the IAM
+user name.</li>
+<li><strong>ssh_public_key</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The user&#8217;s new SSH public key.</li>
+<li><strong>allow_self_management</strong> (<em>boolean</em>) &#8211; Whether users can specify their own SSH
+public key through the My Settings page. For more information, see
+<a href="#id293"><span class="problematic" id="id294">`Managing User Permissions`_</span></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.opsworks.layer1.OpsWorksConnection.update_volume">
+<tt class="descname">update_volume</tt><big>(</big><em>volume_id</em>, <em>name=None</em>, <em>mount_point=None</em><big>)</big><a class="headerlink" href="#boto.opsworks.layer1.OpsWorksConnection.update_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates an Amazon EBS volume&#8217;s name or mount point. For more
+information, see <a href="#id295"><span class="problematic" id="id296">`Resource Management`_</span></a>.</p>
+<p><strong>Required Permissions</strong>: To use this action, an IAM user must
+have a Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more
+information on user permissions, see <a href="#id297"><span class="problematic" id="id298">`Managing User
+Permissions`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volume_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The volume ID.</li>
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The new name.</li>
+<li><strong>mount_point</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The new mount point.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="boto-opsworks-exceptions">
+<h2>boto.opsworks.exceptions<a class="headerlink" href="#boto-opsworks-exceptions" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-boto.opsworks.exceptions"></span><dl class="exception">
+<dt id="boto.opsworks.exceptions.ResourceNotFoundException">
+<em class="property">exception </em><tt class="descclassname">boto.opsworks.exceptions.</tt><tt class="descname">ResourceNotFoundException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.opsworks.exceptions.ResourceNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.opsworks.exceptions.ValidationException">
+<em class="property">exception </em><tt class="descclassname">boto.opsworks.exceptions.</tt><tt class="descname">ValidationException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.opsworks.exceptions.ValidationException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Opsworks</a><ul>
+<li><a class="reference internal" href="#boto-opsworks">boto.opsworks</a></li>
+<li><a class="reference internal" href="#boto-opsworks-layer1">boto.opsworks.layer1</a></li>
+<li><a class="reference internal" href="#boto-opsworks-exceptions">boto.opsworks.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mws.html"
+                        title="previous chapter">mws</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pyami.html"
+                        title="next chapter">pyami</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/opsworks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyami.html" title="pyami"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mws.html" title="mws"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

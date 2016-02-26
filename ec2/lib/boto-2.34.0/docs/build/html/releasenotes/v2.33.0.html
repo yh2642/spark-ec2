@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.33.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.4.0" href="v2.4.0.html" />
+    <link rel="prev" title="boto v2.32.1" href="v2.32.1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.4.0.html" title="boto v2.4.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.32.1.html" title="boto v2.32.1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-33-0">
+<h1>boto v2.33.0<a class="headerlink" href="#boto-v2-33-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/10/08</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for Amazon Route 53 Domains, Amazon Cognito Identity,
+Amazon Cognito Sync, the DynamoDB document model feature, and fixes several
+issues.</p>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added TaggedEC2Object.remove_tags. (<a class="reference external" href="https://github.com/boto/boto/issues/2610">issue 2610</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2269">issue 2269</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2414">issue 2414</a>, <a class="reference external" href="https://github.com/boto/boto/commit/bce8fcf">commit bce8fcf</a>)</li>
+<li>Fixed 403 error from url encoded User-Agent header (<a class="reference external" href="https://github.com/boto/boto/issues/2621">issue 2621</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2043a89">commit 2043a89</a>)</li>
+<li>Inserted break when iterating Route53 records. (<a class="reference external" href="https://github.com/boto/boto/issues/2631">issue 2631</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2de8716">commit 2de8716</a>)</li>
+<li>Fix typo in ELB ConnectionSettings attribute (<a class="reference external" href="https://github.com/boto/boto/issues/2602">issue 2602</a>, <a class="reference external" href="https://github.com/boto/boto/commit/63bd53b">commit 63bd53b</a>)</li>
+<li>PEP8 fixes to various common modules. (<a class="reference external" href="https://github.com/boto/boto/issues/2611">issue 2611</a>, <a class="reference external" href="https://github.com/boto/boto/commit/44d873d">commit 44d873d</a>)</li>
+<li>Route Tables: Update describe_route_tables to support additional route types (VPC peering connection, NIC). (<a class="reference external" href="https://github.com/boto/boto/issues/2598">issue 2598</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2597">issue 2597</a>, <a class="reference external" href="https://github.com/boto/boto/commit/bbe8ce7">commit bbe8ce7</a>)</li>
+<li>Fix an error in Python 3 when creating launch configs. Enables AutoScaling unit tests to run by default. (<a class="reference external" href="https://github.com/boto/boto/issues/2591">issue 2591</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fb4aeec">commit fb4aeec</a>)</li>
+<li>Use svg instead of png to get better image quality. (<a class="reference external" href="https://github.com/boto/boto/issues/2588">issue 2588</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1de6b41">commit 1de6b41</a>)</li>
+<li>STS now signs using sigv4. (<a class="reference external" href="https://github.com/boto/boto/issues/2627">issue 2627</a>, <a class="reference external" href="https://github.com/boto/boto/commit/36b247f">commit 36b247f</a>)</li>
+<li>Added support for Amazon Cognito. (<a class="reference external" href="https://github.com/boto/boto/issues/2608">issue 2608</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fa3a39e">commit fa3a39e</a>)</li>
+<li>Fix bug where sigv4 custom metadata headers were presigned incorrectly. (<a class="reference external" href="https://github.com/boto/boto/issues/2604">issue 2604</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8853e8e">commit 8853e8e</a>)</li>
+<li>Add some regions to cloudsearch (<a class="reference external" href="https://github.com/boto/boto/issues/2593">issue 2593</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8c6ea21">commit 8c6ea21</a>)</li>
+<li>fix typo in s3 tutorial (<a class="reference external" href="https://github.com/boto/boto/issues/2612">issue 2612</a>, <a class="reference external" href="https://github.com/boto/boto/commit/92dd581">commit 92dd581</a>)</li>
+<li>fix ELB ConnectionSettings values in documentation (<a class="reference external" href="https://github.com/boto/boto/issues/2620">issue 2620</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d2231a2">commit d2231a2</a>)</li>
+<li>Few typo in docstring (<a class="reference external" href="https://github.com/boto/boto/issues/2590">issue 2590</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0238747">commit 0238747</a>)</li>
+<li>Add support for  Amazon Route 53 Domains. (<a class="reference external" href="https://github.com/boto/boto/issues/2601">issue 2601</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d149a87">commit d149a87</a>)</li>
+<li>Support EBS encryption in BlockDeviceType. (<a class="reference external" href="https://github.com/boto/boto/issues/2587">issue 2587</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2480">issue 2480</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7a39741">commit 7a39741</a>)</li>
+<li>Fix a typo in auth.py: Bejing -&gt; Beijing. (<a class="reference external" href="https://github.com/boto/boto/issues/2585">issue 2585</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8525616">commit 8525616</a>)</li>
+<li>Update boto/cacerts/cacerts.txt. (<a class="reference external" href="https://github.com/boto/boto/issues/2567">issue 2567</a>, <a class="reference external" href="https://github.com/boto/boto/commit/02b836c">commit 02b836c</a>)</li>
+<li>route53 module: tidy up to meet PEP8 better. (<a class="reference external" href="https://github.com/boto/boto/issues/2571">issue 2571</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3a3e960">commit 3a3e960</a>)</li>
+<li>Update count_slow documentation. (<a class="reference external" href="https://github.com/boto/boto/issues/2569">issue 2569</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e926d2d">commit e926d2d</a>)</li>
+<li>iam module: tidy up to meet PEP8 better. (<a class="reference external" href="https://github.com/boto/boto/issues/2566">issue 2566</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3c83da9">commit 3c83da9</a>)</li>
+<li>Assigning ACL ID to network_acl_id  instead of route_table_id. (<a class="reference external" href="https://github.com/boto/boto/issues/2548">issue 2548</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c017b02">commit c017b02</a>)</li>
+<li>Avoid infinite loop with bucket listing and encoding_type=&#8217;url&#8217;. (<a class="reference external" href="https://github.com/boto/boto/issues/2562">issue 2562</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2561">issue 2561</a>, <a class="reference external" href="https://github.com/boto/boto/commit/39cbcb5">commit 39cbcb5</a>)</li>
+<li>Use urllib timeout param instead of hacking socket global timeout. (<a class="reference external" href="https://github.com/boto/boto/issues/2560">issue 2560</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1935">issue 1935</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c1dd1fb">commit c1dd1fb</a>)</li>
+<li>Support non-ascii unicode strings in _get_all_query_args. Fixes: #2558, #2559. (<a class="reference external" href="https://github.com/boto/boto/issues/2559">issue 2559</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2558">issue 2558</a>, <a class="reference external" href="https://github.com/boto/boto/commit/069d04b">commit 069d04b</a>)</li>
+<li>Truncated Response Handling in Route53 ListResourceRecordSets. (<a class="reference external" href="https://github.com/boto/boto/issues/2542">issue 2542</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3ba380f">commit 3ba380f</a>)</li>
+<li>Update to latest OpsWorks API. (<a class="reference external" href="https://github.com/boto/boto/issues/2547">issue 2547</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ac2b311">commit ac2b311</a>)</li>
+<li>Better S3 key repr support for unicode. (<a class="reference external" href="https://github.com/boto/boto/issues/2525">issue 2525</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2516">issue 2516</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8198884">commit 8198884</a>)</li>
+<li>Skip test when locale is missing. (<a class="reference external" href="https://github.com/boto/boto/issues/2554">issue 2554</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2540">issue 2540</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2b87583">commit 2b87583</a>)</li>
+<li>Add profile_name support to SQS. (<a class="reference external" href="https://github.com/boto/boto/issues/2459">issue 2459</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3837951">commit 3837951</a>)</li>
+<li>Include test_endpoints.json in source distribution. (<a class="reference external" href="https://github.com/boto/boto/issues/2550">issue 2550</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7f907b7">commit 7f907b7</a>)</li>
+<li>Pass along params in make_request for elastic transcoder api. (<a class="reference external" href="https://github.com/boto/boto/issues/2537">issue 2537</a>, <a class="reference external" href="https://github.com/boto/boto/commit/964999e">commit 964999e</a>)</li>
+<li>Documents not found behavior of get_item(). (<a class="reference external" href="https://github.com/boto/boto/issues/2544">issue 2544</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9b9c1c4">commit 9b9c1c4</a>)</li>
+<li>Support auth when headers contains bytes. (<a class="reference external" href="https://github.com/boto/boto/issues/2521">issue 2521</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2520">issue 2520</a>, <a class="reference external" href="https://github.com/boto/boto/commit/885348d">commit 885348d</a>)</li>
+<li>PEP8 style fixes for ElastiCache. (<a class="reference external" href="https://github.com/boto/boto/issues/2539">issue 2539</a>, <a class="reference external" href="https://github.com/boto/boto/commit/bd0d6db">commit bd0d6db</a>)</li>
+<li>PEP8 style fixes for SES. (<a class="reference external" href="https://github.com/boto/boto/issues/2538">issue 2538</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c620c43">commit c620c43</a>)</li>
+<li>Doc updates for CloudSearch. (<a class="reference external" href="https://github.com/boto/boto/issues/2546">issue 2546</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9efebc2">commit 9efebc2</a>)</li>
+<li>Update to latest Redshift API. (<a class="reference external" href="https://github.com/boto/boto/issues/2545">issue 2545</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9151092">commit 9151092</a>)</li>
+<li>Update to latest support API. (<a class="reference external" href="https://github.com/boto/boto/issues/2541">issue 2541</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2426">issue 2426</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8cf1b52">commit 8cf1b52</a>)</li>
+<li>Uses file name as archive description when uploading to glacier. (<a class="reference external" href="https://github.com/boto/boto/issues/2535">issue 2535</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2528">issue 2528</a>, <a class="reference external" href="https://github.com/boto/boto/commit/38478c1">commit 38478c1</a>)</li>
+<li>Fix the ec2.elb.listener.Listener class&#8217;s __getitem__ method. (<a class="reference external" href="https://github.com/boto/boto/issues/2533">issue 2533</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7b67f98">commit 7b67f98</a>)</li>
+<li>Add recognized HTTP headers for S3 metadata. (<a class="reference external" href="https://github.com/boto/boto/issues/2477">issue 2477</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2050">issue 2050</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c8c625a">commit c8c625a</a>)</li>
+<li>Fix class name for document. (<a class="reference external" href="https://github.com/boto/boto/issues/2530">issue 2530</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2f0e689">commit 2f0e689</a>)</li>
+<li>Copy CloudSearch proxy settings to endpoint services. (<a class="reference external" href="https://github.com/boto/boto/issues/2513">issue 2513</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3cbbc21">commit 3cbbc21</a>)</li>
+<li>Merge branch &#8216;develop&#8217; into cloudsearch2-proxy (<a class="reference external" href="https://github.com/boto/boto/commit/5b424db">commit 5b424db</a>)</li>
+<li>Add IAMer as an application built on boto. (<a class="reference external" href="https://github.com/boto/boto/issues/2515">issue 2515</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1f35224">commit 1f35224</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.33.0</a><ul>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.32.1.html"
+                        title="previous chapter">boto v2.32.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.4.0.html"
+                        title="next chapter">boto v2.4.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.33.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.4.0.html" title="boto v2.4.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.32.1.html" title="boto v2.32.1"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

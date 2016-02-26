@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.9.3 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.9.4" href="v2.9.4.html" />
+    <link rel="prev" title="boto v2.9.2" href="v2.9.2.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.4.html" title="boto v2.9.4"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.2.html" title="boto v2.9.2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-9-3">
+<h1>boto v2.9.3<a class="headerlink" href="#boto-v2-9-3" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/05/15</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds ELB support to Opsworks, optimized EBS support in EC2
+AutoScale, Parallel Scan support to DynamoDB v2, a higher-level interface to
+DynamoDB v2 and API updates to DataPipeline.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ELB support in Opsworks - You can now attach &amp; describe the Elastic Load
+Balancers within the Opsworks client. (<a class="reference external" href="https://github.com/boto/boto/commit/ecda87">commit ecda87</a>)</li>
+<li>Optimized EBS support in EC2 AutoScale - You can now specify whether an
+AutoScale instance should be optimized for EBS I/O. (<a class="reference external" href="https://github.com/boto/boto/commit/f8acaa">commit f8acaa</a>)</li>
+<li>Parallel Scan support in DynamoDB v2 - If you have extra read capacity &amp;
+a large amount of data, you can scan over the records in parallel by
+telling DynamoDB to split the table into segments, then spinning up
+threads/processes to each run over their own segment. (<a class="reference external" href="https://github.com/boto/boto/commit/db7f7b">commit db7f7b</a> &amp; <a class="reference external" href="https://github.com/boto/boto/commit/7ed73c">commit 7ed73c</a>)</li>
+<li>Higher-level interface to DynamoDB v2 - A more convenient API for using
+DynamoDB v2. The <a class="reference internal" href="../dynamodb2_tut.html#dynamodb2-tut"><em>DynamoDB v2 Tutorial</em></a> has more
+information on how to use the new API. (<a class="reference external" href="https://github.com/boto/boto/commit/0f7c8b">commit 0f7c8b</a>)</li>
+</ul>
+</div>
+<div class="section" id="backward-incompatible-changes">
+<h2>Backward-Incompatible Changes<a class="headerlink" href="#backward-incompatible-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>API Update for DataPipeline - The <tt class="docutils literal"><span class="pre">error_code</span></tt> (integer) argument to
+<tt class="docutils literal"><span class="pre">set_task_status</span></tt> changed to <tt class="docutils literal"><span class="pre">error_id</span></tt> (string). Many documentation
+updates were also added. (<a class="reference external" href="https://github.com/boto/boto/commit/a78572">commit a78572</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Bumped the AWS Support API version. (<a class="reference external" href="https://github.com/boto/boto/commit/0323f4">commit 0323f4</a>)</p>
+</li>
+<li><p class="first">Fixed the S3 <tt class="docutils literal"><span class="pre">ResumableDownloadHandler</span></tt> so that it no longer tries to use
+a hashing algorithm when used outside of GCS. (<a class="reference external" href="https://github.com/boto/boto/commit/29b046">commit 29b046</a>)</p>
+</li>
+<li><p class="first">Fixed a bug where Sig V4 URIs were improperly canonicalized. (<a class="reference external" href="https://github.com/boto/boto/commit/5269d8">commit 5269d8</a>)</p>
+</li>
+<li><p class="first">Fixed a bug where Sig V4 ports were not included. (<a class="reference external" href="https://github.com/boto/boto/commit/cfaba3">commit cfaba3</a>)</p>
+</li>
+<li><p class="first">Fixed a bug in CloudWatch&#8217;s <tt class="docutils literal"><span class="pre">build_put_params</span></tt> that would overwrite
+existing/necessary variables. (<a class="reference external" href="https://github.com/boto/boto/commit/550e00">commit 550e00</a>)</p>
+</li>
+<li><p class="first">Several documentation improvements/fixes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Added docs for RDS <tt class="docutils literal"><span class="pre">modify/modify_dbinstance</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/777d73">commit 777d73</a>)</li>
+<li>Fixed a typo in the <tt class="docutils literal"><span class="pre">README.rst</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/181e0f">commit 181e0f</a>)</li>
+<li>Documentation fallout from the previous release. (<a class="reference external" href="https://github.com/boto/boto/commit/14a111">commit 14a111</a>)</li>
+<li>Fixed a typo in the EC2 <tt class="docutils literal"><span class="pre">Image.run</span></tt> docs. (<a class="reference external" href="https://github.com/boto/boto/commit/5edd6a">commit 5edd6a</a>)</li>
+<li>Added/improved docs for EC2 <tt class="docutils literal"><span class="pre">Image.run</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/773ce5">commit 773ce5</a>)</li>
+<li>Added a CONTRIBUTING doc. (<a class="reference external" href="https://github.com/boto/boto/commit/cecbe8">commit cecbe8</a>)</li>
+<li>Fixed S3 <tt class="docutils literal"><span class="pre">create_bucket</span></tt> docs to specify &#8220;European Union&#8221;. (<a class="reference external" href="https://github.com/boto/boto/commit/ddddfd">commit ddddfd</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.9.3</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#backward-incompatible-changes">Backward-Incompatible Changes</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.9.2.html"
+                        title="previous chapter">boto v2.9.2</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.9.4.html"
+                        title="next chapter">boto v2.9.4</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.9.3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.4.html" title="boto v2.9.4"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.2.html" title="boto v2.9.2"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

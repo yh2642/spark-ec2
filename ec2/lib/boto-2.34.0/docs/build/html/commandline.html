@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command Line Tools &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="An Introduction to boto’s Support interface" href="support_tut.html" />
+    <link rel="prev" title="Contributing to Boto" href="contributing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="support_tut.html" title="An Introduction to boto’s Support interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing to Boto"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="command-line-tools">
+<span id="ref-boto-commandline"></span><h1>Command Line Tools<a class="headerlink" href="#command-line-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Boto ships with a number of command line utilities, which are installed
+when the package is installed. This guide outlines which ones are available
+&amp; what they do.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re not already depending on these utilities, you may wish to check
+out the AWS-CLI (<a class="reference external" href="http://aws.amazon.com/cli/">http://aws.amazon.com/cli/</a> - <a class="reference external" href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html">User Guide</a> &amp;
+<a class="reference external" href="http://docs.aws.amazon.com/cli/latest/reference/">Reference Guide</a>). It provides much wider &amp; complete access to the
+AWS services.</p>
+</div>
+<p>The included utilities available are:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">asadmin</span></tt></dt>
+<dd>Works with Autoscaling</dd>
+<dt><tt class="docutils literal"><span class="pre">bundle_image</span></tt></dt>
+<dd>Creates a bundled AMI in S3 based on a EC2 instance</dd>
+<dt><tt class="docutils literal"><span class="pre">cfadmin</span></tt></dt>
+<dd>Works with CloudFront &amp; invalidations</dd>
+<dt><tt class="docutils literal"><span class="pre">cq</span></tt></dt>
+<dd>Works with SQS queues</dd>
+<dt><tt class="docutils literal"><span class="pre">cwutil</span></tt></dt>
+<dd>Works with CloudWatch</dd>
+</dl>
+<p><tt class="docutils literal"><span class="pre">dynamodb_dump</span></tt>
+<tt class="docutils literal"><span class="pre">dynamodb_load</span></tt></p>
+<blockquote>
+<div>Handle dumping/loading data from DynamoDB tables</div></blockquote>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">elbadmin</span></tt></dt>
+<dd>Manages Elastic Load Balancer instances</dd>
+<dt><tt class="docutils literal"><span class="pre">fetch_file</span></tt></dt>
+<dd>Downloads an S3 key to disk</dd>
+<dt><tt class="docutils literal"><span class="pre">glacier</span></tt></dt>
+<dd>Lists vaults, jobs &amp; uploads files to Glacier</dd>
+<dt><tt class="docutils literal"><span class="pre">instance_events</span></tt></dt>
+<dd>Lists all events for EC2 reservations</dd>
+<dt><tt class="docutils literal"><span class="pre">kill_instance</span></tt></dt>
+<dd>Kills a list of EC2 instances</dd>
+<dt><tt class="docutils literal"><span class="pre">launch_instance</span></tt></dt>
+<dd>Launches an EC2 instance</dd>
+<dt><tt class="docutils literal"><span class="pre">list_instances</span></tt></dt>
+<dd>Lists all of your EC2 instances</dd>
+<dt><tt class="docutils literal"><span class="pre">lss3</span></tt></dt>
+<dd>Lists what keys you have within a bucket in S3</dd>
+<dt><tt class="docutils literal"><span class="pre">mturk</span></tt></dt>
+<dd>Provides a number of facilities for interacting with Mechanical Turk</dd>
+<dt><tt class="docutils literal"><span class="pre">pyami_sendmail</span></tt></dt>
+<dd>Sends an email from the Pyami instance</dd>
+<dt><tt class="docutils literal"><span class="pre">route53</span></tt></dt>
+<dd>Interacts with the Route53 service</dd>
+<dt><tt class="docutils literal"><span class="pre">s3put</span></tt></dt>
+<dd>Uploads a directory or a specific file(s) to S3</dd>
+<dt><tt class="docutils literal"><span class="pre">sdbadmin</span></tt></dt>
+<dd>Allows for working with SimpleDB domains</dd>
+<dt><tt class="docutils literal"><span class="pre">taskadmin</span></tt></dt>
+<dd>A tool for working with the tasks in SimpleDB</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Command Line Tools</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="previous chapter">Contributing to Boto</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support_tut.html"
+                        title="next chapter">An Introduction to boto&#8217;s Support interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/commandline.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="support_tut.html" title="An Introduction to boto’s Support interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing to Boto"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

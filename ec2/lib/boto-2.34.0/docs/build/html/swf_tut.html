@@ -1,0 +1,732 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Amazon Simple Workflow Tutorial &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="An Introduction to boto’s Cloudsearch interface" href="cloudsearch_tut.html" />
+    <link rel="prev" title="Simple Email Service Tutorial" href="ses_tut.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudsearch_tut.html" title="An Introduction to boto’s Cloudsearch interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ses_tut.html" title="Simple Email Service Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="amazon-simple-workflow-tutorial">
+<h1>Amazon Simple Workflow Tutorial<a class="headerlink" href="#amazon-simple-workflow-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial focuses on boto&#8217;s interface to AWS SimpleWorkflow service.</p>
+<div class="section" id="what-is-a-workflow">
+<h2>What is a workflow?<a class="headerlink" href="#what-is-a-workflow" title="Permalink to this headline">¶</a></h2>
+<p>A workflow is a sequence of multiple activities aimed at accomplishing a well-defined objective. For instance, booking an airline ticket as a workflow may encompass multiple activities, such as selection of itinerary, submission of personal details, payment validation and booking confirmation.</p>
+<dl class="docutils">
+<dt>Except for the start and completion of a workflow, each step has a well-defined predecessor and successor. With that</dt>
+<dd><ul class="first last simple">
+<li>on successful completion of an activity the workflow can progress with its execution,</li>
+<li>when one of workflow&#8217;s activities fails it can be retried,</li>
+<li>and when it keeps failing repeatedly the workflow may regress to the previous step to gather alternative inputs or it may simply fail at that stage.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="why-use-workflows">
+<h2>Why use workflows?<a class="headerlink" href="#why-use-workflows" title="Permalink to this headline">¶</a></h2>
+<p>Modelling an application on a workflow provides a useful abstraction layer for writing highly-reliable programs for distributed systems, as individual responsibilities can be delegated to a set of redundant, independent and non-critical processing units.</p>
+</div>
+<div class="section" id="how-does-amazon-swf-help-you-accomplish-this">
+<h2>How does Amazon SWF help you accomplish this?<a class="headerlink" href="#how-does-amazon-swf-help-you-accomplish-this" title="Permalink to this headline">¶</a></h2>
+<p>Amazon SimpleWorkflow service defines an interface for workflow orchestration and provides state persistence for workflow executions.</p>
+<dl class="docutils">
+<dt>Amazon SWF applications involve communication between the following entities:</dt>
+<dd><ul class="first last simple">
+<li>The Amazon Simple Workflow Service - providing centralized orchestration and workflow state persistence,</li>
+<li>Workflow Executors - some entity starting workflow executions, typically through an action taken by a user or from a cronjob.</li>
+<li>Deciders - a program codifying the business logic, i.e. a set of instructions and decisions. Deciders take decisions based on initial set of conditions and outcomes from activities.</li>
+<li>Activity Workers - their objective is very straightforward: to take inputs, execute the tasks and return a result to the Service.</li>
+</ul>
+</dd>
+</dl>
+<p>The Workflow Executor contacts SWF Service and requests instantiation of a workflow. A new workflow is created and its state is stored in the service.
+The next time a decider contacts SWF service to ask for a decision task, it will be informed about a new workflow execution is taking place and it will be asked to advise SWF service on what the next steps should be. The decider then instructs the service to dispatch specific tasks to activity workers. At the next activity worker poll, the task is dispatched, then executed and the results reported back to the SWF, which then passes them onto the deciders. This exchange keeps happening repeatedly until the decider is satisfied and instructs the service to complete the execution.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>You need a valid access and secret key. The examples below assume that you have exported them to your environment, as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre>bash<span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;your access key&gt;
+bash<span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;your secret key&gt;
+</pre></div>
+</div>
+<p>Before workflows and activities can be used, they have to be registered with SWF service:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># register.py</span>
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+<span class="kn">from</span> <span class="nn">boto.swf.exceptions</span> <span class="kn">import</span> <span class="n">SWFTypeAlreadyExistsError</span><span class="p">,</span> <span class="n">SWFDomainAlreadyExistsError</span>
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+
+<span class="n">registerables</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">registerables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">Domain</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">DOMAIN</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">workflow_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;HelloWorkflow&#39;</span><span class="p">,</span> <span class="s">&#39;SerialWorkflow&#39;</span><span class="p">,</span> <span class="s">&#39;ParallelWorkflow&#39;</span><span class="p">,</span> <span class="s">&#39;SubWorkflow&#39;</span><span class="p">):</span>
+    <span class="n">registerables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">WorkflowType</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">DOMAIN</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">workflow_type</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">activity_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;HelloWorld&#39;</span><span class="p">,</span> <span class="s">&#39;ActivityA&#39;</span><span class="p">,</span> <span class="s">&#39;ActivityB&#39;</span><span class="p">,</span> <span class="s">&#39;ActivityC&#39;</span><span class="p">):</span>
+    <span class="n">registerables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">ActivityType</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">DOMAIN</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">activity_type</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">swf_entity</span> <span class="ow">in</span> <span class="n">registerables</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">swf_entity</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+        <span class="k">print</span> <span class="n">swf_entity</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;registered successfully&#39;</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">SWFDomainAlreadyExistsError</span><span class="p">,</span> <span class="n">SWFTypeAlreadyExistsError</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">swf_entity</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">swf_entity</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;already exists&#39;</span>
+</pre></div>
+</div>
+<p>Execution of the above should produce no errors.</p>
+<div class="highlight-bash"><div class="highlight"><pre>bash<span class="nv">$ </span>python -i register.py
+Domain boto_tutorial already exists
+WorkflowType HelloWorkflow already exists
+SerialWorkflow registered successfully
+ParallelWorkflow registered successfully
+ActivityType HelloWorld already exists
+ActivityA registered successfully
+ActivityB registered successfully
+ActivityC registered successfully
+&gt;&gt;&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="helloworld">
+<h2>HelloWorld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h2>
+<p>This example is an implementation of a minimal Hello World workflow. Its execution should unfold as follows:</p>
+<ol class="arabic simple">
+<li>A workflow execution is started.</li>
+<li>The SWF service schedules the initial decision task.</li>
+<li>A decider polls for decision tasks and receives one.</li>
+<li>The decider requests scheduling of an activity task.</li>
+<li>The SWF service schedules the greeting activity task.</li>
+<li>An activity worker polls for activity task and receives one.</li>
+<li>The worker completes the greeting activity.</li>
+<li>The SWF service schedules a decision task to inform about work outcome.</li>
+<li>The decider polls and receives a new decision task.</li>
+<li>The decider schedules workflow completion.</li>
+<li>The workflow execution finishes.</li>
+</ol>
+<p>Workflow logic is encoded in the decider:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># hello_decider.py</span>
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+<span class="n">ACTIVITY</span> <span class="o">=</span> <span class="s">&#39;HelloWorld&#39;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+<span class="n">TASKLIST</span> <span class="o">=</span> <span class="s">&#39;default&#39;</span>
+
+<span class="k">class</span> <span class="nc">HelloDecider</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">Decider</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="n">DOMAIN</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="n">TASKLIST</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">VERSION</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="c"># Find workflow events not related to decision scheduling.</span>
+            <span class="n">workflow_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;Decision&#39;</span><span class="p">)]</span>
+            <span class="n">last_event</span> <span class="o">=</span> <span class="n">workflow_events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">decisions</span> <span class="o">=</span> <span class="n">swf</span><span class="o">.</span><span class="n">Layer1Decisions</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;WorkflowExecutionStarted&#39;</span><span class="p">:</span>
+                <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&#39;saying_hi&#39;</span><span class="p">,</span> <span class="n">ACTIVITY</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="n">TASKLIST</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">:</span>
+                <span class="n">decisions</span><span class="o">.</span><span class="n">complete_workflow_execution</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">decisions</span><span class="o">=</span><span class="n">decisions</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>The activity worker is responsible for printing the greeting message when the activity task is dispatched to it by the service:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+<span class="n">TASKLIST</span> <span class="o">=</span> <span class="s">&#39;default&#39;</span>
+
+<span class="k">class</span> <span class="nc">HelloWorker</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">ActivityWorker</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="n">DOMAIN</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="n">VERSION</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="n">TASKLIST</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">activity_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;activityId&#39;</span> <span class="ow">in</span> <span class="n">activity_task</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;Hello, World!&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>With actors implemented we can spin up a workflow execution:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python
+&gt;&gt;&gt; import boto.swf.layer2 as swf
+&gt;&gt;&gt; <span class="nv">execution</span> <span class="o">=</span> swf.WorkflowType<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;HelloWorkflow&#39;</span>, <span class="nv">domain</span><span class="o">=</span><span class="s1">&#39;boto_tutorial&#39;</span>, <span class="nv">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span>, <span class="nv">task_list</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="o">)</span>.start<span class="o">()</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>From separate terminals run an instance of a worker and a decider to carry out a workflow execution (the worker and decider may run from two independent machines).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i hello_decider.py
+&gt;&gt;&gt; <span class="k">while </span>HelloDecider<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i hello_worker.py
+&gt;&gt;&gt; <span class="k">while </span>HelloWorker<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+Hello, World!
+</pre></div>
+</div>
+<p>Great. Now, to see what just happened, go back to the original terminal from which the execution was started, and read its history.</p>
+<div class="highlight-bash"><div class="highlight"><pre>&gt;&gt;&gt; execution.history<span class="o">()</span>
+<span class="o">[{</span><span class="s1">&#39;eventId&#39;</span>: 1,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095173.2539999,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;WorkflowExecutionStarted&#39;</span>,
+  <span class="s1">&#39;workflowExecutionStartedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;childPolicy&#39;</span>: <span class="s1">&#39;TERMINATE&#39;</span>,
+                                              <span class="s1">&#39;executionStartToCloseTimeout&#39;</span>: <span class="s1">&#39;3600&#39;</span>,
+                                              <span class="s1">&#39;parentInitiatedEventId&#39;</span>: 0,
+                                              <span class="s1">&#39;taskList&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;default&#39;</span><span class="o">}</span>,
+                                              <span class="s1">&#39;taskStartToCloseTimeout&#39;</span>: <span class="s1">&#39;300&#39;</span>,
+                                              <span class="s1">&#39;workflowType&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;HelloWorkflow&#39;</span>,
+                                                               <span class="s1">&#39;version&#39;</span>: <span class="s1">&#39;1.0&#39;</span><span class="o">}}}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskScheduledEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;startToCloseTimeout&#39;</span>: <span class="s1">&#39;300&#39;</span>,
+                                           <span class="s1">&#39;taskList&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;default&#39;</span><span class="o">}}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 2,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095173.2539999,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskScheduled&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskStartedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 2<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 3,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095177.5439999,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskStarted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskCompletedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 2,
+                                           <span class="s1">&#39;startedEventId&#39;</span>: 3<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 4,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095177.855,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskCompleted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;activityTaskScheduledEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;activityId&#39;</span>: <span class="s1">&#39;saying_hi&#39;</span>,
+                                           <span class="s1">&#39;activityType&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;HelloWorld&#39;</span>,
+                                                            <span class="s1">&#39;version&#39;</span>: <span class="s1">&#39;1.0&#39;</span><span class="o">}</span>,
+                                           <span class="s1">&#39;decisionTaskCompletedEventId&#39;</span>: 4,
+                                           <span class="s1">&#39;heartbeatTimeout&#39;</span>: <span class="s1">&#39;600&#39;</span>,
+                                           <span class="s1">&#39;scheduleToCloseTimeout&#39;</span>: <span class="s1">&#39;3900&#39;</span>,
+                                           <span class="s1">&#39;scheduleToStartTimeout&#39;</span>: <span class="s1">&#39;300&#39;</span>,
+                                           <span class="s1">&#39;startToCloseTimeout&#39;</span>: <span class="s1">&#39;3600&#39;</span>,
+                                           <span class="s1">&#39;taskList&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;default&#39;</span><span class="o">}}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 5,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095177.855,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;ActivityTaskScheduled&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;activityTaskStartedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 5<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 6,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095179.427,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;ActivityTaskStarted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;activityTaskCompletedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 5,
+                                           <span class="s1">&#39;startedEventId&#39;</span>: 6<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 7,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095179.6989999,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;ActivityTaskCompleted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskScheduledEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;startToCloseTimeout&#39;</span>: <span class="s1">&#39;300&#39;</span>,
+                                           <span class="s1">&#39;taskList&#39;</span>: <span class="o">{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;default&#39;</span><span class="o">}}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 8,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095179.6989999,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskScheduled&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskStartedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 8<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 9,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095179.7420001,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskStarted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;decisionTaskCompletedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;scheduledEventId&#39;</span>: 8,
+                                           <span class="s1">&#39;startedEventId&#39;</span>: 9<span class="o">}</span>,
+  <span class="s1">&#39;eventId&#39;</span>: 10,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095180.026,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;DecisionTaskCompleted&#39;</span><span class="o">}</span>,
+ <span class="o">{</span><span class="s1">&#39;eventId&#39;</span>: 11,
+  <span class="s1">&#39;eventTimestamp&#39;</span>: 1381095180.026,
+  <span class="s1">&#39;eventType&#39;</span>: <span class="s1">&#39;WorkflowExecutionCompleted&#39;</span>,
+  <span class="s1">&#39;workflowExecutionCompletedEventAttributes&#39;</span>: <span class="o">{</span><span class="s1">&#39;decisionTaskCompletedEventId&#39;</span>: 10<span class="o">}}]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="serial-activity-execution">
+<h2>Serial Activity Execution<a class="headerlink" href="#serial-activity-execution" title="Permalink to this headline">¶</a></h2>
+<p>The following example implements a basic workflow with activities executed one after another.</p>
+<p>The business logic, i.e. the serial execution of activities, is encoded in the decider:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># serial_decider.py</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="k">class</span> <span class="nc">SerialDecider</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">Decider</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;default_tasks&#39;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="c"># Get a list of non-decision events to see what event came in last.</span>
+            <span class="n">workflow_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+                               <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;Decision&#39;</span><span class="p">)]</span>
+            <span class="n">decisions</span> <span class="o">=</span> <span class="n">swf</span><span class="o">.</span><span class="n">Layer1Decisions</span><span class="p">()</span>
+            <span class="c"># Record latest non-decision event.</span>
+            <span class="n">last_event</span> <span class="o">=</span> <span class="n">workflow_events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_event_type</span> <span class="o">=</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;WorkflowExecutionStarted&#39;</span><span class="p">:</span>
+                <span class="c"># Schedule the first activity.</span>
+                <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;ActivityA&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+                   <span class="s">&#39;ActivityA&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;a_tasks&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">:</span>
+                <span class="c"># Take decision based on the name of activity that has just completed.</span>
+                <span class="c"># 1) Get activity&#39;s event id.</span>
+                <span class="n">last_event_attrs</span> <span class="o">=</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;activityTaskCompletedEventAttributes&#39;</span><span class="p">]</span>
+                <span class="n">completed_activity_id</span> <span class="o">=</span> <span class="n">last_event_attrs</span><span class="p">[</span><span class="s">&#39;scheduledEventId&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="c"># 2) Extract its name.</span>
+                <span class="n">activity_data</span> <span class="o">=</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">][</span><span class="n">completed_activity_id</span><span class="p">]</span>
+                <span class="n">activity_attrs</span> <span class="o">=</span> <span class="n">activity_data</span><span class="p">[</span><span class="s">&#39;activityTaskScheduledEventAttributes&#39;</span><span class="p">]</span>
+                <span class="n">activity_name</span> <span class="o">=</span> <span class="n">activity_attrs</span><span class="p">[</span><span class="s">&#39;activityType&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+                <span class="c"># 3) Optionally, get the result from the activity.</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;activityTaskCompletedEventAttributes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;result&#39;</span><span class="p">)</span>
+
+                <span class="c"># Take the decision.</span>
+                <span class="k">if</span> <span class="n">activity_name</span> <span class="o">==</span> <span class="s">&#39;ActivityA&#39;</span><span class="p">:</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;ActivityB&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+                        <span class="s">&#39;ActivityB&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;b_tasks&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">activity_name</span> <span class="o">==</span> <span class="s">&#39;ActivityB&#39;</span><span class="p">:</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;ActivityC&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+                        <span class="s">&#39;ActivityC&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;c_tasks&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">activity_name</span> <span class="o">==</span> <span class="s">&#39;ActivityC&#39;</span><span class="p">:</span>
+                    <span class="c"># Final activity completed. We&#39;re done.</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">complete_workflow_execution</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">decisions</span><span class="o">=</span><span class="n">decisions</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>The workers only need to know which task lists to poll.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># serial_worker.py</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="k">class</span> <span class="nc">MyBaseWorker</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">ActivityWorker</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">activity_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;activityId&#39;</span> <span class="ow">in</span> <span class="n">activity_task</span><span class="p">:</span>
+            <span class="c"># Get input.</span>
+            <span class="c"># Get the method for the requested activity.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">&#39;working on activity from tasklist </span><span class="si">%s</span><span class="s"> at </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">activity</span><span class="p">(</span><span class="n">activity_task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">error</span>
+
+            <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity_input</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<span class="k">class</span> <span class="nc">WorkerA</span><span class="p">(</span><span class="n">MyBaseWorker</span><span class="p">):</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;a_tasks&#39;</span>
+    <span class="k">def</span> <span class="nf">activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity_input</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="s">&quot;Now don&#39;t be givin him sambuca!&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">WorkerB</span><span class="p">(</span><span class="n">MyBaseWorker</span><span class="p">):</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;b_tasks&#39;</span>
+    <span class="k">def</span> <span class="nf">activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity_input</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">WorkerC</span><span class="p">(</span><span class="n">MyBaseWorker</span><span class="p">):</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;c_tasks&#39;</span>
+    <span class="k">def</span> <span class="nf">activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity_input</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Spin up a workflow execution and run the decider:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python
+&gt;&gt;&gt; import boto.swf.layer2 as swf
+&gt;&gt;&gt; <span class="nv">execution</span> <span class="o">=</span> swf.WorkflowType<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;SerialWorkflow&#39;</span>, <span class="nv">domain</span><span class="o">=</span><span class="s1">&#39;boto_tutorial&#39;</span>, <span class="nv">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span>, <span class="nv">task_list</span><span class="o">=</span><span class="s1">&#39;default_tasks&#39;</span><span class="o">)</span>.start<span class="o">()</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i serial_decider.py
+&gt;&gt;&gt; <span class="k">while </span>SerialDecider<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+</pre></div>
+</div>
+<p>Run the workers. The activities will be executed in order:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i serial_worker.py
+&gt;&gt;&gt; <span class="k">while </span>WorkerA<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+working on activity from tasklist a_tasks at 1382046291
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i serial_worker.py
+&gt;&gt;&gt; <span class="k">while </span>WorkerB<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+working on activity from tasklist b_tasks at 1382046541
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i serial_worker.py
+&gt;&gt;&gt; <span class="k">while </span>WorkerC<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+working on activity from tasklist c_tasks at 1382046560
+</pre></div>
+</div>
+<p>Looks good. Now, do the following to inspect the state and history of the execution:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">execution</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="go">{&#39;executionConfiguration&#39;: {&#39;childPolicy&#39;: &#39;TERMINATE&#39;,</span>
+<span class="go">  &#39;executionStartToCloseTimeout&#39;: &#39;3600&#39;,</span>
+<span class="go">  &#39;taskList&#39;: {&#39;name&#39;: &#39;default_tasks&#39;},</span>
+<span class="go">  &#39;taskStartToCloseTimeout&#39;: &#39;300&#39;},</span>
+<span class="go"> &#39;executionInfo&#39;: {&#39;cancelRequested&#39;: False,</span>
+<span class="go">  &#39;closeStatus&#39;: &#39;COMPLETED&#39;,</span>
+<span class="go">  &#39;closeTimestamp&#39;: 1382046560.901,</span>
+<span class="go">  &#39;execution&#39;: {&#39;runId&#39;: &#39;12fQ1zSaLmI5+lLXB8ux+8U+hLOnnXNZCY9Zy+ZvXgzhE=&#39;,</span>
+<span class="go">   &#39;workflowId&#39;: &#39;SerialWorkflow-1.0-1382046514&#39;},</span>
+<span class="go">  &#39;executionStatus&#39;: &#39;CLOSED&#39;,</span>
+<span class="go">  &#39;startTimestamp&#39;: 1382046514.994,</span>
+<span class="go">  &#39;workflowType&#39;: {&#39;name&#39;: &#39;SerialWorkflow&#39;, &#39;version&#39;: &#39;1.0&#39;}},</span>
+<span class="go"> &#39;latestActivityTaskTimestamp&#39;: 1382046560.632,</span>
+<span class="go"> &#39;openCounts&#39;: {&#39;openActivityTasks&#39;: 0,</span>
+<span class="go">  &#39;openChildWorkflowExecutions&#39;: 0,</span>
+<span class="go">  &#39;openDecisionTasks&#39;: 0,</span>
+<span class="go">  &#39;openTimers&#39;: 0}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">execution</span><span class="o">.</span><span class="n">history</span><span class="p">()</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parallel-activity-execution">
+<h2>Parallel Activity Execution<a class="headerlink" href="#parallel-activity-execution" title="Permalink to this headline">¶</a></h2>
+<p>When activities are independent from one another, their execution may be scheduled in parallel.</p>
+<p>The decider schedules all activities at once and marks progress until all activities are completed, at which point the workflow is completed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># parallel_decider.py</span>
+
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">SCHED_COUNT</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">class</span> <span class="nc">ParallelDecider</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">Decider</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;default&#39;</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">decision_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">:</span>
+            <span class="n">decisions</span> <span class="o">=</span> <span class="n">swf</span><span class="o">.</span><span class="n">Layer1Decisions</span><span class="p">()</span>
+            <span class="c"># Decision* events are irrelevant here and can be ignored.</span>
+            <span class="n">workflow_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+                               <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;Decision&#39;</span><span class="p">)]</span>
+            <span class="c"># Record latest non-decision event.</span>
+            <span class="n">last_event</span> <span class="o">=</span> <span class="n">workflow_events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_event_type</span> <span class="o">=</span> <span class="n">last_event</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;WorkflowExecutionStarted&#39;</span><span class="p">:</span>
+                <span class="c"># At start, kickoff SCHED_COUNT activities in parallel.</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">SCHED_COUNT</span><span class="p">):</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&#39;activity</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="s">&#39;ActivityA&#39;</span><span class="p">,</span> <span class="s">&#39;1.0&#39;</span><span class="p">,</span>
+                                                     <span class="n">task_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">:</span>
+                <span class="c"># Monitor progress. When all activities complete, complete workflow.</span>
+                <span class="n">completed_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+                                       <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">])</span>
+                <span class="k">print</span> <span class="s">&#39;</span><span class="si">%i</span><span class="s">/</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">completed_count</span><span class="p">,</span> <span class="n">SCHED_COUNT</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">completed_count</span> <span class="o">==</span> <span class="n">SCHED_COUNT</span><span class="p">:</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">complete_workflow_execution</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">decisions</span><span class="o">=</span><span class="n">decisions</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Again, the only bit of information a worker needs is which task list to poll.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># parallel_worker.py</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="k">class</span> <span class="nc">ParallelWorker</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">ActivityWorker</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;default&#39;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report current time.&quot;&quot;&quot;</span>
+        <span class="n">activity_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">&#39;activityId&#39;</span> <span class="ow">in</span> <span class="n">activity_task</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;working on&#39;</span><span class="p">,</span> <span class="n">activity_task</span><span class="p">[</span><span class="s">&#39;activityId&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+            <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Spin up a workflow execution and run the decider:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i parallel_decider.py
+&gt;&gt;&gt; <span class="nv">execution</span> <span class="o">=</span> swf.WorkflowType<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;ParallelWorkflow&#39;</span>, <span class="nv">domain</span><span class="o">=</span><span class="s1">&#39;boto_tutorial&#39;</span>, <span class="nv">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span>, <span class="nv">task_list</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="o">)</span>.start<span class="o">()</span>
+&gt;&gt;&gt; <span class="k">while </span>ParallelDecider<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+1/5
+2/5
+4/5
+5/5
+</pre></div>
+</div>
+<p>Run two or more workers to see how the service partitions work execution in parallel.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i parallel_worker.py
+&gt;&gt;&gt; <span class="k">while </span>ParallelWorker<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+working on activity1
+working on activity3
+working on activity4
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -i parallel_worker.py
+&gt;&gt;&gt; <span class="k">while </span>ParallelWorker<span class="o">()</span>.run<span class="o">()</span>: pass
+...
+working on activity2
+working on activity0
+</pre></div>
+</div>
+<p>As seen above, the work was partitioned between the two running workers.</p>
+</div>
+<div class="section" id="sub-workflows">
+<h2>Sub-Workflows<a class="headerlink" href="#sub-workflows" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it&#8217;s desired or necessary to break the process up into multiple workflows.</p>
+<p>Since the decider is stateless, it&#8217;s up to you to determine which workflow is being used and which action
+you would like to take.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">boto.swf.layer2</span> <span class="kn">as</span> <span class="nn">swf</span>
+
+<span class="k">class</span> <span class="nc">SubWorkflowDecider</span><span class="p">(</span><span class="n">swf</span><span class="o">.</span><span class="n">Decider</span><span class="p">):</span>
+
+    <span class="n">domain</span> <span class="o">=</span> <span class="s">&#39;boto_tutorial&#39;</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="s">&#39;default&#39;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="n">events</span> <span class="o">=</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+            <span class="c"># Collect the entire history if there are enough events to become paginated</span>
+            <span class="k">while</span> <span class="s">&#39;nextPageToken&#39;</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+                <span class="n">history</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">next_page_token</span><span class="o">=</span><span class="n">history</span><span class="p">[</span><span class="s">&#39;nextPageToken&#39;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+                    <span class="n">events</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+
+            <span class="n">workflow_type</span> <span class="o">=</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;workflowType&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+
+            <span class="c"># Get all of the relevent events that have happened since the last decision task was started</span>
+            <span class="n">workflow_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">events</span>
+                    <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventId&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">history</span><span class="p">[</span><span class="s">&#39;previousStartedEventId&#39;</span><span class="p">]</span> <span class="ow">and</span>
+                    <span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;Decision&#39;</span><span class="p">)]</span>
+
+            <span class="n">decisions</span> <span class="o">=</span> <span class="n">swf</span><span class="o">.</span><span class="n">Layer1Decisions</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">workflow_events</span><span class="p">:</span>
+                <span class="n">last_event_type</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;WorkflowExecutionStarted&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">workflow_type</span> <span class="o">==</span> <span class="s">&#39;SerialWorkflow&#39;</span><span class="p">:</span>
+                        <span class="n">decisions</span><span class="o">.</span><span class="n">start_child_workflow_execution</span><span class="p">(</span><span class="s">&#39;SubWorkflow&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                            <span class="s">&quot;subworkflow_1&quot;</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task_list</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="s">&quot;sub_1&quot;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">workflow_type</span> <span class="o">==</span> <span class="s">&#39;SubWorkflow&#39;</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                            <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&quot;activity_</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="s">&#39;ActivityA&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;a_tasks&#39;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">decisions</span><span class="o">.</span><span class="n">fail_workflow_execution</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s">&quot;Unknown workflow </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">workflow_type</span><span class="p">)</span>
+                        <span class="k">break</span>
+
+                <span class="k">elif</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;ChildWorkflowExecutionCompleted&#39;</span><span class="p">:</span>
+                    <span class="n">decisions</span><span class="o">.</span><span class="n">schedule_activity_task</span><span class="p">(</span><span class="s">&quot;activity_2&quot;</span><span class="p">,</span> <span class="s">&#39;ActivityB&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">task_list</span><span class="o">=</span><span class="s">&#39;b_tasks&#39;</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="n">last_event_type</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">:</span>
+                    <span class="n">attrs</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">&#39;activityTaskCompletedEventAttributes&#39;</span><span class="p">]</span>
+                    <span class="n">activity</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="n">attrs</span><span class="p">[</span><span class="s">&#39;scheduledEventId&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">activity_name</span> <span class="o">=</span> <span class="n">activity</span><span class="p">[</span><span class="s">&#39;activityTaskScheduledEventAttributes&#39;</span><span class="p">][</span><span class="s">&#39;activityType&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+
+                    <span class="k">if</span> <span class="n">activity_name</span> <span class="o">==</span> <span class="s">&#39;ActivityA&#39;</span><span class="p">:</span>
+                        <span class="n">completed_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">events</span> <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">])</span>
+                        <span class="k">if</span> <span class="n">completed_count</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                            <span class="c"># Complete the child workflow</span>
+                            <span class="n">decisions</span><span class="o">.</span><span class="n">complete_workflow_execution</span><span class="p">()</span>
+                    <span class="k">elif</span> <span class="n">activity_name</span> <span class="o">==</span> <span class="s">&#39;ActivityB&#39;</span><span class="p">:</span>
+                        <span class="c"># Complete the parent workflow</span>
+                        <span class="n">decisions</span><span class="o">.</span><span class="n">complete_workflow_execution</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">decisions</span><span class="o">=</span><span class="n">decisions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<p>Some of these things are not obvious by reading the API documents, so hopefully they help you
+avoid some time-consuming pitfalls.</p>
+<div class="section" id="pagination">
+<h3>Pagination<a class="headerlink" href="#pagination" title="Permalink to this headline">¶</a></h3>
+<p>When the decider polls for new tasks, the maximum number of events it will return at a time is 100
+(configurable to a smaller number, but not larger). When running a workflow, this number gets quickly
+exceeded. If it does, the decision task will contain a key <tt class="docutils literal"><span class="pre">nextPageToken</span></tt> which can be submit to the
+<tt class="docutils literal"><span class="pre">poll()</span></tt> call to get the next page of events.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">decision_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">:</span>
+  <span class="n">events</span> <span class="o">=</span> <span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+  <span class="k">while</span> <span class="s">&#39;nextPageToken&#39;</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">:</span>
+      <span class="n">decision_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">next_page_token</span><span class="o">=</span><span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;nextPageToken&#39;</span><span class="p">])</span>
+      <span class="k">if</span> <span class="s">&#39;events&#39;</span> <span class="ow">in</span> <span class="n">decision_task</span><span class="p">:</span>
+          <span class="n">events</span> <span class="o">+=</span> <span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;events&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Depending on your workflow logic, you might not need to aggregate all of the events.</p>
+</div>
+<div class="section" id="decision-tasks">
+<h3>Decision Tasks<a class="headerlink" href="#decision-tasks" title="Permalink to this headline">¶</a></h3>
+<p>When first running deciders and activities, it may seem that the decider gets called for every event that
+an activity triggers; however, this is not the case. More than one event can happen between decision tasks.
+The decision task will contain a key <tt class="docutils literal"><span class="pre">previousStartedEventId</span></tt> that lets you know the <tt class="docutils literal"><span class="pre">eventId</span></tt> of the
+last DecisionTaskStarted event that was processed. Your script will need to handle all of the events
+that have happened since then, not just the last activity.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">workflow_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">events</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventId&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">decision_task</span><span class="p">[</span><span class="s">&#39;previousStartedEventId&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>You may also wish to still filter out tasks that start with &#8216;Decision&#8217; or filter it in some other way
+that fulfills your needs. You will now have to iterate over the workflow_events list and respond to
+each event, as it may contain multiple events.</p>
+</div>
+<div class="section" id="filtering-events">
+<h3>Filtering Events<a class="headerlink" href="#filtering-events" title="Permalink to this headline">¶</a></h3>
+<p>When running many tasks in parallel, a common task is searching through the history to see how many events
+of a particular activity type started, completed, and/or failed. Some basic list comprehension makes
+this trivial.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">filter_completed_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+    <span class="n">completed</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">events</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;eventType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ActivityTaskCompleted&#39;</span><span class="p">]</span>
+    <span class="n">orig</span> <span class="o">=</span> <span class="p">[</span><span class="n">events</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="s">&#39;activityTaskCompletedEventAttributes&#39;</span><span class="p">][</span><span class="s">&#39;scheduledEventId&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">completed</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">orig</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s">&#39;activityTaskScheduledEventAttributes&#39;</span><span class="p">][</span><span class="s">&#39;activityType&#39;</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">type</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Amazon Simple Workflow Tutorial</a><ul>
+<li><a class="reference internal" href="#what-is-a-workflow">What is a workflow?</a></li>
+<li><a class="reference internal" href="#why-use-workflows">Why use workflows?</a></li>
+<li><a class="reference internal" href="#how-does-amazon-swf-help-you-accomplish-this">How does Amazon SWF help you accomplish this?</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#helloworld">HelloWorld</a></li>
+<li><a class="reference internal" href="#serial-activity-execution">Serial Activity Execution</a></li>
+<li><a class="reference internal" href="#parallel-activity-execution">Parallel Activity Execution</a></li>
+<li><a class="reference internal" href="#sub-workflows">Sub-Workflows</a></li>
+<li><a class="reference internal" href="#misc">Misc</a><ul>
+<li><a class="reference internal" href="#pagination">Pagination</a></li>
+<li><a class="reference internal" href="#decision-tasks">Decision Tasks</a></li>
+<li><a class="reference internal" href="#filtering-events">Filtering Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ses_tut.html"
+                        title="previous chapter">Simple Email Service Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudsearch_tut.html"
+                        title="next chapter">An Introduction to boto&#8217;s Cloudsearch interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/swf_tut.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudsearch_tut.html" title="An Introduction to boto’s Cloudsearch interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ses_tut.html" title="Simple Email Service Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

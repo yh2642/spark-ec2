@@ -1,0 +1,830 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SNS &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="SQS" href="sqs.html" />
+    <link rel="prev" title="SES" href="ses.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sqs.html" title="SQS"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ses.html" title="SES"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sns">
+<h1>SNS<a class="headerlink" href="#sns" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.sns">
+<span id="boto-sns"></span><h2>boto.sns<a class="headerlink" href="#module-boto.sns" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.sns.connect_to_region">
+<tt class="descclassname">boto.sns.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.sns.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a valid region name, return a
+<tt class="xref py py-class docutils literal"><span class="pre">boto.sns.connection.SNSConnection</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region_name</strong> &#8211; The name of the region to connect to.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">boto.sns.connection.SNSConnection</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A connection to the given region, or None if an invalid region
+name is given</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.sns.regions">
+<tt class="descclassname">boto.sns.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.sns.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the SNS service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt> instances</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sns.SNSConnection">
+<em class="property">class </em><tt class="descclassname">boto.sns.</tt><tt class="descname">SNSConnection</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>is_secure=True</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>proxy_user=None</em>, <em>proxy_pass=None</em>, <em>debug=0</em>, <em>https_connection_factory=None</em>, <em>region=None</em>, <em>path='/'</em>, <em>security_token=None</em>, <em>validate_certs=True</em>, <em>profile_name=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon Simple Notification Service
+Amazon Simple Notification Service (Amazon SNS) is a web service
+that enables you to build distributed web-enabled applications.
+Applications can use Amazon SNS to easily push real-time
+notification messages to interested subscribers over multiple
+delivery protocols. For more information about this product see
+<a href="#id1"><span class="problematic" id="id2">`http://aws.amazon.com/sns`_</span></a>. For detailed information about
+Amazon SNS features and their associated API calls, see the
+<a href="#id3"><span class="problematic" id="id4">`Amazon SNS Developer Guide`_</span></a>.</p>
+<p>We also provide SDKs that enable you to access Amazon SNS from
+your preferred programming language. The SDKs contain
+functionality that automatically takes care of tasks such as:
+cryptographically signing your service requests, retrying
+requests, and handling error responses. For a list of available
+SDKs, go to <a href="#id5"><span class="problematic" id="id6">`Tools for Amazon Web Services`_</span></a>.</p>
+<dl class="attribute">
+<dt id="boto.sns.SNSConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2010-03-31'</em><a class="headerlink" href="#boto.sns.SNSConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.sns.SNSConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'sns.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.sns.SNSConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.sns.SNSConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.sns.SNSConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.add_permission">
+<tt class="descname">add_permission</tt><big>(</big><em>topic</em>, <em>label</em>, <em>account_ids</em>, <em>actions</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.add_permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a statement to a topic&#8217;s access control policy, granting
+access for the specified AWS accounts to the specified actions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic.</li>
+<li><strong>label</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique identifier for the new policy statement.</li>
+<li><strong>account_ids</strong> (<em>list of strings</em>) &#8211; The AWS account ids of the users who will be
+give access to the specified actions.</li>
+<li><strong>actions</strong> (<em>list of strings</em>) &#8211; The actions you want to allow for each of the
+specified principal(s).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.confirm_subscription">
+<tt class="descname">confirm_subscription</tt><big>(</big><em>topic</em>, <em>token</em>, <em>authenticate_on_unsubscribe=False</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.confirm_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get properties of a Topic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the new topic.</li>
+<li><strong>token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Short-lived token sent to and endpoint during
+the Subscribe operation.</li>
+<li><strong>authenticate_on_unsubscribe</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Optional parameter indicating
+that you wish to disable
+unauthenticated unsubscription
+of the subscription.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.create_platform_application">
+<tt class="descname">create_platform_application</tt><big>(</big><em>name=None</em>, <em>platform=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.create_platform_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>CreatePlatformApplication</cite> action creates a platform
+application object for one of the supported push notification
+services, such as APNS and GCM, to which devices and mobile
+apps may register. You must specify PlatformPrincipal and
+PlatformCredential attributes when using the
+<cite>CreatePlatformApplication</cite> action. The PlatformPrincipal is
+received from the notification service. For APNS/APNS_SANDBOX,
+PlatformPrincipal is &#8220;SSL certificate&#8221;. For GCM,
+PlatformPrincipal is not applicable. For ADM,
+PlatformPrincipal is &#8220;client id&#8221;. The PlatformCredential is
+also received from the notification service. For
+APNS/APNS_SANDBOX, PlatformCredential is &#8220;private key&#8221;. For
+GCM, PlatformCredential is &#8220;API key&#8221;. For ADM,
+PlatformCredential is &#8220;client secret&#8221;. The
+PlatformApplicationArn that is returned when using
+<cite>CreatePlatformApplication</cite> is then used as an attribute for
+the <cite>CreatePlatformEndpoint</cite> action. For more information, see
+<a href="#id7"><span class="problematic" id="id8">`Using Amazon SNS Mobile Push Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Application names must be made up of only uppercase and
+lowercase ASCII letters, numbers, underscores, hyphens, and
+periods, and must be between 1 and 256 characters long.</li>
+<li><strong>platform</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The following platforms are supported: ADM (Amazon
+Device Messaging), APNS (Apple Push Notification Service),
+APNS_SANDBOX, and GCM (Google Cloud Messaging).</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; For a list of attributes, see
+<a href="#id9"><span class="problematic" id="id10">`SetPlatformApplicationAttributes`_</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.create_platform_endpoint">
+<tt class="descname">create_platform_endpoint</tt><big>(</big><em>platform_application_arn=None</em>, <em>token=None</em>, <em>custom_user_data=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.create_platform_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>CreatePlatformEndpoint</cite> creates an endpoint for a device
+and mobile app on one of the supported push notification
+services, such as GCM and APNS. <cite>CreatePlatformEndpoint</cite>
+requires the PlatformApplicationArn that is returned from
+<cite>CreatePlatformApplication</cite>. The EndpointArn that is returned
+when using <cite>CreatePlatformEndpoint</cite> can then be used by the
+<cite>Publish</cite> action to send a message to a mobile app or by the
+<cite>Subscribe</cite> action for subscription to a topic. For more
+information, see <a href="#id11"><span class="problematic" id="id12">`Using Amazon SNS Mobile Push
+Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>platform_application_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; PlatformApplicationArn returned from
+CreatePlatformApplication is used to create a an endpoint.</li>
+<li><strong>token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Unique identifier created by the notification service for
+an app on a device. The specific name for Token will vary,
+depending on which notification service is being used. For example,
+when using APNS as the notification service, you need the device
+token. Alternatively, when using GCM or ADM, the device token
+equivalent is called the registration ID.</li>
+<li><strong>custom_user_data</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Arbitrary user data to associate with the
+endpoint. SNS does not use this data. The data must be in UTF-8
+format and less than 2KB.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; For a list of attributes, see
+<a href="#id13"><span class="problematic" id="id14">`SetEndpointAttributes`_</span></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.create_topic">
+<tt class="descname">create_topic</tt><big>(</big><em>topic</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.create_topic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Topic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the new topic.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.delete_endpoint">
+<tt class="descname">delete_endpoint</tt><big>(</big><em>endpoint_arn=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.delete_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>DeleteEndpoint</cite> action, which is idempotent, deletes the
+endpoint from SNS. For more information, see <a href="#id15"><span class="problematic" id="id16">`Using Amazon SNS
+Mobile Push Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>endpoint_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; EndpointArn of endpoint to delete.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.delete_platform_application">
+<tt class="descname">delete_platform_application</tt><big>(</big><em>platform_application_arn=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.delete_platform_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>DeletePlatformApplication</cite> action deletes a platform
+application object for one of the supported push notification
+services, such as APNS and GCM. For more information, see
+<a href="#id17"><span class="problematic" id="id18">`Using Amazon SNS Mobile Push Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>platform_application_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; PlatformApplicationArn of platform
+application object to delete.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.delete_topic">
+<tt class="descname">delete_topic</tt><big>(</big><em>topic</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.delete_topic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an existing topic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_all_subscriptions">
+<tt class="descname">get_all_subscriptions</tt><big>(</big><em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_all_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all subscriptions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Token returned by the previous call to
+this method.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_all_subscriptions_by_topic">
+<tt class="descname">get_all_subscriptions_by_topic</tt><big>(</big><em>topic</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_all_subscriptions_by_topic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all subscriptions to a specific topic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic for which you wish to
+find subscriptions.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Token returned by the previous call to
+this method.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_all_topics">
+<tt class="descname">get_all_topics</tt><big>(</big><em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_all_topics" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Token returned by the previous call to
+this method.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_endpoint_attributes">
+<tt class="descname">get_endpoint_attributes</tt><big>(</big><em>endpoint_arn=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_endpoint_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>GetEndpointAttributes</cite> retrieves the endpoint attributes
+for a device on one of the supported push notification
+services, such as GCM and APNS. For more information, see
+<a href="#id19"><span class="problematic" id="id20">`Using Amazon SNS Mobile Push Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>endpoint_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; EndpointArn for GetEndpointAttributes input.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_platform_application_attributes">
+<tt class="descname">get_platform_application_attributes</tt><big>(</big><em>platform_application_arn=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_platform_application_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>GetPlatformApplicationAttributes</cite> action retrieves the
+attributes of the platform application object for the
+supported push notification services, such as APNS and GCM.
+For more information, see <a href="#id21"><span class="problematic" id="id22">`Using Amazon SNS Mobile Push
+Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>platform_application_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; PlatformApplicationArn for
+GetPlatformApplicationAttributesInput.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.get_topic_attributes">
+<tt class="descname">get_topic_attributes</tt><big>(</big><em>topic</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.get_topic_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get attributes of a Topic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.list_endpoints_by_platform_application">
+<tt class="descname">list_endpoints_by_platform_application</tt><big>(</big><em>platform_application_arn=None</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.list_endpoints_by_platform_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>ListEndpointsByPlatformApplication</cite> action lists the
+endpoints and endpoint attributes for devices in a supported
+push notification service, such as GCM and APNS. The results
+for <cite>ListEndpointsByPlatformApplication</cite> are paginated and
+return a limited list of endpoints, up to 100. If additional
+records are available after the first page results, then a
+NextToken string will be returned. To receive the next page,
+you call <cite>ListEndpointsByPlatformApplication</cite> again using the
+NextToken string received from the previous call. When there
+are no more records to return, NextToken will be null. For
+more information, see <a href="#id23"><span class="problematic" id="id24">`Using Amazon SNS Mobile Push
+Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>platform_application_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; PlatformApplicationArn for
+ListEndpointsByPlatformApplicationInput action.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; NextToken string is used when calling
+ListEndpointsByPlatformApplication action to retrieve additional
+records that are available after the first page results.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.list_platform_applications">
+<tt class="descname">list_platform_applications</tt><big>(</big><em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.list_platform_applications" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>ListPlatformApplications</cite> action lists the platform
+application objects for the supported push notification
+services, such as APNS and GCM. The results for
+<cite>ListPlatformApplications</cite> are paginated and return a limited
+list of applications, up to 100. If additional records are
+available after the first page results, then a NextToken
+string will be returned. To receive the next page, you call
+<cite>ListPlatformApplications</cite> using the NextToken string received
+from the previous call. When there are no more records to
+return, NextToken will be null. For more information, see
+<a href="#id25"><span class="problematic" id="id26">`Using Amazon SNS Mobile Push Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; NextToken string is used when calling
+ListPlatformApplications action to retrieve additional records that
+are available after the first page results.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.publish">
+<tt class="descname">publish</tt><big>(</big><em>topic=None</em>, <em>message=None</em>, <em>subject=None</em>, <em>target_arn=None</em>, <em>message_structure=None</em>, <em>message_attributes=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get properties of a Topic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the new topic.</li>
+<li><strong>message</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The message you want to send to the topic.
+Messages must be UTF-8 encoded strings and
+be at most 4KB in size.</li>
+<li><strong>message_structure</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Optional parameter. If left as <tt class="docutils literal"><span class="pre">None</span></tt>,
+plain text will be sent. If set to <tt class="docutils literal"><span class="pre">json</span></tt>,
+your message should be a JSON string that
+matches the structure described at
+<a class="reference external" href="http://docs.aws.amazon.com/sns/latest/dg/PublishTopic.html#sns-message-formatting-by-protocol">http://docs.aws.amazon.com/sns/latest/dg/PublishTopic.html#sns-message-formatting-by-protocol</a></li>
+<li><strong>message_attributes</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; <p>Message attributes to set. Should be
+of the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;name1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;data_type&quot;</span><span class="p">:</span> <span class="s">&quot;Number&quot;</span><span class="p">,</span>
+        <span class="s">&quot;string_value&quot;</span><span class="p">:</span> <span class="s">&quot;42&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;name2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;data_type&quot;</span><span class="p">:</span> <span class="s">&quot;String&quot;</span><span class="p">,</span>
+        <span class="s">&quot;string_value&quot;</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><strong>subject</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Optional parameter to be used as the &#8220;Subject&#8221;
+line of the email notifications.</li>
+<li><strong>target_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Optional parameter for either TopicArn or
+EndpointArn, but not both.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.remove_permission">
+<tt class="descname">remove_permission</tt><big>(</big><em>topic</em>, <em>label</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.remove_permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a statement from a topic&#8217;s access control policy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic.</li>
+<li><strong>label</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique identifier for the policy statement
+to be removed.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.set_endpoint_attributes">
+<tt class="descname">set_endpoint_attributes</tt><big>(</big><em>endpoint_arn=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.set_endpoint_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>SetEndpointAttributes</cite> action sets the attributes for an
+endpoint for a device on one of the supported push
+notification services, such as GCM and APNS. For more
+information, see <a href="#id27"><span class="problematic" id="id28">`Using Amazon SNS Mobile Push
+Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>endpoint_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; EndpointArn used for SetEndpointAttributes action.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>A map of the endpoint attributes. Attributes in this map include the</dt>
+<dd>following:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt><cite>CustomUserData</cite> &#8211; arbitrary user data to associate with the</dt>
+<dd><p class="first last">endpoint. SNS does not use this data. The data must be in UTF-8
+format and less than 2KB.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>Enabled</cite> &#8211; flag that enables/disables delivery to the endpoint.</dt>
+<dd><p class="first last">Message Processor will set this to false when a notification
+service indicates to SNS that the endpoint is invalid. Users can
+set it back to true, typically after updating Token.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>Token</cite> &#8211; device token, also referred to as a registration id, for</dt>
+<dd><p class="first last">an app and mobile device. This is returned from the notification
+service when an app and mobile device are registered with the
+notification service.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.set_platform_application_attributes">
+<tt class="descname">set_platform_application_attributes</tt><big>(</big><em>platform_application_arn=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.set_platform_application_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>SetPlatformApplicationAttributes</cite> action sets the
+attributes of the platform application object for the
+supported push notification services, such as APNS and GCM.
+For more information, see <a href="#id29"><span class="problematic" id="id30">`Using Amazon SNS Mobile Push
+Notifications`_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>platform_application_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; PlatformApplicationArn for
+SetPlatformApplicationAttributes action.</li>
+<li><strong>attributes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>A map of the platform application attributes. Attributes in this map</dt>
+<dd>include the following:</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt><cite>PlatformCredential</cite> &#8211; The credential received from the notification</dt>
+<dd><p class="first last">service. For APNS/APNS_SANDBOX, PlatformCredential is &#8220;private
+key&#8221;. For GCM, PlatformCredential is &#8220;API key&#8221;. For ADM,
+PlatformCredential is &#8220;client secret&#8221;.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>PlatformPrincipal</cite> &#8211; The principal received from the notification</dt>
+<dd><p class="first last">service. For APNS/APNS_SANDBOX, PlatformPrincipal is &#8220;SSL
+certificate&#8221;. For GCM, PlatformPrincipal is not applicable. For
+ADM, PlatformPrincipal is &#8220;client id&#8221;.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>EventEndpointCreated</cite> &#8211; Topic ARN to which EndpointCreated event</dt>
+<dd><p class="first last">notifications should be sent.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>EventEndpointDeleted</cite> &#8211; Topic ARN to which EndpointDeleted event</dt>
+<dd><p class="first last">notifications should be sent.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>EventEndpointUpdated</cite> &#8211; Topic ARN to which EndpointUpdate event</dt>
+<dd><p class="first last">notifications should be sent.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>EventDeliveryFailure</cite> &#8211; Topic ARN to which DeliveryFailure event</dt>
+<dd><p class="first last">notifications should be sent upon Direct Publish delivery failure
+(permanent) to one of the application&#8217;s endpoints.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.set_topic_attributes">
+<tt class="descname">set_topic_attributes</tt><big>(</big><em>topic</em>, <em>attr_name</em>, <em>attr_value</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.set_topic_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get attributes of a Topic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the topic.</li>
+<li><strong>attr_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the attribute you want to set.
+Only a subset of the topic&#8217;s attributes are mutable.
+Valid values: Policy | DisplayName</li>
+<li><strong>attr_value</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The new value for the attribute.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.subscribe">
+<tt class="descname">subscribe</tt><big>(</big><em>topic</em>, <em>protocol</em>, <em>endpoint</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to a Topic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the new topic.</li>
+<li><strong>protocol</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The protocol used to communicate with
+the subscriber.  Current choices are:
+email|email-json|http|https|sqs|sms|application</li>
+<li><strong>endpoint</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; <p>The location of the endpoint for
+the subscriber.
+* For email, this would be a valid email address
+* For email-json, this would be a valid email address
+* For http, this would be a URL beginning with http
+* For https, this would be a URL beginning with https
+* For sqs, this would be the ARN of an SQS Queue
+* For sms, this would be a phone number of an</p>
+<blockquote>
+<div>SMS-enabled device</div></blockquote>
+<ul>
+<li>For application, the endpoint is the EndpointArn
+of a mobile app and device.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.subscribe_sqs_queue">
+<tt class="descname">subscribe_sqs_queue</tt><big>(</big><em>topic</em>, <em>queue</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.subscribe_sqs_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe an SQS queue to a topic.</p>
+<p>This is convenience method that handles most of the complexity involved
+in using an SQS queue as an endpoint for an SNS topic.  To achieve this
+the following operations are performed:</p>
+<ul class="simple">
+<li>The correct ARN is constructed for the SQS queue and that ARN is
+then subscribed to the topic.</li>
+<li>A JSON policy document is contructed that grants permission to
+the SNS topic to send messages to the SQS queue.</li>
+<li>This JSON policy is then associated with the SQS queue using
+the queue&#8217;s set_attribute method.  If the queue already has
+a policy associated with it, this process will add a Statement to
+that policy.  If no policy exists, a new policy will be created.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>topic</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the new topic.</li>
+<li><strong>queue</strong> (<em>A boto Queue object</em>) &#8211; The queue you wish to subscribe to the SNS Topic.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sns.SNSConnection.unsubscribe">
+<tt class="descname">unsubscribe</tt><big>(</big><em>subscription</em><big>)</big><a class="headerlink" href="#boto.sns.SNSConnection.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows endpoint owner to delete subscription.
+Confirmation message will be delivered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subscription</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ARN of the subscription to be deleted.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SNS</a><ul>
+<li><a class="reference internal" href="#module-boto.sns">boto.sns</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ses.html"
+                        title="previous chapter">SES</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sqs.html"
+                        title="next chapter">SQS</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/sns.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sqs.html" title="SQS"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ses.html" title="SES"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

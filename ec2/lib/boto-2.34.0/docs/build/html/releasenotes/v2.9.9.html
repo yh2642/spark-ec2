@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.9.9 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="prev" title="boto v2.9.8" href="v2.9.8.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.8.html" title="boto v2.9.8"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-9-9">
+<h1>boto v2.9.9<a class="headerlink" href="#boto-v2-9-9" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/07/24</td>
+</tr>
+</tbody>
+</table>
+<p>This release updates Opsworks to add AMI &amp; Chef 11 support, DBSubnetGroup
+support in RDS &amp; many other bugfixes.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added AMI, configuration manager &amp; Chef 11 support to Opsworks.
+(<a class="reference external" href="https://github.com/boto/boto/commit/55725fc">commit 55725fc</a>).</li>
+<li>Added <tt class="docutils literal"><span class="pre">in</span></tt> support for SQS messages. (<a class="reference external" href="https://github.com/boto/boto/issues/1593">issue 1593</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e5fe1ed">commit e5fe1ed</a>)</li>
+<li>Added support for the <tt class="docutils literal"><span class="pre">ap-southeast-2</span></tt> region in Elasticache.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1607">issue 1607</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9986b61">commit 9986b61</a>)</li>
+<li>Added support for block device mappings in ELB. (<a class="reference external" href="https://github.com/boto/boto/issues/1343">issue 1343</a>, <a class="reference external" href="https://github.com/boto/boto/issues/753">issue 753</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1357">issue 1357</a>, <a class="reference external" href="https://github.com/boto/boto/commit/974a23a">commit 974a23a</a>)</li>
+<li>Added support for DBSubnetGroup in RDS. (<a class="reference external" href="https://github.com/boto/boto/issues/1500">issue 1500</a>, <a class="reference external" href="https://github.com/boto/boto/commit/01eef87">commit 01eef87</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/45c60a0">commit 45c60a0</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c4c859e">commit c4c859e</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fixed the canonicalization of paths on Windows. (<a class="reference external" href="https://github.com/boto/boto/issues/1609">issue 1609</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/a1fa98c">commit a1fa98c</a>)</li>
+<li>Fixed how <tt class="docutils literal"><span class="pre">BotoServerException</span></tt> uses <tt class="docutils literal"><span class="pre">message</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1353">issue 1353</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/b944f4b">commit b944f4b</a>)</li>
+<li>Fixed <tt class="docutils literal"><span class="pre">DisableRollback</span></tt> always being <tt class="docutils literal"><span class="pre">True</span></tt> in a CloudFormation <tt class="docutils literal"><span class="pre">Stack</span></tt>.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1379">issue 1379</a>, <a class="reference external" href="https://github.com/boto/boto/commit/32b3150">commit 32b3150</a>)</li>
+<li>Changed EMR instance groups to no longer require a string price (can now be
+a <tt class="docutils literal"><span class="pre">Decimal</span></tt>). (<a class="reference external" href="https://github.com/boto/boto/issues/1396">issue 1396</a>, <a class="reference external" href="https://github.com/boto/boto/commit/dfc39ff">commit dfc39ff</a>)</li>
+<li>Altered <tt class="docutils literal"><span class="pre">Distribution._sign_string</span></tt> to accept any file-like object as well
+within CloudFront. (<a class="reference external" href="https://github.com/boto/boto/issues/1349">issue 1349</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8df6c14">commit 8df6c14</a>)</li>
+<li>Fixed the <tt class="docutils literal"><span class="pre">detach_lb_from_subnets</span></tt> call within ELB. (<a class="reference external" href="https://github.com/boto/boto/issues/1417">issue 1417</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1418">issue 1418</a> <a class="reference external" href="https://github.com/boto/boto/commit/4a397bd">commit 4a397bd</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c11d72b">commit c11d72b</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9e595b5">commit 9e595b5</a>, <a class="reference external" href="https://github.com/boto/boto/commit/634469d">commit 634469d</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/586dd54">commit 586dd54</a>)</li>
+<li>Altered boto to obey <tt class="docutils literal"><span class="pre">no_proxy</span></tt> environment variables. (<a class="reference external" href="https://github.com/boto/boto/issues/1600">issue 1600</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1603">issue 1603</a>, <a class="reference external" href="https://github.com/boto/boto/commit/aaef5a9">commit aaef5a9</a>)</li>
+<li>Fixed ELB connections to use HTTPS by default. (<a class="reference external" href="https://github.com/boto/boto/issues/1587">issue 1587</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fe158c4">commit fe158c4</a>)</li>
+<li>Updated S3 to be Python 2.5 compatible again. (<a class="reference external" href="https://github.com/boto/boto/issues/1598">issue 1598</a>, <a class="reference external" href="https://github.com/boto/boto/commit/066009f">commit 066009f</a>)</li>
+<li>All calls within SES will now return <em>all</em> DKIMTokens, instead of just one.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1550">issue 1550</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1610">issue 1610</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1a079da">commit 1a079da</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1e82f85">commit 1e82f85</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5c8b6b8">commit 5c8b6b8</a>)</li>
+<li>Fixed the <tt class="docutils literal"><span class="pre">logging</span></tt> parameter within <tt class="docutils literal"><span class="pre">DistributionConfig</span></tt> in CloudFront
+to respect whatever is provided to the constructor. (<a class="reference external" href="https://github.com/boto/boto/issues/1457">issue 1457</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/e76180d">commit e76180d</a>)</li>
+<li>Fixed CloudSearch to no longer raise an error if a non-JSON response is received.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1555">issue 1555</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1614">issue 1614</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5e2c292">commit 5e2c292</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6510e1f">commit 6510e1f</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.9.9</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.9.8.html"
+                        title="previous chapter">boto v2.9.8</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.9.9.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.8.html" title="boto v2.9.8"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

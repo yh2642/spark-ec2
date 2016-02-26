@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cognito Identity &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Cognito Sync" href="cognito-sync.html" />
+    <link rel="prev" title="CloudWatch Reference" href="cloudwatch.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cognito-sync.html" title="Cognito Sync"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cloudwatch.html" title="CloudWatch Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cognito-identity">
+<h1>Cognito Identity<a class="headerlink" href="#cognito-identity" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.cognito.identity">
+<span id="boto-cognito-identity"></span><h2>boto.cognito.identity<a class="headerlink" href="#module-boto.cognito.identity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.cognito.identity.connect_to_region">
+<tt class="descclassname">boto.cognito.identity.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.cognito.identity.regions">
+<tt class="descclassname">boto.cognito.identity.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cognito.identity.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon Cognito Identity service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cognito.identity.layer1">
+<span id="boto-cognito-identity-layer1"></span><h2>boto.cognito.identity.layer1<a class="headerlink" href="#module-boto.cognito.identity.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection">
+<em class="property">class </em><tt class="descclassname">boto.cognito.identity.layer1.</tt><tt class="descname">CognitoIdentityConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon Cognito
+Amazon Cognito is a web service that facilitates the delivery of
+scoped, temporary credentials to mobile devices or other untrusted
+environments. Amazon Cognito uniquely identifies a device or user
+and supplies the user with a consistent identity throughout the
+lifetime of an application.</p>
+<p>Amazon Cognito lets users authenticate with third-party identity
+providers (Facebook, Google, or Login with Amazon). As a
+developer, you decide which identity providers to trust. You can
+also choose to support unauthenticated access from your
+application. Your users are provided with Cognito tokens that
+uniquely identify their device and any information provided about
+third-party logins.</p>
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2014-06-30'</em><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'cognito-identity.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.ServiceName">
+<tt class="descname">ServiceName</tt><em class="property"> = 'CognitoIdentity'</em><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.ServiceName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.TargetPrefix">
+<tt class="descname">TargetPrefix</tt><em class="property"> = 'AWSCognitoIdentityService'</em><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.TargetPrefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.create_identity_pool">
+<tt class="descname">create_identity_pool</tt><big>(</big><em>identity_pool_name</em>, <em>allow_unauthenticated_identities</em>, <em>supported_login_providers=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.create_identity_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new identity pool. The identity pool is a store of
+user identity information that is specific to your AWS
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that you provide.</li>
+<li><strong>allow_unauthenticated_identities</strong> (<em>boolean</em>) &#8211; TRUE if the identity pool
+supports unauthenticated logins.</li>
+<li><strong>supported_login_providers</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; Optional key:value pairs mapping
+provider names to provider app IDs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.delete_identity_pool">
+<tt class="descname">delete_identity_pool</tt><big>(</big><em>identity_pool_id</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.delete_identity_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a user pool. Once a pool is deleted, users will not be
+able to authenticate with the pool.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identity pool ID in the format REGION:GUID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.describe_identity_pool">
+<tt class="descname">describe_identity_pool</tt><big>(</big><em>identity_pool_id</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.describe_identity_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets details about a particular identity pool, including the
+pool name, ID description, creation date, and current number
+of users.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identity pool ID in the format REGION:GUID.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.get_id">
+<tt class="descname">get_id</tt><big>(</big><em>account_id</em>, <em>identity_pool_id</em>, <em>logins=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates (or retrieves) a Cognito ID. Supplying multiple
+logins will create an implicit linked account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>account_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A standard AWS account ID (9+ digits).</li>
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identity pool ID in the format REGION:GUID.</li>
+<li><strong>logins</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; A set of optional name/value pairs that map provider
+names to provider tokens.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.get_open_id_token">
+<tt class="descname">get_open_id_token</tt><big>(</big><em>identity_id</em>, <em>logins=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.get_open_id_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an OpenID token, using a known Cognito ID. This known
+Cognito ID is returned from GetId. You can optionally add
+additional logins for the identity. Supplying multiple logins
+creates an implicit link.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique identifier in the format REGION:GUID.</li>
+<li><strong>logins</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; A set of optional name/value pairs that map provider
+names to provider tokens.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.list_identities">
+<tt class="descname">list_identities</tt><big>(</big><em>identity_pool_id</em>, <em>max_results</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.list_identities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the identities in a pool.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identity pool ID in the format REGION:GUID.</li>
+<li><strong>max_results</strong> (<em>integer</em>) &#8211; The maximum number of identities to return.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A pagination token.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.list_identity_pools">
+<tt class="descname">list_identity_pools</tt><big>(</big><em>max_results</em>, <em>next_token=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.list_identity_pools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists all of the Cognito identity pools registered for your
+account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_results</strong> (<em>integer</em>) &#8211; The maximum number of identities to return.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A pagination token.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>action</em>, <em>body</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.unlink_identity">
+<tt class="descname">unlink_identity</tt><big>(</big><em>identity_id</em>, <em>logins</em>, <em>logins_to_remove</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.unlink_identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unlinks a federated identity from an existing account.
+Unlinked logins will be considered new identities next time
+they are seen. Removing the last linked login will make this
+identity inaccessible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique identifier in the format REGION:GUID.</li>
+<li><strong>logins</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; A set of optional name/value pairs that map provider
+names to provider tokens.</li>
+<li><strong>logins_to_remove</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Provider names to unlink from this identity.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cognito.identity.layer1.CognitoIdentityConnection.update_identity_pool">
+<tt class="descname">update_identity_pool</tt><big>(</big><em>identity_pool_id</em>, <em>identity_pool_name</em>, <em>allow_unauthenticated_identities</em>, <em>supported_login_providers=None</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.layer1.CognitoIdentityConnection.update_identity_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a user pool.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_pool_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identity pool ID in the format REGION:GUID.</li>
+<li><strong>identity_pool_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that you provide.</li>
+<li><strong>allow_unauthenticated_identities</strong> (<em>boolean</em>) &#8211; TRUE if the identity pool
+supports unauthenticated logins.</li>
+<li><strong>supported_login_providers</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#map" title="(in Python v2.7)"><em>map</em></a>) &#8211; Optional key:value pairs mapping
+provider names to provider app IDs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cognito.identity.exceptions">
+<span id="boto-cognito-identity-exceptions"></span><h2>boto.cognito.identity.exceptions<a class="headerlink" href="#module-boto.cognito.identity.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.InternalErrorException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">InternalErrorException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.InternalErrorException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.InvalidParameterException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">InvalidParameterException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.InvalidParameterException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.LimitExceededException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">LimitExceededException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.LimitExceededException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.NotAuthorizedException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">NotAuthorizedException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.NotAuthorizedException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.ResourceConflictException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">ResourceConflictException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.ResourceConflictException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.ResourceNotFoundException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">ResourceNotFoundException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.ResourceNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.cognito.identity.exceptions.TooManyRequestsException">
+<em class="property">exception </em><tt class="descclassname">boto.cognito.identity.exceptions.</tt><tt class="descname">TooManyRequestsException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.cognito.identity.exceptions.TooManyRequestsException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cognito Identity</a><ul>
+<li><a class="reference internal" href="#module-boto.cognito.identity">boto.cognito.identity</a></li>
+<li><a class="reference internal" href="#module-boto.cognito.identity.layer1">boto.cognito.identity.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.cognito.identity.exceptions">boto.cognito.identity.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cloudwatch.html"
+                        title="previous chapter">CloudWatch Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cognito-sync.html"
+                        title="next chapter">Cognito Sync</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/cognito-identity.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cognito-sync.html" title="Cognito Sync"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cloudwatch.html" title="CloudWatch Reference"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

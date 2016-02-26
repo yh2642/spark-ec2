@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.2.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.2.1" href="v2.2.1.html" />
+    <link rel="prev" title="boto v2.19.0" href="v2.19.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.2.1.html" title="boto v2.2.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.19.0.html" title="boto v2.19.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-2-0">
+<h1>boto v2.2.0<a class="headerlink" href="#boto-v2-2-0" title="Permalink to this headline">¶</a></h1>
+<p>The 2.2.0 release of boto is now available on <a class="reference external" href="http://pypi.python.org/pypi/boto">PyPI</a>.</p>
+<p>You can view a list of issues that have been closed in this release at
+<a class="reference external" href="https://github.com/boto/boto/issues?milestone=5&amp;state=closed">https://github.com/boto/boto/issues?milestone=5&amp;state=closed</a>.</p>
+<p>You can get a comprehensive list of all commits made between the 2.0 release
+and the 2.1.0 release at
+<a class="reference external" href="https://github.com/boto/boto/compare/fa0d6a1e49c8468abbe2c99cdc9f5fd8fd19f8f8...26c8eb108873bf8ce1b9d96d642eea2beef78c77">https://github.com/boto/boto/compare/fa0d6a1e49c8468abbe2c99cdc9f5fd8fd19f8f8...26c8eb108873bf8ce1b9d96d642eea2beef78c77</a>.</p>
+<p>Some highlights of this release:</p>
+<ul class="simple">
+<li>Support for Amazon DynamoDB service.</li>
+<li>Support for S3 Object Lifecycle (Expiration).</li>
+<li>Allow anonymous request for S3.</li>
+<li>Support for creating Load Balancers in VPC.</li>
+<li>Support for multi-dimension metrics in CloudWatch.</li>
+<li>Support for Elastic Network Interfaces in EC2.</li>
+<li>Support for Amazon S3 Multi-Delete capability.</li>
+<li>Support for new AMIversion and overriding of parameters in EMR.</li>
+<li>Support for SendMessageBatch request in SQS.</li>
+<li>Support for DescribeInstanceStatus request in EC2.</li>
+<li>Many, many improvements and additions to API documentation and Tutorials.
+Special thanks to Greg Taylor for all of the Sphinx cleanups and new docs.</li>
+</ul>
+<p>There were 336 commits in this release from 40 different authors.  The authors
+are listed below, in no particular order:</p>
+<ul class="simple">
+<li>Garrett Holmstrom</li>
+<li>mLewisLogic</li>
+<li>Warren Turkal</li>
+<li>Nathan Binkert</li>
+<li>Scott Moser</li>
+<li>Jeremy Edberg</li>
+<li>najeira</li>
+<li>Marc Cohen</li>
+<li>Jim Browne</li>
+<li>Mitch Garnaat</li>
+<li>David Ormsbee</li>
+<li>Blake Maltby</li>
+<li>Thomas O&#8217;Dowd</li>
+<li>Victor Trac</li>
+<li>David Marin</li>
+<li>Greg Taylor</li>
+<li>rdodev</li>
+<li>Jonathan Sabo</li>
+<li>rdoci</li>
+<li>Mike Schwartz</li>
+<li>l33twolf</li>
+<li>Keith Fitzgerald</li>
+<li>Oleksandr Gituliar</li>
+<li>Jason Allum</li>
+<li>Ilya Volodarsky</li>
+<li>Rajesh</li>
+<li>Felipe Reyes</li>
+<li>Andy Grimm</li>
+<li>Seth Davis</li>
+<li>Dave King</li>
+<li>andy</li>
+<li>Chris Moyer</li>
+<li>ruben</li>
+<li>Spike Gronim</li>
+<li>Daniel Norberg</li>
+<li>Justin Riley</li>
+<li>Milan Cermak timtebeek</li>
+<li>unknown</li>
+<li>Yotam Gingold</li>
+<li>Brian Oldfield</li>
+</ul>
+<p>We processed 21 pull requests for this release from 40 different contributors.
+Here are the github user id&#8217;s for all of the pull request authors:</p>
+<ul class="simple">
+<li>milancermak</li>
+<li>jsabo</li>
+<li>gituliar</li>
+<li>rdodev</li>
+<li>marccohen</li>
+<li>tpodowd</li>
+<li>trun</li>
+<li>jallum</li>
+<li>binkert</li>
+<li>ormsbee</li>
+<li>timtebeek</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.19.0.html"
+                        title="previous chapter">boto v2.19.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.2.1.html"
+                        title="next chapter">boto v2.2.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.2.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.2.1.html" title="boto v2.2.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.19.0.html" title="boto v2.19.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

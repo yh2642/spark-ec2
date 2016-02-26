@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.21.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.21.1" href="v2.21.1.html" />
+    <link rel="prev" title="boto v2.20.1" href="v2.20.1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.21.1.html" title="boto v2.21.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.20.1.html" title="boto v2.20.1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-21-0">
+<h1>boto v2.21.0<a class="headerlink" href="#boto-v2-21-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/12/19</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for the latest AWS OpsWorks, AWS Elastic Beanstalk,
+Amazon DynamoDB, Amazon Elastic MapReduce (EMR), Amazon Simple Storage Service
+(S3), Amazon Elastic Transcoder, AWS CloudTrail, and AWS Support APIs. It also
+includes documentation and other fixes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although Boto now includes support for the newly announced China (Beijing)
+Region, the service endpoints will not be accessible until the Region’s
+limited preview is launched in early 2014. To find out more about the new
+Region and request a limited preview account, please visit
+<a class="reference external" href="http://www.amazonaws.cn/">http://www.amazonaws.cn/</a>.</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for Elastic Transcoder pagination and new codecs (<a class="reference external" href="https://github.com/boto/boto/commit/dcb1c5a">commit dcb1c5a</a>)</li>
+<li>Add support for new CloudTrail calling format (<a class="reference external" href="https://github.com/boto/boto/commit/aeafe9b">commit aeafe9b</a>)</li>
+<li>Update to the latest Support API (<a class="reference external" href="https://github.com/boto/boto/commit/45e1884">commit 45e1884</a>)</li>
+<li>Add support for arbitrarily large SQS messages stored in S3 via BigMessage. (<a class="reference external" href="https://github.com/boto/boto/issues/1917">issue 1917</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e6cd665">commit e6cd665</a>)</li>
+<li>Add support for <tt class="docutils literal"><span class="pre">encoding_type</span></tt> to S3 (<a class="reference external" href="https://github.com/boto/boto/commit/6b2d967">commit 6b2d967</a>)</li>
+<li>Add support for Elastic MapReduce tags (<a class="reference external" href="https://github.com/boto/boto/issues/1928">issue 1928</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1920">issue 1920</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b9749c6">commit b9749c6</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8e4c595">commit 8e4c595</a>)</li>
+<li>Add high level support for global secondary indexes in DynamoDB (<a class="reference external" href="https://github.com/boto/boto/issues/1924">issue 1924</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1913">issue 1913</a>, <a class="reference external" href="https://github.com/boto/boto/commit/32dac5b">commit 32dac5b</a>)</li>
+<li>Add support for Elastic Beanstalk worker environments. (<a class="reference external" href="https://github.com/boto/boto/issues/1911">issue 1911</a>, <a class="reference external" href="https://github.com/boto/boto/commit/bbd4fbf">commit bbd4fbf</a>)</li>
+<li>Add support for OpsWorks IAM user permissions per stack (<a class="reference external" href="https://github.com/boto/boto/commit/ac6e4e7">commit ac6e4e7</a>)</li>
+<li>Add support for SigV4 to S3 (<a class="reference external" href="https://github.com/boto/boto/commit/deb9e18">commit deb9e18</a>)</li>
+<li>Add support for SigV4 to EC2 (<a class="reference external" href="https://github.com/boto/boto/commit/bdebfe0">commit bdebfe0</a>)</li>
+<li>Add support for SigV4 to ElastiCache (<a class="reference external" href="https://github.com/boto/boto/commit/b892b45">commit b892b45</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add documentation describing account usage for multipart uploads in S3 (<a class="reference external" href="https://github.com/boto/boto/commit/af03d8d">commit af03d8d</a>)</li>
+<li>Update DesiredCapacity if AutoScalingGroup.desired_capacity is not None. (<a class="reference external" href="https://github.com/boto/boto/issues/1906">issue 1906</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1906">issue 1906</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1757">issue 1757</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b6670ce">commit b6670ce</a>)</li>
+<li>Documentation: add Kinesis API reference (<a class="reference external" href="https://github.com/boto/boto/issues/1921">issue 1921</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c169836">commit c169836</a>)</li>
+<li>Documentation: sriovNetSupport instance attribute (<a class="reference external" href="https://github.com/boto/boto/issues/1915">issue 1915</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e1bafcc">commit e1bafcc</a>)</li>
+<li>Update RDS documentation for API version: 2013-09-09 (<a class="reference external" href="https://github.com/boto/boto/issues/1914">issue 1914</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fcf702a">commit fcf702a</a>)</li>
+<li>Switch all classes to new style classes which results in memory use improvements (<a class="reference external" href="https://github.com/boto/boto/commit/ca36fa2">commit ca36fa2</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.21.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.20.1.html"
+                        title="previous chapter">boto v2.20.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.21.1.html"
+                        title="next chapter">boto v2.21.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.21.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.21.1.html" title="boto v2.21.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.20.1.html" title="boto v2.20.1"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

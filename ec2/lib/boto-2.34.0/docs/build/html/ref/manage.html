@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>manage &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="mturk" href="mturk.html" />
+    <link rel="prev" title="CloudWatch Logs" href="logs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mturk.html" title="mturk"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="logs.html" title="CloudWatch Logs"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="manage">
+<h1>manage<a class="headerlink" href="#manage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.manage">
+<span id="boto-manage"></span><h2>boto.manage<a class="headerlink" href="#module-boto.manage" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-boto.manage.cmdshell">
+<span id="boto-manage-cmdshell"></span><h2>boto.manage.cmdshell<a class="headerlink" href="#module-boto.manage.cmdshell" title="Permalink to this headline">¶</a></h2>
+<p>The cmdshell module uses the paramiko package to create SSH connections
+to the servers that are represented by instance objects. The module has
+functions for running commands, managing files, and opening interactive
+shell sessions over those connections.</p>
+<dl class="class">
+<dt id="boto.manage.cmdshell.FakeServer">
+<em class="property">class </em><tt class="descclassname">boto.manage.cmdshell.</tt><tt class="descname">FakeServer</tt><big>(</big><em>instance</em>, <em>ssh_key_file</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.FakeServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This object has a subset of the variables that are normally in a
+<tt class="xref py py-class docutils literal"><span class="pre">boto.manage.server.Server</span></tt> object. You can use this FakeServer
+object to create a <tt class="xref py py-class docutils literal"><span class="pre">boto.manage.SSHClient</span></tt> object if you
+don&#8217;t have a real Server object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance</strong> &#8211; A boto Instance object.</li>
+<li><strong>ssh_key_file</strong> &#8211; The path to the SSH key file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.manage.cmdshell.LocalClient">
+<em class="property">class </em><tt class="descclassname">boto.manage.cmdshell.</tt><tt class="descname">LocalClient</tt><big>(</big><em>server</em>, <em>host_key_file=None</em>, <em>uname='root'</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> &#8211; A Server object or FakeServer object.</li>
+<li><strong>host_key_file</strong> &#8211; The path to the user&#8217;s .ssh key files.</li>
+<li><strong>uname</strong> &#8211; The username for the SSH connection. Default = &#8216;root&#8217;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.exists">
+<tt class="descname">exists</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for the specified path, or check a file at the specified path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If the path or the file exist, the function returns True.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.get_file">
+<tt class="descname">get_file</tt><big>(</big><em>src</em>, <em>dst</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.get_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy a file from one directory to another.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.isdir">
+<tt class="descname">isdir</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.isdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the specified path to determine if it is a directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the path is an existing directory.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.listdir">
+<tt class="descname">listdir</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.listdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all of the files and subdirectories at the specified path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Return a list containing the names of the entries
+in the directory given by path.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.put_file">
+<tt class="descname">put_file</tt><big>(</big><em>src</em>, <em>dst</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.put_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy a file from one directory to another.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a subprocess and run a command on the local host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">This function returns a tuple that contains an integer status
+and a string with the combined stdout and stderr output.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.LocalClient.shell">
+<tt class="descname">shell</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.LocalClient.shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.manage.cmdshell.SSHClient">
+<em class="property">class </em><tt class="descclassname">boto.manage.cmdshell.</tt><tt class="descname">SSHClient</tt><big>(</big><em>server</em>, <em>host_key_file='~/.ssh/known_hosts'</em>, <em>uname='root'</em>, <em>timeout=None</em>, <em>ssh_pwd=None</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class creates a paramiko.SSHClient() object that represents
+a session with an SSH server. You can use the SSHClient object to send
+commands to the remote host and manipulate files on the remote host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> &#8211; A Server object or FakeServer object.</li>
+<li><strong>host_key_file</strong> &#8211; The path to the user&#8217;s .ssh key files.</li>
+<li><strong>uname</strong> &#8211; The username for the SSH connection. Default = &#8216;root&#8217;.</li>
+<li><strong>timeout</strong> &#8211; The optional timeout variable for the TCP connection.</li>
+<li><strong>ssh_pwd</strong> &#8211; An optional password to use for authentication or for
+unlocking the private key.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close an SSH session and any open channels that are tied to it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.connect">
+<tt class="descname">connect</tt><big>(</big><em>num_retries=5</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to an SSH server and authenticate with it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_retries</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The maximum number of connection attempts.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.exists">
+<tt class="descname">exists</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the remote host for the specified path, or a file
+at the specified path. This function returns 1 if the
+path or the file exist on the remote host, and returns 0 if
+the path or the file does not exist on the remote host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the directory or file that you want to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If the path or the file exist, the function returns 1.
+If the path or the file do not exist on the remote host,
+the function returns 0.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.get_file">
+<tt class="descname">get_file</tt><big>(</big><em>src</em>, <em>dst</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.get_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an SFTP session on the remote host, and copy a file from
+the remote host to the specified path on the local host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the target file on the remote host.</li>
+<li><strong>dst</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path on your local host where you want to
+store the file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.isdir">
+<tt class="descname">isdir</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.isdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the specified path on the remote host to determine if
+it is a directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the directory that you want to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If the path is a directory, the function returns 1.
+If the path is a file or an invalid path, the function
+returns 0.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.listdir">
+<tt class="descname">listdir</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.listdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all of the files and subdirectories at the specified path
+on the remote host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The base path from which to obtain the list.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of files and subdirectories at the specified path.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.open">
+<tt class="descname">open</tt><big>(</big><em>filename</em>, <em>mode='r'</em>, <em>bufsize=-1</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an SFTP session to the remote host, and open a file on
+that host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the file on the remote host.</li>
+<li><strong>mode</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The file interaction mode.</li>
+<li><strong>bufsize</strong> (<em>integer</em>) &#8211; The file buffer size.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="xref py py-class docutils literal"><span class="pre">paramiko.sftp_file.SFTPFile</span></tt></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A paramiko proxy object for a file on the remote server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.open_sftp">
+<tt class="descname">open_sftp</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.open_sftp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an SFTP session on the SSH server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">paramiko.sftp_client.SFTPClient</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An SFTP client object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.put_file">
+<tt class="descname">put_file</tt><big>(</big><em>src</em>, <em>dst</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.put_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an SFTP session on the remote host, and copy a file from
+the local host to the specified path on the remote host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the target file on your local host.</li>
+<li><strong>dst</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path on the remote host where you want to store
+the file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.run">
+<tt class="descname">run</tt><big>(</big><em>command</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a command on the remote host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The command that you want to send to the remote host.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">This function returns a tuple that contains an integer status,
+the stdout from the command, and the stderr from the command.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.run_pty">
+<tt class="descname">run_pty</tt><big>(</big><em>command</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.run_pty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a pseudo-terminal from a server, and execute a command on that
+server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The command that you want to run on the remote host.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">paramiko.channel.Channel</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An open channel object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.manage.cmdshell.SSHClient.shell">
+<tt class="descname">shell</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.SSHClient.shell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start an interactive shell session with the remote host.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.manage.cmdshell.sshclient_from_instance">
+<tt class="descclassname">boto.manage.cmdshell.</tt><tt class="descname">sshclient_from_instance</tt><big>(</big><em>instance</em>, <em>ssh_key_file</em>, <em>host_key_file='~/.ssh/known_hosts'</em>, <em>user_name='root'</em>, <em>ssh_pwd=None</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.sshclient_from_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and return an SSHClient object given an
+instance object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance</strong> (<em>:class`boto.ec2.instance.Instance` object</em>) &#8211; The instance object.</li>
+<li><strong>ssh_key_file</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A path to the private key file that is 
+used to log into the instance.</li>
+<li><strong>host_key_file</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A path to the known_hosts file used
+by the SSH client.
+Defaults to ~/.ssh/known_hosts</li>
+<li><strong>user_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The username to use when logging into
+the instance.  Defaults to root.</li>
+<li><strong>ssh_pwd</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The passphrase, if any, associated with
+private key.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.manage.cmdshell.start">
+<tt class="descclassname">boto.manage.cmdshell.</tt><tt class="descname">start</tt><big>(</big><em>server</em><big>)</big><a class="headerlink" href="#boto.manage.cmdshell.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the specified server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If the server is local, the function returns a 
+<a class="reference internal" href="#boto.manage.cmdshell.LocalClient" title="boto.manage.cmdshell.LocalClient"><tt class="xref py py-class docutils literal"><span class="pre">boto.manage.cmdshell.LocalClient</span></tt></a> object.
+If the server is remote, the function returns a
+<a class="reference internal" href="#boto.manage.cmdshell.SSHClient" title="boto.manage.cmdshell.SSHClient"><tt class="xref py py-class docutils literal"><span class="pre">boto.manage.cmdshell.SSHClient</span></tt></a> object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.manage.propget">
+<span id="boto-manage-propget"></span><h2>boto.manage.propget<a class="headerlink" href="#module-boto.manage.propget" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.manage.propget.get">
+<tt class="descclassname">boto.manage.propget.</tt><tt class="descname">get</tt><big>(</big><em>prop</em>, <em>choices=None</em><big>)</big><a class="headerlink" href="#boto.manage.propget.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="boto-manage-server">
+<h2>boto.manage.server<a class="headerlink" href="#boto-manage-server" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="boto-manage-task">
+<h2>boto.manage.task<a class="headerlink" href="#boto-manage-task" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="boto-manage-volume">
+<h2>boto.manage.volume<a class="headerlink" href="#boto-manage-volume" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">manage</a><ul>
+<li><a class="reference internal" href="#module-boto.manage">boto.manage</a></li>
+<li><a class="reference internal" href="#module-boto.manage.cmdshell">boto.manage.cmdshell</a></li>
+<li><a class="reference internal" href="#module-boto.manage.propget">boto.manage.propget</a></li>
+<li><a class="reference internal" href="#boto-manage-server">boto.manage.server</a></li>
+<li><a class="reference internal" href="#boto-manage-task">boto.manage.task</a></li>
+<li><a class="reference internal" href="#boto-manage-volume">boto.manage.volume</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="logs.html"
+                        title="previous chapter">CloudWatch Logs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mturk.html"
+                        title="next chapter">mturk</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/manage.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mturk.html" title="mturk"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="logs.html" title="CloudWatch Logs"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

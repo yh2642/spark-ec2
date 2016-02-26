@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CloudWatch Logs &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="manage" href="manage.html" />
+    <link rel="prev" title="Kinesis" href="kinesis.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manage.html" title="manage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="kinesis.html" title="Kinesis"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cloudwatch-logs">
+<span id="ref-logs"></span><h1>CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.logs">
+<span id="boto-logs"></span><h2>boto.logs<a class="headerlink" href="#module-boto.logs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.logs.connect_to_region">
+<tt class="descclassname">boto.logs.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.logs.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.logs.regions">
+<tt class="descclassname">boto.logs.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.logs.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the CloudWatch Logs service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.logs.layer1">
+<span id="boto-logs-layer1"></span><h2>boto.logs.layer1<a class="headerlink" href="#module-boto.logs.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection">
+<em class="property">class </em><tt class="descclassname">boto.logs.layer1.</tt><tt class="descname">CloudWatchLogsConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon CloudWatch Logs Service API Reference
+This is the Amazon CloudWatch Logs API Reference . Amazon
+CloudWatch Logs is a managed service for real time monitoring and
+archival of application logs. This guide provides detailed
+information about Amazon CloudWatch Logs actions, data types,
+parameters, and errors. For detailed information about Amazon
+CloudWatch Logs features and their associated API calls, go to the
+<a href="#id1"><span class="problematic" id="id2">`Amazon CloudWatch Logs Developer Guide`_</span></a>.</p>
+<p>Use the following links to get started using the Amazon CloudWatch
+API Reference :</p>
+<ul class="simple">
+<li><a href="#id3"><span class="problematic" id="id4">`Actions`_</span></a>: An alphabetical list of all Amazon CloudWatch Logs
+actions.</li>
+<li><a href="#id5"><span class="problematic" id="id6">`Data Types`_</span></a>: An alphabetical list of all Amazon CloudWatch
+Logs data types.</li>
+<li><a href="#id7"><span class="problematic" id="id8">`Common Parameters`_</span></a>: Parameters that all Query actions can use.</li>
+<li><a href="#id9"><span class="problematic" id="id10">`Common Errors`_</span></a>: Client and server errors that all actions can
+return.</li>
+<li><a href="#id11"><span class="problematic" id="id12">`Regions and Endpoints`_</span></a>: Itemized regions and endpoints for all
+AWS products.</li>
+</ul>
+<p>In addition to using the Amazon CloudWatch Logs API, you can also
+use the following SDKs and third-party libraries to access Amazon
+CloudWatch Logs programmatically.</p>
+<ul class="simple">
+<li><a href="#id13"><span class="problematic" id="id14">`AWS SDK for Java Documentation`_</span></a></li>
+<li><a href="#id15"><span class="problematic" id="id16">`AWS SDK for .NET Documentation`_</span></a></li>
+<li><a href="#id17"><span class="problematic" id="id18">`AWS SDK for PHP Documentation`_</span></a></li>
+<li><a href="#id19"><span class="problematic" id="id20">`AWS SDK for Ruby Documentation`_</span></a></li>
+</ul>
+<p>Developers in the AWS developer community also provide their own
+libraries, which you can find at the following AWS developer
+centers:</p>
+<ul class="simple">
+<li><a href="#id21"><span class="problematic" id="id22">`AWS Java Developer Center`_</span></a></li>
+<li><a href="#id23"><span class="problematic" id="id24">`AWS PHP Developer Center`_</span></a></li>
+<li><a href="#id25"><span class="problematic" id="id26">`AWS Python Developer Center`_</span></a></li>
+<li><a href="#id27"><span class="problematic" id="id28">`AWS Ruby Developer Center`_</span></a></li>
+<li><a href="#id29"><span class="problematic" id="id30">`AWS Windows and .NET Developer Center`_</span></a></li>
+</ul>
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2014-03-28'</em><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'logs.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.ServiceName">
+<tt class="descname">ServiceName</tt><em class="property"> = 'CloudWatchLogs'</em><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.ServiceName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.TargetPrefix">
+<tt class="descname">TargetPrefix</tt><em class="property"> = 'Logs_20140328'</em><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.TargetPrefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.create_log_group">
+<tt class="descname">create_log_group</tt><big>(</big><em>log_group_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.create_log_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new log group with the specified name. The name of
+the log group must be unique within a region for an AWS
+account. You can create up to 100 log groups per account.</p>
+<p>You must use the following guidelines when naming a log group:</p>
+<ul class="simple">
+<li>Log group names can be between 1 and 512 characters long.</li>
+<li>Allowed characters are az, AZ, 09, &#8216;_&#8217; (underscore), &#8216;-&#8216;
+(hyphen), &#8216;/&#8217; (forward slash), and &#8216;.&#8217; (period).</li>
+</ul>
+<p>Log groups are created with a default retention of 14 days.
+The retention attribute allow you to configure the number of
+days you want to retain log events in the specified log group.
+See the <cite>SetRetention</cite> operation on how to modify the
+retention of your log groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.create_log_stream">
+<tt class="descname">create_log_stream</tt><big>(</big><em>log_group_name</em>, <em>log_stream_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.create_log_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new log stream in the specified log group. The name
+of the log stream must be unique within the log group. There
+is no limit on the number of log streams that can exist in a
+log group.</p>
+<p>You must use the following guidelines when naming a log
+stream:</p>
+<ul class="simple">
+<li>Log stream names can be between 1 and 512 characters long.</li>
+<li>The &#8216;:&#8217; colon character is not allowed.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.delete_log_group">
+<tt class="descname">delete_log_group</tt><big>(</big><em>log_group_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.delete_log_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the log group with the specified name. Amazon
+CloudWatch Logs will delete a log group only if there are no
+log streams and no metric filters associated with the log
+group. If this condition is not satisfied, the request will
+fail and the log group will not be deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.delete_log_stream">
+<tt class="descname">delete_log_stream</tt><big>(</big><em>log_group_name</em>, <em>log_stream_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.delete_log_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a log stream and permanently deletes all the archived
+log events associated with it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.delete_metric_filter">
+<tt class="descname">delete_metric_filter</tt><big>(</big><em>log_group_name</em>, <em>filter_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.delete_metric_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a metric filter associated with the specified log
+group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>filter_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the metric filter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.delete_retention_policy">
+<tt class="descname">delete_retention_policy</tt><big>(</big><em>log_group_name</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.delete_retention_policy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.describe_log_groups">
+<tt class="descname">describe_log_groups</tt><big>(</big><em>log_group_name_prefix=None</em>, <em>next_token=None</em>, <em>limit=None</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.describe_log_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the log groups that are associated with the AWS
+account making the request. The list returned in the response
+is ASCII-sorted by log group name.</p>
+<p>By default, this operation returns up to 50 log groups. If
+there are more log groups to list, the response would contain
+a <cite>nextToken</cite> value in the response body. You can also limit
+the number of log groups returned in the response by
+specifying the <cite>limit</cite> parameter in the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name_prefix</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string token used for pagination that points to
+the next page of results. It must be a value obtained from the
+response of the previous <cite>DescribeLogGroups</cite> request.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of items returned in the response. If
+you don&#8217;t specify a value, the request would return up to 50 items.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.describe_log_streams">
+<tt class="descname">describe_log_streams</tt><big>(</big><em>log_group_name</em>, <em>log_stream_name_prefix=None</em>, <em>next_token=None</em>, <em>limit=None</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.describe_log_streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the log streams that are associated with the
+specified log group. The list returned in the response is
+ASCII-sorted by log stream name.</p>
+<p>By default, this operation returns up to 50 log streams. If
+there are more log streams to list, the response would contain
+a <cite>nextToken</cite> value in the response body. You can also limit
+the number of log streams returned in the response by
+specifying the <cite>limit</cite> parameter in the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_stream_name_prefix</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string token used for pagination that points to
+the next page of results. It must be a value obtained from the
+response of the previous <cite>DescribeLogStreams</cite> request.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of items returned in the response. If
+you don&#8217;t specify a value, the request would return up to 50 items.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.describe_metric_filters">
+<tt class="descname">describe_metric_filters</tt><big>(</big><em>log_group_name</em>, <em>filter_name_prefix=None</em>, <em>next_token=None</em>, <em>limit=None</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.describe_metric_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the metrics filters associated with the specified
+log group. The list returned in the response is ASCII-sorted
+by filter name.</p>
+<p>By default, this operation returns up to 50 metric filters. If
+there are more metric filters to list, the response would
+contain a <cite>nextToken</cite> value in the response body. You can also
+limit the number of metric filters returned in the response by
+specifying the <cite>limit</cite> parameter in the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>filter_name_prefix</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the metric filter.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string token used for pagination that points to
+the next page of results. It must be a value obtained from the
+response of the previous <cite>DescribeMetricFilters</cite> request.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of items returned in the response. If
+you don&#8217;t specify a value, the request would return up to 50 items.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.get_log_events">
+<tt class="descname">get_log_events</tt><big>(</big><em>log_group_name</em>, <em>log_stream_name</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>next_token=None</em>, <em>limit=None</em>, <em>start_from_head=None</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.get_log_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves log events from the specified log stream. You can
+provide an optional time range to filter the results on the
+event <cite>timestamp</cite>.</p>
+<p>By default, this operation returns as much log events as can
+fit in a response size of 1MB, up to 10,000 log events. The
+response will always include a <cite>nextForwardToken</cite> and a
+<cite>nextBackwardToken</cite> in the response body. You can use any of
+these tokens in subsequent <cite>GetLogEvents</cite> requests to paginate
+through events in either forward or backward direction. You
+can also limit the number of log events returned in the
+response by specifying the <cite>limit</cite> parameter in the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>start_time</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#long" title="(in Python v2.7)"><em>long</em></a>) &#8211; A point in time expressed as the number milliseconds
+since Jan 1, 1970 00:00:00 UTC.</li>
+<li><strong>end_time</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#long" title="(in Python v2.7)"><em>long</em></a>) &#8211; A point in time expressed as the number milliseconds
+since Jan 1, 1970 00:00:00 UTC.</li>
+<li><strong>next_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string token used for pagination that points to
+the next page of results. It must be a value obtained from the
+<cite>nextForwardToken</cite> or <cite>nextBackwardToken</cite> fields in the response of
+the previous <cite>GetLogEvents</cite> request.</li>
+<li><strong>limit</strong> (<em>integer</em>) &#8211; The maximum number of log events returned in the
+response. If you don&#8217;t specify a value, the request would return as
+much log events as can fit in a response size of 1MB, up to 10,000
+log events.</li>
+<li><strong>start_from_head</strong> (<em>boolean</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>action</em>, <em>body</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.put_log_events">
+<tt class="descname">put_log_events</tt><big>(</big><em>log_group_name</em>, <em>log_stream_name</em>, <em>log_events</em>, <em>sequence_token=None</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.put_log_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads a batch of log events to the specified log stream.</p>
+<p>Every PutLogEvents request must include the <cite>sequenceToken</cite>
+obtained from the response of the previous request. An upload
+in a newly created log stream does not require a
+<cite>sequenceToken</cite>.</p>
+<p>The batch of events must satisfy the following constraints:</p>
+<ul class="simple">
+<li>The maximum batch size is 32,768 bytes, and this size is
+calculated as the sum of all event messages in UTF-8, plus 26
+bytes for each log event.</li>
+<li>None of the log events in the batch can be more than 2 hours
+in the future.</li>
+<li>None of the log events in the batch can be older than 14
+days or the retention period of the log group.</li>
+<li>The log events in the batch must be in chronological ordered
+by their <cite>timestamp</cite>.</li>
+<li>The maximum number of log events in a batch is 1,000.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_stream_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_events</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of events belonging to a log stream.</li>
+<li><strong>sequence_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string token that must be obtained from the
+response of the previous <cite>PutLogEvents</cite> request.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.put_metric_filter">
+<tt class="descname">put_metric_filter</tt><big>(</big><em>log_group_name</em>, <em>filter_name</em>, <em>filter_pattern</em>, <em>metric_transformations</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.put_metric_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates or updates a metric filter and associates it with the
+specified log group. Metric filters allow you to configure
+rules to extract metric data from log events ingested through
+<cite>PutLogEvents</cite> requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>filter_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the metric filter.</li>
+<li><strong>filter_pattern</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>metric_transformations</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.put_retention_policy">
+<tt class="descname">put_retention_policy</tt><big>(</big><em>log_group_name</em>, <em>retention_in_days</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.put_retention_policy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>retention_in_days</strong> (<em>integer</em>) &#8211; Specifies the number of days you want to
+retain log events in the specified log group. Possible values are:
+1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 547, 730.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.set_retention">
+<tt class="descname">set_retention</tt><big>(</big><em>log_group_name</em>, <em>retention_in_days</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.set_retention" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the retention of the specified log group. Log groups are
+created with a default retention of 14 days. The retention
+attribute allow you to configure the number of days you want
+to retain log events in the specified log group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>log_group_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>retention_in_days</strong> (<em>integer</em>) &#8211; Specifies the number of days you want to
+retain log events in the specified log group. Possible values are:
+1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 547, 730.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.logs.layer1.CloudWatchLogsConnection.test_metric_filter">
+<tt class="descname">test_metric_filter</tt><big>(</big><em>filter_pattern</em>, <em>log_event_messages</em><big>)</big><a class="headerlink" href="#boto.logs.layer1.CloudWatchLogsConnection.test_metric_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the filter pattern of a metric filter against a sample
+of log event messages. You can use this operation to validate
+the correctness of a metric filter pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filter_pattern</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </li>
+<li><strong>log_event_messages</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.logs.exceptions">
+<span id="boto-logs-exceptions"></span><h2>boto.logs.exceptions<a class="headerlink" href="#module-boto.logs.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.logs.exceptions.DataAlreadyAcceptedException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">DataAlreadyAcceptedException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.DataAlreadyAcceptedException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.InvalidParameterException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">InvalidParameterException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.InvalidParameterException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.InvalidSequenceTokenException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">InvalidSequenceTokenException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.InvalidSequenceTokenException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.LimitExceededException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">LimitExceededException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.LimitExceededException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.OperationAbortedException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">OperationAbortedException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.OperationAbortedException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.ResourceAlreadyExistsException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">ResourceAlreadyExistsException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.ResourceAlreadyExistsException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.ResourceInUseException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">ResourceInUseException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.ResourceInUseException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.ResourceNotFoundException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">ResourceNotFoundException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.ResourceNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.logs.exceptions.ServiceUnavailableException">
+<em class="property">exception </em><tt class="descclassname">boto.logs.exceptions.</tt><tt class="descname">ServiceUnavailableException</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.logs.exceptions.ServiceUnavailableException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CloudWatch Logs</a><ul>
+<li><a class="reference internal" href="#module-boto.logs">boto.logs</a></li>
+<li><a class="reference internal" href="#module-boto.logs.layer1">boto.logs.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.logs.exceptions">boto.logs.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="kinesis.html"
+                        title="previous chapter">Kinesis</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manage.html"
+                        title="next chapter">manage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/logs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manage.html" title="manage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="kinesis.html" title="Kinesis"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

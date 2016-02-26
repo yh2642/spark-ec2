@@ -1,0 +1,867 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>STS &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Support" href="support.html" />
+    <link rel="prev" title="SQS" href="sqs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="support.html" title="Support"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sqs.html" title="SQS"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sts">
+<h1>STS<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.sts">
+<span id="boto-sts"></span><h2>boto.sts<a class="headerlink" href="#module-boto.sts" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.sts.connect_to_region">
+<tt class="descclassname">boto.sts.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.sts.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a valid region name, return a
+<tt class="xref py py-class docutils literal"><span class="pre">boto.sts.connection.STSConnection</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region_name</strong> &#8211; The name of the region to connect to.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">boto.sts.connection.STSConnection</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A connection to the given region, or None if an invalid region
+name is given</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.sts.regions">
+<tt class="descclassname">boto.sts.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.sts.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the STS service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt> instances</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sts.STSConnection">
+<em class="property">class </em><tt class="descclassname">boto.sts.</tt><tt class="descname">STSConnection</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>is_secure=True</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>proxy_user=None</em>, <em>proxy_pass=None</em>, <em>debug=0</em>, <em>https_connection_factory=None</em>, <em>region=None</em>, <em>path='/'</em>, <em>converter=None</em>, <em>validate_certs=True</em>, <em>anon=False</em>, <em>security_token=None</em>, <em>profile_name=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>AWS Security Token Service
+The AWS Security Token Service is a web service that enables you
+to request temporary, limited-privilege credentials for AWS
+Identity and Access Management (IAM) users or for users that you
+authenticate (federated users). This guide provides descriptions
+of the AWS Security Token Service API.</p>
+<p>For more detailed information about using this service, go to
+<a href="#id7"><span class="problematic" id="id8">`Using Temporary Security Credentials`_</span></a>.</p>
+<p>For information about setting up signatures and authorization
+through the API, go to <a href="#id9"><span class="problematic" id="id10">`Signing AWS API Requests`_</span></a> in the AWS
+General Reference . For general information about the Query API,
+go to <a href="#id11"><span class="problematic" id="id12">`Making Query Requests`_</span></a> in Using IAM . For information
+about using security tokens with other AWS products, go to <a href="#id13"><span class="problematic" id="id14">`Using
+Temporary Security Credentials to Access AWS`_</span></a> in Using Temporary
+Security Credentials .</p>
+<p>If you&#8217;re new to AWS and need additional technical information
+about a specific AWS product, you can find the product&#8217;s technical
+documentation at <a href="#id15"><span class="problematic" id="id16">`http://aws.amazon.com/documentation/`_</span></a>.</p>
+<p>We will refer to Amazon Identity and Access Management using the
+abbreviated form IAM. All copyrights and legal protections still
+apply.</p>
+<dl class="attribute">
+<dt id="boto.sts.STSConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2011-06-15'</em><a class="headerlink" href="#boto.sts.STSConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.sts.STSConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'sts.amazonaws.com'</em><a class="headerlink" href="#boto.sts.STSConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.sts.STSConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.sts.STSConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.assume_role">
+<tt class="descname">assume_role</tt><big>(</big><em>role_arn</em>, <em>role_session_name</em>, <em>policy=None</em>, <em>duration_seconds=None</em>, <em>external_id=None</em>, <em>mfa_serial_number=None</em>, <em>mfa_token=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.assume_role" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of temporary security credentials (consisting of
+an access key ID, a secret access key, and a security token)
+that you can use to access AWS resources that you might not
+normally have access to. Typically, you use <cite>AssumeRole</cite> for
+cross-account access or federation.</p>
+<p>For cross-account access, imagine that you own multiple
+accounts and need to access resources in each account. You
+could create long-term credentials in each account to access
+those resources. However, managing all those credentials and
+remembering which one can access which account can be time
+consuming. Instead, you can create one set of long-term
+credentials in one account and then use temporary security
+credentials to access all the other accounts by assuming roles
+in those accounts. For more information about roles, see
+<a href="#id17"><span class="problematic" id="id18">`Roles`_</span></a> in Using IAM .</p>
+<p>For federation, you can, for example, grant single sign-on
+access to the AWS Management Console. If you already have an
+identity and authentication system in your corporate network,
+you don&#8217;t have to recreate user identities in AWS in order to
+grant those user identities access to AWS. Instead, after a
+user has been authenticated, you call <cite>AssumeRole</cite> (and
+specify the role with the appropriate permissions) to get
+temporary security credentials for that user. With those
+temporary security credentials, you construct a sign-in URL
+that users can use to access the console. For more
+information, see <a href="#id19"><span class="problematic" id="id20">`Scenarios for Granting Temporary Access`_</span></a> in
+AWS Security Token Service .</p>
+<p>The temporary security credentials are valid for the duration
+that you specified when calling <cite>AssumeRole</cite>, which can be
+from 900 seconds (15 minutes) to 3600 seconds (1 hour). The
+default is 1 hour.</p>
+<p>The temporary security credentials that are returned from the
+<cite>AssumeRoleWithWebIdentity</cite> response have the permissions that
+are associated with the access policy of the role being
+assumed and any policies that are associated with the AWS
+resource being accessed. You can further restrict the
+permissions of the temporary security credentials by passing a
+policy in the request. The resulting permissions are an
+intersection of the role&#8217;s access policy and the policy that
+you passed. These policies and any applicable resource-based
+policies are evaluated when calls to AWS service APIs are made
+using the temporary security credentials.</p>
+<p>To assume a role, your AWS account must be trusted by the
+role. The trust relationship is defined in the role&#8217;s trust
+policy when the IAM role is created. You must also have a
+policy that allows you to call <cite>sts:AssumeRole</cite>.</p>
+<p><strong>Important:</strong> You cannot call <cite>Assumerole</cite> by using AWS
+account credentials; access will be denied. You must use IAM
+user credentials to call <cite>AssumeRole</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon Resource Name (ARN) of the role that the
+caller is assuming.</li>
+<li><strong>role_session_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identifier for the assumed role session.
+The session name is included as part of the <cite>AssumedRoleUser</cite>.</li>
+<li><strong>policy</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A supplemental policy that is associated with the
+temporary security credentials from the <cite>AssumeRole</cite> call. The
+resulting permissions of the temporary security credentials are an
+intersection of this policy and the access policy that is
+associated with the role. Use this policy to further restrict the
+permissions of the temporary security credentials.</li>
+<li><strong>duration_seconds</strong> (<em>integer</em>) &#8211; The duration, in seconds, of the role session.
+The value can range from 900 seconds (15 minutes) to 3600 seconds
+(1 hour). By default, the value is set to 3600 seconds.</li>
+<li><strong>external_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique identifier that is used by third parties
+to assume a role in their customers&#8217; accounts. For each role that
+the third party can assume, they should instruct their customers to
+create a role with the external ID that the third party generated.
+Each time the third party assumes the role, they must pass the
+customer&#8217;s external ID. The external ID is useful in order to help
+third parties bind a role to the customer who created it. For more
+information about the external ID, see <a href="#id21"><span class="problematic" id="id22">`About the External ID`_</span></a> in
+Using Temporary Security Credentials .</li>
+<li><strong>mfa_serial_number</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The identification number of the MFA device that
+is associated with the user who is making the AssumeRole call.
+Specify this value if the trust policy of the role being assumed
+includes a condition that requires MFA authentication. The value is
+either the serial number for a hardware device (such as
+GAHT12345678) or an Amazon Resource Name (ARN) for a virtual device
+(such as arn:aws:iam::123456789012:mfa/user). Minimum length of 9.
+Maximum length of 256.</li>
+<li><strong>mfa_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The value provided by the MFA device, if the trust
+policy of the role being assumed requires MFA (that is, if the
+policy includes a condition that tests for MFA). If the role being
+assumed requires MFA and if the TokenCode value is missing or
+expired, the AssumeRole call returns an &#8220;access denied&#8221; errror.
+Minimum length of 6. Maximum length of 6.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.assume_role_with_saml">
+<tt class="descname">assume_role_with_saml</tt><big>(</big><em>role_arn</em>, <em>principal_arn</em>, <em>saml_assertion</em>, <em>policy=None</em>, <em>duration_seconds=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.assume_role_with_saml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of temporary security credentials for users who
+have been authenticated via a SAML authentication response.
+This operation provides a mechanism for tying an enterprise
+identity store or directory to role-based AWS access without
+user-specific credentials or configuration.</p>
+<p>The temporary security credentials returned by this operation
+consist of an access key ID, a secret access key, and a
+security token. Applications can use these temporary security
+credentials to sign calls to AWS services. The credentials are
+valid for the duration that you specified when calling
+<cite>AssumeRoleWithSAML</cite>, which can be up to 3600 seconds (1 hour)
+or until the time specified in the SAML authentication
+response&#8217;s <cite>NotOnOrAfter</cite> value, whichever is shorter.</p>
+<p>The maximum duration for a session is 1 hour, and the minimum
+duration is 15 minutes, even if values outside this range are
+specified.</p>
+<p>Optionally, you can pass an AWS IAM access policy to this
+operation. The temporary security credentials that are
+returned by the operation have the permissions that are
+associated with the access policy of the role being assumed,
+except for any permissions explicitly denied by the policy you
+pass. This gives you a way to further restrict the permissions
+for the federated user. These policies and any applicable
+resource-based policies are evaluated when calls to AWS are
+made using the temporary security credentials.</p>
+<p>Before your application can call <cite>AssumeRoleWithSAML</cite>, you
+must configure your SAML identity provider (IdP) to issue the
+claims required by AWS. Additionally, you must use AWS
+Identity and Access Management (AWS IAM) to create a SAML
+provider entity in your AWS account that represents your
+identity provider, and create an AWS IAM role that specifies
+this SAML provider in its trust policy.</p>
+<p>Calling <cite>AssumeRoleWithSAML</cite> does not require the use of AWS
+security credentials. The identity of the caller is validated
+by using keys in the metadata document that is uploaded for
+the SAML provider entity for your identity provider.</p>
+<p>For more information, see the following resources:</p>
+<ul class="simple">
+<li><a href="#id23"><span class="problematic" id="id24">`Creating Temporary Security Credentials for SAML
+Federation`_</span></a> in the Using Temporary Security Credentials
+guide.</li>
+<li><a href="#id25"><span class="problematic" id="id26">`SAML Providers`_</span></a> in the Using IAM guide.</li>
+<li><a href="#id1"><span class="problematic" id="id2">`</span></a>Configuring a Relying Party and Claims in the Using IAM
+guide. <a href="#id3"><span class="problematic" id="id4">`</span></a>_</li>
+<li><a href="#id27"><span class="problematic" id="id28">`Creating a Role for SAML-Based Federation`_</span></a> in the Using
+IAM guide.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon Resource Name (ARN) of the role that the
+caller is assuming.</li>
+<li><strong>principal_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon Resource Name (ARN) of the SAML
+provider in AWS IAM that describes the IdP.</li>
+<li><strong>saml_assertion</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The base-64 encoded SAML authentication response
+provided by the IdP.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>For more information, see <a href="#id5"><span class="problematic" id="id6">`</span></a>Configuring a Relying Party and Adding</dt>
+<dd>Claims`_ in the Using IAM guide.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>policy</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<p>An AWS IAM policy in JSON format.</p>
+<dl class="docutils">
+<dt>The temporary security credentials that are returned by this operation</dt>
+<dd>have the permissions that are associated with the access policy of
+the role being assumed, except for any permissions explicitly
+denied by the policy you pass. These policies and any applicable
+resource-based policies are evaluated when calls to AWS are made
+using the temporary security credentials.</dd>
+<dt>The policy must be 2048 bytes or shorter, and its packed size must be</dt>
+<dd>less than 450 bytes.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>duration_seconds</strong> (<em>integer</em>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The duration, in seconds, of the role session. The value can range from</dt>
+<dd>900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
+value is set to 3600 seconds. An expiration can also be specified
+in the SAML authentication response&#8217;s <cite>NotOnOrAfter</cite> value. The
+actual expiration time is whichever value is shorter.</dd>
+<dt>The maximum duration for a session is 1 hour, and the minimum duration</dt>
+<dd>is 15 minutes, even if values outside this range are specified.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.assume_role_with_web_identity">
+<tt class="descname">assume_role_with_web_identity</tt><big>(</big><em>role_arn</em>, <em>role_session_name</em>, <em>web_identity_token</em>, <em>provider_id=None</em>, <em>policy=None</em>, <em>duration_seconds=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.assume_role_with_web_identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of temporary security credentials for users who
+have been authenticated in a mobile or web application with a
+web identity provider, such as Login with Amazon, Facebook, or
+Google. <cite>AssumeRoleWithWebIdentity</cite> is an API call that does
+not require the use of AWS security credentials. Therefore,
+you can distribute an application (for example, on mobile
+devices) that requests temporary security credentials without
+including long-term AWS credentials in the application or by
+deploying server-based proxy services that use long-term AWS
+credentials. For more information, see <a href="#id29"><span class="problematic" id="id30">`Creating a Mobile
+Application with Third-Party Sign-In`_</span></a> in AWS Security Token
+Service .</p>
+<p>The temporary security credentials consist of an access key
+ID, a secret access key, and a security token. Applications
+can use these temporary security credentials to sign calls to
+AWS service APIs. The credentials are valid for the duration
+that you specified when calling <cite>AssumeRoleWithWebIdentity</cite>,
+which can be from 900 seconds (15 minutes) to 3600 seconds (1
+hour). By default, the temporary security credentials are
+valid for 1 hour.</p>
+<p>The temporary security credentials that are returned from the
+<cite>AssumeRoleWithWebIdentity</cite> response have the permissions that
+are associated with the access policy of the role being
+assumed. You can further restrict the permissions of the
+temporary security credentials by passing a policy in the
+request. The resulting permissions are an intersection of the
+role&#8217;s access policy and the policy that you passed. These
+policies and any applicable resource-based policies are
+evaluated when calls to AWS service APIs are made using the
+temporary security credentials.</p>
+<p>Before your application can call <cite>AssumeRoleWithWebIdentity</cite>,
+you must have an identity token from a supported identity
+provider and create a role that the application can assume.
+The role that your application assumes must trust the identity
+provider that is associated with the identity token. In other
+words, the identity provider must be specified in the role&#8217;s
+trust policy. For more information, see ` Creating Temporary
+Security Credentials for Mobile Apps Using Third-Party
+Identity Providers`_.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role_arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon Resource Name (ARN) of the role that the
+caller is assuming.</li>
+<li><strong>role_session_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An identifier for the assumed role session.
+Typically, you pass the name or identifier that is associated with
+the user who is using your application. That way, the temporary
+security credentials that your application will use are associated
+with that user. This session name is included as part of the ARN
+and assumed role ID in the <cite>AssumedRoleUser</cite> response element.</li>
+<li><strong>web_identity_token</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The OAuth 2.0 access token or OpenID Connect
+ID token that is provided by the identity provider. Your
+application must get this token by authenticating the user who is
+using your application with a web identity provider before the
+application makes an <cite>AssumeRoleWithWebIdentity</cite> call.</li>
+<li><strong>provider_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specify this value only for OAuth access tokens. Do
+not specify this value for OpenID Connect ID tokens, such as
+<cite>accounts.google.com</cite>. This is the fully-qualified host component
+of the domain name of the identity provider. Do not include URL
+schemes and port numbers. Currently, <cite>www.amazon.com</cite> and
+<cite>graph.facebook.com</cite> are supported.</li>
+<li><strong>policy</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A supplemental policy that is associated with the
+temporary security credentials from the <cite>AssumeRoleWithWebIdentity</cite>
+call. The resulting permissions of the temporary security
+credentials are an intersection of this policy and the access
+policy that is associated with the role. Use this policy to further
+restrict the permissions of the temporary security credentials.</li>
+<li><strong>duration_seconds</strong> (<em>integer</em>) &#8211; The duration, in seconds, of the role session.
+The value can range from 900 seconds (15 minutes) to 3600 seconds
+(1 hour). By default, the value is set to 3600 seconds.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.decode_authorization_message">
+<tt class="descname">decode_authorization_message</tt><big>(</big><em>encoded_message</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.decode_authorization_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes additional information about the authorization status
+of a request from an encoded message returned in response to
+an AWS request.</p>
+<p>For example, if a user is not authorized to perform an action
+that he or she has requested, the request returns a
+<cite>Client.UnauthorizedOperation</cite> response (an HTTP 403
+response). Some AWS actions additionally return an encoded
+message that can provide details about this authorization
+failure.
+Only certain AWS actions return an encoded authorization
+message. The documentation for an individual action indicates
+whether that action returns an encoded message in addition to
+returning an HTTP code.
+The message is encoded because the details of the
+authorization status can constitute privileged information
+that the user who requested the action should not see. To
+decode an authorization status message, a user must be granted
+permissions via an IAM policy to request the
+<cite>DecodeAuthorizationMessage</cite> (
+<cite>sts:DecodeAuthorizationMessage</cite>) action.</p>
+<p>The decoded message includes the following type of
+information:</p>
+<ul class="simple">
+<li>Whether the request was denied due to an explicit deny or
+due to the absence of an explicit allow. For more information,
+see <a href="#id31"><span class="problematic" id="id32">`Determining Whether a Request is Allowed or Denied`_</span></a> in
+Using IAM .</li>
+<li>The principal who made the request.</li>
+<li>The requested action.</li>
+<li>The requested resource.</li>
+<li>The values of condition keys in the context of the user&#8217;s
+request.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>encoded_message</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The encoded message that was returned with the
+response.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.get_federation_token">
+<tt class="descname">get_federation_token</tt><big>(</big><em>name</em>, <em>duration=None</em>, <em>policy=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.get_federation_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of temporary security credentials (consisting of
+an access key ID, a secret access key, and a security token)
+for a federated user. A typical use is in a proxy application
+that is getting temporary security credentials on behalf of
+distributed applications inside a corporate network. Because
+you must call the <cite>GetFederationToken</cite> action using the long-
+term security credentials of an IAM user, this call is
+appropriate in contexts where those credentials can be safely
+stored, usually in a server-based application.</p>
+<p><strong>Note:</strong> Do not use this call in mobile applications or
+client-based web applications that directly get temporary
+security credentials. For those types of applications, use
+<cite>AssumeRoleWithWebIdentity</cite>.</p>
+<p>The <cite>GetFederationToken</cite> action must be called by using the
+long-term AWS security credentials of the AWS account or an
+IAM user. Credentials that are created by IAM users are valid
+for the specified duration, between 900 seconds (15 minutes)
+and 129600 seconds (36 hours); credentials that are created by
+using account credentials have a maximum duration of 3600
+seconds (1 hour).</p>
+<p>The permissions that are granted to the federated user are the
+intersection of the policy that is passed with the
+<cite>GetFederationToken</cite> request and policies that are associated
+with of the entity making the <cite>GetFederationToken</cite> call.</p>
+<p>For more information about how permissions work, see
+<a href="#id33"><span class="problematic" id="id34">`Controlling Permissions in Temporary Credentials`_</span></a> in Using
+Temporary Security Credentials . For information about using
+<cite>GetFederationToken</cite> to create temporary security credentials,
+see <a href="#id35"><span class="problematic" id="id36">`Creating Temporary Credentials to Enable Access for
+Federated Users`_</span></a> in Using Temporary Security Credentials .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the federated user. The name is used as an
+identifier for the temporary security credentials (such as <cite>Bob</cite>).
+For example, you can reference the federated user name in a
+resource-based policy, such as in an Amazon S3 bucket policy.</li>
+<li><strong>policy</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A policy that specifies the permissions that are granted
+to the federated user. By default, federated users have no
+permissions; they do not inherit any from the IAM user. When you
+specify a policy, the federated user&#8217;s permissions are intersection
+of the specified policy and the IAM user&#8217;s policy. If you don&#8217;t
+specify a policy, federated users can only access AWS resources
+that explicitly allow those federated users in a resource policy,
+such as in an Amazon S3 bucket policy.</li>
+<li><strong>duration</strong> (<em>integer</em>) &#8211; The duration, in seconds, that the session
+should last. Acceptable durations for federation sessions range
+from 900 seconds (15 minutes) to 129600 seconds (36 hours), with
+43200 seconds (12 hours) as the default. Sessions for AWS account
+owners are restricted to a maximum of 3600 seconds (one hour). If
+the duration is longer than one hour, the session for AWS account
+owners defaults to one hour.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.STSConnection.get_session_token">
+<tt class="descname">get_session_token</tt><big>(</big><em>duration=None</em>, <em>force_new=False</em>, <em>mfa_serial_number=None</em>, <em>mfa_token=None</em><big>)</big><a class="headerlink" href="#boto.sts.STSConnection.get_session_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a valid session token.  Because retrieving new tokens
+from the Secure Token Service is a fairly heavyweight operation
+this module caches previously retrieved tokens and returns
+them when appropriate.  Each token is cached with a key
+consisting of the region name of the STS endpoint
+concatenated with the requesting user&#8217;s access id.  If there
+is a token in the cache meeting with this key, the session
+expiration is checked to make sure it is still valid and if
+so, the cached token is returned.  Otherwise, a new session
+token is requested from STS and it is placed into the cache
+and returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>duration</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of seconds the credentials should
+remain valid.</li>
+<li><strong>force_new</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; If this parameter is True, a new session token
+will be retrieved from the Secure Token Service regardless
+of whether there is a valid cached token or not.</li>
+<li><strong>mfa_serial_number</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The serial number of an MFA device.
+If this is provided and if the mfa_passcode provided is
+valid, the temporary session token will be authorized with
+to perform operations requiring the MFA device authentication.</li>
+<li><strong>mfa_token</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The 6 digit token associated with the
+MFA device.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.sts.credentials">
+<span id="boto-sts-credentials"></span><h2>boto.sts.credentials<a class="headerlink" href="#module-boto.sts.credentials" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.sts.credentials.AssumedRole">
+<em class="property">class </em><tt class="descclassname">boto.sts.credentials.</tt><tt class="descname">AssumedRole</tt><big>(</big><em>connection=None</em>, <em>credentials=None</em>, <em>user=None</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.AssumedRole" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://docs.python.org/library/user.html#module-user" title="(in Python v2.7)"><strong>user</strong></a> &#8211; The assumed role user.</li>
+<li><strong>credentials</strong> &#8211; A Credentials object containing the credentials.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.sts.credentials.AssumedRole.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.AssumedRole.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.AssumedRole.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.AssumedRole.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sts.credentials.Credentials">
+<em class="property">class </em><tt class="descclassname">boto.sts.credentials.</tt><tt class="descname">Credentials</tt><big>(</big><em>parent=None</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>access_key</strong> &#8211; The AccessKeyID.</li>
+<li><strong>secret_key</strong> &#8211; The SecretAccessKey.</li>
+<li><strong>session_token</strong> &#8211; The session token that must be passed with
+requests to use the temporary credentials</li>
+<li><strong>expiration</strong> &#8211; The timestamp for when the credentials will expire</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.sts.credentials.Credentials.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="boto.sts.credentials.Credentials.from_json">
+<em class="property">classmethod </em><tt class="descname">from_json</tt><big>(</big><em>json_doc</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and return a new Session Token based on the contents
+of a JSON document.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>json_doc</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A string containing a JSON document with a
+previously saved Credentials object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.Credentials.is_expired">
+<tt class="descname">is_expired</tt><big>(</big><em>time_offset_seconds=0</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.is_expired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if the Session Token is expired or not.  By default
+it will check to see if the Session Token is expired as of the
+moment the method is called.  However, you can supply an
+optional parameter which is the number of seconds of offset
+into the future for the check.  For example, if you supply
+a value of 5, this method will return a True if the Session
+Token will be expired 5 seconds from this moment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time_offset_seconds</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of seconds into the future
+to test the Session Token for expiration.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="boto.sts.credentials.Credentials.load">
+<em class="property">classmethod </em><tt class="descname">load</tt><big>(</big><em>file_path</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and return a new Session Token based on the contents
+of a previously saved JSON-format file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The fully qualified path to the JSON-format
+file containing the previously saved Session Token information.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.Credentials.save">
+<tt class="descname">save</tt><big>(</big><em>file_path</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist a Session Token to a file in JSON format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The fully qualified path to the file where the
+the Session Token data should be written.  Any previous
+data in the file will be overwritten.  To help protect
+the credentials contained in the file, the permissions
+of the file will be set to readable/writable by owner only.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.Credentials.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.Credentials.to_dict">
+<tt class="descname">to_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.sts.credentials.Credentials.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python dict containing the important information
+about this Session Token.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sts.credentials.DecodeAuthorizationMessage">
+<em class="property">class </em><tt class="descclassname">boto.sts.credentials.</tt><tt class="descname">DecodeAuthorizationMessage</tt><big>(</big><em>request_id=None</em>, <em>decoded_message=None</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.DecodeAuthorizationMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>request_id</strong> &#8211; The request ID.</li>
+<li><strong>decoded_message</strong> &#8211; The decoded authorization message (may be JSON).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.sts.credentials.DecodeAuthorizationMessage.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.DecodeAuthorizationMessage.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.DecodeAuthorizationMessage.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.DecodeAuthorizationMessage.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sts.credentials.FederationToken">
+<em class="property">class </em><tt class="descclassname">boto.sts.credentials.</tt><tt class="descname">FederationToken</tt><big>(</big><em>parent=None</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.FederationToken" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>credentials</strong> &#8211; A Credentials object containing the credentials.</li>
+<li><strong>federated_user_arn</strong> &#8211; ARN specifying federated user using credentials.</li>
+<li><strong>federated_user_id</strong> &#8211; The ID of the federated user using credentials.</li>
+<li><strong>packed_policy_size</strong> &#8211; A percentage value indicating the size of
+the policy in packed form</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.sts.credentials.FederationToken.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.FederationToken.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.FederationToken.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.FederationToken.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.sts.credentials.User">
+<em class="property">class </em><tt class="descclassname">boto.sts.credentials.</tt><tt class="descname">User</tt><big>(</big><em>arn=None</em>, <em>assume_role_id=None</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.User" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>arn</strong> &#8211; The arn of the user assuming the role.</li>
+<li><strong>assume_role_id</strong> &#8211; The identifier of the assumed role.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.sts.credentials.User.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>value</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.User.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.sts.credentials.User.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>attrs</em>, <em>connection</em><big>)</big><a class="headerlink" href="#boto.sts.credentials.User.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">STS</a><ul>
+<li><a class="reference internal" href="#module-boto.sts">boto.sts</a></li>
+<li><a class="reference internal" href="#module-boto.sts.credentials">boto.sts.credentials</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sqs.html"
+                        title="previous chapter">SQS</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support.html"
+                        title="next chapter">Support</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/sts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="support.html" title="Support"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sqs.html" title="SQS"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

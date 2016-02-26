@@ -1,0 +1,1768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cloudsearch &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="CloudTrail" href="cloudtrail.html" />
+    <link rel="prev" title="Cloudsearch" href="cloudsearch.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudtrail.html" title="CloudTrail"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cloudsearch.html" title="Cloudsearch"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cloudsearch">
+<h1>Cloudsearch<a class="headerlink" href="#cloudsearch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.cloudsearch2">
+<span id="boto-cloudsearch2"></span><h2>boto.cloudsearch2<a class="headerlink" href="#module-boto.cloudsearch2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.cloudsearch2.connect_to_region">
+<tt class="descclassname">boto.cloudsearch2.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.cloudsearch2.regions">
+<tt class="descclassname">boto.cloudsearch2.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon CloudSearch service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.domain">
+<span id="boto-cloudsearch2-domain"></span><h2>boto.cloudsearch2.domain<a class="headerlink" href="#module-boto.cloudsearch2.domain" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudsearch2.domain.Domain">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.domain.</tt><tt class="descname">Domain</tt><big>(</big><em>layer1</em>, <em>data</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Cloudsearch domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; The name of the domain.</li>
+<li><a class="reference external" href="http://docs.python.org/library/functions.html#id" title="(in Python v2.7)"><strong>id</strong></a> &#8211; The internally generated unique identifier for the domain.</li>
+<li><strong>created</strong> &#8211; A boolean which is True if the domain is
+created. It can take several minutes to initialize a domain
+when CreateDomain is called. Newly created search domains are
+returned with a False value for Created until domain creation
+is complete</li>
+<li><strong>deleted</strong> &#8211; A boolean which is True if the search domain has
+been deleted. The system must clean up resources dedicated to
+the search domain when delete is called. Newly deleted
+search domains are returned from list_domains with a True
+value for deleted for several minutes until resource cleanup
+is complete.</li>
+<li><strong>processing</strong> &#8211; True if processing is being done to activate the
+current domain configuration.</li>
+<li><strong>num_searchable_docs</strong> &#8211; The number of documents that have been
+submittted to the domain and indexed.</li>
+<li><strong>requires_index_document</strong> &#8211; True if index_documents needs to be
+called to activate the current domain configuration.</li>
+<li><strong>search_instance_count</strong> &#8211; The number of search instances that are
+available to process search requests.</li>
+<li><strong>search_instance_type</strong> &#8211; The instance type that is being used to
+process search requests.</li>
+<li><strong>search_partition_count</strong> &#8211; The number of partitions across which
+the search index is spread.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Constructor - Create a domain object from a layer1 and data params</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layer1</strong> (<tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.layer1.Layer1</span></tt> object) &#8211; A <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.layer1.Layer1</span></tt> object
+which is used to perform operations on the domain.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.create_expression">
+<tt class="descname">create_expression</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.create_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new expression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of an expression for processing
+during a search request.</li>
+<li><strong>value</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; <p>The expression to evaluate for ranking
+or thresholding while processing a search request. The
+Expression syntax is based on JavaScript expressions
+and supports:</p>
+<ul>
+<li>Single value, sort enabled numeric fields (int, double, date)</li>
+<li>Other expressions</li>
+<li>The _score variable, which references a document&#8217;s relevance
+score</li>
+<li>The _time variable, which references the current epoch time</li>
+<li>Integer, floating point, hex, and octal literals</li>
+<li>Arithmetic operators: + - * / %</li>
+<li>Bitwise operators: | &amp; ^ ~ &lt;&lt; &gt;&gt; &gt;&gt;&gt;</li>
+<li>Boolean operators (including the ternary operator): &amp;&amp; || ! ?:</li>
+<li>Comparison operators: &lt; &lt;= == &gt;= &gt;</li>
+<li>Mathematical functions: abs ceil exp floor ln log2 log10 logn</li>
+</ul>
+<blockquote>
+<div>max min pow sqrt pow</div></blockquote>
+<ul>
+<li>Trigonometric functions: acos acosh asin asinh atan atan2 atanh</li>
+</ul>
+<blockquote>
+<div>cos cosh sin sinh tanh tan</div></blockquote>
+<ul>
+<li>The haversin distance function</li>
+</ul>
+<p>Expressions always return an integer value from 0 to the maximum
+64-bit signed integer value (2^63 - 1). Intermediate results are
+calculated as double-precision floating point values and the return
+value is rounded to the nearest integer. If the expression is
+invalid or evaluates to a negative value, it returns 0. If the
+expression evaluates to a value greater than the maximum, it
+returns the maximum value.</p>
+<p>The source data for an Expression can be the name of an
+IndexField of type int or double, another Expression or the
+reserved name _score. The _score source is
+defined to return as a double from 0 to 10.0 (inclusive) to
+indicate how relevant a document is to the search request,
+taking into account repetition of search terms in the
+document and proximity of search terms to each other in
+each matching IndexField in the document.</p>
+<p>For more information about using rank expressions to
+customize ranking, see the Amazon CloudSearch Developer
+Guide.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ExpressionStatus object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ExpressionStatus</span></tt> object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">BaseException, InternalException, LimitExceededException,
+InvalidTypeException, ResourceNotFoundException</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.create_index_field">
+<tt class="descname">create_index_field</tt><big>(</big><em>field_name</em>, <em>field_type</em>, <em>default=''</em>, <em>facet=False</em>, <em>returnable=False</em>, <em>searchable=False</em>, <em>sortable=False</em>, <em>highlight=False</em>, <em>source_field=None</em>, <em>analysis_scheme=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.create_index_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines an <tt class="docutils literal"><span class="pre">IndexField</span></tt>, either replacing an existing
+definition or creating a new one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of a field in the search index.</li>
+<li><strong>field_type</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The type of field.  Valid values are
+int | double | literal | text | date | latlon |
+int-array | double-array | literal-array | text-array | date-array</li>
+<li><strong>default</strong> (<em>string or int</em>) &#8211; The default value for the field.  If the
+field is of type <tt class="docutils literal"><span class="pre">int</span></tt> this should be an integer value.
+Otherwise, it&#8217;s a string.</li>
+<li><strong>facet</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; A boolean to indicate whether facets
+are enabled for this field or not.  Does not apply to
+fields of type <tt class="docutils literal"><span class="pre">int,</span> <span class="pre">int-array,</span> <span class="pre">text,</span> <span class="pre">text-array</span></tt>.</li>
+<li><strong>returnable</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; A boolean to indicate whether values
+of this field can be returned in search results or
+used in ranking.</li>
+<li><strong>searchable</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; A boolean to indicate whether search
+is enabled for this field or not.</li>
+<li><strong>sortable</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; A boolean to indicate whether sorting
+is enabled for this field or not. Does not apply to
+fields of array types.</li>
+<li><strong>highlight</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; A boolean to indicate whether highlighting
+is enabled for this field or not. Does not apply to
+fields of type <tt class="docutils literal"><span class="pre">double,</span> <span class="pre">int,</span> <span class="pre">date,</span> <span class="pre">latlon</span></tt></li>
+<li><strong>source_field</strong> (<em>list of strings or string</em>) &#8211; For array types, this is the list of fields
+to treat as the source. For singular types, pass a string only.</li>
+<li><strong>analysis_scheme</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The analysis scheme to use for this field.
+Only applies to <tt class="docutils literal"><span class="pre">text</span> <span class="pre">|</span> <span class="pre">text-array</span></tt> field types</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">IndexFieldStatus objects</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.IndexFieldStatus</span></tt> object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">BaseException, InternalException, LimitExceededException,
+InvalidTypeException, ResourceNotFoundException</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.created">
+<tt class="descname">created</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.created" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.delete">
+<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete this domain and all index data associated with it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.deleted">
+<tt class="descname">deleted</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.deleted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.doc_service_endpoint">
+<tt class="descname">doc_service_endpoint</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.doc_service_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_access_policies">
+<tt class="descname">get_access_policies</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_access_policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ServicePoliciesStatus</span></tt>
+object representing the currently defined access policies for the
+domain.
+:return: ServicePoliciesStatus object
+:rtype: <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ServicePoliciesStatus</span></tt> object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_analysis_schemes">
+<tt class="descname">get_analysis_schemes</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_analysis_schemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of Analysis Scheme objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_availability_options">
+<tt class="descname">get_availability_options</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_availability_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.AvailabilityOptionsStatus</span></tt>
+object representing the currently defined availability options for
+the domain.
+:return: OptionsStatus object
+:rtype: <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.AvailabilityOptionsStatus</span></tt></p>
+<blockquote>
+<div>object</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_document_service">
+<tt class="descname">get_document_service</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_document_service" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_expressions">
+<tt class="descname">get_expressions</tt><big>(</big><em>names=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_expressions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of rank expressions defined for this domain.
+:return: list of ExpressionStatus objects
+:rtype: list of <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ExpressionStatus</span></tt></p>
+<blockquote>
+<div>object</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_index_fields">
+<tt class="descname">get_index_fields</tt><big>(</big><em>field_names=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_index_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of index fields defined for this domain.
+:return: list of IndexFieldStatus objects
+:rtype: list of <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.IndexFieldStatus</span></tt></p>
+<blockquote>
+<div>object</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_scaling_options">
+<tt class="descname">get_scaling_options</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_scaling_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ScalingParametersStatus</span></tt>
+object representing the currently defined scaling options for the
+domain.
+:return: ScalingParametersStatus object
+:rtype: <tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.option.ScalingParametersStatus</span></tt></p>
+<blockquote>
+<div>object</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.get_search_service">
+<tt class="descname">get_search_service</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.get_search_service" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.id">
+<tt class="descname">id</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.index_documents">
+<tt class="descname">index_documents</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.index_documents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells the search domain to start indexing its documents using
+the latest text processing options and IndexFields. This
+operation must be invoked to make options whose OptionStatus
+has OptionState of RequiresIndexDocuments visible in search
+results.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.name">
+<tt class="descname">name</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.processing">
+<tt class="descname">processing</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.processing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.requires_index_documents">
+<tt class="descname">requires_index_documents</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.requires_index_documents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.search_instance_count">
+<tt class="descname">search_instance_count</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.search_instance_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.search_partition_count">
+<tt class="descname">search_partition_count</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.search_partition_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.search_service_endpoint">
+<tt class="descname">search_service_endpoint</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.search_service_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.domain.Domain.service_arn">
+<tt class="descname">service_arn</tt><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.service_arn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.domain.Domain.update_from_data">
+<tt class="descname">update_from_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.Domain.update_from_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.cloudsearch2.domain.handle_bool">
+<tt class="descclassname">boto.cloudsearch2.domain.</tt><tt class="descname">handle_bool</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.domain.handle_bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.layer1">
+<span id="boto-cloudsearch2-layer1"></span><h2>boto.cloudsearch2.layer1<a class="headerlink" href="#module-boto.cloudsearch2.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.layer1.</tt><tt class="descname">CloudSearchConnection</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon CloudSearch Configuration Service
+You use the Amazon CloudSearch configuration service to create,
+configure, and manage search domains. Configuration service
+requests are submitted using the AWS Query protocol. AWS Query
+requests are HTTP or HTTPS requests submitted via HTTP GET or POST
+with a query parameter named Action.</p>
+<p>The endpoint for configuration service requests is region-
+specific: cloudsearch. region .amazonaws.com. For example,
+cloudsearch.us-east-1.amazonaws.com. For a current list of
+supported regions and endpoints, see <a href="#id1"><span class="problematic" id="id2">`Regions and Endpoints`_</span></a>.</p>
+<dl class="attribute">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.APIVersion">
+<tt class="descname">APIVersion</tt><em class="property"> = '2013-01-01'</em><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.APIVersion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.DefaultRegionEndpoint">
+<tt class="descname">DefaultRegionEndpoint</tt><em class="property"> = 'cloudsearch.us-east-1.amazonaws.com'</em><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.DefaultRegionEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.DefaultRegionName">
+<tt class="descname">DefaultRegionName</tt><em class="property"> = 'us-east-1'</em><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.DefaultRegionName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.ResponseError">
+<tt class="descname">ResponseError</tt><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">JSONResponseError</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.build_complex_param">
+<tt class="descname">build_complex_param</tt><big>(</big><em>params</em>, <em>label</em>, <em>value</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.build_complex_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize a structure.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">param_type</span> <span class="o">=</span> <span class="s">&#39;structure&#39;</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s">&#39;IndexField&#39;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;IndexFieldName&#39;</span><span class="p">:</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;IntOptions&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;DefaultValue&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>would result in the params dict being updated with these params:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">IndexField</span><span class="o">.</span><span class="n">IndexFieldName</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">IndexField</span><span class="o">.</span><span class="n">IntOptions</span><span class="o">.</span><span class="n">DefaultValue</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>params</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The params dict.  The complex list params
+will be added to this dict.</li>
+<li><strong>label</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; String label for param key</li>
+<li><strong>value</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#any" title="(in Python v2.7)"><em>any</em></a>) &#8211; The value to serialize</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.build_suggesters">
+<tt class="descname">build_suggesters</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.build_suggesters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indexes the search suggestions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.create_domain">
+<tt class="descname">create_domain</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.create_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new search domain. For more information, see
+<a href="#id3"><span class="problematic" id="id4">`Creating a Search Domain`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A name for the domain you are creating. Allowed
+characters are a-z (lower-case letters), 0-9, and hyphen (-).
+Domain names must start with a letter or number and be at least 3
+and no more than 28 characters long.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.define_analysis_scheme">
+<tt class="descname">define_analysis_scheme</tt><big>(</big><em>domain_name</em>, <em>analysis_scheme</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.define_analysis_scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures an analysis scheme that can be applied to a <cite>text</cite>
+or <cite>text-array</cite> field to define language-specific text
+processing options. For more information, see <a href="#id5"><span class="problematic" id="id6">`Configuring
+Analysis Schemes`_</span></a> in the Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>analysis_scheme</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Configuration information for an analysis
+scheme. Each analysis scheme has a unique name and specifies the
+language of the text to be processed. The following options can be
+configured for an analysis scheme: <cite>Synonyms</cite>, <cite>Stopwords</cite>,
+<cite>StemmingDictionary</cite>, and <cite>AlgorithmicStemming</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.define_expression">
+<tt class="descname">define_expression</tt><big>(</big><em>domain_name</em>, <em>expression</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.define_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures an <cite>Expression</cite> for the search domain. Used to
+create new expressions and modify existing ones. If the
+expression exists, the new configuration replaces the old one.
+For more information, see <a href="#id7"><span class="problematic" id="id8">`Configuring Expressions`_</span></a> in the
+Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>expression</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A named expression that can be evaluated at search
+time. Can be used to sort the search results, define other
+expressions, or return computed information in the search results.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.define_index_field">
+<tt class="descname">define_index_field</tt><big>(</big><em>domain_name</em>, <em>index_field</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.define_index_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures an <cite>IndexField</cite> for the search domain. Used to
+create new fields and modify existing ones. You must specify
+the name of the domain you are configuring and an index field
+configuration. The index field configuration specifies a
+unique name, the index field type, and the options you want to
+configure for the field. The options you can specify depend on
+the <cite>IndexFieldType</cite>. If the field exists, the new
+configuration replaces the old one. For more information, see
+<a href="#id9"><span class="problematic" id="id10">`Configuring Index Fields`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>index_field</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The index field and field options you want to
+configure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.define_suggester">
+<tt class="descname">define_suggester</tt><big>(</big><em>domain_name</em>, <em>suggester</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.define_suggester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures a suggester for a domain. A suggester enables you
+to display possible matches before users finish typing their
+queries. When you configure a suggester, you must specify the
+name of the text field you want to search for possible matches
+and a unique name for the suggester. For more information, see
+<a href="#id11"><span class="problematic" id="id12">`Getting Search Suggestions`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>suggester</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Configuration information for a search suggester.
+Each suggester has a unique name and specifies the text field you
+want to use for suggestions. The following options can be
+configured for a suggester: <cite>FuzzyMatching</cite>, <cite>SortExpression</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.delete_analysis_scheme">
+<tt class="descname">delete_analysis_scheme</tt><big>(</big><em>domain_name</em>, <em>analysis_scheme_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.delete_analysis_scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes an analysis scheme. For more information, see
+<a href="#id13"><span class="problematic" id="id14">`Configuring Analysis Schemes`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>analysis_scheme_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the analysis scheme you want
+to delete.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.delete_domain">
+<tt class="descname">delete_domain</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.delete_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permanently deletes a search domain and all of its data. Once
+a domain has been deleted, it cannot be recovered. For more
+information, see <a href="#id15"><span class="problematic" id="id16">`Deleting a Search Domain`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to permanently
+delete.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.delete_expression">
+<tt class="descname">delete_expression</tt><big>(</big><em>domain_name</em>, <em>expression_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.delete_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an <cite>Expression</cite> from the search domain. For more
+information, see <a href="#id17"><span class="problematic" id="id18">`Configuring Expressions`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>expression_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the <cite>Expression</cite> to delete.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.delete_index_field">
+<tt class="descname">delete_index_field</tt><big>(</big><em>domain_name</em>, <em>index_field_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.delete_index_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an <cite>IndexField</cite> from the search domain. For more
+information, see <a href="#id19"><span class="problematic" id="id20">`Configuring Index Fields`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>index_field_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the index field your want to
+remove from the domain&#8217;s indexing options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.delete_suggester">
+<tt class="descname">delete_suggester</tt><big>(</big><em>domain_name</em>, <em>suggester_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.delete_suggester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a suggester. For more information, see <a href="#id21"><span class="problematic" id="id22">`Getting Search
+Suggestions`_</span></a> in the Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>suggester_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the name of the suggester you want to
+delete.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_analysis_schemes">
+<tt class="descname">describe_analysis_schemes</tt><big>(</big><em>domain_name</em>, <em>analysis_scheme_names=None</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_analysis_schemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the analysis schemes configured for a domain. An analysis
+scheme defines language-specific text processing options for a
+<cite>text</cite> field. Can be limited to specific analysis schemes by
+name. By default, shows all analysis schemes and includes any
+pending changes to the configuration. Set the <cite>Deployed</cite>
+option to <cite>True</cite> to show the active configuration and exclude
+pending changes. For more information, see <a href="#id23"><span class="problematic" id="id24">`Configuring
+Analysis Schemes`_</span></a> in the Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>analysis_scheme_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The analysis schemes you want to
+describe.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_availability_options">
+<tt class="descname">describe_availability_options</tt><big>(</big><em>domain_name</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_availability_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the availability options configured for a domain. By
+default, shows the configuration with any pending changes. Set
+the <cite>Deployed</cite> option to <cite>True</cite> to show the active
+configuration and exclude pending changes. For more
+information, see <a href="#id25"><span class="problematic" id="id26">`Configuring Availability Options`_</span></a> in the
+Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_domains">
+<tt class="descname">describe_domains</tt><big>(</big><em>domain_names=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information about the search domains owned by this
+account. Can be limited to specific domains. Shows all domains
+by default. To get the number of searchable documents in a
+domain, use the console or submit a <cite>matchall</cite> request to your
+domain&#8217;s search endpoint:
+<cite>q=matchall&amp;q.parser=structured&amp;size=0</cite>. For more information,
+see <a href="#id27"><span class="problematic" id="id28">`Getting Information about a Search Domain`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The names of the domains you want to include in
+the response.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_expressions">
+<tt class="descname">describe_expressions</tt><big>(</big><em>domain_name</em>, <em>expression_names=None</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_expressions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the expressions configured for the search domain. Can be
+limited to specific expressions by name. By default, shows all
+expressions and includes any pending changes to the
+configuration. Set the <cite>Deployed</cite> option to <cite>True</cite> to show the
+active configuration and exclude pending changes. For more
+information, see <a href="#id29"><span class="problematic" id="id30">`Configuring Expressions`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>expression_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Limits the <cite>DescribeExpressions</cite> response to
+the specified expressions. If not specified, all expressions are
+shown.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_index_fields">
+<tt class="descname">describe_index_fields</tt><big>(</big><em>domain_name</em>, <em>field_names=None</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_index_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information about the index fields configured for the
+search domain. Can be limited to specific fields by name. By
+default, shows all fields and includes any pending changes to
+the configuration. Set the <cite>Deployed</cite> option to <cite>True</cite> to show
+the active configuration and exclude pending changes. For more
+information, see <a href="#id31"><span class="problematic" id="id32">`Getting Domain Information`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>field_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of the index fields you want to describe. If
+not specified, information is returned for all configured index
+fields.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_scaling_parameters">
+<tt class="descname">describe_scaling_parameters</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_scaling_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the scaling parameters configured for a domain. A
+domain&#8217;s scaling parameters specify the desired search
+instance type and replication count. For more information, see
+<a href="#id33"><span class="problematic" id="id34">`Configuring Scaling Options`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_service_access_policies">
+<tt class="descname">describe_service_access_policies</tt><big>(</big><em>domain_name</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_service_access_policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information about the access policies that control access
+to the domain&#8217;s document and search endpoints. By default,
+shows the configuration with any pending changes. Set the
+<cite>Deployed</cite> option to <cite>True</cite> to show the active configuration
+and exclude pending changes. For more information, see
+<a href="#id35"><span class="problematic" id="id36">`Configuring Access for a Search Domain`_</span></a> in the Amazon
+CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.describe_suggesters">
+<tt class="descname">describe_suggesters</tt><big>(</big><em>domain_name</em>, <em>suggester_names=None</em>, <em>deployed=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.describe_suggesters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the suggesters configured for a domain. A suggester
+enables you to display possible matches before users finish
+typing their queries. Can be limited to specific suggesters by
+name. By default, shows all suggesters and includes any
+pending changes to the configuration. Set the <cite>Deployed</cite>
+option to <cite>True</cite> to show the active configuration and exclude
+pending changes. For more information, see <a href="#id37"><span class="problematic" id="id38">`Getting Search
+Suggestions`_</span></a> in the Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the domain you want to describe.</li>
+<li><strong>suggester_names</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The suggesters you want to describe.</li>
+<li><strong>deployed</strong> (<em>boolean</em>) &#8211; Whether to display the deployed configuration (
+<cite>True</cite>) or include any pending changes ( <cite>False</cite>). Defaults to
+<cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.index_documents">
+<tt class="descname">index_documents</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.index_documents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells the search domain to start indexing its documents using
+the latest indexing options. This operation must be invoked to
+activate options whose OptionStatus is
+<cite>RequiresIndexDocuments</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.list_domain_names">
+<tt class="descname">list_domain_names</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.list_domain_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists all search domains owned by an account.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.update_availability_options">
+<tt class="descname">update_availability_options</tt><big>(</big><em>domain_name</em>, <em>multi_az</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.update_availability_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures the availability options for a domain. Enabling the
+Multi-AZ option expands an Amazon CloudSearch domain to an
+additional Availability Zone in the same Region to increase
+fault tolerance in the event of a service disruption. Changes
+to the Multi-AZ option can take about half an hour to become
+active. For more information, see <a href="#id39"><span class="problematic" id="id40">`Configuring Availability
+Options`_</span></a> in the Amazon CloudSearch Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>multi_az</strong> (<em>boolean</em>) &#8211; You expand an existing search domain to a second
+Availability Zone by setting the Multi-AZ option to true.
+Similarly, you can turn off the Multi-AZ option to downgrade the
+domain to a single Availability Zone by setting the Multi-AZ option
+to <cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.update_scaling_parameters">
+<tt class="descname">update_scaling_parameters</tt><big>(</big><em>domain_name</em>, <em>scaling_parameters</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.update_scaling_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures scaling parameters for a domain. A domain&#8217;s scaling
+parameters specify the desired search instance type and
+replication count. Amazon CloudSearch will still automatically
+scale your domain based on the volume of data and traffic, but
+not below the desired instance type and replication count. If
+the Multi-AZ option is enabled, these values control the
+resources used per Availability Zone. For more information,
+see <a href="#id41"><span class="problematic" id="id42">`Configuring Scaling Options`_</span></a> in the Amazon CloudSearch
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>scaling_parameters</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The desired instance type and desired number
+of replicas of each index partition.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer1.CloudSearchConnection.update_service_access_policies">
+<tt class="descname">update_service_access_policies</tt><big>(</big><em>domain_name</em>, <em>access_policies</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer1.CloudSearchConnection.update_service_access_policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures the access rules that control access to the
+domain&#8217;s document and search endpoints. For more information,
+see ` Configuring Access for an Amazon CloudSearch Domain`_.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string that represents the name of a domain.
+Domain names are unique across the domains owned by an account
+within an AWS region. Domain names start with a letter or number
+and can contain the following characters: a-z (lowercase), 0-9, and
+- (hyphen).</li>
+<li><strong>access_policies</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The access rules you want to configure. These
+rules replace any existing rules.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.layer2">
+<span id="boto-cloudsearch2-layer2"></span><h2>boto.cloudsearch2.layer2<a class="headerlink" href="#module-boto.cloudsearch2.layer2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudsearch2.layer2.Layer2">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.layer2.</tt><tt class="descname">Layer2</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>is_secure=True</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>host=None</em>, <em>debug=0</em>, <em>session_token=None</em>, <em>region=None</em>, <em>validate_certs=True</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer2.Layer2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.layer2.Layer2.create_domain">
+<tt class="descname">create_domain</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer2.Layer2.create_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new CloudSearch domain and return the corresponding object.
+:return: Domain object, or None if the domain isn&#8217;t found
+:rtype: <a class="reference internal" href="#boto.cloudsearch2.domain.Domain" title="boto.cloudsearch2.domain.Domain"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.domain.Domain</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer2.Layer2.list_domains">
+<tt class="descname">list_domains</tt><big>(</big><em>domain_names=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer2.Layer2.list_domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of objects for each domain defined in the
+current account.
+:rtype: list of <a class="reference internal" href="#boto.cloudsearch2.domain.Domain" title="boto.cloudsearch2.domain.Domain"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.domain.Domain</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.layer2.Layer2.lookup">
+<tt class="descname">lookup</tt><big>(</big><em>domain_name</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.layer2.Layer2.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lookup a single domain
+:param domain_name: The name of the domain to look up
+:type domain_name: str</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Domain object, or None if the domain isn&#8217;t found</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.cloudsearch2.domain.Domain" title="boto.cloudsearch2.domain.Domain"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.domain.Domain</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.optionstatus">
+<span id="boto-cloudsearch2-optionstatus"></span><h2>boto.cloudsearch2.optionstatus<a class="headerlink" href="#module-boto.cloudsearch2.optionstatus" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.AvailabilityOptionsStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">AvailabilityOptionsStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.AvailabilityOptionsStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.AvailabilityOptionsStatus.save">
+<tt class="descname">save</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.AvailabilityOptionsStatus.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.ExpressionStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">ExpressionStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ExpressionStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.IndexFieldStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">IndexFieldStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.IndexFieldStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.IndexFieldStatus.save">
+<tt class="descname">save</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.IndexFieldStatus.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.OptionStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">OptionStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.OptionStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents a combination of status field (defined below) which are
+accessed as attributes and option values which are stored in the
+native Python dictionary.  In this class, the option values are
+merged from a JSON object that is stored as the Option part of
+the object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain_name</strong> &#8211; The name of the domain this option is associated with.</li>
+<li><strong>create_date</strong> &#8211; A timestamp for when this option was created.</li>
+<li><strong>state</strong> &#8211; <p>The state of processing a change to an option.
+Possible values:</p>
+<ul>
+<li>RequiresIndexDocuments: the option&#8217;s latest value will not
+be visible in searches until IndexDocuments has been called
+and indexing is complete.</li>
+<li>Processing: the option&#8217;s latest value is not yet visible in
+all searches but is in the process of being activated.</li>
+<li>Active: the option&#8217;s latest value is completely visible.</li>
+</ul>
+</li>
+<li><strong>update_date</strong> &#8211; A timestamp for when this option was updated.</li>
+<li><strong>update_version</strong> &#8211; A unique integer that indicates when this
+option was last updated.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.OptionStatus.refresh">
+<tt class="descname">refresh</tt><big>(</big><em>data=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.OptionStatus.refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh the local state of the object.  You can either pass
+new state data in as the parameter <tt class="docutils literal"><span class="pre">data</span></tt> or, if that parameter
+is omitted, the state data will be retrieved from CloudSearch.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.OptionStatus.save">
+<tt class="descname">save</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.OptionStatus.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the current state of the local object back to the
+CloudSearch service.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.OptionStatus.to_json">
+<tt class="descname">to_json</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.OptionStatus.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the JSON representation of the options as a string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.ScalingParametersStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">ScalingParametersStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ScalingParametersStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.optionstatus.</tt><tt class="descname">ServicePoliciesStatus</tt><big>(</big><em>domain</em>, <em>data=None</em>, <em>refresh_fn=None</em>, <em>refresh_key=None</em>, <em>save_fn=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus.allow_doc_ip">
+<tt class="descname">allow_doc_ip</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus.allow_doc_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the provided ip address or CIDR block to the list of
+allowable address for the document service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An IP address or CIDR block you wish to grant access
+to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus.allow_search_ip">
+<tt class="descname">allow_search_ip</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus.allow_search_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the provided ip address or CIDR block to the list of
+allowable address for the search service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An IP address or CIDR block you wish to grant access
+to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus.disallow_doc_ip">
+<tt class="descname">disallow_doc_ip</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus.disallow_doc_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the provided ip address or CIDR block from the list of
+allowable address for the document service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An IP address or CIDR block you wish to grant access
+to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus.disallow_search_ip">
+<tt class="descname">disallow_search_ip</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus.disallow_search_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the provided ip address or CIDR block from the list of
+allowable address for the search service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An IP address or CIDR block you wish to grant access
+to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.optionstatus.ServicePoliciesStatus.new_statement">
+<tt class="descname">new_statement</tt><big>(</big><em>arn</em>, <em>ip</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.optionstatus.ServicePoliciesStatus.new_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new policy statement that will allow
+access to the service described by <tt class="docutils literal"><span class="pre">arn</span></tt> by the
+ip specified in <tt class="docutils literal"><span class="pre">ip</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>arn</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The Amazon Resource Notation identifier for the
+service you wish to provide access to.  This would be
+either the search service or the document service.</li>
+<li><strong>ip</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An IP address or CIDR block you wish to grant access
+to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.search">
+<span id="boto-cloudsearch2-search"></span><h2>boto.cloudsearch2.search<a class="headerlink" href="#module-boto.cloudsearch2.search" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.cloudsearch2.search.Query">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.search.</tt><tt class="descname">Query</tt><big>(</big><em>q=None</em>, <em>parser=None</em>, <em>fq=None</em>, <em>expr=None</em>, <em>return_fields=None</em>, <em>size=10</em>, <em>start=0</em>, <em>sort=None</em>, <em>facet=None</em>, <em>highlight=None</em>, <em>partial=None</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.Query" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.cloudsearch2.search.Query.RESULTS_PER_PAGE">
+<tt class="descname">RESULTS_PER_PAGE</tt><em class="property"> = 500</em><a class="headerlink" href="#boto.cloudsearch2.search.Query.RESULTS_PER_PAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.Query.to_params">
+<tt class="descname">to_params</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.Query.to_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform search parameters from instance properties to a dictionary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">search parameters</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.Query.update_size">
+<tt class="descname">update_size</tt><big>(</big><em>new_size</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.Query.update_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.search.SearchConnection">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.search.</tt><tt class="descname">SearchConnection</tt><big>(</big><em>domain=None</em>, <em>endpoint=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.search.SearchConnection.build_query">
+<tt class="descname">build_query</tt><big>(</big><em>q=None</em>, <em>parser=None</em>, <em>fq=None</em>, <em>rank=None</em>, <em>return_fields=None</em>, <em>size=10</em>, <em>start=0</em>, <em>facet=None</em>, <em>highlight=None</em>, <em>sort=None</em>, <em>partial=None</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection.build_query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.SearchConnection.get_all_hits">
+<tt class="descname">get_all_hits</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection.get_all_hits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a generator to iterate over all search results</p>
+<p>Transparently handles the results paging from Cloudsearch
+search results so even if you have many thousands of results
+you can iterate over all results in a reasonably efficient
+manner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<a class="reference internal" href="#boto.cloudsearch2.search.Query" title="boto.cloudsearch2.search.Query"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.Query</span></tt></a>) &#8211; A group of search criteria</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">All docs matching query</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.SearchConnection.get_all_paged">
+<tt class="descname">get_all_paged</tt><big>(</big><em>query</em>, <em>per_page</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection.get_all_paged" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a generator to iterate over all pages of search results</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<a class="reference internal" href="#boto.cloudsearch2.search.Query" title="boto.cloudsearch2.search.Query"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.Query</span></tt></a>) &#8211; A group of search criteria</li>
+<li><strong>per_page</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of docs in each <a class="reference internal" href="#boto.cloudsearch2.search.SearchResults" title="boto.cloudsearch2.search.SearchResults"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.SearchResults</span></tt></a> object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">generator</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Generator containing <a class="reference internal" href="#boto.cloudsearch2.search.SearchResults" title="boto.cloudsearch2.search.SearchResults"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.SearchResults</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.SearchConnection.get_num_hits">
+<tt class="descname">get_num_hits</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection.get_num_hits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total number of hits for query</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<a class="reference internal" href="#boto.cloudsearch2.search.Query" title="boto.cloudsearch2.search.Query"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.Query</span></tt></a>) &#8211; a group of search criteria</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Total number of hits for query</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.search.SearchConnection.search">
+<tt class="descname">search</tt><big>(</big><em>q=None</em>, <em>parser=None</em>, <em>fq=None</em>, <em>rank=None</em>, <em>return_fields=None</em>, <em>size=10</em>, <em>start=0</em>, <em>facet=None</em>, <em>highlight=None</em>, <em>sort=None</em>, <em>partial=None</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchConnection.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a query to CloudSearch</p>
+<p>Each search query should use at least the q or bq argument to specify
+the search parameter. The other options are used to specify the
+criteria of the search.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>q</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string to search the default search fields for.</li>
+<li><strong>parser</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The parser to use. &#8216;simple&#8217;, &#8216;structured&#8217;, &#8216;lucene&#8217;, &#8216;dismax&#8217;</li>
+<li><strong>fq</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The filter query to use.</li>
+<li><strong>sort</strong> (<em>List of strings</em>) &#8211; A list of fields or rank expressions used to order the
+search results. Order is handled by adding &#8216;desc&#8217; or &#8216;asc&#8217; after the field name.
+<tt class="docutils literal"><span class="pre">['year</span> <span class="pre">desc',</span> <span class="pre">'author</span> <span class="pre">asc']</span></tt></li>
+<li><strong>return_fields</strong> (<em>List of strings</em>) &#8211; A list of fields which should be returned by the
+search. If this field is not specified, only IDs will be returned.
+<tt class="docutils literal"><span class="pre">['headline']</span></tt></li>
+<li><strong>size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of search results to specify</li>
+<li><strong>start</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Offset of the first search result to return (can be used
+for paging)</li>
+<li><strong>facet</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary of fields for which facets should be returned
+The facet value is string of JSON options
+<tt class="docutils literal"><span class="pre">{'year':</span> <span class="pre">'{sort:&quot;bucket&quot;,</span> <span class="pre">size:3}',</span> <span class="pre">'genres':</span> <span class="pre">'{buckets:[&quot;Action&quot;,&quot;Adventure&quot;,&quot;Sci-Fi&quot;]}'}</span></tt></li>
+<li><strong>highlight</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary of fields for which highlights should be returned
+The facet value is string of JSON options
+<tt class="docutils literal"><span class="pre">{'genres':</span> <span class="pre">'{format:'text',max_phrases:2,pre_tag:'&lt;b&gt;',post_tag:'&lt;/b&gt;'}'}</span></tt></li>
+<li><strong>partial</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Should partial results from a partioned service be returned if
+one or more index partitions are unreachable.</li>
+<li><strong>options</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Options for the query parser specified in <em>parser</em>.
+Specified as a string in JSON format.
+<tt class="docutils literal"><span class="pre">{fields:</span> <span class="pre">['title^5',</span> <span class="pre">'description']}</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.cloudsearch2.search.SearchResults" title="boto.cloudsearch2.search.SearchResults"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.SearchResults</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns the results of this search</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The following examples all assume we have indexed a set of documents
+with fields: <em>author</em>, <em>date</em>, <em>headline</em></p>
+<p>A simple search will look for documents whose default text search
+fields will contain the search word exactly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s">&#39;Tim&#39;</span><span class="p">)</span> <span class="c"># Return documents with the word Tim in them (but not Timothy)</span>
+</pre></div>
+</div>
+<p>A simple search with more keywords will return documents whose default
+text search fields contain the search strings together or separately.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s">&#39;Tim apple&#39;</span><span class="p">)</span> <span class="c"># Will match &quot;tim&quot; and &quot;apple&quot;</span>
+</pre></div>
+</div>
+<p>More complex searches require the boolean search operator.</p>
+<p>Wildcard searches can be used to search for any words that start with
+the search string.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s">&quot;&#39;Tim*&#39;&quot;</span><span class="p">)</span> <span class="c"># Return documents with words like Tim or Timothy)</span>
+</pre></div>
+</div>
+<p>Search terms can also be combined. Allowed operators are &#8220;and&#8221;, &#8220;or&#8221;,
+&#8220;not&#8221;, &#8220;field&#8221;, &#8220;optional&#8221;, &#8220;token&#8221;, &#8220;phrase&#8221;, or &#8220;filter&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s">&quot;(and &#39;Tim&#39; (field author &#39;John Smith&#39;))&quot;</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="s">&#39;structured&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Facets allow you to show classification information about the search
+results. For example, you can retrieve the authors who have written
+about Tim with a max of 3</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s">&#39;Tim&#39;</span><span class="p">,</span> <span class="n">facet</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;Author&#39;</span><span class="p">:</span> <span class="s">&#39;{sort:&quot;bucket&quot;, size:3}&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.search.SearchResults">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.search.</tt><tt class="descname">SearchResults</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchResults" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.cloudsearch2.search.SearchResults.next_page">
+<tt class="descname">next_page</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.search.SearchResults.next_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call Cloudsearch to get the next page of search results</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.cloudsearch2.search.SearchResults" title="boto.cloudsearch2.search.SearchResults"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.search.SearchResults</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the following page of search results</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.cloudsearch2.search.SearchServiceException">
+<em class="property">exception </em><tt class="descclassname">boto.cloudsearch2.search.</tt><tt class="descname">SearchServiceException</tt><a class="headerlink" href="#boto.cloudsearch2.search.SearchServiceException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-boto.cloudsearch2.document">
+<span id="boto-cloudsearch2-document"></span><h2>boto.cloudsearch2.document<a class="headerlink" href="#module-boto.cloudsearch2.document" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.cloudsearch2.document.CommitMismatchError">
+<em class="property">exception </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">CommitMismatchError</tt><a class="headerlink" href="#boto.cloudsearch2.document.CommitMismatchError" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.cloudsearch2.document.CommitMismatchError.errors">
+<tt class="descname">errors</tt><em class="property"> = None</em><a class="headerlink" href="#boto.cloudsearch2.document.CommitMismatchError.errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.document.CommitResponse">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">CommitResponse</tt><big>(</big><em>response</em>, <em>doc_service</em>, <em>sdf</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.CommitResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for response to Cloudsearch document batch commit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>response</strong> (<tt class="xref py py-class docutils literal"><span class="pre">requests.models.Response</span></tt>) &#8211; Response from Cloudsearch /documents/batch API</li>
+<li><strong>doc_service</strong> (<a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection" title="boto.cloudsearch2.document.DocumentServiceConnection"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.document.DocumentServiceConnection</span></tt></a>) &#8211; Object containing the documents posted and methods to
+retry</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="boto.html#boto.exception.BotoServerError" title="boto.exception.BotoServerError"><tt class="xref py py-class docutils literal"><span class="pre">boto.exception.BotoServerError</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.cloudsearch2.document.SearchServiceException" title="boto.cloudsearch2.document.SearchServiceException"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.document.SearchServiceException</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.cloudsearch2.document.EncodingError" title="boto.cloudsearch2.document.EncodingError"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.document.EncodingError</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#boto.cloudsearch2.document.ContentTooLongError" title="boto.cloudsearch2.document.ContentTooLongError"><tt class="xref py py-class docutils literal"><span class="pre">boto.cloudsearch2.document.ContentTooLongError</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.cloudsearch2.document.ContentTooLongError">
+<em class="property">exception </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">ContentTooLongError</tt><a class="headerlink" href="#boto.cloudsearch2.document.ContentTooLongError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Content sent for Cloud Search indexing was too long</p>
+<p>This will usually happen when documents queued for indexing add up to more
+than the limit allowed per upload batch (5MB)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection">
+<em class="property">class </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">DocumentServiceConnection</tt><big>(</big><em>domain=None</em>, <em>endpoint=None</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>A CloudSearch document service.</p>
+<p>The DocumentServiceConection is used to add, remove and update documents in
+CloudSearch. Commands are uploaded to CloudSearch in SDF (Search Document
+Format).</p>
+<p>To generate an appropriate SDF, use <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.add" title="boto.cloudsearch2.document.DocumentServiceConnection.add"><tt class="xref py py-func docutils literal"><span class="pre">add()</span></tt></a> to add or update documents,
+as well as <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.delete" title="boto.cloudsearch2.document.DocumentServiceConnection.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a> to remove documents.</p>
+<p>Once the set of documents is ready to be index, use <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="boto.cloudsearch2.document.DocumentServiceConnection.commit"><tt class="xref py py-func docutils literal"><span class="pre">commit()</span></tt></a> to send
+the commands to CloudSearch.</p>
+<p>If there are a lot of documents to index, it may be preferable to split the
+generation of SDF data and the actual uploading into CloudSearch. Retrieve
+the current SDF with <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.get_sdf" title="boto.cloudsearch2.document.DocumentServiceConnection.get_sdf"><tt class="xref py py-func docutils literal"><span class="pre">get_sdf()</span></tt></a>. If this file is the uploaded into S3,
+it can be retrieved back afterwards for upload into CloudSearch using
+<a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.add_sdf_from_s3" title="boto.cloudsearch2.document.DocumentServiceConnection.add_sdf_from_s3"><tt class="xref py py-func docutils literal"><span class="pre">add_sdf_from_s3()</span></tt></a>.</p>
+<p>The SDF is not cleared after a <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="boto.cloudsearch2.document.DocumentServiceConnection.commit"><tt class="xref py py-func docutils literal"><span class="pre">commit()</span></tt></a>. If you wish to continue
+using the DocumentServiceConnection for another batch upload of commands,
+you will need to <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.clear_sdf" title="boto.cloudsearch2.document.DocumentServiceConnection.clear_sdf"><tt class="xref py py-func docutils literal"><span class="pre">clear_sdf()</span></tt></a> first to stop the previous batch of
+commands from being uploaded again.</p>
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.add">
+<tt class="descname">add</tt><big>(</big><em>_id</em>, <em>fields</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a document to be processed by the DocumentService</p>
+<p>The document will not actually be added until <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="boto.cloudsearch2.document.DocumentServiceConnection.commit"><tt class="xref py py-func docutils literal"><span class="pre">commit()</span></tt></a> is called</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A unique ID used to refer to this document.</li>
+<li><strong>fields</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A dictionary of key-value pairs to be uploaded .</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.add_sdf_from_s3">
+<tt class="descname">add_sdf_from_s3</tt><big>(</big><em>key_obj</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.add_sdf_from_s3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an SDF from S3</p>
+<p>Using this method will result in documents added through
+<a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.add" title="boto.cloudsearch2.document.DocumentServiceConnection.add"><tt class="xref py py-func docutils literal"><span class="pre">add()</span></tt></a> and <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.delete" title="boto.cloudsearch2.document.DocumentServiceConnection.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a> being ignored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key_obj</strong> (<a class="reference internal" href="s3.html#boto.s3.key.Key" title="boto.s3.key.Key"><tt class="xref py py-class docutils literal"><span class="pre">boto.s3.key.Key</span></tt></a>) &#8211; An S3 key which contains an SDF</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.clear_sdf">
+<tt class="descname">clear_sdf</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.clear_sdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the working documents from this DocumentServiceConnection</p>
+<p>This should be used after <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="boto.cloudsearch2.document.DocumentServiceConnection.commit"><tt class="xref py py-func docutils literal"><span class="pre">commit()</span></tt></a> if the connection will be
+reused for another set of documents.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.commit">
+<tt class="descname">commit</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actually send an SDF to CloudSearch for processing</p>
+<p>If an SDF file has been explicitly loaded it will be used. Otherwise,
+documents added through <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.add" title="boto.cloudsearch2.document.DocumentServiceConnection.add"><tt class="xref py py-func docutils literal"><span class="pre">add()</span></tt></a> and <a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.delete" title="boto.cloudsearch2.document.DocumentServiceConnection.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a> will be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.cloudsearch2.document.CommitResponse" title="boto.cloudsearch2.document.CommitResponse"><tt class="xref py py-class docutils literal"><span class="pre">CommitResponse</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A summary of documents added and deleted</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.delete">
+<tt class="descname">delete</tt><big>(</big><em>_id</em><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule a document to be removed from the CloudSearch service</p>
+<p>The document will not actually be scheduled for removal until
+<a class="reference internal" href="#boto.cloudsearch2.document.DocumentServiceConnection.commit" title="boto.cloudsearch2.document.DocumentServiceConnection.commit"><tt class="xref py py-func docutils literal"><span class="pre">commit()</span></tt></a> is called</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The unique ID of this document.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.cloudsearch2.document.DocumentServiceConnection.get_sdf">
+<tt class="descname">get_sdf</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.cloudsearch2.document.DocumentServiceConnection.get_sdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the working set of documents in Search Data Format (SDF)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON-formatted string of the documents in SDF</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.cloudsearch2.document.EncodingError">
+<em class="property">exception </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">EncodingError</tt><a class="headerlink" href="#boto.cloudsearch2.document.EncodingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Content sent for Cloud Search indexing was incorrectly encoded.</p>
+<p>This usually happens when a document is marked as unicode but non-unicode
+characters are present.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.cloudsearch2.document.SearchServiceException">
+<em class="property">exception </em><tt class="descclassname">boto.cloudsearch2.document.</tt><tt class="descname">SearchServiceException</tt><a class="headerlink" href="#boto.cloudsearch2.document.SearchServiceException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cloudsearch</a><ul>
+<li><a class="reference internal" href="#module-boto.cloudsearch2">boto.cloudsearch2</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.domain">boto.cloudsearch2.domain</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.layer1">boto.cloudsearch2.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.layer2">boto.cloudsearch2.layer2</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.optionstatus">boto.cloudsearch2.optionstatus</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.search">boto.cloudsearch2.search</a></li>
+<li><a class="reference internal" href="#module-boto.cloudsearch2.document">boto.cloudsearch2.document</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cloudsearch.html"
+                        title="previous chapter">Cloudsearch</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudtrail.html"
+                        title="next chapter">CloudTrail</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/cloudsearch2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudtrail.html" title="CloudTrail"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cloudsearch.html" title="Cloudsearch"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

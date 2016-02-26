@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.23.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.24.0" href="v2.24.0.html" />
+    <link rel="prev" title="boto v2.22.1" href="v2.22.1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.24.0.html" title="boto v2.24.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.22.1.html" title="boto v2.22.1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-23-0">
+<h1>boto v2.23.0<a class="headerlink" href="#boto-v2-23-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/01/10</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds new pagination &amp; date range filtering to Amazon Glacier, more
+support for selecting specific attributes within Amazon DynamoDB, security
+tokens from environment/config variables &amp; many bugfixes/small improvements.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added pagination &amp; date range filtering to Glacier inventory options.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1977">issue 1977</a>, <a class="reference external" href="https://github.com/boto/boto/commit/402a305">commit 402a305</a>)</li>
+<li>Added the ability to select the specific attributes to fetch in the <tt class="docutils literal"><span class="pre">scan</span></tt>
+&amp; <tt class="docutils literal"><span class="pre">get_item</span></tt> calls within DynamoDB v2. (<a class="reference external" href="https://github.com/boto/boto/issues/1945">issue 1945</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1972">issue 1972</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/f6451fb">commit f6451fb</a> &amp; <a class="reference external" href="https://github.com/boto/boto/commit/96cd413">commit 96cd413</a>)</li>
+<li>Allow getting a security token from either an environment or configuration
+variable. (:issue:<tt class="docutils literal"><span class="pre">,</span> <span class="pre">:sha:</span></tt>)</li>
+<li>Ported the <tt class="docutils literal"><span class="pre">has_item</span></tt> call from the original DynamoDB (v1) module to
+DynamoDB v2. (<a class="reference external" href="https://github.com/boto/boto/issues/1973">issue 1973</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1822">issue 1822</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f96e9e3">commit f96e9e3</a>)</li>
+<li>Added an <tt class="docutils literal"><span class="pre">associate_address_object</span></tt> method to EC2. (<a class="reference external" href="https://github.com/boto/boto/issues/1967">issue 1967</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1874">issue 1874</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1893">issue 1893</a>, <a class="reference external" href="https://github.com/boto/boto/commit/dd6180c">commit dd6180c</a>)</li>
+<li>Added a <tt class="docutils literal"><span class="pre">download_to_fileobj</span></tt> method to Glacier,similar to the S3 call
+of the same name. (<a class="reference external" href="https://github.com/boto/boto/issues/1960">issue 1960</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1941">issue 1941</a>, <a class="reference external" href="https://github.com/boto/boto/commit/67266e5">commit 67266e5</a>)</li>
+<li>Added support for arbitrary <tt class="docutils literal"><span class="pre">dict</span></tt> inputs to MWS. (<a class="reference external" href="https://github.com/boto/boto/issues/1966">issue 1966</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/46f193f">commit 46f193f</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Made the usage of <tt class="docutils literal"><span class="pre">is/is</span> <span class="pre">not</span></tt> more consistent. (<a class="reference external" href="https://github.com/boto/boto/issues/1930">issue 1930</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/8597c54">commit 8597c54</a>)</p>
+</li>
+<li><p class="first">Imported <tt class="docutils literal"><span class="pre">with_statement</span></tt> for old Python versions (<a class="reference external" href="https://github.com/boto/boto/issues/1975">issue 1975</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/a53a574">commit a53a574</a>)</p>
+</li>
+<li><p class="first">Changed the <tt class="docutils literal"><span class="pre">Binary</span></tt> data object within DynamoDB to throw an error if an
+invalid data type is used. (<a class="reference external" href="https://github.com/boto/boto/issues/1963">issue 1963</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1956">issue 1956</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e5d30c8">commit e5d30c8</a>)</p>
+</li>
+<li><p class="first">Altered the integration tests to avoid connection errors to certain regions.
+(<a class="reference external" href="https://github.com/boto/boto/commit/2555b8a">commit 2555b8a</a>)</p>
+</li>
+<li><p class="first">Changed the GCS resumable upload handler to save tracker files with protection
+0600. (<a class="reference external" href="https://github.com/boto/boto/commit/7cb344c">commit 7cb344c</a>)</p>
+</li>
+<li><p class="first">Documentation:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Clarified documentation around the <tt class="docutils literal"><span class="pre">list_metrics</span></tt> call in
+CloudFormation. (<a class="reference external" href="https://github.com/boto/boto/issues/1962">issue 1962</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c996a72">commit c996a72</a>)</li>
+<li>Added <tt class="docutils literal"><span class="pre">Tag</span></tt> to the Autoscale API docs. (<a class="reference external" href="https://github.com/boto/boto/issues/1964">issue 1964</a>, <a class="reference external" href="https://github.com/boto/boto/commit/31118d9">commit 31118d9</a>)</li>
+<li>Updated the AWS Support documentation to the latest. (<a class="reference external" href="https://github.com/boto/boto/commit/29f9264">commit 29f9264</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.23.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.22.1.html"
+                        title="previous chapter">boto v2.22.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.24.0.html"
+                        title="next chapter">boto v2.24.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.23.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.24.0.html" title="boto v2.24.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.22.1.html" title="boto v2.22.1"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

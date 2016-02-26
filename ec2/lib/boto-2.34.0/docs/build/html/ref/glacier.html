@@ -1,0 +1,2003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Glacier &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="up" title="API Reference" href="index.html" />
+    <link rel="next" title="GS" href="gs.html" />
+    <link rel="prev" title="fps" href="fps.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gs.html" title="GS"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fps.html" title="fps"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="glacier">
+<h1>Glacier<a class="headerlink" href="#glacier" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.glacier">
+<span id="boto-glacier"></span><h2>boto.glacier<a class="headerlink" href="#module-boto.glacier" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="boto.glacier.connect_to_region">
+<tt class="descclassname">boto.glacier.</tt><tt class="descname">connect_to_region</tt><big>(</big><em>region_name</em>, <em>**kw_params</em><big>)</big><a class="headerlink" href="#boto.glacier.connect_to_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.glacier.regions">
+<tt class="descclassname">boto.glacier.</tt><tt class="descname">regions</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all available regions for the Amazon Glacier service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <tt class="xref py py-class docutils literal"><span class="pre">boto.regioninfo.RegionInfo</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.layer1">
+<span id="boto-glacier-layer1"></span><h2>boto.glacier.layer1<a class="headerlink" href="#module-boto.glacier.layer1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.layer1.Layer1">
+<em class="property">class </em><tt class="descclassname">boto.glacier.layer1.</tt><tt class="descname">Layer1</tt><big>(</big><em>aws_access_key_id=None</em>, <em>aws_secret_access_key=None</em>, <em>account_id='-'</em>, <em>is_secure=True</em>, <em>port=None</em>, <em>proxy=None</em>, <em>proxy_port=None</em>, <em>proxy_user=None</em>, <em>proxy_pass=None</em>, <em>debug=0</em>, <em>https_connection_factory=None</em>, <em>path='/'</em>, <em>provider='aws'</em>, <em>security_token=None</em>, <em>suppress_consec_slashes=True</em>, <em>region=None</em>, <em>region_name='us-east-1'</em>, <em>profile_name=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amazon Glacier is a storage solution for &#8220;cold data.&#8221;</p>
+<p>Amazon Glacier is an extremely low-cost storage service that
+provides secure, durable and easy-to-use storage for data backup
+and archival. With Amazon Glacier, customers can store their data
+cost effectively for months, years, or decades. Amazon Glacier
+also enables customers to offload the administrative burdens of
+operating and scaling storage to AWS, so they don&#8217;t have to worry
+about capacity planning, hardware provisioning, data replication,
+hardware failure and recovery, or time-consuming hardware
+migrations.</p>
+<p>Amazon Glacier is a great storage choice when low storage cost is
+paramount, your data is rarely retrieved, and retrieval latency of
+several hours is acceptable. If your application requires fast or
+frequent access to your data, consider using Amazon S3. For more
+information, go to <a href="#id53"><span class="problematic" id="id54">`Amazon Simple Storage Service (Amazon S3)`_</span></a>.</p>
+<p>You can store any kind of data in any format. There is no maximum
+limit on the total amount of data you can store in Amazon Glacier.</p>
+<p>If you are a first-time user of Amazon Glacier, we recommend that
+you begin by reading the following sections in the Amazon Glacier
+Developer Guide :</p>
+<ul class="simple">
+<li><a href="#id55"><span class="problematic" id="id56">`What is Amazon Glacier`_</span></a> - This section of the Developer Guide
+describes the underlying data model, the operations it supports,
+and the AWS SDKs that you can use to interact with the service.</li>
+<li><a href="#id57"><span class="problematic" id="id58">`Getting Started with Amazon Glacier`_</span></a> - The Getting Started
+section walks you through the process of creating a vault,
+uploading archives, creating jobs to download archives, retrieving
+the job output, and deleting archives.</li>
+</ul>
+<dl class="attribute">
+<dt id="boto.glacier.layer1.Layer1.Version">
+<tt class="descname">Version</tt><em class="property"> = '2012-06-01'</em><a class="headerlink" href="#boto.glacier.layer1.Layer1.Version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.abort_multipart_upload">
+<tt class="descname">abort_multipart_upload</tt><big>(</big><em>vault_name</em>, <em>upload_id</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.abort_multipart_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation aborts a multipart upload identified by the
+upload ID.</p>
+<p>After the Abort Multipart Upload request succeeds, you cannot
+upload any more parts to the multipart upload or complete the
+multipart upload. Aborting a completed upload fails. However,
+aborting an already-aborted upload will succeed, for a short
+time. For more information about uploading a part and
+completing a multipart upload, see UploadMultipartPart and
+CompleteMultipartUpload.</p>
+<p>This operation is idempotent.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id59"><span class="problematic" id="id60">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id61"><span class="problematic" id="id62">`Working with Archives in Amazon Glacier`_</span></a> and <a href="#id63"><span class="problematic" id="id64">`Abort
+Multipart Upload`_</span></a> in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>upload_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The upload ID of the multipart upload to delete.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.complete_multipart_upload">
+<tt class="descname">complete_multipart_upload</tt><big>(</big><em>vault_name</em>, <em>upload_id</em>, <em>sha256_treehash</em>, <em>archive_size</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.complete_multipart_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>You call this operation to inform Amazon Glacier that all the
+archive parts have been uploaded and that Amazon Glacier can
+now assemble the archive from the uploaded parts. After
+assembling and saving the archive to the vault, Amazon Glacier
+returns the URI path of the newly created archive resource.
+Using the URI path, you can then access the archive. After you
+upload an archive, you should save the archive ID returned to
+retrieve the archive at a later point. You can also get the
+vault inventory to obtain a list of archive IDs in a vault.
+For more information, see InitiateJob.</p>
+<p>In the request, you must include the computed SHA256 tree hash
+of the entire archive you have uploaded. For information about
+computing a SHA256 tree hash, see <a href="#id65"><span class="problematic" id="id66">`Computing Checksums`_</span></a>. On
+the server side, Amazon Glacier also constructs the SHA256
+tree hash of the assembled archive. If the values match,
+Amazon Glacier saves the archive to the vault; otherwise, it
+returns an error, and the operation fails. The ListParts
+operation returns a list of parts uploaded for a specific
+multipart upload. It includes checksum information for each
+uploaded part that can be used to debug a bad checksum issue.</p>
+<p>Additionally, Amazon Glacier also checks for any missing
+content ranges when assembling the archive, if missing content
+ranges are found, Amazon Glacier returns an error and the
+operation fails.</p>
+<p>Complete Multipart Upload is an idempotent operation. After
+your first successful complete multipart upload, if you call
+the operation again within a short period, the operation will
+succeed and return the same archive ID. This is useful in the
+event you experience a network issue that causes an aborted
+connection or receive a 500 server error, in which case you
+can repeat your Complete Multipart Upload request and get the
+same archive ID without creating duplicate archives. Note,
+however, that after the multipart upload completes, you cannot
+call the List Parts operation and the multipart upload will
+not appear in List Multipart Uploads response, even if
+idempotent complete is possible.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id67"><span class="problematic" id="id68">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id69"><span class="problematic" id="id70">`Uploading Large Archives in Parts (Multipart Upload)`_</span></a> and
+<a href="#id71"><span class="problematic" id="id72">`Complete Multipart Upload`_</span></a> in the Amazon Glacier Developer
+Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>checksum</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The SHA256 tree hash of the entire archive. It is the
+tree hash of SHA256 tree hash of the individual parts. If the value
+you specify in the request does not match the SHA256 tree hash of
+the final assembled archive as computed by Amazon Glacier, Amazon
+Glacier returns an error and the request fails.</li>
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault.</li>
+<li><strong>upload_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The upload ID of the multipart upload.</li>
+<li><strong>sha256_treehash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The SHA256 tree hash of the entire archive.
+It is the tree hash of SHA256 tree hash of the individual parts.
+If the value you specify in the request does not match the SHA256
+tree hash of the final assembled archive as computed by Amazon
+Glacier, Amazon Glacier returns an error and the request fails.</li>
+<li><strong>archive_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The total size, in bytes, of the entire
+archive. This value should be the sum of all the sizes of
+the individual parts that you uploaded.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.create_vault">
+<tt class="descname">create_vault</tt><big>(</big><em>vault_name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.create_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation creates a new vault with the specified name.
+The name of the vault must be unique within a region for an
+AWS account. You can create up to 1,000 vaults per account. If
+you need to create more vaults, contact Amazon Glacier.</p>
+<p>You must use the following guidelines when naming a vault.</p>
+<ul class="simple">
+<li>Names can be between 1 and 255 characters long.</li>
+<li>Allowed characters are a-z, A-Z, 0-9, &#8216;_&#8217; (underscore), &#8216;-&#8216;
+(hyphen), and &#8216;.&#8217; (period).</li>
+</ul>
+<p>This operation is idempotent.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id73"><span class="problematic" id="id74">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id75"><span class="problematic" id="id76">`Creating a Vault in Amazon Glacier`_</span></a> and <a href="#id1"><span class="problematic" id="id2">`</span></a>Create Vault <a href="#id3"><span class="problematic" id="id4">`</span></a>_ in
+the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.delete_archive">
+<tt class="descname">delete_archive</tt><big>(</big><em>vault_name</em>, <em>archive_id</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.delete_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation deletes an archive from a vault. Subsequent
+requests to initiate a retrieval of this archive will fail.
+Archive retrievals that are in progress for this archive ID
+may or may not succeed according to the following scenarios:</p>
+<ul class="simple">
+<li>If the archive retrieval job is actively preparing the data
+for download when Amazon Glacier receives the delete archive
+request, the archival retrieval operation might fail.</li>
+<li>If the archive retrieval job has successfully prepared the
+archive for download when Amazon Glacier receives the delete
+archive request, you will be able to download the output.</li>
+</ul>
+<p>This operation is idempotent. Attempting to delete an already-
+deleted archive does not result in an error.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id77"><span class="problematic" id="id78">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id79"><span class="problematic" id="id80">`Deleting an Archive in Amazon Glacier`_</span></a> and <a href="#id81"><span class="problematic" id="id82">`Delete Archive`_</span></a>
+in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>archive_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the archive to delete.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.delete_vault">
+<tt class="descname">delete_vault</tt><big>(</big><em>vault_name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.delete_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation deletes a vault. Amazon Glacier will delete a
+vault only if there are no archives in the vault as of the
+last inventory and there have been no writes to the vault
+since the last inventory. If either of these conditions is not
+satisfied, the vault deletion fails (that is, the vault is not
+removed) and Amazon Glacier returns an error. You can use
+DescribeVault to return the number of archives in a vault, and
+you can use <a href="#id83"><span class="problematic" id="id84">`Initiate a Job (POST jobs)`_</span></a> to initiate a new
+inventory retrieval for a vault. The inventory contains the
+archive IDs you use to delete archives using <a href="#id85"><span class="problematic" id="id86">`Delete Archive
+(DELETE archive)`_</span></a>.</p>
+<p>This operation is idempotent.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id87"><span class="problematic" id="id88">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id89"><span class="problematic" id="id90">`Deleting a Vault in Amazon Glacier`_</span></a> and <a href="#id5"><span class="problematic" id="id6">`</span></a>Delete Vault <a href="#id7"><span class="problematic" id="id8">`</span></a>_ in
+the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.delete_vault_notifications">
+<tt class="descname">delete_vault_notifications</tt><big>(</big><em>vault_name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.delete_vault_notifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation deletes the notification configuration set for
+a vault. The operation is eventually consistent;that is, it
+might take some time for Amazon Glacier to completely disable
+the notifications and you might still receive some
+notifications for a short time after you send the delete
+request.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id91"><span class="problematic" id="id92">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id93"><span class="problematic" id="id94">`Configuring Vault Notifications in Amazon Glacier`_</span></a> and
+<a href="#id9"><span class="problematic" id="id10">`</span></a>Delete Vault Notification Configuration <a href="#id11"><span class="problematic" id="id12">`</span></a>_ in the Amazon
+Glacier Developer Guide.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.describe_job">
+<tt class="descname">describe_job</tt><big>(</big><em>vault_name</em>, <em>job_id</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.describe_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns information about a job you previously
+initiated, including the job initiation date, the user who
+initiated the job, the job status code/message and the Amazon
+SNS topic to notify after Amazon Glacier completes the job.
+For more information about initiating a job, see InitiateJob.</p>
+<p>This operation enables you to check the status of your job.
+However, it is strongly recommended that you set up an Amazon
+SNS topic and specify it in your initiate job request so that
+Amazon Glacier can notify the topic after it completes the
+job.</p>
+<p>A job ID will not expire for at least 24 hours after Amazon
+Glacier completes the job.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id95"><span class="problematic" id="id96">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For information about the underlying REST API, go to <a href="#id97"><span class="problematic" id="id98">`Working
+with Archives in Amazon Glacier`_</span></a> in the Amazon Glacier
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>job_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The ID of the job to describe.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.describe_vault">
+<tt class="descname">describe_vault</tt><big>(</big><em>vault_name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.describe_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation returns information about a vault, including
+the vault&#8217;s Amazon Resource Name (ARN), the date the vault was
+created, the number of archives it contains, and the total
+size of all the archives in the vault. The number of archives
+and their total size are as of the last inventory generation.
+This means that if you add or remove an archive from a vault,
+and then immediately use Describe Vault, the change in
+contents will not be immediately reflected. If you want to
+retrieve the latest inventory of the vault, use InitiateJob.
+Amazon Glacier generates vault inventories approximately
+daily. For more information, see <a href="#id99"><span class="problematic" id="id100">`Downloading a Vault
+Inventory in Amazon Glacier`_</span></a>.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id101"><span class="problematic" id="id102">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id103"><span class="problematic" id="id104">`Retrieving Vault Metadata in Amazon Glacier`_</span></a> and <a href="#id13"><span class="problematic" id="id14">`</span></a>Describe
+Vault <a href="#id15"><span class="problematic" id="id16">`</span></a>_ in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.get_job_output">
+<tt class="descname">get_job_output</tt><big>(</big><em>vault_name</em>, <em>job_id</em>, <em>byte_range=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.get_job_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation downloads the output of the job you initiated
+using InitiateJob. Depending on the job type you specified
+when you initiated the job, the output will be either the
+content of an archive or a vault inventory.</p>
+<p>A job ID will not expire for at least 24 hours after Amazon
+Glacier completes the job. That is, you can download the job
+output within the 24 hours period after Amazon Glacier
+completes the job.</p>
+<p>If the job output is large, then you can use the <cite>Range</cite>
+request header to retrieve a portion of the output. This
+allows you to download the entire output in smaller chunks of
+bytes. For example, suppose you have 1 GB of job output you
+want to download and you decide to download 128 MB chunks of
+data at a time, which is a total of eight Get Job Output
+requests. You use the following process to download the job
+output:</p>
+<ol class="arabic simple">
+<li>Download a 128 MB chunk of output by specifying the
+appropriate byte range using the <cite>Range</cite> header.</li>
+<li>Along with the data, the response includes a checksum of
+the payload. You compute the checksum of the payload on the
+client and compare it with the checksum you received in the
+response to ensure you received all the expected data.</li>
+<li>Repeat steps 1 and 2 for all the eight 128 MB chunks of
+output data, each time specifying the appropriate byte range.</li>
+<li>After downloading all the parts of the job output, you have
+a list of eight checksum values. Compute the tree hash of
+these values to find the checksum of the entire output. Using
+the Describe Job API, obtain job information of the job that
+provided you the output. The response includes the checksum of
+the entire archive stored in Amazon Glacier. You compare this
+value with the checksum you computed to ensure you have
+downloaded the entire archive content with no errors.</li>
+</ol>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id105"><span class="problematic" id="id106">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and the underlying REST API, go to
+<a href="#id107"><span class="problematic" id="id108">`Downloading a Vault Inventory`_</span></a>, <a href="#id109"><span class="problematic" id="id110">`Downloading an Archive`_</span></a>,
+and <a href="#id17"><span class="problematic" id="id18">`</span></a>Get Job Output <a href="#id19"><span class="problematic" id="id20">`</span></a>_</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>account_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The <cite>AccountId</cite> is the AWS Account ID. You can
+specify either the AWS Account ID or optionally a &#8216;-&#8216;, in which
+case Amazon Glacier uses the AWS Account ID associated with the
+credentials used to sign the request. If you specify your Account
+ID, do not include hyphens in it.</li>
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>job_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The job ID whose data is downloaded.</li>
+<li><strong>byte_range</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The range of bytes to retrieve from the output. For
+example, if you want to download the first 1,048,576 bytes, specify
+&#8220;Range: bytes=0-1048575&#8221;. By default, this operation downloads the
+entire output.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.get_vault_notifications">
+<tt class="descname">get_vault_notifications</tt><big>(</big><em>vault_name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.get_vault_notifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation retrieves the <cite>notification-configuration</cite>
+subresource of the specified vault.</p>
+<p>For information about setting a notification configuration on
+a vault, see SetVaultNotifications. If a notification
+configuration for a vault is not set, the operation returns a
+<cite>404 Not Found</cite> error. For more information about vault
+notifications, see <a href="#id111"><span class="problematic" id="id112">`Configuring Vault Notifications in Amazon
+Glacier`_</span></a>.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id113"><span class="problematic" id="id114">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id115"><span class="problematic" id="id116">`Configuring Vault Notifications in Amazon Glacier`_</span></a> and <a href="#id21"><span class="problematic" id="id22">`</span></a>Get
+Vault Notification Configuration <a href="#id23"><span class="problematic" id="id24">`</span></a>_ in the Amazon Glacier
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.initiate_job">
+<tt class="descname">initiate_job</tt><big>(</big><em>vault_name</em>, <em>job_data</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.initiate_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation initiates a job of the specified type. In this
+release, you can initiate a job to retrieve either an archive
+or a vault inventory (a list of archives in a vault).</p>
+<p>Retrieving data from Amazon Glacier is a two-step process:</p>
+<ol class="arabic simple">
+<li>Initiate a retrieval job.</li>
+<li>After the job completes, download the bytes.</li>
+</ol>
+<p>The retrieval request is executed asynchronously. When you
+initiate a retrieval job, Amazon Glacier creates a job and
+returns a job ID in the response. When Amazon Glacier
+completes the job, you can get the job output (archive or
+inventory data). For information about getting job output, see
+GetJobOutput operation.</p>
+<p>The job must complete before you can get its output. To
+determine when a job is complete, you have the following
+options:</p>
+<ul class="simple">
+<li><strong>Use Amazon SNS Notification</strong> You can specify an Amazon
+Simple Notification Service (Amazon SNS) topic to which Amazon
+Glacier can post a notification after the job is completed.
+You can specify an SNS topic per job request. The notification
+is sent only after Amazon Glacier completes the job. In
+addition to specifying an SNS topic per job request, you can
+configure vault notifications for a vault so that job
+notifications are always sent. For more information, see
+SetVaultNotifications.</li>
+<li><strong>Get job details</strong> You can make a DescribeJob request to
+obtain job status information while a job is in progress.
+However, it is more efficient to use an Amazon SNS
+notification to determine when a job is complete.</li>
+</ul>
+<p>The information you get via notification is same that you get
+by calling DescribeJob.</p>
+<p>If for a specific event, you add both the notification
+configuration on the vault and also specify an SNS topic in
+your initiate job request, Amazon Glacier sends both
+notifications. For more information, see
+SetVaultNotifications.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id117"><span class="problematic" id="id118">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p><strong>About the Vault Inventory</strong></p>
+<p>Amazon Glacier prepares an inventory for each vault
+periodically, every 24 hours. When you initiate a job for a
+vault inventory, Amazon Glacier returns the last inventory for
+the vault. The inventory data you get might be up to a day or
+two days old. Also, the initiate inventory job might take some
+time to complete before you can download the vault inventory.
+So you do not want to retrieve a vault inventory for each
+vault operation. However, in some scenarios, you might find
+the vault inventory useful. For example, when you upload an
+archive, you can provide an archive description but not an
+archive name. Amazon Glacier provides you a unique archive ID,
+an opaque string of characters. So, you might maintain your
+own database that maps archive names to their corresponding
+Amazon Glacier assigned archive IDs. You might find the vault
+inventory useful in the event you need to reconcile
+information in your database with the actual vault inventory.</p>
+<p><strong>About Ranged Archive Retrieval</strong></p>
+<p>You can initiate an archive retrieval for the whole archive or
+a range of the archive. In the case of ranged archive
+retrieval, you specify a byte range to return or the whole
+archive. The range specified must be megabyte (MB) aligned,
+that is the range start value must be divisible by 1 MB and
+range end value plus 1 must be divisible by 1 MB or equal the
+end of the archive. If the ranged archive retrieval is not
+megabyte aligned, this operation returns a 400 response.
+Furthermore, to ensure you get checksum values for data you
+download using Get Job Output API, the range must be tree hash
+aligned.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id119"><span class="problematic" id="id120">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and the underlying REST API, go to
+<a href="#id121"><span class="problematic" id="id122">`Initiate a Job`_</span></a> and <a href="#id123"><span class="problematic" id="id124">`Downloading a Vault Inventory`_</span></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>account_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The <cite>AccountId</cite> is the AWS Account ID. You can
+specify either the AWS Account ID or optionally a &#8216;-&#8216;, in which
+case Amazon Glacier uses the AWS Account ID associated with the
+credentials used to sign the request. If you specify your Account
+ID, do not include hyphens in it.</li>
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>job_parameters</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; <p>Provides options for specifying job information.
+The dictionary can contain the following attributes:</p>
+<ul>
+<li>ArchiveId - The ID of the archive you want to retrieve.
+This field is required only if the Type is set to
+archive-retrieval.</li>
+<li>Description - The optional description for the job.</li>
+<li>Format - When initiating a job to retrieve a vault
+inventory, you can optionally add this parameter to
+specify the output format.  Valid values are: CSV|JSON.</li>
+<li>SNSTopic - The Amazon SNS topic ARN where Amazon Glacier
+sends a notification when the job is completed and the
+output is ready for you to download.</li>
+<li>Type - The job type.  Valid values are:
+archive-retrieval|inventory-retrieval</li>
+<li>RetrievalByteRange - Optionally specify the range of
+bytes to retrieve.</li>
+<li><dl class="first docutils">
+<dt>InventoryRetrievalParameters: Optional job parameters</dt>
+<dd><ul class="first last">
+<li>Format - The output format, like &#8220;JSON&#8221;</li>
+<li>StartDate - ISO8601 starting date string</li>
+<li>EndDate - ISO8601 ending date string</li>
+<li>Limit - Maximum number of entries</li>
+<li>Marker - A unique string used for pagination</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.initiate_multipart_upload">
+<tt class="descname">initiate_multipart_upload</tt><big>(</big><em>vault_name</em>, <em>part_size</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.initiate_multipart_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation initiates a multipart upload. Amazon Glacier
+creates a multipart upload resource and returns its ID in the
+response. The multipart upload ID is used in subsequent
+requests to upload parts of an archive (see
+UploadMultipartPart).</p>
+<p>When you initiate a multipart upload, you specify the part
+size in number of bytes. The part size must be a megabyte
+(1024 KB) multiplied by a power of 2-for example, 1048576 (1
+MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8 MB), and so
+on. The minimum allowable part size is 1 MB, and the maximum
+is 4 GB.</p>
+<p>Every part you upload to this resource (see
+UploadMultipartPart), except the last one, must have the same
+size. The last one can be the same size or smaller. For
+example, suppose you want to upload a 16.2 MB file. If you
+initiate the multipart upload with a part size of 4 MB, you
+will upload four parts of 4 MB each and one part of 0.2 MB.</p>
+<p>You don&#8217;t need to know the size of the archive when you start
+a multipart upload because Amazon Glacier does not require you
+to specify the overall archive size.</p>
+<p>After you complete the multipart upload, Amazon Glacier
+removes the multipart upload resource referenced by the ID.
+Amazon Glacier also removes the multipart upload resource if
+you cancel the multipart upload or it may be removed if there
+is no activity for a period of 24 hours.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id125"><span class="problematic" id="id126">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id127"><span class="problematic" id="id128">`Uploading Large Archives in Parts (Multipart Upload)`_</span></a> and
+<a href="#id129"><span class="problematic" id="id130">`Initiate Multipart Upload`_</span></a> in the Amazon Glacier Developer
+Guide .</p>
+<p>The part size must be a megabyte (1024 KB) multiplied by a power of
+2, for example, 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB),
+8388608 (8 MB), and so on. The minimum allowable part size is 1 MB,
+and the maximum is 4 GB (4096 MB).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault.</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The archive description that you are uploading in
+parts.</li>
+<li><strong>part_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The size of each part except the last, in bytes. The
+last part can be smaller than this part size.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.list_jobs">
+<tt class="descname">list_jobs</tt><big>(</big><em>vault_name</em>, <em>completed=None</em>, <em>status_code=None</em>, <em>limit=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.list_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation lists jobs for a vault, including jobs that are
+in-progress and jobs that have recently finished.</p>
+<p>Amazon Glacier retains recently completed jobs for a period
+before deleting them; however, it eventually removes completed
+jobs. The output of completed jobs can be retrieved. Retaining
+completed jobs for a period of time after they have completed
+enables you to get a job output in the event you miss the job
+completion notification or your first attempt to download it
+fails. For example, suppose you start an archive retrieval job
+to download an archive. After the job completes, you start to
+download the archive but encounter a network error. In this
+scenario, you can retry and download the archive while the job
+exists.</p>
+<p>To retrieve an archive or retrieve a vault inventory from
+Amazon Glacier, you first initiate a job, and after the job
+completes, you download the data. For an archive retrieval,
+the output is the archive data, and for an inventory
+retrieval, it is the inventory list. The List Job operation
+returns a list of these jobs sorted by job initiation time.</p>
+<p>This List Jobs operation supports pagination. By default, this
+operation returns up to 1,000 jobs in the response. You should
+always check the response for a <cite>marker</cite> at which to continue
+the list; if there are no more items the <cite>marker</cite> is <cite>null</cite>.
+To return a list of jobs that begins at a specific job, set
+the <cite>marker</cite> request parameter to the value you obtained from
+a previous List Jobs request. You can also limit the number of
+jobs returned in the response by specifying the <cite>limit</cite>
+parameter in the request.</p>
+<p>Additionally, you can filter the jobs list returned by
+specifying an optional <cite>statuscode</cite> (InProgress, Succeeded, or
+Failed) and <cite>completed</cite> (true, false) parameter. The
+<cite>statuscode</cite> allows you to specify that only jobs that match a
+specified status are returned. The <cite>completed</cite> parameter
+allows you to specify that only jobs in a specific completion
+state are returned.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id131"><span class="problematic" id="id132">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For the underlying REST API, go to <a href="#id25"><span class="problematic" id="id26">`</span></a>List Jobs <a href="#id27"><span class="problematic" id="id28">`</span></a>_</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies that the response be limited to the specified
+number of items or fewer. If not specified, the List Jobs operation
+returns up to 1,000 jobs.</li>
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An opaque string used for pagination. This value
+specifies the job at which the listing of jobs should begin. Get
+the marker value from a previous List Jobs response. You need only
+include the marker if you are continuing the pagination of results
+started in a previous List Jobs request.</li>
+<li><strong>statuscode</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the type of job status to return. You can
+specify the following values: &#8220;InProgress&#8221;, &#8220;Succeeded&#8221;, or
+&#8220;Failed&#8221;.</li>
+<li><strong>completed</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the state of the jobs to return. You can
+specify <cite>True</cite> or <cite>False</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.list_multipart_uploads">
+<tt class="descname">list_multipart_uploads</tt><big>(</big><em>vault_name</em>, <em>limit=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.list_multipart_uploads" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation lists in-progress multipart uploads for the
+specified vault. An in-progress multipart upload is a
+multipart upload that has been initiated by an
+InitiateMultipartUpload request, but has not yet been
+completed or aborted. The list returned in the List Multipart
+Upload response has no guaranteed order.</p>
+<p>The List Multipart Uploads operation supports pagination. By
+default, this operation returns up to 1,000 multipart uploads
+in the response. You should always check the response for a
+<cite>marker</cite> at which to continue the list; if there are no more
+items the <cite>marker</cite> is <cite>null</cite>. To return a list of multipart
+uploads that begins at a specific upload, set the <cite>marker</cite>
+request parameter to the value you obtained from a previous
+List Multipart Upload request. You can also limit the number
+of uploads returned in the response by specifying the <cite>limit</cite>
+parameter in the request.</p>
+<p>Note the difference between this operation and listing parts
+(ListParts). The List Multipart Uploads operation lists all
+multipart uploads for a vault and does not require a multipart
+upload ID. The List Parts operation requires a multipart
+upload ID since parts are associated with a single upload.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id133"><span class="problematic" id="id134">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and the underlying REST API, go to
+<a href="#id135"><span class="problematic" id="id136">`Working with Archives in Amazon Glacier`_</span></a> and <a href="#id29"><span class="problematic" id="id30">`</span></a>List Multipart
+Uploads <a href="#id31"><span class="problematic" id="id32">`</span></a>_ in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the maximum number of uploads returned in the
+response body. If this value is not specified, the List Uploads
+operation returns up to 1,000 uploads.</li>
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An opaque string used for pagination. This value
+specifies the upload at which the listing of uploads should begin.
+Get the marker value from a previous List Uploads response. You
+need only include the marker if you are continuing the pagination
+of results started in a previous List Uploads request.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.list_parts">
+<tt class="descname">list_parts</tt><big>(</big><em>vault_name</em>, <em>upload_id</em>, <em>limit=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.list_parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation lists the parts of an archive that have been
+uploaded in a specific multipart upload. You can make this
+request at any time during an in-progress multipart upload
+before you complete the upload (see CompleteMultipartUpload.
+List Parts returns an error for completed uploads. The list
+returned in the List Parts response is sorted by part range.</p>
+<p>The List Parts operation supports pagination. By default, this
+operation returns up to 1,000 uploaded parts in the response.
+You should always check the response for a <cite>marker</cite> at which
+to continue the list; if there are no more items the <cite>marker</cite>
+is <cite>null</cite>. To return a list of parts that begins at a specific
+part, set the <cite>marker</cite> request parameter to the value you
+obtained from a previous List Parts request. You can also
+limit the number of parts returned in the response by
+specifying the <cite>limit</cite> parameter in the request.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id137"><span class="problematic" id="id138">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and the underlying REST API, go to
+<a href="#id139"><span class="problematic" id="id140">`Working with Archives in Amazon Glacier`_</span></a> and <a href="#id141"><span class="problematic" id="id142">`List Parts`_</span></a>
+in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>upload_id</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The upload ID of the multipart upload.</li>
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; An opaque string used for pagination. This value
+specifies the part at which the listing of parts should begin. Get
+the marker value from the response of a previous List Parts
+response. You need only include the marker if you are continuing
+the pagination of results started in a previous List Parts request.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the maximum number of parts returned in the
+response body. If this value is not specified, the List Parts
+operation returns up to 1,000 uploads.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.list_vaults">
+<tt class="descname">list_vaults</tt><big>(</big><em>limit=None</em>, <em>marker=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.list_vaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation lists all vaults owned by the calling user&#8217;s
+account. The list returned in the response is ASCII-sorted by
+vault name.</p>
+<p>By default, this operation returns up to 1,000 items. If there
+are more vaults to list, the response <cite>marker</cite> field contains
+the vault Amazon Resource Name (ARN) at which to continue the
+list with a new List Vaults request; otherwise, the <cite>marker</cite>
+field is <cite>null</cite>. To return a list of vaults that begins at a
+specific vault, set the <cite>marker</cite> request parameter to the
+vault ARN you obtained from a previous List Vaults request.
+You can also limit the number of vaults returned in the
+response by specifying the <cite>limit</cite> parameter in the request.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id143"><span class="problematic" id="id144">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id145"><span class="problematic" id="id146">`Retrieving Vault Metadata in Amazon Glacier`_</span></a> and <a href="#id33"><span class="problematic" id="id34">`</span></a>List
+Vaults <a href="#id35"><span class="problematic" id="id36">`</span></a>_ in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>marker</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string used for pagination. The marker specifies the
+vault ARN after which the listing of vaults should begin.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The maximum number of items returned in the response. If
+you don&#8217;t specify a value, the List Vaults operation returns up to
+1,000 items.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.make_request">
+<tt class="descname">make_request</tt><big>(</big><em>verb</em>, <em>resource</em>, <em>headers=None</em>, <em>data=''</em>, <em>ok_responses=(200</em>, <em>)</em>, <em>params=None</em>, <em>sender=None</em>, <em>response_headers=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.make_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.set_vault_notifications">
+<tt class="descname">set_vault_notifications</tt><big>(</big><em>vault_name</em>, <em>notification_config</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.set_vault_notifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation configures notifications that will be sent when
+specific events happen to a vault. By default, you don&#8217;t get
+any notifications.</p>
+<p>To configure vault notifications, send a PUT request to the
+<cite>notification-configuration</cite> subresource of the vault. The
+request should include a JSON document that provides an Amazon
+SNS topic and specific events for which you want Amazon
+Glacier to send notifications to the topic.</p>
+<p>Amazon SNS topics must grant permission to the vault to be
+allowed to publish notifications to the topic. You can
+configure a vault to publish a notification for the following
+vault events:</p>
+<ul class="simple">
+<li><strong>ArchiveRetrievalCompleted</strong> This event occurs when a job
+that was initiated for an archive retrieval is completed
+(InitiateJob). The status of the completed job can be
+&#8220;Succeeded&#8221; or &#8220;Failed&#8221;. The notification sent to the SNS
+topic is the same output as returned from DescribeJob.</li>
+<li><strong>InventoryRetrievalCompleted</strong> This event occurs when a job
+that was initiated for an inventory retrieval is completed
+(InitiateJob). The status of the completed job can be
+&#8220;Succeeded&#8221; or &#8220;Failed&#8221;. The notification sent to the SNS
+topic is the same output as returned from DescribeJob.</li>
+</ul>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id147"><span class="problematic" id="id148">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id149"><span class="problematic" id="id150">`Configuring Vault Notifications in Amazon Glacier`_</span></a> and <a href="#id37"><span class="problematic" id="id38">`</span></a>Set
+Vault Notification Configuration <a href="#id39"><span class="problematic" id="id40">`</span></a>_ in the Amazon Glacier
+Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The name of the vault.</li>
+<li><strong>vault_notification_config</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; <p>Provides options for specifying
+notification configuration.</p>
+<p>The format of the dictionary is:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{&#8216;SNSTopic&#8217;: &#8216;mytopic&#8217;,</dt>
+<dd>&#8216;Events&#8217;: [event1,...]}</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.upload_archive">
+<tt class="descname">upload_archive</tt><big>(</big><em>vault_name</em>, <em>archive</em>, <em>linear_hash</em>, <em>tree_hash</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.upload_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation adds an archive to a vault. This is a
+synchronous operation, and for a successful upload, your data
+is durably persisted. Amazon Glacier returns the archive ID in
+the <cite>x-amz-archive-id</cite> header of the response.</p>
+<p>You must use the archive ID to access your data in Amazon
+Glacier. After you upload an archive, you should save the
+archive ID returned so that you can retrieve or delete the
+archive later. Besides saving the archive ID, you can also
+index it and give it a friendly name to allow for better
+searching. You can also use the optional archive description
+field to specify how the archive is referred to in an external
+index of archives, such as you might create in Amazon
+DynamoDB. You can also get the vault inventory to obtain a
+list of archive IDs in a vault. For more information, see
+InitiateJob.</p>
+<p>You must provide a SHA256 tree hash of the data you are
+uploading. For information about computing a SHA256 tree hash,
+see <a href="#id151"><span class="problematic" id="id152">`Computing Checksums`_</span></a>.</p>
+<p>You can optionally specify an archive description of up to
+1,024 printable ASCII characters. You can get the archive
+description when you either retrieve the archive or get the
+vault inventory. For more information, see InitiateJob. Amazon
+Glacier does not interpret the description in any way. An
+archive description does not need to be unique. You cannot use
+the description to retrieve or sort the archive list.</p>
+<p>Archives are immutable. After you upload an archive, you
+cannot edit the archive or its description.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id153"><span class="problematic" id="id154">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id155"><span class="problematic" id="id156">`Uploading an Archive in Amazon Glacier`_</span></a> and <a href="#id157"><span class="problematic" id="id158">`Upload
+Archive`_</span></a> in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault</li>
+<li><strong>archive</strong> (<em>bytes</em>) &#8211; The data to upload.</li>
+<li><strong>linear_hash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The SHA256 checksum (a linear hash) of the
+payload.</li>
+<li><strong>tree_hash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The user-computed SHA256 tree hash of the
+payload.  For more information on computing the
+tree hash, see <a class="reference external" href="http://goo.gl/u7chF">http://goo.gl/u7chF</a>.</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The optional description of the archive you
+are uploading.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer1.Layer1.upload_part">
+<tt class="descname">upload_part</tt><big>(</big><em>vault_name</em>, <em>upload_id</em>, <em>linear_hash</em>, <em>tree_hash</em>, <em>byte_range</em>, <em>part_data</em><big>)</big><a class="headerlink" href="#boto.glacier.layer1.Layer1.upload_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation uploads a part of an archive. You can upload
+archive parts in any order. You can also upload them in
+parallel. You can upload up to 10,000 parts for a multipart
+upload.</p>
+<p>Amazon Glacier rejects your upload part request if any of the
+following conditions is true:</p>
+<ul class="simple">
+<li><a href="#id41"><span class="problematic" id="id42">**</span></a>SHA256 tree hash does not match**To ensure that part data
+is not corrupted in transmission, you compute a SHA256 tree
+hash of the part and include it in your request. Upon
+receiving the part data, Amazon Glacier also computes a SHA256
+tree hash. If these hash values don&#8217;t match, the operation
+fails. For information about computing a SHA256 tree hash, see
+<a href="#id159"><span class="problematic" id="id160">`Computing Checksums`_</span></a>.</li>
+<li><a href="#id43"><span class="problematic" id="id44">**</span></a>Part size does not match**The size of each part except the
+last must match the size specified in the corresponding
+InitiateMultipartUpload request. The size of the last part
+must be the same size as, or smaller than, the specified size.
+If you upload a part whose size is smaller than the part size
+you specified in your initiate multipart upload request and
+that part is not the last part, then the upload part request
+will succeed. However, the subsequent Complete Multipart
+Upload request will fail.</li>
+<li><a href="#id45"><span class="problematic" id="id46">**</span></a>Range does not align**The byte range value in the request
+does not align with the part size specified in the
+corresponding initiate request. For example, if you specify a
+part size of 4194304 bytes (4 MB), then 0 to 4194303 bytes (4
+MB - 1) and 4194304 (4 MB) to 8388607 (8 MB - 1) are valid
+part ranges. However, if you set a range value of 2 MB to 6
+MB, the range does not align with the part size and the upload
+will fail.</li>
+</ul>
+<p>This operation is idempotent. If you upload the same part
+multiple times, the data included in the most recent request
+overwrites the previously uploaded data.</p>
+<p>An AWS account has full permission to perform all operations
+(actions). However, AWS Identity and Access Management (IAM)
+users don&#8217;t have any permissions by default. You must grant
+them explicit permission to perform specific actions. For more
+information, see <a href="#id161"><span class="problematic" id="id162">`Access Control Using AWS Identity and Access
+Management (IAM)`_</span></a>.</p>
+<p>For conceptual information and underlying REST API, go to
+<a href="#id163"><span class="problematic" id="id164">`Uploading Large Archives in Parts (Multipart Upload)`_</span></a> and
+<a href="#id47"><span class="problematic" id="id48">`</span></a>Upload Part <a href="#id49"><span class="problematic" id="id50">`</span></a>_ in the Amazon Glacier Developer Guide .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault.</li>
+<li><strong>linear_hash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The SHA256 checksum (a linear hash) of the
+payload.</li>
+<li><strong>tree_hash</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The user-computed SHA256 tree hash of the
+payload.  For more information on computing the
+tree hash, see <a class="reference external" href="http://goo.gl/u7chF">http://goo.gl/u7chF</a>.</li>
+<li><strong>upload_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The unique ID associated with this upload
+operation.</li>
+<li><strong>byte_range</strong> (<em>tuple of ints</em>) &#8211; Identifies the range of bytes in the assembled
+archive that will be uploaded in this part. Amazon Glacier uses
+this information to assemble the archive in the proper sequence.
+The format of this header follows RFC 2616. An example header is
+Content-Range:bytes 0-4194303/<a href="#id51"><span class="problematic" id="id52">*</span></a>.</li>
+<li><strong>part_data</strong> (<em>bytes</em>) &#8211; The data to be uploaded for the part</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.layer2">
+<span id="boto-glacier-layer2"></span><h2>boto.glacier.layer2<a class="headerlink" href="#module-boto.glacier.layer2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.layer2.Layer2">
+<em class="property">class </em><tt class="descclassname">boto.glacier.layer2.</tt><tt class="descname">Layer2</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.glacier.layer2.Layer2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a more pythonic and friendly interface to Glacier based on Layer1</p>
+<dl class="method">
+<dt id="boto.glacier.layer2.Layer2.create_vault">
+<tt class="descname">create_vault</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer2.Layer2.create_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a vault.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.glacier.vault.Vault" title="boto.glacier.vault.Vault"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.vault.Vault</span></tt></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A Vault object representing the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer2.Layer2.delete_vault">
+<tt class="descname">delete_vault</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer2.Layer2.delete_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a vault.</p>
+<p>This operation deletes a vault. Amazon Glacier will delete a
+vault only if there are no archives in the vault as per the
+last inventory and there have been no writes to the vault
+since the last inventory. If either of these conditions is not
+satisfied, the vault deletion fails (that is, the vault is not
+removed) and Amazon Glacier returns an error.</p>
+<p>This operation is idempotent, you can send the same request
+multiple times and it has no further effect after the first
+time Amazon Glacier delete the specified vault.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault to delete.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer2.Layer2.get_vault">
+<tt class="descname">get_vault</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.glacier.layer2.Layer2.get_vault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an object representing a named vault from Glacier. This
+operation does not check if the vault actually exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.glacier.vault.Vault" title="boto.glacier.vault.Vault"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.vault.Vault</span></tt></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A Vault object representing the vault.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.layer2.Layer2.list_vaults">
+<tt class="descname">list_vaults</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.layer2.Layer2.list_vaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all vaults associated with the account ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">List of <a class="reference internal" href="#boto.glacier.vault.Vault" title="boto.glacier.vault.Vault"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.vault.Vault</span></tt></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of Vault objects.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.vault">
+<span id="boto-glacier-vault"></span><h2>boto.glacier.vault<a class="headerlink" href="#module-boto.glacier.vault" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.vault.Vault">
+<em class="property">class </em><tt class="descclassname">boto.glacier.vault.</tt><tt class="descname">Vault</tt><big>(</big><em>layer1</em>, <em>response_data=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.glacier.vault.Vault.DefaultPartSize">
+<tt class="descname">DefaultPartSize</tt><em class="property"> = 4194304</em><a class="headerlink" href="#boto.glacier.vault.Vault.DefaultPartSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.vault.Vault.ResponseDataElements">
+<tt class="descname">ResponseDataElements</tt><em class="property"> = (('VaultName', 'name', None), ('VaultARN', 'arn', None), ('CreationDate', 'creation_date', None), ('LastInventoryDate', 'last_inventory_date', None), ('SizeInBytes', 'size', 0), ('NumberOfArchives', 'number_of_archives', 0))</em><a class="headerlink" href="#boto.glacier.vault.Vault.ResponseDataElements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.vault.Vault.SingleOperationThreshold">
+<tt class="descname">SingleOperationThreshold</tt><em class="property"> = 104857600</em><a class="headerlink" href="#boto.glacier.vault.Vault.SingleOperationThreshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.concurrent_create_archive_from_file">
+<tt class="descname">concurrent_create_archive_from_file</tt><big>(</big><em>filename</em>, <em>description</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.concurrent_create_archive_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new archive from a file and upload the given
+file.</p>
+<p>This is a convenience method around the
+<a class="reference internal" href="#boto.glacier.concurrent.ConcurrentUploader" title="boto.glacier.concurrent.ConcurrentUploader"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.concurrent.ConcurrentUploader</span></tt></a>
+class.  This method will perform a multipart upload
+and upload the parts of the file concurrently.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A filename to upload</li>
+<li><strong>kwargs</strong> &#8211; Additional kwargs to pass through to
+<a class="reference internal" href="#boto.glacier.concurrent.ConcurrentUploader" title="boto.glacier.concurrent.ConcurrentUploader"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.concurrent.ConcurrentUploader</span></tt></a>.
+You can pass any argument besides the <tt class="docutils literal"><span class="pre">api</span></tt> and
+<tt class="docutils literal"><span class="pre">vault_name</span></tt> param (these arguments are already
+passed to the <tt class="docutils literal"><span class="pre">ConcurrentUploader</span></tt> for you).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><cite>boto.glacier.exception.UploadArchiveError</cite> is an error
+occurs during the upload process.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The archive id of the newly created archive</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.create_archive_from_file">
+<tt class="descname">create_archive_from_file</tt><big>(</big><em>filename=None</em>, <em>file_obj=None</em>, <em>description=None</em>, <em>upload_id_callback=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.create_archive_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new archive and upload the data from the given file
+or file-like object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A filename to upload</li>
+<li><strong>file_obj</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a>) &#8211; A file-like object to upload</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the archive.</li>
+<li><strong>upload_id_callback</strong> (<em>function</em>) &#8211; if set, call with the upload_id as the
+only parameter when it becomes known, to enable future calls
+to resume_archive_from_file in case resume is needed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The archive id of the newly created archive</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.create_archive_writer">
+<tt class="descname">create_archive_writer</tt><big>(</big><em>part_size=4194304</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.create_archive_writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new archive and begin a multi-part upload to it.
+Returns a file-like object to which the data for the archive
+can be written. Once all the data is written the file-like
+object should be closed, you can then call the get_archive_id
+method on it to get the ID of the created archive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>part_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The part size for the multipart upload.</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the archive.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.glacier.writer.Writer" title="boto.glacier.writer.Writer"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.writer.Writer</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Writer object that to which the archive data
+should be written.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.delete">
+<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete&#8217;s this vault. WARNING!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.delete_archive">
+<tt class="descname">delete_archive</tt><big>(</big><em>archive_id</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.delete_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation deletes an archive from the vault.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>archive_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The ID for the archive to be deleted.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.get_job">
+<tt class="descname">get_job</tt><big>(</big><em>job_id</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.get_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an object representing a job in progress.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>job_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The ID of the job</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#boto.glacier.job.Job" title="boto.glacier.job.Job"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.job.Job</span></tt></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A Job object representing the job.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.list_all_parts">
+<tt class="descname">list_all_parts</tt><big>(</big><em>upload_id</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.list_all_parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically make and combine multiple calls to list_parts.</p>
+<p>Call list_parts as necessary, combining the results in case multiple
+calls were required to get data on all available parts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.list_jobs">
+<tt class="descname">list_jobs</tt><big>(</big><em>completed=None</em>, <em>status_code=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.list_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of Job objects related to this vault.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>completed</strong> (<em>boolean</em>) &#8211; Specifies the state of the jobs to return.
+If a value of True is passed, only completed jobs will
+be returned.  If a value of False is passed, only
+uncompleted jobs will be returned.  If no value is
+passed, all jobs will be returned.</li>
+<li><strong>status_code</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Specifies the type of job status to return.
+Valid values are: InProgress|Succeeded|Failed.  If not
+specified, jobs with all status codes are returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list of <a class="reference internal" href="#boto.glacier.job.Job" title="boto.glacier.job.Job"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.job.Job</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of Job objects related to this vault.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.resume_archive_from_file">
+<tt class="descname">resume_archive_from_file</tt><big>(</big><em>upload_id</em>, <em>filename=None</em>, <em>file_obj=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.resume_archive_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resume upload of a file already part-uploaded to Glacier.</p>
+<p>The resumption of an upload where the part-uploaded section is empty
+is a valid degenerate case that this function can handle.</p>
+<p>One and only one of filename or file_obj must be specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>upload_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; existing Glacier upload id of upload being resumed.</li>
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; file to open for resume</li>
+<li><strong>fobj</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a>) &#8211; file-like object containing local data to resume. This
+must read from the start of the entire upload, not just from the
+point being resumed. Use fobj.seek(0) to achieve this if necessary.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The archive id of the newly created archive</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.retrieve_archive">
+<tt class="descname">retrieve_archive</tt><big>(</big><em>archive_id</em>, <em>sns_topic=None</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.retrieve_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiate a archive retrieval job to download the data from an
+archive. You will need to wait for the notification from
+Amazon (via SNS) before you can actually download the data,
+this takes around 4 hours.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>archive_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The id of the archive</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the job.</li>
+<li><strong>sns_topic</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The Amazon SNS topic ARN where Amazon Glacier
+sends notification when the job is completed and the output
+is ready for you to download.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.glacier.job.Job" title="boto.glacier.job.Job"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.job.Job</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Job object representing the retrieval job.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.retrieve_inventory">
+<tt class="descname">retrieve_inventory</tt><big>(</big><em>sns_topic=None</em>, <em>description=None</em>, <em>byte_range=None</em>, <em>start_date=None</em>, <em>end_date=None</em>, <em>limit=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.retrieve_inventory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiate a inventory retrieval job to list the items in the
+vault. You will need to wait for the notification from
+Amazon (via SNS) before you can actually download the data,
+this takes around 4 hours.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the job.</li>
+<li><strong>sns_topic</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The Amazon SNS topic ARN where Amazon Glacier
+sends notification when the job is completed and the output
+is ready for you to download.</li>
+<li><strong>byte_range</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Range of bytes to retrieve.</li>
+<li><strong>start_date</strong> (<em>DateTime</em>) &#8211; Beginning of the date range to query.</li>
+<li><strong>end_date</strong> (<em>DateTime</em>) &#8211; End of the date range to query.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Limits the number of results returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The ID of the job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.retrieve_inventory_job">
+<tt class="descname">retrieve_inventory_job</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.retrieve_inventory_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identical to <tt class="docutils literal"><span class="pre">retrieve_inventory</span></tt>, but returns a <tt class="docutils literal"><span class="pre">Job</span></tt> instance
+instead of just the job ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the job.</li>
+<li><strong>sns_topic</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The Amazon SNS topic ARN where Amazon Glacier
+sends notification when the job is completed and the output
+is ready for you to download.</li>
+<li><strong>byte_range</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Range of bytes to retrieve.</li>
+<li><strong>start_date</strong> (<em>DateTime</em>) &#8211; Beginning of the date range to query.</li>
+<li><strong>end_date</strong> (<em>DateTime</em>) &#8211; End of the date range to query.</li>
+<li><strong>limit</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Limits the number of results returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#boto.glacier.job.Job" title="boto.glacier.job.Job"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.job.Job</span></tt></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Job object representing the retrieval job.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.vault.Vault.upload_archive">
+<tt class="descname">upload_archive</tt><big>(</big><em>filename</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.vault.Vault.upload_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an archive to a vault. For archives greater than 100MB the
+multipart upload will be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; A filename to upload</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An optional description for the archive.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The archive id of the newly created archive</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.job">
+<span id="boto-glacier-job"></span><h2>boto.glacier.job<a class="headerlink" href="#module-boto.glacier.job" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.job.Job">
+<em class="property">class </em><tt class="descclassname">boto.glacier.job.</tt><tt class="descname">Job</tt><big>(</big><em>vault</em>, <em>response_data=None</em><big>)</big><a class="headerlink" href="#boto.glacier.job.Job" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.glacier.job.Job.DefaultPartSize">
+<tt class="descname">DefaultPartSize</tt><em class="property"> = 4194304</em><a class="headerlink" href="#boto.glacier.job.Job.DefaultPartSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.job.Job.ResponseDataElements">
+<tt class="descname">ResponseDataElements</tt><em class="property"> = (('Action', 'action', None), ('ArchiveId', 'archive_id', None), ('ArchiveSizeInBytes', 'archive_size', 0), ('Completed', 'completed', False), ('CompletionDate', 'completion_date', None), ('CreationDate', 'creation_date', None), ('InventorySizeInBytes', 'inventory_size', 0), ('JobDescription', 'description', None), ('JobId', 'id', None), ('SHA256TreeHash', 'sha256_treehash', None), ('SNSTopic', 'sns_topic', None), ('StatusCode', 'status_code', None), ('StatusMessage', 'status_message', None), ('VaultARN', 'arn', None))</em><a class="headerlink" href="#boto.glacier.job.Job.ResponseDataElements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.job.Job.download_to_file">
+<tt class="descname">download_to_file</tt><big>(</big><em>filename</em>, <em>chunk_size=4194304</em>, <em>verify_hashes=True</em>, <em>retry_exceptions=(&lt;class 'socket.error'&gt;</em>, <em>)</em><big>)</big><a class="headerlink" href="#boto.glacier.job.Job.download_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download an archive to a file by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the file where the archive
+contents will be saved.</li>
+<li><strong>chunk_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The chunk size to use when downloading
+the archive.</li>
+<li><strong>verify_hashes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Indicates whether or not to verify
+the tree hashes for each downloaded chunk.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.job.Job.download_to_fileobj">
+<tt class="descname">download_to_fileobj</tt><big>(</big><em>output_file</em>, <em>chunk_size=4194304</em>, <em>verify_hashes=True</em>, <em>retry_exceptions=(&lt;class 'socket.error'&gt;</em>, <em>)</em><big>)</big><a class="headerlink" href="#boto.glacier.job.Job.download_to_fileobj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download an archive to a file object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_file</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a>) &#8211; The file object where the archive
+contents will be saved.</li>
+<li><strong>chunk_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The chunk size to use when downloading
+the archive.</li>
+<li><strong>verify_hashes</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Indicates whether or not to verify
+the tree hashes for each downloaded chunk.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.job.Job.get_output">
+<tt class="descname">get_output</tt><big>(</big><em>byte_range=None</em>, <em>validate_checksum=False</em><big>)</big><a class="headerlink" href="#boto.glacier.job.Job.get_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>This operation downloads the output of the job.  Depending on
+the job type you specified when you initiated the job, the
+output will be either the content of an archive or a vault
+inventory.</p>
+<p>You can download all the job output or download a portion of
+the output by specifying a byte range. In the case of an
+archive retrieval job, depending on the byte range you
+specify, Amazon Glacier returns the checksum for the portion
+of the data. You can compute the checksum on the client and
+verify that the values match to ensure the portion you
+downloaded is the correct data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>range</strong> &#8211; A tuple of integer specifying the slice (in bytes)
+of the archive you want to receive</li>
+<li><strong>validate_checksum</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Specify whether or not to validate
+the associate tree hash.  If the response does not contain
+a TreeHash, then no checksum will be verified.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.writer">
+<span id="boto-glacier-writer"></span><h2>boto.glacier.writer<a class="headerlink" href="#module-boto.glacier.writer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.writer.Writer">
+<em class="property">class </em><tt class="descclassname">boto.glacier.writer.</tt><tt class="descname">Writer</tt><big>(</big><em>vault</em>, <em>upload_id</em>, <em>part_size</em>, <em>chunk_size=1048576</em><big>)</big><a class="headerlink" href="#boto.glacier.writer.Writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents a file-like object for writing to a Amazon Glacier
+Archive. The data is written using the multi-part upload API.</p>
+<dl class="method">
+<dt id="boto.glacier.writer.Writer.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.writer.Writer.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.writer.Writer.current_tree_hash">
+<tt class="descname">current_tree_hash</tt><a class="headerlink" href="#boto.glacier.writer.Writer.current_tree_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current tree hash for the data that&#8217;s been written
+<strong>so far</strong>.</p>
+<p>Only once the writing is complete is the final tree hash returned.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.writer.Writer.current_uploaded_size">
+<tt class="descname">current_uploaded_size</tt><a class="headerlink" href="#boto.glacier.writer.Writer.current_uploaded_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current uploaded size for the data that&#8217;s been written
+<strong>so far</strong>.</p>
+<p>Only once the writing is complete is the final uploaded size returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.writer.Writer.get_archive_id">
+<tt class="descname">get_archive_id</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.writer.Writer.get_archive_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.writer.Writer.upload_id">
+<tt class="descname">upload_id</tt><a class="headerlink" href="#boto.glacier.writer.Writer.upload_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.glacier.writer.Writer.vault">
+<tt class="descname">vault</tt><a class="headerlink" href="#boto.glacier.writer.Writer.vault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.glacier.writer.Writer.write">
+<tt class="descname">write</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#boto.glacier.writer.Writer.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.glacier.writer.generate_parts_from_fobj">
+<tt class="descclassname">boto.glacier.writer.</tt><tt class="descname">generate_parts_from_fobj</tt><big>(</big><em>fobj</em>, <em>part_size</em><big>)</big><a class="headerlink" href="#boto.glacier.writer.generate_parts_from_fobj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="boto.glacier.writer.resume_file_upload">
+<tt class="descclassname">boto.glacier.writer.</tt><tt class="descname">resume_file_upload</tt><big>(</big><em>vault</em>, <em>upload_id</em>, <em>part_size</em>, <em>fobj</em>, <em>part_hash_map</em>, <em>chunk_size=1048576</em><big>)</big><a class="headerlink" href="#boto.glacier.writer.resume_file_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resume upload of a file already part-uploaded to Glacier.</p>
+<p>The resumption of an upload where the part-uploaded section is empty is a
+valid degenerate case that this function can handle. In this case,
+part_hash_map should be an empty dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vault</strong> &#8211; boto.glacier.vault.Vault object.</li>
+<li><strong>upload_id</strong> &#8211; existing Glacier upload id of upload being resumed.</li>
+<li><strong>part_size</strong> &#8211; part size of existing upload.</li>
+<li><strong>fobj</strong> &#8211; file object containing local data to resume. This must read
+from the start of the entire upload, not just from the point being
+resumed. Use fobj.seek(0) to achieve this if necessary.</li>
+<li><strong>part_hash_map</strong> &#8211; {part_index: part_tree_hash, ...} of data already
+uploaded. Each supplied part_tree_hash will be verified and the part
+re-uploaded if there is a mismatch.</li>
+<li><strong>chunk_size</strong> &#8211; chunk size of tree hash calculation. This must be
+1 MiB for Amazon.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.concurrent">
+<span id="boto-glacier-concurrent"></span><h2>boto.glacier.concurrent<a class="headerlink" href="#module-boto.glacier.concurrent" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.glacier.concurrent.ConcurrentDownloader">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">ConcurrentDownloader</tt><big>(</big><em>job</em>, <em>part_size=4194304</em>, <em>num_threads=10</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.ConcurrentDownloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concurrently download an archive from glacier.</p>
+<p>This class uses a thread pool to concurrently download an archive
+from glacier.</p>
+<p>The threadpool is completely managed by this class and is
+transparent to the users of this class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>job</strong> &#8211; A layer2 job object for archive retrieval object.</li>
+<li><strong>part_size</strong> &#8211; The size, in bytes, of the chunks to use when uploading
+the archive parts.  The part size must be a megabyte multiplied by
+a power of two.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.glacier.concurrent.ConcurrentDownloader.download">
+<tt class="descname">download</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.ConcurrentDownloader.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concurrently download an archive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The filename to download the archive to</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.glacier.concurrent.ConcurrentTransferer">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">ConcurrentTransferer</tt><big>(</big><em>part_size=4194304</em>, <em>num_threads=10</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.ConcurrentTransferer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.glacier.concurrent.ConcurrentUploader">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">ConcurrentUploader</tt><big>(</big><em>api</em>, <em>vault_name</em>, <em>part_size=4194304</em>, <em>num_threads=10</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.ConcurrentUploader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concurrently upload an archive to glacier.</p>
+<p>This class uses a thread pool to concurrently upload an archive
+to glacier using the multipart upload API.</p>
+<p>The threadpool is completely managed by this class and is
+transparent to the users of this class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>api</strong> (<a class="reference internal" href="#boto.glacier.layer1.Layer1" title="boto.glacier.layer1.Layer1"><tt class="xref py py-class docutils literal"><span class="pre">boto.glacier.layer1.Layer1</span></tt></a>) &#8211; A layer1 glacier object.</li>
+<li><strong>vault_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the vault.</li>
+<li><strong>part_size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The size, in bytes, of the chunks to use when uploading
+the archive parts.  The part size must be a megabyte multiplied by
+a power of two.</li>
+<li><strong>num_threads</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of threads to spawn for the thread pool.
+The number of threads will control how much parts are being
+concurrently uploaded.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="boto.glacier.concurrent.ConcurrentUploader.upload">
+<tt class="descname">upload</tt><big>(</big><em>filename</em>, <em>description=None</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.ConcurrentUploader.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concurrently create an archive.</p>
+<p>The part_size value specified when the class was constructed
+will be used <em>unless</em> it is smaller than the minimum required
+part size needed for the size of the given file.  In that case,
+the part size used will be the minimum part size required
+to properly upload the given file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The filename to upload</li>
+<li><strong>description</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The description of the archive.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The archive id of the newly created archive.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.glacier.concurrent.DownloadWorkerThread">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">DownloadWorkerThread</tt><big>(</big><em>job</em>, <em>worker_queue</em>, <em>result_queue</em>, <em>num_retries=5</em>, <em>time_between_retries=5</em>, <em>retry_exceptions=&lt;type 'exceptions.Exception'&gt;</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.DownloadWorkerThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Individual download thread that will download parts of the file from Glacier. Parts
+to download stored in work queue.</p>
+<p>Parts download to a temp dir with each part a separate file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>job</strong> &#8211; Glacier job object</li>
+<li><strong>work_queue</strong> &#8211; A queue of tuples which include the part_number and
+part_size</li>
+<li><strong>result_queue</strong> &#8211; A priority queue of tuples which include the
+part_number and the path to the temp file that holds that
+part&#8217;s data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.glacier.concurrent.TransferThread">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">TransferThread</tt><big>(</big><em>worker_queue</em>, <em>result_queue</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.TransferThread" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.glacier.concurrent.TransferThread.run">
+<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.TransferThread.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.glacier.concurrent.UploadWorkerThread">
+<em class="property">class </em><tt class="descclassname">boto.glacier.concurrent.</tt><tt class="descname">UploadWorkerThread</tt><big>(</big><em>api</em>, <em>vault_name</em>, <em>filename</em>, <em>upload_id</em>, <em>worker_queue</em>, <em>result_queue</em>, <em>num_retries=5</em>, <em>time_between_retries=5</em>, <em>retry_exceptions=&lt;type 'exceptions.Exception'&gt;</em><big>)</big><a class="headerlink" href="#boto.glacier.concurrent.UploadWorkerThread" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-boto.glacier.exceptions">
+<span id="boto-glacier-exceptions"></span><h2>boto.glacier.exceptions<a class="headerlink" href="#module-boto.glacier.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.glacier.exceptions.ArchiveError">
+<em class="property">exception </em><tt class="descclassname">boto.glacier.exceptions.</tt><tt class="descname">ArchiveError</tt><a class="headerlink" href="#boto.glacier.exceptions.ArchiveError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.glacier.exceptions.DownloadArchiveError">
+<em class="property">exception </em><tt class="descclassname">boto.glacier.exceptions.</tt><tt class="descname">DownloadArchiveError</tt><a class="headerlink" href="#boto.glacier.exceptions.DownloadArchiveError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.glacier.exceptions.TreeHashDoesNotMatchError">
+<em class="property">exception </em><tt class="descclassname">boto.glacier.exceptions.</tt><tt class="descname">TreeHashDoesNotMatchError</tt><a class="headerlink" href="#boto.glacier.exceptions.TreeHashDoesNotMatchError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.glacier.exceptions.UnexpectedHTTPResponseError">
+<em class="property">exception </em><tt class="descclassname">boto.glacier.exceptions.</tt><tt class="descname">UnexpectedHTTPResponseError</tt><big>(</big><em>expected_responses</em>, <em>response</em><big>)</big><a class="headerlink" href="#boto.glacier.exceptions.UnexpectedHTTPResponseError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.glacier.exceptions.UploadArchiveError">
+<em class="property">exception </em><tt class="descclassname">boto.glacier.exceptions.</tt><tt class="descname">UploadArchiveError</tt><a class="headerlink" href="#boto.glacier.exceptions.UploadArchiveError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Glacier</a><ul>
+<li><a class="reference internal" href="#module-boto.glacier">boto.glacier</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.layer1">boto.glacier.layer1</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.layer2">boto.glacier.layer2</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.vault">boto.glacier.vault</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.job">boto.glacier.job</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.writer">boto.glacier.writer</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.concurrent">boto.glacier.concurrent</a></li>
+<li><a class="reference internal" href="#module-boto.glacier.exceptions">boto.glacier.exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fps.html"
+                        title="previous chapter">fps</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gs.html"
+                        title="next chapter">GS</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/glacier.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gs.html" title="GS"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fps.html" title="fps"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li>
+          <li><a href="index.html" >API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

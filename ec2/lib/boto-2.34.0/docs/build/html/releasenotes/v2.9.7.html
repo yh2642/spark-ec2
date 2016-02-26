@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.9.7 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.9.8" href="v2.9.8.html" />
+    <link rel="prev" title="boto v2.9.6" href="v2.9.6.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.8.html" title="boto v2.9.8"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.6.html" title="boto v2.9.6"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-9-7">
+<h1>boto v2.9.7<a class="headerlink" href="#boto-v2-9-7" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/07/08</td>
+</tr>
+</tbody>
+</table>
+<p>This release is primarily a bugfix release, but also inludes support for
+Elastic Transcoder updates (variable bit rate, max frame rate &amp; watermark
+features).</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for selecting specific attributes in DynamoDB v2.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1567">issue 1567</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d9e5c2">commit d9e5c2</a>)</li>
+<li>Added support for variable bit rate, max frame rate &amp; watermark features in
+Elastic Transcoder. (<a class="reference external" href="https://github.com/boto/boto/commit/3791c9">commit 3791c9</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Altered RDS to now use SigV4. (<a class="reference external" href="https://github.com/boto/boto/commit/be1633">commit be1633</a>)</p>
+</li>
+<li><p class="first">Removed parsing check in <tt class="docutils literal"><span class="pre">StorageUri</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/21bc8f">commit 21bc8f</a>)</p>
+</li>
+<li><p class="first">More information returned about GS key generation. (<a class="reference external" href="https://github.com/boto/boto/issues/1571">issue 1571</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/6d5e3a">commit 6d5e3a</a>)</p>
+</li>
+<li><p class="first">Upload handling headers now case-insensitive. (<a class="reference external" href="https://github.com/boto/boto/issues/1575">issue 1575</a>, <a class="reference external" href="https://github.com/boto/boto/commit/60383d">commit 60383d</a>)</p>
+</li>
+<li><p class="first">Several CloudFormation timestamp updates. (<a class="reference external" href="https://github.com/boto/boto/issues/1582">issue 1582</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1583">issue 1583</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/1588">issue 1588</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0a23d34">commit 0a23d34</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6d4209">commit 6d4209</a>)</p>
+</li>
+<li><p class="first">Corrected a bug in how limits are handled in DynamoDB v2. (<a class="reference external" href="https://github.com/boto/boto/issues/1590">issue 1590</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/710a62">commit 710a62</a>)</p>
+</li>
+<li><p class="first">Several documentation improvements/fixes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Typo in <tt class="docutils literal"><span class="pre">boto.connection</span></tt> fixed. (<a class="reference external" href="https://github.com/boto/boto/issues/1569">issue 1569</a>, <a class="reference external" href="https://github.com/boto/boto/commit/cf39fd">commit cf39fd</a>)</li>
+<li>All previous release notes added to the docs. (<a class="reference external" href="https://github.com/boto/boto/commit/165596">commit 165596</a>)</li>
+<li>Corrected error in <tt class="docutils literal"><span class="pre">get_all_tags</span></tt> docs. (<a class="reference external" href="https://github.com/boto/boto/commit/4bca5d">commit 4bca5d</a>)</li>
+<li>Corrected a typo in the S3 tutorial. (<a class="reference external" href="https://github.com/boto/boto/commit/f0cef8">commit f0cef8</a>)</li>
+<li>Corrected several import errors in the DDBv2 tutorial. (<a class="reference external" href="https://github.com/boto/boto/commit/5401a3">commit 5401a3</a>)</li>
+<li>Fixed an error in the <tt class="docutils literal"><span class="pre">get_key_pair</span></tt> docstring. (<a class="reference external" href="https://github.com/boto/boto/issues/1590">issue 1590</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/a9cb8d">commit a9cb8d</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.9.7</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.9.6.html"
+                        title="previous chapter">boto v2.9.6</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.9.8.html"
+                        title="next chapter">boto v2.9.8</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.9.7.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.8.html" title="boto v2.9.8"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.6.html" title="boto v2.9.6"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

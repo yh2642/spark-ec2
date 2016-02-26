@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Porting Guide &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="porting-guide">
+<h1>Porting Guide<a class="headerlink" href="#porting-guide" title="Permalink to this headline">¶</a></h1>
+<p>Boto supports Python versions 2.6, 2.7, 3.3, and 3.4. Python 3 support
+is on a per-module basis. This guide will help you to get started porting
+a Boto module to Python 3.</p>
+<p>Please read the <a class="reference internal" href="contributing.html"><em>Contributing Guide</em></a> before getting
+started.</p>
+<div class="section" id="compat-module">
+<h2>Compat Module<a class="headerlink" href="#compat-module" title="Permalink to this headline">¶</a></h2>
+<p>Boto ships with a <tt class="docutils literal"><span class="pre">boto.compat</span></tt> module that helps to abstract the
+differences between Python versions. A vendored version of the <tt class="docutils literal"><span class="pre">six</span></tt>
+module is exposed through <tt class="docutils literal"><span class="pre">boto.compat.six</span></tt>, as well as a handful of
+moved functions used throughout the codebase:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Import the six module</span>
+<span class="kn">from</span> <span class="nn">boto.compat</span> <span class="kn">import</span> <span class="n">six</span>
+
+<span class="c"># Other useful imports</span>
+<span class="kn">from</span> <span class="nn">boto.compat</span> <span class="kn">import</span> <span class="n">BytesIO</span><span class="p">,</span> <span class="n">StringIO</span>
+<span class="kn">from</span> <span class="nn">boto.compat</span> <span class="kn">import</span> <span class="n">http_client</span>
+<span class="kn">from</span> <span class="nn">boto.compat</span> <span class="kn">import</span> <span class="n">urlparse</span>
+</pre></div>
+</div>
+<p>Please check the <tt class="docutils literal"><span class="pre">boto.compat</span></tt> module before writing your own logic
+around specialized behavior for different Python versions. Feel free
+to add new functionality here, too.</p>
+</div>
+<div class="section" id="porting-steps">
+<h2>Porting Steps<a class="headerlink" href="#porting-steps" title="Permalink to this headline">¶</a></h2>
+<p>Please follow the following steps when porting a module:</p>
+<ul>
+<li><p class="first">Install Python versions and <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tox</span></tt></p>
+</li>
+<li><p class="first">Port your module to support Python 3. These help:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pythonhosted.org/six/">Six documentation</a></li>
+<li><a class="reference external" href="http://python3porting.com/">Porting to Python 3 An in-depth guide</a></li>
+<li><a class="reference external" href="http://lucumr.pocoo.org/2013/5/21/porting-to-python-3-redux/">Porting to Python 3 Redux</a></li>
+</ul>
+</li>
+<li><p class="first">Whitelist your module&#8217;s unit tests in <tt class="docutils literal"><span class="pre">tests/test.py</span></tt></p>
+</li>
+<li><p class="first">Make sure unit tests pass by running <tt class="docutils literal"><span class="pre">tox</span></tt></p>
+</li>
+<li><p class="first">Try running integration tests:</p>
+<div class="highlight-python"><div class="highlight"><pre>tox tests/integration/yourmodule
+
+# You can also run against a specific Python version:
+tox -e py26 tests/integration/yourmodule
+</pre></div>
+</div>
+</li>
+<li><p class="first">Fix any failing tests. This is the fun part!</p>
+</li>
+<li><p class="first">If code you modified is not covered by tests, try to cover it with
+existing tests or write new tests. Here is how you can generate a
+coverage report in <tt class="docutils literal"><span class="pre">cover/index.html</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre># Run a test with coverage
+tox -e py33 -- default --with-coverage --cover-html --cover-package boto
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update <tt class="docutils literal"><span class="pre">README.rst</span></tt> and <tt class="docutils literal"><span class="pre">docs/source/index.rst</span></tt> to label your module
+as supporting Python 3</p>
+</li>
+<li><p class="first">Submit a pull request!</p>
+</li>
+</ul>
+<p>Note: We try our best to clean up resources after a test runs, but you should
+double check that no resources are left after integration tests run. If they
+are, then you will be charged for them!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Porting Guide</a><ul>
+<li><a class="reference internal" href="#compat-module">Compat Module</a></li>
+<li><a class="reference internal" href="#porting-steps">Porting Steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/porting_guide.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

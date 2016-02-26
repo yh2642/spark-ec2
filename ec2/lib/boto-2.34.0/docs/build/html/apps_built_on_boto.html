@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Applications Built On Boto &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="Auto Scaling Reference" href="ref/autoscale.html" />
+    <link rel="prev" title="Migrating from RDS v1 to RDS v2" href="migrations/rds_v1_to_v2.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref/autoscale.html" title="Auto Scaling Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="migrations/rds_v1_to_v2.html" title="Migrating from RDS v1 to RDS v2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="applications-built-on-boto">
+<span id="apps-built-on-boto"></span><h1>Applications Built On Boto<a class="headerlink" href="#applications-built-on-boto" title="Permalink to this headline">¶</a></h1>
+<p>Many people have taken Boto and layered on additional functionality, then shared
+them with the community. This is a (partial) list of applications that use Boto.</p>
+<p>If you have an application or utility you&#8217;ve open-sourced that uses Boto &amp;
+you&#8217;d like it listed here, please submit a <a class="reference external" href="https://github.com/boto/boto/pulls">pull request</a> adding it!</p>
+<dl class="docutils">
+<dt><strong>botornado</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/botornado">https://pypi.python.org/pypi/botornado</a>
+An asynchronous AWS client on Tornado. This is a dirty work to move boto
+onto Tornado ioloop. Currently works with SQS and S3.</dd>
+<dt><strong>boto_rsync</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/boto_rsync">https://pypi.python.org/pypi/boto_rsync</a>
+boto-rsync is a rough adaptation of boto&#8217;s s3put script which has been
+reengineered to more closely mimic rsync. Its goal is to provide a familiar
+rsync-like wrapper for boto&#8217;s S3 and Google Storage interfaces.</dd>
+<dt><strong>boto_utils</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/boto_utils">https://pypi.python.org/pypi/boto_utils</a>
+Command-line tools for interacting with Amazon Web Services, based on Boto.
+Includes utils for S3, SES &amp; Cloudwatch.</dd>
+<dt><strong>django-storages</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/django-storages">https://pypi.python.org/pypi/django-storages</a>
+A collection of storage backends for Django. Features the <tt class="docutils literal"><span class="pre">S3BotoStorage</span></tt>
+backend for storing media on S3.</dd>
+<dt><strong>mr.awsome</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/mr.awsome">https://pypi.python.org/pypi/mr.awsome</a>
+mr.awsome is a commandline-tool (aws) to manage and control Amazon
+Webservice&#8217;s EC2 instances. Once configured with your AWS key, you can
+create, delete, monitor and ssh into instances, as well as perform scripted
+tasks on them (via fabfiles). Examples are adding additional,
+pre-configured webservers to a cluster (including updating the load
+balancer), performing automated software deployments and creating backups -
+each with just one call from the commandline.</dd>
+<dt><strong>iamer</strong></dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/iamer">https://pypi.python.org/pypi/iamer</a>
+IAMer dump and load your AWS IAM configuration into text files. Once
+dumped, you can version the resulting json and ini files to keep track of
+changes, and even ask your team mates to do Pull Requests when they want
+access to something.</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="migrations/rds_v1_to_v2.html"
+                        title="previous chapter">Migrating from RDS v1 to RDS v2</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ref/autoscale.html"
+                        title="next chapter">Auto Scaling Reference</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/apps_built_on_boto.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref/autoscale.html" title="Auto Scaling Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="migrations/rds_v1_to_v2.html" title="Migrating from RDS v1 to RDS v2"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

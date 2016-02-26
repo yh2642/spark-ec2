@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.32.1 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.33.0" href="v2.33.0.html" />
+    <link rel="prev" title="boto v2.32.0" href="v2.32.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.33.0.html" title="boto v2.33.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.32.0.html" title="boto v2.32.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-32-1">
+<h1>boto v2.32.1<a class="headerlink" href="#boto-v2-32-1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/08/04</td>
+</tr>
+</tbody>
+</table>
+<p>This release fixes an incorrect Amazon VPC peering connection call, and fixes
+several minor issues related to Python 3 support including a regression when
+pickling authentication information.</p>
+<div class="section" id="fixes">
+<h2>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fix bin scripts for Python 3. (<a class="reference external" href="https://github.com/boto/boto/issues/2502">issue 2502</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2490">issue 2490</a>, <a class="reference external" href="https://github.com/boto/boto/commit/cb78c52">commit cb78c52</a>)</li>
+<li>Fix parsing of EMR step summary response. (<a class="reference external" href="https://github.com/boto/boto/issues/2456">issue 2456</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2ffb00a">commit 2ffb00a</a>)</li>
+<li>Update wheel to be universal for py2/py3. (<a class="reference external" href="https://github.com/boto/boto/issues/2478">issue 2478</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e872d94">commit e872d94</a>)</li>
+<li>Add pypy to tox config. (<a class="reference external" href="https://github.com/boto/boto/issues/2458">issue 2458</a>, <a class="reference external" href="https://github.com/boto/boto/commit/16c6fbe">commit 16c6fbe</a>)</li>
+<li>Fix Glacier file object hash calculation. (<a class="reference external" href="https://github.com/boto/boto/issues/2489">issue 2489</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2488">issue 2488</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/a9463c5">commit a9463c5</a>)</li>
+<li>PEP8 fixes for Glacier. (<a class="reference external" href="https://github.com/boto/boto/issues/2469">issue 2469</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0575a54">commit 0575a54</a>)</li>
+<li>Use ConfigParser for Python 3 and SafeConfigParser for Python 2.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2498">issue 2498</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2497">issue 2497</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f580f73">commit f580f73</a>)</li>
+<li>Remove redundant __future__ imports. (<a class="reference external" href="https://github.com/boto/boto/issues/2496">issue 2496</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e59e199">commit e59e199</a>)</li>
+<li>Fix dynamodb.types.Binary non-ASCII handling. (<a class="reference external" href="https://github.com/boto/boto/issues/2492">issue 2492</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2491">issue 2491</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/16284ea">commit 16284ea</a>)</li>
+<li>Add missing dependency to requirements.txt. (<a class="reference external" href="https://github.com/boto/boto/issues/2494">issue 2494</a>, <a class="reference external" href="https://github.com/boto/boto/commit/33db71a">commit 33db71a</a>)</li>
+<li>Fix TypeError when getting instance metadata under Python 3. (<a class="reference external" href="https://github.com/boto/boto/issues/2486">issue 2486</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2485">issue 2485</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6ff525e">commit 6ff525e</a>)</li>
+<li>Handle Cloudsearch indexing errors. (<a class="reference external" href="https://github.com/boto/boto/issues/2370">issue 2370</a>, <a class="reference external" href="https://github.com/boto/boto/commit/494a091">commit 494a091</a>)</li>
+<li>Remove obsolete md5 import routine. (<a class="reference external" href="https://github.com/boto/boto/issues/2468">issue 2468</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9808a77">commit 9808a77</a>)</li>
+<li>Use encodebytes instead of encodestring. (<a class="reference external" href="https://github.com/boto/boto/issues/2484">issue 2484</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2483">issue 2483</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/984c5ff">commit 984c5ff</a>)</li>
+<li>Fix an auth class pickling bug. (<a class="reference external" href="https://github.com/boto/boto/issues/2479">issue 2479</a>, <a class="reference external" href="https://github.com/boto/boto/commit/07d6424">commit 07d6424</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.32.1</a><ul>
+<li><a class="reference internal" href="#fixes">Fixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.32.0.html"
+                        title="previous chapter">boto v2.32.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.33.0.html"
+                        title="next chapter">boto v2.33.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.32.1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.33.0.html" title="boto v2.33.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.32.0.html" title="boto v2.32.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

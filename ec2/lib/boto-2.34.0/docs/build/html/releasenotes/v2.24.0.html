@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.24.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.25.0" href="v2.25.0.html" />
+    <link rel="prev" title="boto v2.23.0" href="v2.23.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.25.0.html" title="boto v2.25.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.23.0.html" title="boto v2.23.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-24-0">
+<h1>boto v2.24.0<a class="headerlink" href="#boto-v2-24-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/01/29</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds M3 instance types to Amazon EC2, adds support for dead letter queues to Amazon Simple Queue Service (SQS), adds a single JSON file for all region and endpoint information and provides several fixes to a handful of services and documentation. Additionally, the SDK now supports using AWS Signature Version 4 with Amazon S3.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Load region and endpoint information from a JSON file (<a class="reference external" href="https://github.com/boto/boto/commit/b9dbaad">commit b9dbaad</a>)</li>
+<li>Return the x-amz-restore header with GET KEY and fix provider prefix. (<a class="reference external" href="https://github.com/boto/boto/issues/1990">issue 1990</a>, <a class="reference external" href="https://github.com/boto/boto/commit/43e8e0a">commit 43e8e0a</a>)</li>
+<li>Make S3 key validation optional with the <tt class="docutils literal"><span class="pre">validate</span></tt> parameter (<a class="reference external" href="https://github.com/boto/boto/issues/2013">issue 2013</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1996">issue 1996</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fd6b632">commit fd6b632</a>)</li>
+<li>Adding new eu-west-1 and eu-west-2 endpoints for SES. (<a class="reference external" href="https://github.com/boto/boto/issues/2015">issue 2015</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d5ef862">commit d5ef862</a>, <a class="reference external" href="https://github.com/boto/boto/commit/56ba3e5">commit 56ba3e5</a>)</li>
+<li>Google Storage now uses new-style Python classes (<a class="reference external" href="https://github.com/boto/boto/issues/1927">issue 1927</a>, <a class="reference external" href="https://github.com/boto/boto/commit/86c9f77">commit 86c9f77</a>)</li>
+<li>Add support for step summary list to Elastic MapReduce (<a class="reference external" href="https://github.com/boto/boto/issues/2011">issue 2011</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d3af158">commit d3af158</a>)</li>
+<li>Added the M3 instance types. (<a class="reference external" href="https://github.com/boto/boto/issues/2012">issue 2012</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7c82f57">commit 7c82f57</a>)</li>
+<li>Add credential profile configuration (<a class="reference external" href="https://github.com/boto/boto/issues/1979">issue 1979</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e3ab708">commit e3ab708</a>)</li>
+<li>Add support for dead letter queues to SQS (<a class="reference external" href="https://github.com/boto/boto/commit/93c7d05">commit 93c7d05</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Make the Lifecycle Id optional and fix prefix=None in XML generation. (<a class="reference external" href="https://github.com/boto/boto/issues/2021">issue 2021</a>, <a class="reference external" href="https://github.com/boto/boto/commit/362a04a">commit 362a04a</a>)</li>
+<li>Fix DynamoDB query limit bug (<a class="reference external" href="https://github.com/boto/boto/issues/2014">issue 2014</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7ecb3f7">commit 7ecb3f7</a>)</li>
+<li>Add documentation about the version_id behavior of Key objects. (<a class="reference external" href="https://github.com/boto/boto/issues/2026">issue 2026</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b6b242c">commit b6b242c</a>)</li>
+<li>Fixed typo in Table.create example (<a class="reference external" href="https://github.com/boto/boto/issues/2023">issue 2023</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d81a660">commit d81a660</a>)</li>
+<li>Adding a license/copyright header. (<a class="reference external" href="https://github.com/boto/boto/issues/2025">issue 2025</a>, <a class="reference external" href="https://github.com/boto/boto/commit/26ded39">commit 26ded39</a>)</li>
+<li>Update the docstring for the SNS subscribe method (<a class="reference external" href="https://github.com/boto/boto/issues/2017">issue 2017</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4c806de">commit 4c806de</a>)</li>
+<li>Renamed unit test with duplicate name (<a class="reference external" href="https://github.com/boto/boto/issues/2016">issue 2016</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c7bd0bd">commit c7bd0bd</a>)</li>
+<li>Use UTC instead of local time in <tt class="docutils literal"><span class="pre">test_refresh_credentials</span></tt> (<a class="reference external" href="https://github.com/boto/boto/issues/2020">issue 2020</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b5a2eaf">commit b5a2eaf</a>)</li>
+<li>Fix missing <tt class="docutils literal"><span class="pre">security_token</span></tt> option in some connection classes (<a class="reference external" href="https://github.com/boto/boto/issues/1989">issue 1989</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1942">issue 1942</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2b72f32">commit 2b72f32</a>)</li>
+<li>Fix listing S3 multipart uploads with some parameter combinations (<a class="reference external" href="https://github.com/boto/boto/issues/2000">issue 2000</a>, <a class="reference external" href="https://github.com/boto/boto/commit/49045bc">commit 49045bc</a>)</li>
+<li>Fix <tt class="docutils literal"><span class="pre">elbadmin</span></tt> crash because of non-extant instances in load balancer (<a class="reference external" href="https://github.com/boto/boto/issues/2001">issue 2001</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d47cc14">commit d47cc14</a>)</li>
+<li>Fix anonymous S3 fetch test case (<a class="reference external" href="https://github.com/boto/boto/issues/1988">issue 1988</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1992">issue 1992</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8fb1666">commit 8fb1666</a>)</li>
+<li>Fix <tt class="docutils literal"><span class="pre">elbadmin</span></tt> boto import (<a class="reference external" href="https://github.com/boto/boto/issues/2002">issue 2002</a>, <a class="reference external" href="https://github.com/boto/boto/commit/674c3a6">commit 674c3a6</a>)</li>
+<li>Fixing SQS tutorial to correctly describe behavior of the write operation (<a class="reference external" href="https://github.com/boto/boto/issues/1986">issue 1986</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6147d86">commit 6147d86</a>)</li>
+<li>Fix various grammar mistakes (<a class="reference external" href="https://github.com/boto/boto/issues/1980">issue 1980</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ada40b5">commit ada40b5</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.24.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.23.0.html"
+                        title="previous chapter">boto v2.23.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.25.0.html"
+                        title="next chapter">boto v2.25.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.24.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.25.0.html" title="boto v2.25.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.23.0.html" title="boto v2.23.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

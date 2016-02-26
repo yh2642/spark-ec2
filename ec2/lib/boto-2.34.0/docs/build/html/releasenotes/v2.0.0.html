@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Release Notes for boto 2.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Major changes for release 2.0b1" href="v2.0b1.html" />
+    <link rel="prev" title="boto v2.xx.x" href="releasenotes_template.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.0b1.html" title="Major changes for release 2.0b1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes_template.html" title="boto v2.xx.x"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="release-notes-for-boto-2-0">
+<h1>Release Notes for boto 2.0<a class="headerlink" href="#release-notes-for-boto-2-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<p>There have been many, many changes since the 2.0b4 release. This overview highlights some of those changes.</p>
+<ul class="simple">
+<li>Fix connection pooling bug: don&#8217;t close before reading.</li>
+<li>Added AddInstanceGroup and ModifyInstanceGroup to boto.emr</li>
+<li>Merge pull request #246 from chetan/multipart_s3put</li>
+<li>AddInstanceGroupsResponse class to boto.emr.emrobject.</li>
+<li>Removed extra print statement</li>
+<li>Merge pull request #244 from ryansb/master</li>
+<li>Added add_instance_groups function to boto.emr.connection. Built some helper methods for it, and added AddInstanceGroupsResponse class to boto.emr.emrobject.</li>
+<li>Added a new class, InstanceGroup, with just a __init__ and __repr__.</li>
+<li>Adding support for GetLoginProfile request to IAM.  Removing commented lines in connection.py.  Fixes GoogleCode issue 532.</li>
+<li>Fixed issue #195</li>
+<li>Added correct sax reader for boto.emr.emrobject.BootstrapAction</li>
+<li>Fixed a typo bug in ConsoleOutput sax parsing and some PEP8 cleanup in connection.py.</li>
+<li>Added initial support for generating a registration url for the aws marketplace</li>
+<li>Fix add_record and del_record to support multiple values, like change_record does</li>
+<li>Add support to accept SecurityGroupId as a parameter for ec2 run instances. This is required to create EC2 instances under VPC security groups</li>
+<li>Added support for aliases to the add_change method of ResourceRecordSets.</li>
+<li>Resign each request in a retry situation.  Some services are starting to incorporate replay detection algorithms and the boto approach of simply re-trying the original request triggers them.  Also a small bug fix to roboto and added a delay in the ec2 test to wait for consistency.</li>
+<li>Fixed a problem with InstanceMonitoring parameter of LaunchConfigurations for autoscale module.</li>
+<li>Route 53 Alias Resource Record Sets</li>
+<li>Fixed App Engine support</li>
+<li>Fixed incorrect host on App Engine</li>
+<li>Fixed issue 199 on github.</li>
+<li>First pass at put_metric_data</li>
+<li>Changed boto.s3.Bucket.set_acl_xml() to ISO-8859-1 encode the Unicode ACL text before sending over HTTP connection.</li>
+<li>Added GetQualificationScore for mturk.</li>
+<li>Added UpdateQualificationScore for mturk</li>
+<li>import_key_pair base64 fix</li>
+<li>Fixes for ses send_email method better handling of exceptions</li>
+<li>Add optional support for SSL server certificate validation.</li>
+<li>Specify a reasonable socket timeout for httplib</li>
+<li>Support for ap-northeast-1 region</li>
+<li>Close issue #153</li>
+<li>Close issue #154</li>
+<li>we must POST autoscale user-data, not GET. otherwise a HTTP 505 error is returned from AWS. see: <a class="reference external" href="http://groups.google.com/group/boto-dev/browse_thread/thread/d5eb79c97ea8eecf?pli=1">http://groups.google.com/group/boto-dev/browse_thread/thread/d5eb79c97ea8eecf?pli=1</a></li>
+<li>autoscale userdata needs to be base64 encoded.</li>
+<li>Use the unversioned streaming jar symlink provided by EMR</li>
+<li>Updated lss3 to allow for prefix based listing (more like actual ls)</li>
+<li>Deal with the groupSet element that appears in the instanceSet element in the DescribeInstances response.</li>
+<li>Add a change_record command to bin/route53</li>
+<li>Incorporating a patch from AWS to allow security groups to be tagged.</li>
+<li>Fixed an issue with extra headers in generated URLs.  Fixes <a class="reference external" href="http://code.google.com/p/boto/issues/detail?id=499">http://code.google.com/p/boto/issues/detail?id=499</a></li>
+<li>Incorporating a patch to handle obscure bug in apache/fastcgi.  See <a class="reference external" href="http://goo.gl/0Tdax">http://goo.gl/0Tdax</a>.</li>
+<li>Reorganizing the existing test code.  Part of a long-term project to completely revamp and improve boto tests.</li>
+<li>Fixed an invalid parameter bug (ECS) #102</li>
+<li>Adding initial cut at s3 website support.</li>
+</ul>
+</div>
+<div class="section" id="stats">
+<h2>Stats<a class="headerlink" href="#stats" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>465 commits since boto 2.0b4</li>
+<li>70 authors</li>
+<li>111 Pull requests from 64 different authors</li>
+</ul>
+</div>
+<div class="section" id="contributors-in-order-of-last-commits">
+<h2>Contributors (in order of last commits)<a class="headerlink" href="#contributors-in-order-of-last-commits" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Mitch Garnaat</li>
+<li>Chris Moyer</li>
+<li>Garrett Holmstrom</li>
+<li>Justin Riley</li>
+<li>Steve Johnson</li>
+<li>Sean Talts</li>
+<li>Brian Beach</li>
+<li>Ryan Brown</li>
+<li>Chetan Sarva</li>
+<li>spenczar</li>
+<li>Jonathan Drosdeck</li>
+<li>garnaat</li>
+<li>Nathaniel Moseley</li>
+<li>Bradley Ayers</li>
+<li>jibs</li>
+<li>Kenneth Falck</li>
+<li>chirag</li>
+<li>Sean O&#8217;Connor</li>
+<li>Scott Moser</li>
+<li>Vineeth Pillai</li>
+<li>Greg Taylor</li>
+<li>root</li>
+<li>darktable</li>
+<li>flipkin</li>
+<li>brimcfadden</li>
+<li>Samuel Lucidi</li>
+<li>Terence Honles</li>
+<li>Mike Schwartz</li>
+<li>Waldemar Kornewald</li>
+<li>Lucas Hrabovsky</li>
+<li>thaDude</li>
+<li>Vinicius Ruan Cainelli</li>
+<li>David Marin</li>
+<li>Stanislav Ievlev</li>
+<li>Victor Trac</li>
+<li>Dan Fairs</li>
+<li>David Pisoni</li>
+<li>Matt Robenolt</li>
+<li>Matt Billenstein</li>
+<li>rgrp</li>
+<li>vikalp</li>
+<li>Christoph Kern</li>
+<li>Gabriel Monroy</li>
+<li>Ben Burry</li>
+<li>Hinnerk</li>
+<li>Jann Kleen</li>
+<li>Louis R. Marascio</li>
+<li>Matt Singleton</li>
+<li>David Park</li>
+<li>Nick Tarleton</li>
+<li>Cory Mintz</li>
+<li>Robert Mela</li>
+<li>rlotun</li>
+<li>John Walsh</li>
+<li>Keith Fitzgerald</li>
+<li>Pierre Riteau</li>
+<li>ryancustommade</li>
+<li>Fabian Topfstedt</li>
+<li>Michael Thompson</li>
+<li>sanbornm</li>
+<li>Seth Golub</li>
+<li>Jon Colverson</li>
+<li>Steve Howard</li>
+<li>Roberto Gaiser</li>
+<li>James Downs</li>
+<li>Gleicon Moraes</li>
+<li>Blake Maltby</li>
+<li>Mac Morgan</li>
+<li>Rytis Sileika</li>
+<li>winhamwr</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Release Notes for boto 2.0</a><ul>
+<li><a class="reference internal" href="#highlights">Highlights</a></li>
+<li><a class="reference internal" href="#stats">Stats</a></li>
+<li><a class="reference internal" href="#contributors-in-order-of-last-commits">Contributors (in order of last commits)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="releasenotes_template.html"
+                        title="previous chapter">boto v2.xx.x</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.0b1.html"
+                        title="next chapter">Major changes for release 2.0b1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.0.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.0b1.html" title="Major changes for release 2.0b1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes_template.html" title="boto v2.xx.x"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

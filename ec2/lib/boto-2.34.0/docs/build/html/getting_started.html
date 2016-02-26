@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started with Boto &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" />
+    <link rel="next" title="An Introduction to boto’s EC2 interface" href="ec2_tut.html" />
+    <link rel="prev" title="Major changes for release 2.0b1" href="releasenotes/v2.0b1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ec2_tut.html" title="An Introduction to boto’s EC2 interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes/v2.0b1.html" title="Major changes for release 2.0b1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started-with-boto">
+<span id="getting-started"></span><h1>Getting Started with Boto<a class="headerlink" href="#getting-started-with-boto" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will walk you through installing and configuring <tt class="docutils literal"><span class="pre">boto</span></tt>, as
+well how to use it to make API calls.</p>
+<p>This tutorial assumes you are familiar with Python &amp; that you have registered
+for an <a class="reference external" href="https://aws.amazon.com/">Amazon Web Services</a> account. You&#8217;ll need retrieve your
+<tt class="docutils literal"><span class="pre">Access</span> <span class="pre">Key</span> <span class="pre">ID</span></tt> and <tt class="docutils literal"><span class="pre">Secret</span> <span class="pre">Access</span> <span class="pre">Key</span></tt> from the web-based console.</p>
+<div class="section" id="installing-boto">
+<h2>Installing Boto<a class="headerlink" href="#installing-boto" title="Permalink to this headline">¶</a></h2>
+<p>You can use <tt class="docutils literal"><span class="pre">pip</span></tt> to install the latest released version of <tt class="docutils literal"><span class="pre">boto</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install boto
+</pre></div>
+</div>
+<p>If you want to install <tt class="docutils literal"><span class="pre">boto</span></tt> from source:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/boto/boto.git
+cd boto
+python setup.py install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For most services, this is enough to get going. However, to support
+everything Boto ships with, you should additionally run
+<tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></tt>.</p>
+<p class="last">This installs all additional, non-stdlib modules, enabling use of things
+like <tt class="docutils literal"><span class="pre">boto.cloudsearch</span></tt>, <tt class="docutils literal"><span class="pre">boto.manage</span></tt> &amp; <tt class="docutils literal"><span class="pre">boto.mashups</span></tt>, as well as
+covering everything needed for the test suite.</p>
+</div>
+</div>
+<div class="section" id="using-virtual-environments">
+<h2>Using Virtual Environments<a class="headerlink" href="#using-virtual-environments" title="Permalink to this headline">¶</a></h2>
+<p>Another common way to install <tt class="docutils literal"><span class="pre">boto</span></tt> is to use a <tt class="docutils literal"><span class="pre">virtualenv</span></tt>, which
+provides isolated environments. First, install the <tt class="docutils literal"><span class="pre">virtualenv</span></tt> Python
+package:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install virtualenv
+</pre></div>
+</div>
+<p>Next, create a virtual environment by using the <tt class="docutils literal"><span class="pre">virtualenv</span></tt> command and
+specifying where you want the virtualenv to be created (you can specify
+any directory you like, though this example allows for compatibility with
+<tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir ~/.virtualenvs
+virtualenv ~/.virtualenvs/boto
+</pre></div>
+</div>
+<p>You can now activate the virtual environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>source ~/.virtualenvs/boto/bin/activate
+</pre></div>
+</div>
+<p>Now, any usage of <tt class="docutils literal"><span class="pre">python</span></tt> or <tt class="docutils literal"><span class="pre">pip</span></tt> (within the current shell) will default
+to the new, isolated version within your virtualenv.</p>
+<p>You can now install <tt class="docutils literal"><span class="pre">boto</span></tt> into this virtual environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install boto
+</pre></div>
+</div>
+<p>When you are done using <tt class="docutils literal"><span class="pre">boto</span></tt>, you can deactivate your virtual environment:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>If you are creating a lot of virtual environments, <a class="reference external" href="http://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>
+is an excellent tool that lets you easily manage your virtual environments.</p>
+</div>
+<div class="section" id="configuring-boto-credentials">
+<h2>Configuring Boto Credentials<a class="headerlink" href="#configuring-boto-credentials" title="Permalink to this headline">¶</a></h2>
+<p>You have a few options for configuring <tt class="docutils literal"><span class="pre">boto</span></tt> (see <a class="reference internal" href="boto_config_tut.html"><em>Boto Config</em></a>).
+For this tutorial, we&#8217;ll be using a configuration file. First, create a
+<tt class="docutils literal"><span class="pre">~/.boto</span></tt> file with these contents:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Credentials</span><span class="p">]</span>
+<span class="n">aws_access_key_id</span> <span class="o">=</span> <span class="n">YOURACCESSKEY</span>
+<span class="n">aws_secret_access_key</span> <span class="o">=</span> <span class="n">YOURSECRETKEY</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">boto</span></tt> supports a number of configuration values. For more information,
+see <a class="reference internal" href="boto_config_tut.html"><em>Boto Config</em></a>. The above file, however, is all we need for now.
+You&#8217;re now ready to use <tt class="docutils literal"><span class="pre">boto</span></tt>.</p>
+</div>
+<div class="section" id="making-connections">
+<h2>Making Connections<a class="headerlink" href="#making-connections" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">boto</span></tt> provides a number of convenience functions to simplify connecting to a
+service. For example, to work with S3, you can run:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you want to connect to a different region, you can import the service module
+and use the <tt class="docutils literal"><span class="pre">connect_to_region</span></tt> functions. For example, to create an EC2
+client in &#8216;us-west-2&#8217; region, you&#8217;d run the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.ec2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ec2</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">ec2</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="troubleshooting-connections">
+<h2>Troubleshooting Connections<a class="headerlink" href="#troubleshooting-connections" title="Permalink to this headline">¶</a></h2>
+<p>When calling the various <tt class="docutils literal"><span class="pre">connect_*</span></tt> functions, you might run into an error
+like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;boto/__init__.py&quot;</span>, line <span class="m">121</span>, in <span class="n">connect_s3</span>
+    <span class="k">return</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">aws_access_key_id</span><span class="p">,</span> <span class="n">aws_secret_access_key</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  File <span class="nb">&quot;boto/s3/connection.py&quot;</span>, line <span class="m">171</span>, in <span class="n">__init__</span>
+    <span class="n">validate_certs</span><span class="o">=</span><span class="n">validate_certs</span><span class="p">)</span>
+  File <span class="nb">&quot;boto/connection.py&quot;</span>, line <span class="m">548</span>, in <span class="n">__init__</span>
+    <span class="n">host</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_required_auth_capability</span><span class="p">())</span>
+  File <span class="nb">&quot;boto/auth.py&quot;</span>, line <span class="m">668</span>, in <span class="n">get_auth_handler</span>
+    <span class="s">&#39;Check your credentials&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">names</span><span class="p">)))</span>
+<span class="gr">boto.exception.NoAuthHandlerFound</span>: <span class="n">No handler was ready to authenticate. 1 handlers were checked. [&#39;HmacAuthV1Handler&#39;] Check your credentials</span>
+</pre></div>
+</div>
+<p>This is because <tt class="docutils literal"><span class="pre">boto</span></tt> cannot find credentials to use. Verify that you have
+created a <tt class="docutils literal"><span class="pre">~/.boto</span></tt> file as shown above. You can also turn on debug logging
+to verify where your credentials are coming from:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">boto</span><span class="o">.</span><span class="n">set_stream_logger</span><span class="p">(</span><span class="s">&#39;boto&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
+<span class="go">2012-12-10 17:15:03,799 boto [DEBUG]:Using access key found in config file.</span>
+<span class="go">2012-12-10 17:15:03,799 boto [DEBUG]:Using secret key found in config file.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interacting-with-aws-services">
+<h2>Interacting with AWS Services<a class="headerlink" href="#interacting-with-aws-services" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a client for the specific service you want, there are methods on
+that object that will invoke API operations for that service. The following
+code demonstrates how to create a bucket and put an object in that bucket:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
+
+<span class="go"># Create a new bucket. Buckets must have a globally unique name (not just</span>
+<span class="go"># unique to your account).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bucket</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="s">&#39;boto-demo-</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+
+<span class="go"># Create a new key/value pair.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">new_key</span><span class="p">(</span><span class="s">&#39;mykey&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span><span class="o">.</span><span class="n">set_contents_from_string</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+<span class="go"># Sleep to ensure the data is eventually there.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="go"># Retrieve the contents of ``mykey``.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">key</span><span class="o">.</span><span class="n">get_contents_as_string</span><span class="p">()</span>
+<span class="go">&#39;Hello World!&#39;</span>
+
+<span class="go"># Delete the key.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="go"># Delete the bucket.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bucket</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Each service supports a different set of commands. You&#8217;ll want to refer to the
+other guides &amp; API references in this documentation, as well as referring to
+the <a class="reference external" href="https://aws.amazon.com/documentation/">official AWS API</a> documentation.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>For many of the services that <tt class="docutils literal"><span class="pre">boto</span></tt> supports, there are tutorials as
+well as detailed API documentation. If you are interested in a specific
+service, the tutorial for the service is a good starting point. For instance,
+if you&#8217;d like more information on S3, check out the <a class="reference internal" href="s3_tut.html#s3-tut"><em>S3 Tutorial</em></a>
+and the <a class="reference internal" href="ref/s3.html"><em>S3 API reference</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started with Boto</a><ul>
+<li><a class="reference internal" href="#installing-boto">Installing Boto</a></li>
+<li><a class="reference internal" href="#using-virtual-environments">Using Virtual Environments</a></li>
+<li><a class="reference internal" href="#configuring-boto-credentials">Configuring Boto Credentials</a></li>
+<li><a class="reference internal" href="#making-connections">Making Connections</a></li>
+<li><a class="reference internal" href="#troubleshooting-connections">Troubleshooting Connections</a></li>
+<li><a class="reference internal" href="#interacting-with-aws-services">Interacting with AWS Services</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="releasenotes/v2.0b1.html"
+                        title="previous chapter">Major changes for release 2.0b1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ec2_tut.html"
+                        title="next chapter">An Introduction to boto&#8217;s EC2 interface</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/getting_started.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ec2_tut.html" title="An Introduction to boto’s EC2 interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="releasenotes/v2.0b1.html" title="Major changes for release 2.0b1"
+             >previous</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

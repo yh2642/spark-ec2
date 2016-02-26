@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.13.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.13.2" href="v2.13.2.html" />
+    <link rel="prev" title="boto v2.12.0" href="v2.12.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.13.2.html" title="boto v2.13.2"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.12.0.html" title="boto v2.12.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-13-0">
+<h1>boto v2.13.0<a class="headerlink" href="#boto-v2-13-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/09/12</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for VPC within AWS Opsworks, added dry-run support &amp;
+the ability to modify reserved instances in EC2 as well as several important
+bugfixes for EC2, SNS &amp; DynamoDBv2.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for VPC within Opsworks. (<a class="reference external" href="https://github.com/boto/boto/commit/56e1df3">commit 56e1df3</a>)</li>
+<li>Added support for <tt class="docutils literal"><span class="pre">dry_run</span></tt> within EC2. (<a class="reference external" href="https://github.com/boto/boto/commit/dd7774c">commit dd7774c</a>)</li>
+<li>Added support for <tt class="docutils literal"><span class="pre">modify_reserved_instances</span></tt> &amp;
+<tt class="docutils literal"><span class="pre">describe_reserved_instances_modifications</span></tt> within EC2. (<a class="reference external" href="https://github.com/boto/boto/commit/7a08672">commit 7a08672</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Fixed EC2&#8217;s <tt class="docutils literal"><span class="pre">associate_public_ip</span></tt> to work correctly. (<a class="reference external" href="https://github.com/boto/boto/commit/9db6101">commit 9db6101</a>)</p>
+</li>
+<li><p class="first">Fixed a bug with <tt class="docutils literal"><span class="pre">dynamodb_load</span></tt> when working with sets. (<a class="reference external" href="https://github.com/boto/boto/issues/1664">issue 1664</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/ef2d28b">commit ef2d28b</a>)</p>
+</li>
+<li><p class="first">Changed SNS <tt class="docutils literal"><span class="pre">publish</span></tt> to use POST. (<a class="reference external" href="https://github.com/boto/boto/commit/9c11772">commit 9c11772</a>)</p>
+</li>
+<li><p class="first">Fixed inability to create LaunchConfigurations when using Block Device
+Mappings. (<a class="reference external" href="https://github.com/boto/boto/issues/1709">issue 1709</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1710">issue 1710</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5fd728e">commit 5fd728e</a>)</p>
+</li>
+<li><p class="first">Fixed DynamoDBv2&#8217;s <tt class="docutils literal"><span class="pre">batch_write</span></tt> to appropriately handle
+<tt class="docutils literal"><span class="pre">UnprocessedItems</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1566">issue 1566</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1679">issue 1679</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1714">issue 1714</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/2fc2369">commit 2fc2369</a>)</p>
+</li>
+<li><p class="first">Several documentation improvements/fixes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Added Opsworks docs to the index. (<a class="reference external" href="https://github.com/boto/boto/commit/5d48763">commit 5d48763</a>)</li>
+<li>Added docs on the correct string values for <tt class="docutils literal"><span class="pre">get_all_images</span></tt>.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1674">issue 1674</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1e4ed2e">commit 1e4ed2e</a>)</li>
+<li>Removed a duplicate <tt class="docutils literal"><span class="pre">boto.s3.prefix</span></tt> entry from the docs.
+(<a class="reference external" href="https://github.com/boto/boto/issues/1707">issue 1707</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b42d34c">commit b42d34c</a>)</li>
+<li>Added an API reference for <tt class="docutils literal"><span class="pre">boto.swf.layer2</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/1712">issue 1712</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/9f7b15f">commit 9f7b15f</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.13.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.12.0.html"
+                        title="previous chapter">boto v2.12.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.13.2.html"
+                        title="next chapter">boto v2.13.2</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.13.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.13.2.html" title="boto v2.13.2"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.12.0.html" title="boto v2.12.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

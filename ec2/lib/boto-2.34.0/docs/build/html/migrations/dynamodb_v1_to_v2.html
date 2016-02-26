@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Migrating from DynamoDB v1 to DynamoDB v2 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Migrating from RDS v1 to RDS v2" href="rds_v1_to_v2.html" />
+    <link rel="prev" title="An Introduction to boto’s DynamoDB v2 interface" href="../dynamodb2_tut.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rds_v1_to_v2.html" title="Migrating from RDS v1 to RDS v2"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../dynamodb2_tut.html" title="An Introduction to boto’s DynamoDB v2 interface"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="migrating-from-dynamodb-v1-to-dynamodb-v2">
+<h1>Migrating from DynamoDB v1 to DynamoDB v2<a class="headerlink" href="#migrating-from-dynamodb-v1-to-dynamodb-v2" title="Permalink to this headline">¶</a></h1>
+<p>For the v2 release of AWS&#8217; <a class="reference external" href="http://aws.amazon.com/dynamodb/">DynamoDB</a>, the high-level API for interacting via
+<tt class="docutils literal"><span class="pre">boto</span></tt> was rewritten. Since there were several new features added in v2,
+people using the v1 API may wish to transition their code to the new API.
+This guide covers the high-level APIs.</p>
+<div class="section" id="creating-new-tables">
+<h2>Creating New Tables<a class="headerlink" href="#creating-new-tables" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message_table_schema</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_schema</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hash_key_name</span><span class="o">=</span><span class="s">&#39;forum_name&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">hash_key_proto_value</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">range_key_name</span><span class="o">=</span><span class="s">&#39;subject&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">range_key_proto_value</span><span class="o">=</span><span class="nb">str</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s">&#39;messages&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">schema</span><span class="o">=</span><span class="n">message_table_schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">read_units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">write_units</span><span class="o">=</span><span class="mi">10</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.fields</span> <span class="kn">import</span> <span class="n">HashKey</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.fields</span> <span class="kn">import</span> <span class="n">RangeKey</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">HashKey</span><span class="p">(</span><span class="s">&#39;forum_name&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">RangeKey</span><span class="p">(</span><span class="s">&#39;subject&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">],</span> <span class="n">throughput</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s">&#39;read&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;write&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-an-existing-table">
+<h2>Using an Existing Table<a class="headerlink" href="#using-an-existing-table" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="go"># With API calls.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+
+<span class="go"># Without API calls.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message_table_schema</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_schema</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hash_key_name</span><span class="o">=</span><span class="s">&#39;forum_name&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">hash_key_proto_value</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">range_key_name</span><span class="o">=</span><span class="s">&#39;subject&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">range_key_proto_value</span><span class="o">=</span><span class="nb">str</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">table_from_schema</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s">&#39;messages&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">schema</span><span class="o">=</span><span class="n">message_table_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="go"># With API calls.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+
+<span class="go"># Without API calls.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.fields</span> <span class="kn">import</span> <span class="n">HashKey</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">HashKey</span><span class="p">(</span><span class="s">&#39;forum_name&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">HashKey</span><span class="p">(</span><span class="s">&#39;subject&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-throughput">
+<h2>Updating Throughput<a class="headerlink" href="#updating-throughput" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">update_throughput</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">read_units</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">write_units</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">throughput</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s">&#39;read&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;write&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-a-table">
+<h2>Deleting a Table<a class="headerlink" href="#deleting-a-table" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">delete_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-an-item">
+<h2>Creating an Item<a class="headerlink" href="#creating-an-item" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;http://url_to_lolcat.gif&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User A&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;12/9/2011 11:36:03 PM&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">new_item</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c"># Our hash key is &#39;forum&#39;</span>
+<span class="gp">... </span>    <span class="n">hash_key</span><span class="o">=</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c"># Our range key is &#39;subject&#39;</span>
+<span class="gp">... </span>    <span class="n">range_key</span><span class="o">=</span><span class="s">&#39;Check this out!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c"># This has the</span>
+<span class="gp">... </span>    <span class="n">attrs</span><span class="o">=</span><span class="n">item_data</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;Check this out!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;http://url_to_lolcat.gif&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User A&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;12/9/2011 11:36:03 PM&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-an-existing-item">
+<h2>Getting an Existing Item<a class="headerlink" href="#getting-an-existing-item" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hash_key</span><span class="o">=</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">range_key</span><span class="o">=</span><span class="s">&#39;Check this out!&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">forum_name</span><span class="o">=</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">subject</span><span class="o">=</span><span class="s">&#39;Check this out!&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-an-item">
+<h2>Updating an Item<a class="headerlink" href="#updating-an-item" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="p">[</span><span class="s">&#39;a_new_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;testing&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;a_new_key&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">put</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="p">[</span><span class="s">&#39;a_new_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;testing&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;a_new_key&#39;</span><span class="p">]</span>
+
+<span class="go"># Conditional save, only if data hasn&#39;t changed.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># Forced full overwrite.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="go"># Partial update (only changed fields).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">partial_save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-an-item">
+<h2>Deleting an Item<a class="headerlink" href="#deleting-an-item" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">item</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="querying">
+<h2>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb.condition</span> <span class="kn">import</span> <span class="n">BEGINS_WITH</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">&#39;Amazon DynamoDB&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">range_key_condition</span><span class="o">=</span><span class="n">BEGINS_WITH</span><span class="p">(</span><span class="s">&#39;DynamoDB&#39;</span><span class="p">),</span>
+<span class="gp">... </span>                    <span class="n">request_limit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;Body&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query_2</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">forum_name__eq</span><span class="o">=</span><span class="s">&#39;Amazon DynamoDB&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">subject__beginswith</span><span class="o">=</span><span class="s">&#39;DynamoDB&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">limit</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;Body&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scans">
+<h2>Scans<a class="headerlink" href="#scans" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+
+<span class="go"># All items.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+
+<span class="go"># With a filter.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">scan_filter</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;Replies&#39;</span><span class="p">:</span> <span class="n">GT</span><span class="p">(</span><span class="mi">0</span><span class="p">)})</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+
+<span class="go"># All items.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+
+<span class="go"># With a filter.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">replies__gt</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-gets">
+<h2>Batch Gets<a class="headerlink" href="#batch-gets" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb.batch</span> <span class="kn">import</span> <span class="n">BatchList</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">the_batch</span> <span class="o">=</span> <span class="n">BatchList</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">the_batch</span><span class="o">.</span><span class="n">add_batch</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;Check this out!&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;I can haz docs?&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;Maru&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">batch_get_item</span><span class="p">(</span><span class="n">the_batch</span><span class="p">)</span>
+
+<span class="go"># (Largely) Raw dictionaries back from DynamoDB.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item_dict</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;Responses&#39;</span><span class="p">][</span><span class="n">table</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;Items&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">item_dict</span><span class="p">[</span><span class="s">&#39;Body&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">batch_get</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;Check this out!&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;I can haz docs?&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;Maru&#39;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">])</span>
+
+<span class="go"># Lazy requests across pages, if paginated.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c"># You get back actual ``Item`` instances.</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;Body&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-writes">
+<h2>Batch Writes<a class="headerlink" href="#batch-writes" title="Permalink to this headline">¶</a></h2>
+<p>DynamoDB v1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">boto.dynamodb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb.batch</span> <span class="kn">import</span> <span class="n">BatchWriteList</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb.item</span> <span class="kn">import</span> <span class="n">Item</span>
+
+<span class="go"># You must manually manage this so that your total ``puts/deletes`` don&#39;t</span>
+<span class="go"># exceed 25.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">the_batch</span> <span class="o">=</span> <span class="n">BatchList</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">the_batch</span><span class="o">.</span><span class="n">add_batch</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">puts</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">Item</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s">&#39;Corgi Fanciers&#39;</span><span class="p">,</span> <span class="s">&#39;Sploots!&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;Post your favorite corgi-on-the-floor shots!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User B&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;2013/05/02 10:56:45 AM&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">}),</span>
+<span class="gp">... </span>    <span class="n">Item</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s">&#39;Corgi Fanciers&#39;</span><span class="p">,</span> <span class="s">&#39;Maximum FRAPS&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;http://internetvideosite/watch?v=1247869&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;2013/05/01 09:15:25 PM&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">}),</span>
+<span class="gp">... </span><span class="p">],</span> <span class="n">deletes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;Off-topic post&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span> <span class="s">&#39;They be stealin mah bukket!&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">batch_write_item</span><span class="p">(</span><span class="n">the_writes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DynamoDB v2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.dynamodb2.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s">&#39;messages&#39;</span><span class="p">)</span>
+
+<span class="go"># Uses a context manager, which also automatically handles batch sizes.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">table</span><span class="o">.</span><span class="n">batch_write</span><span class="p">()</span> <span class="k">as</span> <span class="n">batch</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">batch</span><span class="o">.</span><span class="n">delete_item</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">forum_name</span><span class="o">=</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">subject</span><span class="o">=</span><span class="s">&#39;Off-topic post&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">batch</span><span class="o">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;Corgi Fanciers&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;Sploots!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;Post your favorite corgi-on-the-floor shots!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User B&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;2013/05/02 10:56:45 AM&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">})</span>
+<span class="gp">... </span>    <span class="n">batch</span><span class="o">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s">&#39;forum_name&#39;</span><span class="p">:</span> <span class="s">&#39;Corgi Fanciers&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;subject&#39;</span><span class="p">:</span> <span class="s">&#39;Sploots!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;Body&#39;</span><span class="p">:</span> <span class="s">&#39;Post your favorite corgi-on-the-floor shots!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;SentBy&#39;</span><span class="p">:</span> <span class="s">&#39;User B&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;ReceivedTime&#39;</span><span class="p">:</span> <span class="s">&#39;2013/05/02 10:56:45 AM&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">})</span>
+<span class="gp">... </span>    <span class="n">batch</span><span class="o">.</span><span class="n">delete_item</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">forum_name</span><span class="o">=</span><span class="s">&#39;LOLCat Forum&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">subject</span><span class="o">=</span><span class="s">&#39;They be stealin mah bukket!&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Migrating from DynamoDB v1 to DynamoDB v2</a><ul>
+<li><a class="reference internal" href="#creating-new-tables">Creating New Tables</a></li>
+<li><a class="reference internal" href="#using-an-existing-table">Using an Existing Table</a></li>
+<li><a class="reference internal" href="#updating-throughput">Updating Throughput</a></li>
+<li><a class="reference internal" href="#deleting-a-table">Deleting a Table</a></li>
+<li><a class="reference internal" href="#creating-an-item">Creating an Item</a></li>
+<li><a class="reference internal" href="#getting-an-existing-item">Getting an Existing Item</a></li>
+<li><a class="reference internal" href="#updating-an-item">Updating an Item</a></li>
+<li><a class="reference internal" href="#deleting-an-item">Deleting an Item</a></li>
+<li><a class="reference internal" href="#querying">Querying</a></li>
+<li><a class="reference internal" href="#scans">Scans</a></li>
+<li><a class="reference internal" href="#batch-gets">Batch Gets</a></li>
+<li><a class="reference internal" href="#batch-writes">Batch Writes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../dynamodb2_tut.html"
+                        title="previous chapter">An Introduction to boto&#8217;s DynamoDB v2 interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rds_v1_to_v2.html"
+                        title="next chapter">Migrating from RDS v1 to RDS v2</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/migrations/dynamodb_v1_to_v2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rds_v1_to_v2.html" title="Migrating from RDS v1 to RDS v2"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../dynamodb2_tut.html" title="An Introduction to boto’s DynamoDB v2 interface"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

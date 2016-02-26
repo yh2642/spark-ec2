@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An Introduction to boto’s request hook &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="an-introduction-to-boto-s-request-hook">
+<span id="request-hook-tut-rst"></span><h1>An Introduction to boto&#8217;s request hook<a class="headerlink" href="#an-introduction-to-boto-s-request-hook" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows you how to use the request hook for data gathering.</p>
+<p>It is often important to measure things we do as developers to better
+understand application performance and the interactions between components
+of the system. Boto plays a key role in some of those interactions as any
+client library would.</p>
+<p>We&#8217;ll go over how to use the request hook to do some simple request logging.</p>
+<div class="section" id="creating-a-connection">
+<h2>Creating a connection<a class="headerlink" href="#creating-a-connection" title="Permalink to this headline">¶</a></h2>
+<p>For this example, let&#8217;s use the EC2 interface as an example. Any connection
+will work (IAM, SQS, etc..):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto</span> <span class="kn">import</span> <span class="n">ec2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">ec2</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will be using this conn object for the remainder of the tutorial to send
+commands to EC2.</p>
+</div>
+<div class="section" id="adding-your-own-hook">
+<h2>Adding your own hook<a class="headerlink" href="#adding-your-own-hook" title="Permalink to this headline">¶</a></h2>
+<p>The hook interface is defined in boto.utils.RequestHook
+The method signature looks like:</p>
+<div class="highlight-python"><div class="highlight"><pre>def handle_request_data(self, request, response, error=False):
+</pre></div>
+</div>
+<p>In boto.requestlog.py, there is an implementation of this interface which
+is written to handle multiple threads sending data to a single log
+writing thread. Exammining this file, you&#8217;ll see a log file, queue and thread
+are created, then as requests are made, the handle_request_data() method is
+called. It extracts data from the request and respose object to create a log
+message. That&#8217;s inserted into the queue and handled by the _request_log_worker
+thread.</p>
+<p>One thing to note is that the boto request object has an additional value
+&#8220;start_time&#8221;, which is a datetime.now() as of the time right before the
+request was issued. This can be used along with the current time (after the
+request) to calculate the duration of the request.</p>
+<p>To add this logger to your connection:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.requestlog</span> <span class="kn">import</span> <span class="n">RequestLogger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">set_request_hook</span><span class="p">(</span><span class="n">RequestLogger</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>That&#8217;s all you need to do! Now, if you make a request, like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">get_all_volumes</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The log message produced might look something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&#39;2014-02-26 21:38:27&#39;</span><span class="p">,</span> <span class="s">&#39;200&#39;</span><span class="p">,</span> <span class="s">&#39;0.791542&#39;</span><span class="p">,</span> <span class="s">&#39;592&#39;</span><span class="p">,</span> <span class="s">&#39;DescribeVolumes&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">An Introduction to boto&#8217;s request hook</a><ul>
+<li><a class="reference internal" href="#creating-a-connection">Creating a connection</a></li>
+<li><a class="reference internal" href="#adding-your-own-hook">Adding your own hook</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/request_hook_tut.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

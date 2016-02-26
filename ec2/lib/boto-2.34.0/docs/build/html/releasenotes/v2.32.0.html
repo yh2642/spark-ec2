@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.32.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.32.1" href="v2.32.1.html" />
+    <link rel="prev" title="boto v2.31.1" href="v2.31.1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.32.1.html" title="boto v2.32.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.31.1.html" title="boto v2.31.1"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-32-0">
+<h1>boto v2.32.0<a class="headerlink" href="#boto-v2-32-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/07/30</td>
+</tr>
+</tbody>
+</table>
+<p>This release includes backward-compatible support for Python 3.3 and 3.4,
+support for IPv6, Amazon VPC connection peering, Amazon SNS message
+attributes, new regions for Amazon Kinesis, and several fixes.</p>
+<div class="section" id="python-3-support">
+<h2>Python 3 Support<a class="headerlink" href="#python-3-support" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>DynamoDB (<a class="reference external" href="https://github.com/boto/boto/issues/2441">issue 2441</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0ef0466">commit 0ef0466</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2473">issue 2473</a>, <a class="reference external" href="https://github.com/boto/boto/commit/102c3b6">commit 102c3b6</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2453">issue 2453</a>)</li>
+<li>CloudWatch Logs (<a class="reference external" href="https://github.com/boto/boto/issues/2448">issue 2448</a>, <a class="reference external" href="https://github.com/boto/boto/commit/23cbcd1">commit 23cbcd1</a>)</li>
+<li>Support (<a class="reference external" href="https://github.com/boto/boto/issues/2406">issue 2406</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7b489a0">commit 7b489a0</a>)</li>
+<li>Elastic Beanstalk (<a class="reference external" href="https://github.com/boto/boto/issues/2372">issue 2372</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d45d00e">commit d45d00e</a>)</li>
+<li>CloudSearch (<a class="reference external" href="https://github.com/boto/boto/issues/2439">issue 2439</a>, <a class="reference external" href="https://github.com/boto/boto/commit/25416f9">commit 25416f9</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2432">issue 2432</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b17f2d9">commit b17f2d9</a>)</li>
+<li>STS (<a class="reference external" href="https://github.com/boto/boto/issues/2435">issue 2435</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1c1239b">commit 1c1239b</a>)</li>
+<li>SimpleDB (<a class="reference external" href="https://github.com/boto/boto/issues/2403">issue 2403</a>, <a class="reference external" href="https://github.com/boto/boto/commit/604318d">commit 604318d</a>)</li>
+<li>EC2 (<a class="reference external" href="https://github.com/boto/boto/issues/2424">issue 2424</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5e5dc4c">commit 5e5dc4c</a>)</li>
+<li>VPC (<a class="reference external" href="https://github.com/boto/boto/issues/2399">issue 2399</a>, <a class="reference external" href="https://github.com/boto/boto/commit/356da91">commit 356da91</a>)</li>
+<li>OpsWorks (<a class="reference external" href="https://github.com/boto/boto/issues/2402">issue 2402</a>, <a class="reference external" href="https://github.com/boto/boto/commit/68d15a5">commit 68d15a5</a>)</li>
+<li>CloudWatch (<a class="reference external" href="https://github.com/boto/boto/issues/2400">issue 2400</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a4d0a7a">commit a4d0a7a</a>)</li>
+<li>SWF (<a class="reference external" href="https://github.com/boto/boto/issues/2397">issue 2397</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6db918e">commit 6db918e</a>)</li>
+<li>MWS (<a class="reference external" href="https://github.com/boto/boto/issues/2385">issue 2385</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5347fbd">commit 5347fbd</a>)</li>
+<li>ELB (<a class="reference external" href="https://github.com/boto/boto/issues/2384">issue 2384</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4dcc9be">commit 4dcc9be</a>)</li>
+<li>Elastic Transcoder (<a class="reference external" href="https://github.com/boto/boto/issues/2382">issue 2382</a>, <a class="reference external" href="https://github.com/boto/boto/commit/40c5e35">commit 40c5e35</a>)</li>
+<li>EMR (<a class="reference external" href="https://github.com/boto/boto/issues/2381">issue 2381</a>, <a class="reference external" href="https://github.com/boto/boto/commit/edf4020">commit edf4020</a>)</li>
+<li>Route53 (<a class="reference external" href="https://github.com/boto/boto/issues/2359">issue 2359</a>, <a class="reference external" href="https://github.com/boto/boto/commit/15514f7">commit 15514f7</a>)</li>
+<li>Glacier (<a class="reference external" href="https://github.com/boto/boto/issues/2357">issue 2357</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a41042e">commit a41042e</a>)</li>
+<li>RedShift (<a class="reference external" href="https://github.com/boto/boto/issues/2362">issue 2362</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b8888cc">commit b8888cc</a>)</li>
+<li>CloudFront (<a class="reference external" href="https://github.com/boto/boto/issues/2355">issue 2355</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f2f54b1">commit f2f54b1</a>)</li>
+<li>ECS (<a class="reference external" href="https://github.com/boto/boto/issues/2364">issue 2364</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ab84969">commit ab84969</a>)</li>
+<li>Fix pylintrc to run with pylint/python 3. (<a class="reference external" href="https://github.com/boto/boto/issues/2366">issue 2366</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6292ab2">commit 6292ab2</a>)</li>
+<li>SNS (<a class="reference external" href="https://github.com/boto/boto/issues/2365">issue 2365</a>, <a class="reference external" href="https://github.com/boto/boto/commit/170f735">commit 170f735</a>)</li>
+<li>AutoScaling (<a class="reference external" href="https://github.com/boto/boto/issues/2393">issue 2393</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6a78057">commit 6a78057</a>)</li>
+<li>Direct Connect (<a class="reference external" href="https://github.com/boto/boto/issues/2361">issue 2361</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8488d94">commit 8488d94</a>)</li>
+<li>CloudFormation (<a class="reference external" href="https://github.com/boto/boto/issues/2373">issue 2373</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9872f27">commit 9872f27</a>)</li>
+<li>IAM (<a class="reference external" href="https://github.com/boto/boto/issues/2358">issue 2358</a>, <a class="reference external" href="https://github.com/boto/boto/commit/29ad3e3">commit 29ad3e3</a>)</li>
+<li>ElastiCache (<a class="reference external" href="https://github.com/boto/boto/issues/2356">issue 2356</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2880f91">commit 2880f91</a>)</li>
+<li>SES (<a class="reference external" href="https://github.com/boto/boto/issues/2354">issue 2354</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1db129e">commit 1db129e</a>)</li>
+<li>Fix S3 integration test on Py3. (<a class="reference external" href="https://github.com/boto/boto/issues/2466">issue 2466</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f3eb4cd">commit f3eb4cd</a>)</li>
+<li>Use unittest.mock if exists. (<a class="reference external" href="https://github.com/boto/boto/issues/2451">issue 2451</a>, <a class="reference external" href="https://github.com/boto/boto/commit/cc58978">commit cc58978</a>)</li>
+<li>Add tests/compat.py for test-only imports. (<a class="reference external" href="https://github.com/boto/boto/issues/2442">issue 2442</a>, <a class="reference external" href="https://github.com/boto/boto/commit/556f3cf">commit 556f3cf</a>)</li>
+<li>Add backward-compatible support for Python 3.3+ (S3, SQS, Kinesis,
+CloudTrail). (<a class="reference external" href="https://github.com/boto/boto/issues/2344">issue 2344</a>, <a class="reference external" href="https://github.com/boto/boto/issues/677">issue 677</a>, <a class="reference external" href="https://github.com/boto/boto/commit/b503f4b">commit b503f4b</a>)</li>
+</ul>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add marker param to describe all ELBs. (<a class="reference external" href="https://github.com/boto/boto/issues/2433">issue 2433</a>, <a class="reference external" href="https://github.com/boto/boto/commit/49af8b6">commit 49af8b6</a>)</li>
+<li>Update .travis.yml to add pypy. (<a class="reference external" href="https://github.com/boto/boto/issues/2440">issue 2440</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4b8667c">commit 4b8667c</a>)</li>
+<li>Add &#8216;include_all_instances&#8217; support to &#8216;get_all_instance_status&#8217;.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2446">issue 2446</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2230">issue 2230</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5949012">commit 5949012</a>)</li>
+<li>Support security tokens in configuration file profiles.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2445">issue 2445</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a16bcfd">commit a16bcfd</a>)</li>
+<li>Singapore, Sydney and Tokyo are missing in Kinesis Region.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2434">issue 2434</a>, <a class="reference external" href="https://github.com/boto/boto/commit/723290d">commit 723290d</a>)</li>
+<li>Add support for VPC connection peering. (<a class="reference external" href="https://github.com/boto/boto/issues/2438">issue 2438</a>, <a class="reference external" href="https://github.com/boto/boto/commit/63c78a8">commit 63c78a8</a>)</li>
+<li>Add seperate doc requirements. (<a class="reference external" href="https://github.com/boto/boto/issues/2412">issue 2412</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2922d89">commit 2922d89</a>)</li>
+<li>Route53 support IP health checks (<a class="reference external" href="https://github.com/boto/boto/issues/2195">issue 2195</a>, <a class="reference external" href="https://github.com/boto/boto/commit/319d44e">commit 319d44e</a>)</li>
+<li>IPv6 support when making connections (<a class="reference external" href="https://github.com/boto/boto/issues/2380">issue 2380</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1e70179">commit 1e70179</a>)</li>
+<li>Support SNS message attributes (<a class="reference external" href="https://github.com/boto/boto/issues/2360">issue 2360</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ec106bd">commit ec106bd</a>)</li>
+<li>Add &#8220;attributes&#8221; argument to boto.dynamodb2.table.Table.batch_get.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2276">issue 2276</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fe67f43">commit fe67f43</a>)</li>
+<li>Add documentation for top-level S3 module. (<a class="reference external" href="https://github.com/boto/boto/issues/2379">issue 2379</a>, <a class="reference external" href="https://github.com/boto/boto/commit/db77546">commit db77546</a>)</li>
+</ul>
+</div>
+<div class="section" id="fixes">
+<h2>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Prevent an infinite loop. (<a class="reference external" href="https://github.com/boto/boto/issues/2465">issue 2465</a>, <a class="reference external" href="https://github.com/boto/boto/commit/71b795a">commit 71b795a</a>)</li>
+<li>Updated documentation for copy_image. (<a class="reference external" href="https://github.com/boto/boto/issues/2471">issue 2471</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f9f683a">commit f9f683a</a>)</li>
+<li>Fixed #2464 added keyword &#8220;detailed&#8221; to docs. (<a class="reference external" href="https://github.com/boto/boto/issues/2467">issue 2467</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2464">issue 2464</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/eb26fdc">commit eb26fdc</a>)</li>
+<li>Retry installation commands on Travis CI. (<a class="reference external" href="https://github.com/boto/boto/issues/2457">issue 2457</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a9e8057">commit a9e8057</a>)</li>
+<li>Fix for run_instances() network_interfaces argument documentation.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2461">issue 2461</a>, <a class="reference external" href="https://github.com/boto/boto/commit/798fd70">commit 798fd70</a>)</li>
+<li>pyami module: tidy up to meet PEP8 better. (<a class="reference external" href="https://github.com/boto/boto/issues/2460">issue 2460</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e5a23ed">commit e5a23ed</a>)</li>
+<li>Updating documentation on cloudsearch regions. (<a class="reference external" href="https://github.com/boto/boto/issues/2455">issue 2455</a>, <a class="reference external" href="https://github.com/boto/boto/commit/de284a4">commit de284a4</a>)</li>
+<li>Fixing lost errors bug in cloudsearch2 commit implementation.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2408">issue 2408</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fedb937">commit fedb937</a>)</li>
+<li>Import json from boto.compat for several modules.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2450">issue 2450</a>, <a class="reference external" href="https://github.com/boto/boto/commit/55e716b">commit 55e716b</a>)</li>
+<li>Relocate MWS requirements checks; closes #2304, #2314.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2314">issue 2314</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2304">issue 2304</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6a8f98b">commit 6a8f98b</a>)</li>
+<li>Added support for creating EMR clusters with a ServiceRole.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2389">issue 2389</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7693956">commit 7693956</a>)</li>
+<li>Doc fix: doc_service instead of service on Deleting.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2419">issue 2419</a>, <a class="reference external" href="https://github.com/boto/boto/commit/f7b7980">commit f7b7980</a>)</li>
+<li>Fix dummy value typo on aws_access_key_id. (<a class="reference external" href="https://github.com/boto/boto/issues/2418">issue 2418</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fc2a212">commit fc2a212</a>)</li>
+<li>Fix typo; add test. (<a class="reference external" href="https://github.com/boto/boto/issues/2447">issue 2447</a>, <a class="reference external" href="https://github.com/boto/boto/commit/effa8a8">commit effa8a8</a>)</li>
+<li>Fix CloudWatch Logs docstring. (<a class="reference external" href="https://github.com/boto/boto/issues/2444">issue 2444</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d4a2b02">commit d4a2b02</a>)</li>
+<li>Fix S3 mock encoding bug (<a class="reference external" href="https://github.com/boto/boto/issues/2443">issue 2443</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8dca89b">commit 8dca89b</a>)</li>
+<li>Skip the ETag header check in responce while using SSE-C encrpytion of S3.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2368">issue 2368</a>, <a class="reference external" href="https://github.com/boto/boto/commit/907fc6d">commit 907fc6d</a>)</li>
+<li>Fix Beanstalk exception handling. (<a class="reference external" href="https://github.com/boto/boto/issues/2431">issue 2431</a>, <a class="reference external" href="https://github.com/boto/boto/commit/40f4b5d">commit 40f4b5d</a>)</li>
+<li>EC2 UserData encoding fix (Full version of #1698).
+(<a class="reference external" href="https://github.com/boto/boto/issues/2396">issue 2396</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1698">issue 1698</a>, <a class="reference external" href="https://github.com/boto/boto/commit/78300f1">commit 78300f1</a>)</li>
+<li>Fetch S3 key storage class on-demand. (<a class="reference external" href="https://github.com/boto/boto/issues/2404">issue 2404</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8c4cc67">commit 8c4cc67</a>)</li>
+<li>Added documentation for /manage/cmdshell.py. (<a class="reference external" href="https://github.com/boto/boto/issues/2395">issue 2395</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5a28d1c">commit 5a28d1c</a>)</li>
+<li>Remove redundant lines in auth.py. (<a class="reference external" href="https://github.com/boto/boto/issues/2374">issue 2374</a>, <a class="reference external" href="https://github.com/boto/boto/commit/317e322">commit 317e322</a>)</li>
+<li>Fix SWF continue_as_new_workflow_execution start_to_close_timeout.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2378">issue 2378</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5101b06">commit 5101b06</a>)</li>
+<li>Fix StringIO imports and invocations. (<a class="reference external" href="https://github.com/boto/boto/issues/2390">issue 2390</a>, <a class="reference external" href="https://github.com/boto/boto/commit/03952c7">commit 03952c7</a>)</li>
+<li>Fixed wrong call of urlparse. (<a class="reference external" href="https://github.com/boto/boto/issues/2387">issue 2387</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4935f67">commit 4935f67</a>)</li>
+<li>Update documentation on Valid Values for ses:SetIdentityNotificationTopic.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2367">issue 2367</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3f5de0d">commit 3f5de0d</a>)</li>
+<li>Correct list_saml_providers to return all items.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2338">issue 2338</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9e9427f">commit 9e9427f</a>)</li>
+<li>Fixing ELB unit tests.  Also did some PEP8 cleanup on ELB code.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2352">issue 2352</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5220621">commit 5220621</a>)</li>
+<li>Documentation updates. (<a class="reference external" href="https://github.com/boto/boto/issues/2353">issue 2353</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c9233d4">commit c9233d4</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.32.0</a><ul>
+<li><a class="reference internal" href="#python-3-support">Python 3 Support</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#fixes">Fixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.31.1.html"
+                        title="previous chapter">boto v2.31.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.32.1.html"
+                        title="next chapter">boto v2.32.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.32.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.32.1.html" title="boto v2.32.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.31.1.html" title="boto v2.31.1"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

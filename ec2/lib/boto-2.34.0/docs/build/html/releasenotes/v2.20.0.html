@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.20.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.20.1" href="v2.20.1.html" />
+    <link rel="prev" title="boto v2.2.2" href="v2.2.2.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.20.1.html" title="boto v2.20.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.2.2.html" title="boto v2.2.2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-20-0">
+<h1>boto v2.20.0<a class="headerlink" href="#boto-v2-20-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/12/12</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for Amazon Kinesis and AWS Direct Connect. Amazon EC2 gets support for new i2 instance types and is more resilient against metadata failures, Amazon DynamoDB gets support for global secondary indexes and Amazon Relational Database Service (RDS) supports new DBInstance and DBSnapshot attributes. There are several other fixes for various services, including updated support for CloudStack and Eucalyptus.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for Amazon Kinesis (<a class="reference external" href="https://github.com/boto/boto/commit/d0b684e">commit d0b684e</a>)</li>
+<li>Add support for i2 instance types to EC2. (<a class="reference external" href="https://github.com/boto/boto/commit/0f5371f">commit 0f5371f</a>)</li>
+<li>Add support for DynamoDB Global Secondary Indexes (<a class="reference external" href="https://github.com/boto/boto/commit/297cacb">commit 297cacb</a>)</li>
+<li>Add support for AWS Direct Connect. (<a class="reference external" href="https://github.com/boto/boto/issues/1894">issue 1894</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1894">issue 1894</a>, <a class="reference external" href="https://github.com/boto/boto/commit/3cbca26">commit 3cbca26</a>)</li>
+<li>Add option for sorting SDB dumps to sdbadmin. (<a class="reference external" href="https://github.com/boto/boto/issues/1888">issue 1888</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1888">issue 1888</a>, <a class="reference external" href="https://github.com/boto/boto/commit/070e4f6">commit 070e4f6</a>)</li>
+<li>Add a retry when EC2 metadata is returned as corrupt JSON. (<a class="reference external" href="https://github.com/boto/boto/issues/1883">issue 1883</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1883">issue 1883</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1868">issue 1868</a>, <a class="reference external" href="https://github.com/boto/boto/commit/41470a0">commit 41470a0</a>)</li>
+<li>Added some missing attributes to DBInstance and DBSnapshot. (<a class="reference external" href="https://github.com/boto/boto/issues/1880">issue 1880</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1880">issue 1880</a>, <a class="reference external" href="https://github.com/boto/boto/commit/2751dff">commit 2751dff</a>)</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Implement nonzero for DynamoDB Item to consider empty items falsey (<a class="reference external" href="https://github.com/boto/boto/issues/1899">issue 1899</a>, <a class="reference external" href="https://github.com/boto/boto/commit/808e550">commit 808e550</a>)</li>
+<li>Remove <cite>dimensions</cite> from Metric.query() docstring. (<a class="reference external" href="https://github.com/boto/boto/issues/1901">issue 1901</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1901">issue 1901</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ba6b8c7">commit ba6b8c7</a>)</li>
+<li>Make trailing slashes for EC2 metadata URLs explicit &amp; remove them from userdata requests. This fixes using boto for CloudStack (<a class="reference external" href="https://github.com/boto/boto/issues/1900">issue 1900</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1900">issue 1900</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1897">issue 1897</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1856">issue 1856</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5f4506e">commit 5f4506e</a>)</li>
+<li>Fix the DynamoDB &#8216;scan in&#8217; filter to compare the same attribute types in a list rather than using an attribute set. (<a class="reference external" href="https://github.com/boto/boto/issues/1896">issue 1896</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1896">issue 1896</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5fc59d6">commit 5fc59d6</a>)</li>
+<li>Updating Amazon ElastiCache parameters to be optional when creating a new cache cluster. (<a class="reference external" href="https://github.com/boto/boto/issues/1876">issue 1876</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1876">issue 1876</a>, <a class="reference external" href="https://github.com/boto/boto/commit/342b8df">commit 342b8df</a>)</li>
+<li>Fix honor cooldown AutoScaling parameter serialization to prevent an exception and bad request. (<a class="reference external" href="https://github.com/boto/boto/issues/1895">issue 1895</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1895">issue 1895</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1892">issue 1892</a>, <a class="reference external" href="https://github.com/boto/boto/commit/fc4674f">commit fc4674f</a>)</li>
+<li>Fix ignored RDS backup_retention_period when value was 0. (<a class="reference external" href="https://github.com/boto/boto/issues/1887">issue 1887</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1887">issue 1887</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1886">issue 1886</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a19eb14">commit a19eb14</a>)</li>
+<li>Use auth_handler to specify host header value including custom ports if possible, which are used by Eucalyptus. (<a class="reference external" href="https://github.com/boto/boto/issues/1862">issue 1862</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1862">issue 1862</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ce6df03">commit ce6df03</a>)</li>
+<li>Fix documentation of launch config in Autoscaling Group. (<a class="reference external" href="https://github.com/boto/boto/issues/1881">issue 1881</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1881">issue 1881</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6f704d9">commit 6f704d9</a>)</li>
+<li>typo: AIM -&gt; IAM (<a class="reference external" href="https://github.com/boto/boto/issues/1882">issue 1882</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7ea2d5c">commit 7ea2d5c</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.20.0</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.2.2.html"
+                        title="previous chapter">boto v2.2.2</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.20.1.html"
+                        title="next chapter">boto v2.20.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.20.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.20.1.html" title="boto v2.20.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.2.2.html" title="boto v2.2.2"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

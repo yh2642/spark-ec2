@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.26.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.26.1" href="v2.26.1.html" />
+    <link rel="prev" title="boto v2.25.0" href="v2.25.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.26.1.html" title="boto v2.26.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.25.0.html" title="boto v2.25.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-26-0">
+<h1>boto v2.26.0<a class="headerlink" href="#boto-v2-26-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/02/27</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for MFA tokens in the AWS STS <tt class="docutils literal"><span class="pre">assume_role</span></tt> &amp; the
+introduction of the <tt class="docutils literal"><span class="pre">boto.rds2</span></tt> module (which has full support for the entire
+RDS API). It also includes the addition of request hooks &amp; many bugfixes.</p>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for MFA in STS AssumeRole. (<a class="reference external" href="https://github.com/boto/boto/commit/899810c">commit 899810c</a>)</li>
+<li>Fixed how DynamoDB v2 works with Global Secondary Indexes. (<a class="reference external" href="https://github.com/boto/boto/issues/2122">issue 2122</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/f602c95">commit f602c95</a>)</li>
+<li>Add request hooks and request logger. (<a class="reference external" href="https://github.com/boto/boto/issues/2125">issue 2125</a>, <a class="reference external" href="https://github.com/boto/boto/commit/e8b20fe">commit e8b20fe</a>)</li>
+<li>Don&#8217;t pull the security token from the environment or config when a caller
+supplies the access key and secret. (<a class="reference external" href="https://github.com/boto/boto/issues/2123">issue 2123</a>, <a class="reference external" href="https://github.com/boto/boto/commit/4df1694">commit 4df1694</a>)</li>
+<li>Read EvaluateTargetHealth from Route53 resource record set. (<a class="reference external" href="https://github.com/boto/boto/issues/2120">issue 2120</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/0a97158">commit 0a97158</a>)</li>
+<li>Prevent implicit string decode in hmac-v4 handlers. (<a class="reference external" href="https://github.com/boto/boto/issues/2037">issue 2037</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2033">issue 2033</a>, <a class="reference external" href="https://github.com/boto/boto/commit/8e56a5f">commit 8e56a5f</a>)</li>
+<li>Updated Datapipeline to include all current regions. (<a class="reference external" href="https://github.com/boto/boto/issues/2121">issue 2121</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/dff5e3e">commit dff5e3e</a>)</li>
+<li>Bug fix for Google Storage generate_url authentication. (<a class="reference external" href="https://github.com/boto/boto/issues/2116">issue 2116</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2108">issue 2108</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5a50932">commit 5a50932</a>)</li>
+<li>Handle JSON error responses in BotoServerError. (<a class="reference external" href="https://github.com/boto/boto/issues/2113">issue 2113</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2077">issue 2077</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/221085e">commit 221085e</a>)</li>
+<li>Corrected a typo in SQS tutorial. (<a class="reference external" href="https://github.com/boto/boto/issues/2114">issue 2114</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7ed41f7">commit 7ed41f7</a>)</li>
+<li>Add CloudFormation template capabilities support. (<a class="reference external" href="https://github.com/boto/boto/issues/2111">issue 2111</a>,
+<a class="reference external" href="https://github.com/boto/boto/issues/2075">issue 2075</a>, <a class="reference external" href="https://github.com/boto/boto/commit/65a4323">commit 65a4323</a>)</li>
+<li>Add SWF layer1_decisions to docs. (<a class="reference external" href="https://github.com/boto/boto/issues/2110">issue 2110</a>, <a class="reference external" href="https://github.com/boto/boto/issues/2062">issue 2062</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/6039cc9">commit 6039cc9</a>)</li>
+<li>Add support for request intervals in health checks. (<a class="reference external" href="https://github.com/boto/boto/issues/2109">issue 2109</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/660b01a">commit 660b01a</a>)</li>
+<li>Added checks for invalid regions to the <tt class="docutils literal"><span class="pre">bin</span></tt> scripts (<a class="reference external" href="https://github.com/boto/boto/issues/2107">issue 2107</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/bbb9f1e">commit bbb9f1e</a>)</li>
+<li>Better error output for unknown region - (<a class="reference external" href="https://github.com/boto/boto/issues/2041">issue 2041</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1983">issue 1983</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/cd63f92">commit cd63f92</a>)</li>
+<li>Added certificate tests for CloudTrail. (<a class="reference external" href="https://github.com/boto/boto/issues/2106">issue 2106</a>, <a class="reference external" href="https://github.com/boto/boto/commit/a7e9b4c">commit a7e9b4c</a>)</li>
+<li>Updated Kinesis endpoints. (<a class="reference external" href="https://github.com/boto/boto/commit/7bd4b6e">commit 7bd4b6e</a>)</li>
+<li>Finished implementation of RDS&#8217;s DescribeDBLogFiles. (<a class="reference external" href="https://github.com/boto/boto/issues/2084">issue 2084</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/f3c706c">commit f3c706c</a>)</li>
+<li>Added support for RDS log file downloading. (<a class="reference external" href="https://github.com/boto/boto/issues/2086">issue 2086</a>, <a class="reference external" href="https://github.com/boto/boto/issues/1993">issue 1993</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/4c51841">commit 4c51841</a>)</li>
+<li>Added some unit tests for CloudFront. (<a class="reference external" href="https://github.com/boto/boto/issues/2076">issue 2076</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6c46b1d">commit 6c46b1d</a>)</li>
+<li>GS should ignore restore_headers as they are never set. (<a class="reference external" href="https://github.com/boto/boto/issues/2067">issue 2067</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/f02aeb3">commit f02aeb3</a>)</li>
+<li>Update CloudFormation to support the latest API. (<a class="reference external" href="https://github.com/boto/boto/issues/2101">issue 2101</a>,
+<a class="reference external" href="https://github.com/boto/boto/commit/ea1b1b6">commit ea1b1b6</a>)</li>
+<li>Added Route53 health checks. (<a class="reference external" href="https://github.com/boto/boto/issues/2054">issue 2054</a>, <a class="reference external" href="https://github.com/boto/boto/commit/9028f7d">commit 9028f7d</a>)</li>
+<li>Merge branch &#8216;rds2&#8217; into develop Fixes #2097. (<a class="reference external" href="https://github.com/boto/boto/issues/2097">issue 2097</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6843c16">commit 6843c16</a>)</li>
+<li>Fix Param class convert method (<a class="reference external" href="https://github.com/boto/boto/issues/2094">issue 2094</a>, <a class="reference external" href="https://github.com/boto/boto/commit/5cd4598">commit 5cd4598</a>)</li>
+<li>Added support for Route53 aliasing. (<a class="reference external" href="https://github.com/boto/boto/issues/2096">issue 2096</a>, <a class="reference external" href="https://github.com/boto/boto/commit/df5fa40">commit df5fa40</a>)</li>
+<li>Removed the dependence on <tt class="docutils literal"><span class="pre">example.com</span></tt> within the Route53 tests.
+(<a class="reference external" href="https://github.com/boto/boto/issues/2098">issue 2098</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6ce9e0f">commit 6ce9e0f</a>)</li>
+<li>Fixed <tt class="docutils literal"><span class="pre">has_item</span></tt> support in DynamoDB v2. (<a class="reference external" href="https://github.com/boto/boto/issues/2090">issue 2090</a>, <a class="reference external" href="https://github.com/boto/boto/commit/aada5d3">commit aada5d3</a>)</li>
+<li>Fix a little typo bug in the S3 tutorial. (<a class="reference external" href="https://github.com/boto/boto/issues/2088">issue 2088</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c091d27">commit c091d27</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.26.0</a><ul>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.25.0.html"
+                        title="previous chapter">boto v2.25.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.26.1.html"
+                        title="next chapter">boto v2.26.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.26.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.26.1.html" title="boto v2.26.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.25.0.html" title="boto v2.25.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

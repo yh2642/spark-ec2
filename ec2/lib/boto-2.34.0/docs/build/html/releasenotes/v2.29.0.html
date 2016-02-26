@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.29.0 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.29.1" href="v2.29.1.html" />
+    <link rel="prev" title="boto v2.28.0" href="v2.28.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.29.1.html" title="boto v2.29.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.28.0.html" title="boto v2.28.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-29-0">
+<h1>boto v2.29.0<a class="headerlink" href="#boto-v2-29-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2014/05/29</td>
+</tr>
+</tbody>
+</table>
+<p>This release adds support for the AWS shared credentials file, adds support for Amazon Elastic Block Store (EBS) encryption, and contains a handful of fixes for Amazon EC2, AWS CloudFormation, AWS CloudWatch, AWS CloudTrail, Amazon DynamoDB and Amazon Relational Database Service (RDS). It also includes fixes for Python wheel support.</p>
+<p>A bug has been fixed such that a new exception is thrown when a profile name is explicitly passed either via code (<tt class="docutils literal"><span class="pre">profile=&quot;foo&quot;</span></tt>) or an environment variable (<tt class="docutils literal"><span class="pre">AWS_PROFILE=foo</span></tt>) and that profile does not exist in any configuration file. Previously this was silently ignored, and the default credentials would be used without informing the user.</p>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for shared credentials file. (<a class="reference external" href="https://github.com/boto/boto/issues/2292">issue 2292</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d5ed49f">commit d5ed49f</a>)</li>
+<li>Added support for EBS encryption. (<a class="reference external" href="https://github.com/boto/boto/issues/2282">issue 2282</a>, <a class="reference external" href="https://github.com/boto/boto/commit/d85a449">commit d85a449</a>)</li>
+<li>Added GovCloud CloudFormation endpoint. (<a class="reference external" href="https://github.com/boto/boto/issues/2297">issue 2297</a>, <a class="reference external" href="https://github.com/boto/boto/commit/0f75fb9">commit 0f75fb9</a>)</li>
+<li>Added new CloudTrail endpoints to endpoints.json. (<a class="reference external" href="https://github.com/boto/boto/issues/2269">issue 2269</a>, <a class="reference external" href="https://github.com/boto/boto/commit/1168580">commit 1168580</a>)</li>
+<li>Added &#8216;name&#8217; param to documentation of ELB LoadBalancer. (<a class="reference external" href="https://github.com/boto/boto/issues/2291">issue 2291</a>, <a class="reference external" href="https://github.com/boto/boto/commit/86e1174">commit 86e1174</a>)</li>
+<li>Fix typo in ELB docs. (<a class="reference external" href="https://github.com/boto/boto/issues/2294">issue 2294</a>, <a class="reference external" href="https://github.com/boto/boto/commit/37aaa0f">commit 37aaa0f</a>)</li>
+<li>Fix typo in ELB tutorial. (<a class="reference external" href="https://github.com/boto/boto/issues/2290">issue 2290</a>, <a class="reference external" href="https://github.com/boto/boto/commit/40a758a">commit 40a758a</a>)</li>
+<li>Fix OpsWorks <tt class="docutils literal"><span class="pre">connect_to_region</span></tt> exception. (<a class="reference external" href="https://github.com/boto/boto/issues/2288">issue 2288</a>, <a class="reference external" href="https://github.com/boto/boto/commit/26729c7">commit 26729c7</a>)</li>
+<li>Fix timezones in CloudWatch date range example. (<a class="reference external" href="https://github.com/boto/boto/issues/2285">issue 2285</a>, <a class="reference external" href="https://github.com/boto/boto/commit/138a6d0">commit 138a6d0</a>)</li>
+<li>Fix description of param tags into <tt class="docutils literal"><span class="pre">rds2.create_db_subnet_group</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/2279">issue 2279</a>, <a class="reference external" href="https://github.com/boto/boto/commit/dc1037f">commit dc1037f</a>)</li>
+<li>Fix the incorrect name of a test case. (<a class="reference external" href="https://github.com/boto/boto/issues/2273">issue 2273</a>, <a class="reference external" href="https://github.com/boto/boto/commit/ee195a1">commit ee195a1</a>)</li>
+<li>Fix &#8220;consistent&#8221; argument to <tt class="docutils literal"><span class="pre">boto.dynamodb2.table.Table.batch_get</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/issues/2272">issue 2272</a>, <a class="reference external" href="https://github.com/boto/boto/commit/c432b09">commit c432b09</a>)</li>
+<li>Update the wheel to be python 2 compatible only. (<a class="reference external" href="https://github.com/boto/boto/issues/2286">issue 2286</a>, <a class="reference external" href="https://github.com/boto/boto/commit/6ad0b75">commit 6ad0b75</a>)</li>
+<li>Crate.io is no longer a package index. (<a class="reference external" href="https://github.com/boto/boto/issues/2289">issue 2289</a>, <a class="reference external" href="https://github.com/boto/boto/commit/7f23de0">commit 7f23de0</a>)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.29.0</a><ul>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.28.0.html"
+                        title="previous chapter">boto v2.28.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.29.1.html"
+                        title="next chapter">boto v2.29.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.29.0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.29.1.html" title="boto v2.29.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.28.0.html" title="boto v2.28.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

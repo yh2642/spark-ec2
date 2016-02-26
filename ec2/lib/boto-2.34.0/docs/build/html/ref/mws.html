@@ -1,0 +1,2369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mws &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="Opsworks" href="opsworks.html" />
+    <link rel="prev" title="mturk" href="mturk.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opsworks.html" title="Opsworks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mturk.html" title="mturk"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mws">
+<h1>mws<a class="headerlink" href="#mws" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-boto.mws">
+<span id="boto-mws"></span><h2>boto.mws<a class="headerlink" href="#module-boto.mws" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-boto.mws.connection">
+<span id="boto-mws-connection"></span><h2>boto.mws.connection<a class="headerlink" href="#module-boto.mws.connection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.mws.connection.MWSConnection">
+<em class="property">class </em><tt class="descclassname">boto.mws.connection.</tt><tt class="descname">MWSConnection</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="boto.mws.connection.MWSConnection.ResponseErrorFactory">
+<em class="property">class </em><tt class="descname">ResponseErrorFactory</tt><big>(</big><em>scopes=None</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.ResponseErrorFactory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.connection.MWSConnection.ResponseFactory">
+<em class="property">class </em><tt class="descclassname">MWSConnection.</tt><tt class="descname">ResponseFactory</tt><big>(</big><em>scopes=None</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.ResponseFactory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.connection.MWSConnection.ResponseFactory.element_factory">
+<tt class="descname">element_factory</tt><big>(</big><em>name</em>, <em>parent</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.ResponseFactory.element_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.ResponseFactory.find_element">
+<tt class="descname">find_element</tt><big>(</big><em>action</em>, <em>suffix</em>, <em>parent</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.ResponseFactory.find_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.ResponseFactory.search_scopes">
+<tt class="descname">search_scopes</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.ResponseFactory.search_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.authorize">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">authorize</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.authorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS Authorize/2013-01-01 API call; quota=10 restore=1.00
+Reserves a specified amount against the payment method(s) stored in</p>
+<blockquote>
+<div>the order reference.</div></blockquote>
+<p>Element|Iter|Map: AuthorizationAmount
+(ResponseElement or anything iterable/dict-like)
+Required: AmazonOrderReferenceId+AuthorizationReferenceId+AuthorizationAmount</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.cancel_feed_submissions">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">cancel_feed_submissions</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.cancel_feed_submissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CancelFeedSubmissions/2009-01-01 API call; quota=10 restore=45.00
+Cancels one or more feed submissions and returns a</p>
+<blockquote>
+<div>count of the feed submissions that were canceled.</div></blockquote>
+<p>Lists: FeedSubmissionIdList.Id, FeedTypeList.Type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.cancel_fulfillment_order">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">cancel_fulfillment_order</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.cancel_fulfillment_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CancelFulfillmentOrder/2010-10-01 API call; quota=30 restore=0.50
+Requests that Amazon stop attempting to fulfill an existing</p>
+<blockquote>
+<div>fulfillment order.</div></blockquote>
+<p>Required: SellerFulfillmentOrderId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.cancel_order_reference">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">cancel_order_reference</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.cancel_order_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CancelOrderReference/2013-01-01 API call; quota=10 restore=1.00
+Cancel an order reference; all authorizations associated with</p>
+<blockquote>
+<div>this order reference are also closed.</div></blockquote>
+<p>Required: AmazonOrderReferenceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.cancel_report_requests">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">cancel_report_requests</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.cancel_report_requests" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CancelReportRequests/2009-01-01 API call; quota=10 restore=45.00
+Cancel one or more report requests, returning the count of the</p>
+<blockquote>
+<div>canceled report requests and the report request information.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.capture">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">capture</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.capture" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS Capture/2013-01-01 API call; quota=10 restore=1.00
+Captures funds from an authorized payment instrument.</p>
+<p>Element|Iter|Map: CaptureAmount
+(ResponseElement or anything iterable/dict-like)
+Required: AmazonAuthorizationId+CaptureReferenceId+CaptureAmount</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.close_authorization">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">close_authorization</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.close_authorization" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CloseAuthorization/2013-01-01 API call; quota=10 restore=1.00
+Closes an authorization.</p>
+<p>Required: AmazonAuthorizationId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.close_order_reference">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">close_order_reference</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.close_order_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CloseOrderReference/2013-01-01 API call; quota=10 restore=1.00
+Confirms that an order reference has been fulfilled (fully</p>
+<blockquote>
+<div>or partially) and that you do not expect to create any new
+authorizations on this order reference.</div></blockquote>
+<p>Required: AmazonOrderReferenceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.confirm_order_reference">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">confirm_order_reference</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.confirm_order_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ConfirmOrderReference/2013-01-01 API call; quota=10 restore=1.00
+Confirms that the order reference is free of constraints and all</p>
+<blockquote>
+<div>required information has been set on the order reference.</div></blockquote>
+<p>Required: AmazonOrderReferenceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.create_fulfillment_order">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">create_fulfillment_order</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.create_fulfillment_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CreateFulfillmentOrder/2010-10-01 API call; quota=30 restore=0.50
+Requests that Amazon ship items from the seller&#8217;s inventory</p>
+<blockquote>
+<div>to a destination address.</div></blockquote>
+<p>Element|Iter|Map: DestinationAddress, Items
+(ResponseElement or anything iterable/dict-like)
+Required: SellerFulfillmentOrderId+DisplayableOrderId+ShippingSpeedCategory+DisplayableOrderDateTime+DestinationAddress+DisplayableOrderComment+Items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.create_inbound_shipment">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">create_inbound_shipment</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.create_inbound_shipment" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CreateInboundShipment/2010-10-01 API call; quota=30 restore=0.50
+Creates an inbound shipment.</p>
+<p>Element|Iter|Map: InboundShipmentHeader, InboundShipmentItems
+(ResponseElement or anything iterable/dict-like)
+Required: ShipmentId+InboundShipmentHeader+InboundShipmentItems</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.create_inbound_shipment_plan">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">create_inbound_shipment_plan</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.create_inbound_shipment_plan" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CreateInboundShipmentPlan/2010-10-01 API call; quota=30 restore=0.50
+Returns the information required to create an inbound shipment.</p>
+<p>Element|Iter|Map: ShipFromAddress, InboundShipmentPlanRequestItems
+(ResponseElement or anything iterable/dict-like)
+Required: ShipFromAddress+InboundShipmentPlanRequestItems</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.create_subscription">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">create_subscription</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.create_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS CreateSubscription/2013-07-01 API call; quota=25 restore=0.50
+Creates a new subscription for the specified notification type</p>
+<blockquote>
+<div>and destination.</div></blockquote>
+<p>Element|Iter|Map: Subscription
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+Subscription</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.delete_subscription">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">delete_subscription</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.delete_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS DeleteSubscription/2013-07-01 API call; quota=25 restore=0.50
+Deletes the subscription for the specified notification type and</p>
+<blockquote>
+<div>destination.</div></blockquote>
+<p>Element|Iter|Map: Destination
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+NotificationType+Destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.deregister_destination">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">deregister_destination</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.deregister_destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS DeregisterDestination/2013-07-01 API call; quota=25 restore=0.50
+Removes an existing destination from the list of registered</p>
+<blockquote>
+<div>destinations.</div></blockquote>
+<p>Element|Iter|Map: Destination
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+Destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_authorization_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_authorization_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_authorization_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetAuthorizationDetails/2013-01-01 API call; quota=20 restore=2.00
+Returns the status of a particular authorization and the total</p>
+<blockquote>
+<div>amount captured on the authorization.</div></blockquote>
+<p>Required: AmazonAuthorizationId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_capture_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_capture_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_capture_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetCaptureDetails/2013-01-01 API call; quota=20 restore=2.00
+Returns the status of a particular capture and the total amount</p>
+<blockquote>
+<div>refunded on the capture.</div></blockquote>
+<p>Required: AmazonCaptureId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_cartinfo_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_cartinfo_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_cartinfo_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2014-03-01 API call; quota=2 restore=300.00
+Returns the operational status of the Cart Information API section.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_carts">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_carts</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_carts" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetCarts/2014-03-01 API call; quota=15 restore=12.00
+Returns shopping carts based on the CartId values that you specify.</p>
+<p>Lists: CartIdList.CartId
+Required: CartIdList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_competitive_pricing_for_asin">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_competitive_pricing_for_asin</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_competitive_pricing_for_asin" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetCompetitivePricingForASIN/2011-10-01 API call; quota=20 restore=10.00
+Returns the current competitive pricing of a product,</p>
+<blockquote>
+<div>based on the ASINs and MarketplaceId that you specify.</div></blockquote>
+<p>Lists: ASINList.ASIN
+Required: MarketplaceId+ASINList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_competitive_pricing_for_sku">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_competitive_pricing_for_sku</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_competitive_pricing_for_sku" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetCompetitivePricingForSKU/2011-10-01 API call; quota=20 restore=10.00
+Returns the current competitive pricing of a product,</p>
+<blockquote>
+<div>based on the SellerSKUs and MarketplaceId that you specify.</div></blockquote>
+<p>Lists: SellerSKUList.SellerSKU
+Required: MarketplaceId+SellerSKUList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_customerinfo_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_customerinfo_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_customerinfo_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2014-03-01 API call; quota=2 restore=300.00
+Returns the operational status of the Customer Information API</p>
+<blockquote>
+<div>section.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_customers_for_customer_id">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_customers_for_customer_id</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_customers_for_customer_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetCustomersForCustomerId/2014-03-01 API call; quota=15 restore=12.00
+Returns a list of customer accounts based on search criteria that</p>
+<blockquote>
+<div>you specify.</div></blockquote>
+<p>Lists: CustomerIdList.CustomerId
+Required: CustomerIdList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_feed_submission_count">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_feed_submission_count</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_feed_submission_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFeedSubmissionCount/2009-01-01 API call; quota=10 restore=45.00
+Returns a count of the feeds submitted in the previous 90 days.</p>
+<p>Lists: FeedTypeList.Type, FeedProcessingStatusList.Status</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_feed_submission_list">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_feed_submission_list</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_feed_submission_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFeedSubmissionList/2009-01-01 API call; quota=10 restore=45.00
+Returns a list of all feed submissions submitted in the</p>
+<blockquote>
+<div>previous 90 days.</div></blockquote>
+<p>Lists: FeedSubmissionIdList.Id, FeedTypeList.Type, FeedProcessingStatusList.Status</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_feed_submission_list_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_feed_submission_list_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_feed_submission_list_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFeedSubmissionListByNextToken/2009-01-01 API call; quota=0 restore=0.00
+Returns a list of feed submissions using the NextToken parameter.</p>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_feed_submission_result">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_feed_submission_result</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_feed_submission_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFeedSubmissionResult/2009-01-01 API call; quota=15 restore=60.00
+Returns the feed processing report.</p>
+<p>Required: FeedSubmissionId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_fulfillment_order">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_fulfillment_order</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_fulfillment_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFulfillmentOrder/2010-10-01 API call; quota=30 restore=0.50
+Returns a fulfillment order based on a specified</p>
+<blockquote>
+<div>SellerFulfillmentOrderId.</div></blockquote>
+<p>Required: SellerFulfillmentOrderId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_fulfillment_preview">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_fulfillment_preview</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_fulfillment_preview" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetFulfillmentPreview/2010-10-01 API call; quota=30 restore=0.50
+Returns a list of fulfillment order previews based on items</p>
+<blockquote>
+<div>and shipping speed categories that you specify.</div></blockquote>
+<p>Element|Iter|Map: Address, Items
+(ResponseElement or anything iterable/dict-like)
+Required: Address+Items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_inbound_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_inbound_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_inbound_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2010-10-01 API call; quota=2 restore=300.00
+Returns the operational status of the Fulfillment Inbound</p>
+<blockquote>
+<div>Shipment API section.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_inventory_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_inventory_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_inventory_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2010-10-01 API call; quota=2 restore=300.00
+Returns the operational status of the Fulfillment Inventory</p>
+<blockquote>
+<div>API section.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_last_updated_time_for_recommendations">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_last_updated_time_for_recommendations</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_last_updated_time_for_recommendations" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetLastUpdatedTimeForRecommendations/2013-04-01 API call; quota=5 restore=2.00
+Checks whether there are active recommendations for each category</p>
+<blockquote>
+<div>for the given marketplace, and if there are, returns the time when
+recommendations were last updated for each category.</div></blockquote>
+<p>Required: MarketplaceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_lowest_offer_listings_for_asin">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_lowest_offer_listings_for_asin</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_lowest_offer_listings_for_asin" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetLowestOfferListingsForASIN/2011-10-01 API call; quota=20 restore=5.00
+Returns the lowest price offer listings for a specific</p>
+<blockquote>
+<div>product by item condition and ASINs.</div></blockquote>
+<p>Lists: ASINList.ASIN
+Required: MarketplaceId+ASINList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_lowest_offer_listings_for_sku">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_lowest_offer_listings_for_sku</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_lowest_offer_listings_for_sku" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetLowestOfferListingsForSKU/2011-10-01 API call; quota=20 restore=5.00
+Returns the lowest price offer listings for a specific</p>
+<blockquote>
+<div>product by item condition and SellerSKUs.</div></blockquote>
+<p>Lists: SellerSKUList.SellerSKU
+Required: MarketplaceId+SellerSKUList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_matching_product">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_matching_product</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_matching_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetMatchingProduct/2011-10-01 API call; quota=20 restore=20.00
+Returns a list of products and their attributes, based on</p>
+<blockquote>
+<div>a list of ASIN values that you specify.</div></blockquote>
+<p>Lists: ASINList.ASIN
+Required: MarketplaceId+ASINList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_matching_product_for_id">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_matching_product_for_id</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_matching_product_for_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetMatchingProductForId/2011-10-01 API call; quota=20 restore=20.00
+Returns a list of products and their attributes, based on</p>
+<blockquote>
+<div>a list of Product IDs that you specify.</div></blockquote>
+<p>Lists: IdList.Id
+Required: MarketplaceId+IdType+IdList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_my_price_for_asin">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_my_price_for_asin</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_my_price_for_asin" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetMyPriceForASIN/2011-10-01 API call; quota=20 restore=10.00
+Returns pricing information for your own offer listings, based on ASIN.</p>
+<p>Lists: ASINList.ASIN
+Required: MarketplaceId+ASINList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_my_price_for_sku">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_my_price_for_sku</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_my_price_for_sku" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetMyPriceForSKU/2011-10-01 API call; quota=20 restore=10.00
+Returns pricing information for your own offer listings, based on SellerSKU.</p>
+<p>Lists: SellerSKUList.SellerSKU
+Required: MarketplaceId+SellerSKUList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_offamazonpayments_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_offamazonpayments_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_offamazonpayments_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2013-01-01 API call; quota=2 restore=300.00
+Returns the operational status of the Off-Amazon Payments API</p>
+<blockquote>
+<div>section.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_order">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_order</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetOrder/2013-09-01 API call; quota=6 restore=60.00
+Returns an order for each AmazonOrderId that you specify.</p>
+<p>Lists: AmazonOrderId.Id
+Required: AmazonOrderId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_order_reference_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_order_reference_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_order_reference_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetOrderReferenceDetails/2013-01-01 API call; quota=20 restore=2.00
+Returns details about the Order Reference object and its current</p>
+<blockquote>
+<div>state.</div></blockquote>
+<p>Required: AmazonOrderReferenceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_orders_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_orders_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_orders_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2013-09-01 API call; quota=2 restore=300.00
+Returns the operational status of the Orders API section.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_outbound_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_outbound_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_outbound_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2010-10-01 API call; quota=2 restore=300.00
+Returns the operational status of the Fulfillment Outbound</p>
+<blockquote>
+<div>API section.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_package_tracking_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_package_tracking_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_package_tracking_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetPackageTrackingDetails/2010-10-01 API call; quota=30 restore=0.50
+Returns delivery tracking information for a package in</p>
+<blockquote>
+<div>an outbound shipment for a Multi-Channel Fulfillment order.</div></blockquote>
+<p>Required: PackageNumber</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_product_categories_for_asin">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_product_categories_for_asin</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_product_categories_for_asin" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetProductCategoriesForASIN/2011-10-01 API call; quota=20 restore=20.00
+Returns the product categories that an ASIN belongs to.</p>
+<p>Required: MarketplaceId+ASIN</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_product_categories_for_sku">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_product_categories_for_sku</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_product_categories_for_sku" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetProductCategoriesForSKU/2011-10-01 API call; quota=20 restore=20.00
+Returns the product categories that a SellerSKU belongs to.</p>
+<p>Required: MarketplaceId+SellerSKU</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_products_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_products_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_products_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2011-10-01 API call; quota=2 restore=300.00
+Returns the operational status of the Products API section.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_recommendations_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_recommendations_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_recommendations_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2013-04-01 API call; quota=2 restore=300.00
+Returns the operational status of the Recommendations API section.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_refund_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_refund_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_refund_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetRefundDetails/2013-01-01 API call; quota=20 restore=2.00
+Returns the status of a particular refund.</p>
+<p>Required: AmazonRefundId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReport/2009-01-01 API call; quota=15 restore=60.00
+Returns the contents of a report.</p>
+<p>Required: ReportId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_count">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_count</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportCount/2009-01-01 API call; quota=10 restore=45.00
+Returns a count of the reports, created in the previous 90 days,</p>
+<blockquote>
+<div>with a status of _DONE_ and that are available for download.</div></blockquote>
+<p>Lists: ReportTypeList.Type
+Booleans: Acknowledged</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_list">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_list</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportList/2009-01-01 API call; quota=10 restore=60.00
+Returns a list of reports that were created in the previous</p>
+<blockquote>
+<div>90 days that match the query parameters.</div></blockquote>
+<p>Lists: ReportRequestIdList.Id, ReportTypeList.Type
+Booleans: Acknowledged</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_list_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_list_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_list_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportListByNextToken/2009-01-01 API call; quota=0 restore=0.00
+Returns a list of reports using the NextToken, which</p>
+<blockquote>
+<div>was supplied by a previous request to either
+GetReportListByNextToken or GetReportList, where the
+value of HasNext was true in the previous call.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_request_count">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_request_count</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_request_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportRequestCount/2009-01-01 API call; quota=10 restore=45.00
+Returns a count of report requests that have been submitted</p>
+<blockquote>
+<div>to Amazon MWS for processing.</div></blockquote>
+<p>Lists: ReportTypeList.Type, ReportProcessingStatusList.Status</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_request_list">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_request_list</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_request_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportRequestList/2009-01-01 API call; quota=10 restore=45.00
+Returns a list of report requests that you can use to get the</p>
+<blockquote>
+<div>ReportRequestId for a report.</div></blockquote>
+<p>Lists: ReportRequestIdList.Id, ReportTypeList.Type, ReportProcessingStatusList.Status</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_request_list_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_request_list_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_request_list_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportRequestListByNextToken/2009-01-01 API call; quota=0 restore=0.00
+Returns a list of report requests using the NextToken,</p>
+<blockquote>
+<div>which was supplied by a previous request to either
+GetReportRequestListByNextToken or GetReportRequestList, where
+the value of HasNext was true in that previous request.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_schedule_count">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_schedule_count</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_schedule_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportScheduleCount/2009-01-01 API call; quota=10 restore=45.00
+Returns a count of order report requests that are scheduled</p>
+<blockquote>
+<div>to be submitted to Amazon MWS.</div></blockquote>
+<p>Lists: ReportTypeList.Type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_schedule_list">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_schedule_list</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_schedule_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportScheduleList/2009-01-01 API call; quota=10 restore=45.00
+Returns a list of order report requests that are scheduled</p>
+<blockquote>
+<div>to be submitted to Amazon MWS for processing.</div></blockquote>
+<p>Lists: ReportTypeList.Type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_report_schedule_list_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_report_schedule_list_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_report_schedule_list_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetReportScheduleListByNextToken/2009-01-01 API call; quota=0 restore=0.00
+Returns a list of report requests using the NextToken,</p>
+<blockquote>
+<div>which was supplied by a previous request to either
+GetReportScheduleListByNextToken or GetReportScheduleList,
+where the value of HasNext was true in that previous request.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_service_status</tt><big>(</big><em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the user on how to get service status.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_subscription">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_subscription</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetSubscription/2013-07-01 API call; quota=25 restore=0.50
+Gets the subscription for the specified notification type and</p>
+<blockquote>
+<div>destination.</div></blockquote>
+<p>Element|Iter|Map: Destination
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+NotificationType+Destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.get_subscriptions_service_status">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">get_subscriptions_service_status</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.get_subscriptions_service_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS GetServiceStatus/2013-07-01 API call; quota=2 restore=300.00
+Returns the operational status of the Subscriptions API section.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.iter_call">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">iter_call</tt><big>(</big><em>call</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.iter_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass a call name as the first argument and a generator
+is returned for the initial response and any continuation
+call responses made using the NextToken.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.iter_response">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">iter_response</tt><big>(</big><em>response</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.iter_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass a call&#8217;s response as the initial argument and a
+generator is returned for the initial response and any
+continuation call responses made using the NextToken.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_all_fulfillment_orders">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_all_fulfillment_orders</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_all_fulfillment_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListAllFulfillmentOrders/2010-10-01 API call; quota=30 restore=0.50
+Returns a list of fulfillment orders fulfilled after (or</p>
+<blockquote>
+<div>at) a specified date or by fulfillment method.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_all_fulfillment_orders_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_all_fulfillment_orders_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_all_fulfillment_orders_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListAllFulfillmentOrdersByNextToken/2010-10-01 API call; quota=30 restore=0.50
+Returns the next page of inbound shipment items using the</p>
+<blockquote>
+<div>NextToken parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_carts">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_carts</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_carts" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListCarts/2014-03-01 API call; quota=15 restore=12.00
+Returns a list of shopping carts in your Webstore that were last</p>
+<blockquote>
+<div>updated during the time range that you specify.</div></blockquote>
+<p>Required: DateRangeStart</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_carts_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_carts_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_carts_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListCartsByNextToken/2014-03-01 API call; quota=50 restore=3.00
+Returns the next page of shopping carts using the NextToken</p>
+<blockquote>
+<div>parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_customers">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_customers</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_customers" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListCustomers/2014-03-01 API call; quota=15 restore=12.00
+Returns a list of customer accounts based on search criteria that</p>
+<blockquote>
+<div>you specify.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_customers_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_customers_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_customers_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListCustomersByNextToken/2014-03-01 API call; quota=50 restore=3.00
+Returns the next page of customers using the NextToken parameter.</p>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inbound_shipment_items">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inbound_shipment_items</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inbound_shipment_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInboundShipmentItems/2010-10-01 API call; quota=30 restore=0.50
+Returns a list of items in a specified inbound shipment, or a</p>
+<blockquote>
+<div>list of items that were updated within a specified time frame.</div></blockquote>
+<p>Required: ShipmentId OR LastUpdatedAfter+LastUpdatedBefore</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inbound_shipment_items_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inbound_shipment_items_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inbound_shipment_items_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInboundShipmentItemsByNextToken/2010-10-01 API call; quota=30 restore=0.50
+Returns the next page of inbound shipment items using the</p>
+<blockquote>
+<div>NextToken parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inbound_shipments">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inbound_shipments</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inbound_shipments" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInboundShipments/2010-10-01 API call; quota=30 restore=0.50
+Returns a list of inbound shipments based on criteria that</p>
+<blockquote>
+<div>you specify.</div></blockquote>
+<p>Lists: ShipmentIdList.Id, ShipmentStatusList.Status
+Some Required: ShipmentIdList, ShipmentStatusList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inbound_shipments_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inbound_shipments_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inbound_shipments_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInboundShipmentsByNextToken/2010-10-01 API call; quota=30 restore=0.50
+Returns the next page of inbound shipments using the NextToken</p>
+<blockquote>
+<div>parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inventory_supply">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inventory_supply</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inventory_supply" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInventorySupply/2010-10-01 API call; quota=30 restore=0.50
+Returns information about the availability of a seller&#8217;s</p>
+<blockquote>
+<div>inventory.</div></blockquote>
+<p>Lists: SellerSkus.member
+Required: SellerSkus OR QueryStartDateTime</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_inventory_supply_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_inventory_supply_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_inventory_supply_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListInventorySupplyByNextToken/2010-10-01 API call; quota=30 restore=0.50
+Returns the next page of information about the availability</p>
+<blockquote>
+<div>of a seller&#8217;s inventory using the NextToken parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_marketplace_participations">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_marketplace_participations</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_marketplace_participations" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListMarketplaceParticipations/2011-07-01 API call; quota=15 restore=60.00
+Returns a list of marketplaces that the seller submitting</p>
+<blockquote>
+<div>the request can sell in, and a list of participations that
+include seller-specific information in that marketplace.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_marketplace_participations_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_marketplace_participations_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_marketplace_participations_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListMarketplaceParticipationsByNextToken/2011-07-01 API call; quota=15 restore=60.00
+Returns the next page of marketplaces and participations</p>
+<blockquote>
+<div>using the NextToken value that was returned by your
+previous request to either ListMarketplaceParticipations
+or ListMarketplaceParticipationsByNextToken.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_matching_products">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_matching_products</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_matching_products" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListMatchingProducts/2011-10-01 API call; quota=20 restore=20.00
+Returns a list of products and their attributes, ordered</p>
+<blockquote>
+<div>by relevancy, based on a search query that you specify.</div></blockquote>
+<p>Required: MarketplaceId+Query</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_order_items">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_order_items</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_order_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListOrderItems/2013-09-01 API call; quota=30 restore=2.00
+Returns order item information for an AmazonOrderId that</p>
+<blockquote>
+<div>you specify.</div></blockquote>
+<p>Required: AmazonOrderId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_order_items_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_order_items_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_order_items_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListOrderItemsByNextToken/2013-09-01 API call; quota=30 restore=2.00
+Returns the next page of order items using the NextToken</p>
+<blockquote>
+<div>value that was returned by your previous request to either
+ListOrderItems or ListOrderItemsByNextToken.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_orders">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_orders</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListOrders/2013-09-01 API call; quota=6 restore=60.00
+Returns a list of orders created or updated during a time</p>
+<blockquote>
+<div>frame that you specify.</div></blockquote>
+<p>Lists: MarketplaceId.Id, OrderStatus.Status, FulfillmentChannel.Channel, PaymentMethod.
+Element|Iter|Map: OrderTotal, ShippingAddress, PaymentExecutionDetail
+(ResponseElement or anything iterable/dict-like)
+Either: CreatedAfter OR LastUpdatedBefore
+LastUpdatedBefore requires: LastUpdatedAfter
+Either: LastUpdatedAfter OR BuyerEmail OR SellerOrderId
+CreatedBefore requires: CreatedAfter
+Either: CreatedAfter OR LastUpdatedAfter
+Required: MarketplaceId
+Required: CreatedAfter OR LastUpdatedAfter</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_orders_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_orders_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_orders_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListOrdersByNextToken/2013-09-01 API call; quota=6 restore=60.00
+Returns the next page of orders using the NextToken value</p>
+<blockquote>
+<div>that was returned by your previous request to either
+ListOrders or ListOrdersByNextToken.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_recommendations">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_recommendations</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_recommendations" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListRecommendations/2013-04-01 API call; quota=5 restore=2.00
+Returns your active recommendations for a specific category or for</p>
+<blockquote>
+<div>all categories for a specific marketplace.</div></blockquote>
+<p>Lists: CategoryQueryList.CategoryQuery
+Required: MarketplaceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_recommendations_by_next_token">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_recommendations_by_next_token</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_recommendations_by_next_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListRecommendationsByNextToken/2013-04-01 API call; quota=5 restore=2.00
+Returns the next page of recommendations using the NextToken</p>
+<blockquote>
+<div>parameter.</div></blockquote>
+<p>Required: NextToken</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_registered_destinations">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_registered_destinations</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_registered_destinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListRegisteredDestinations/2013-07-01 API call; quota=25 restore=0.50
+Lists all current destinations that you have registered.</p>
+<p>Required: MarketplaceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.list_subscriptions">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">list_subscriptions</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.list_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ListSubscriptions/2013-07-01 API call; quota=25 restore=0.50
+Returns a list of all your current subscriptions.</p>
+<p>Required: MarketplaceId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.manage_report_schedule">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">manage_report_schedule</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.manage_report_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS ManageReportSchedule/2009-01-01 API call; quota=10 restore=45.00
+Creates, updates, or deletes a report request schedule for</p>
+<blockquote>
+<div>a specified report type.</div></blockquote>
+<p>Required: ReportType+Schedule</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.method_for">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">method_for</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.method_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the MWS API method referred to in the argument.
+The named method can be in CamelCase or underlined_lower_case.
+This is the complement to MWSConnection.any_call.action</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.refund">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">refund</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.refund" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS Refund/2013-01-01 API call; quota=10 restore=1.00
+Refunds a previously captured amount.</p>
+<p>Element|Iter|Map: RefundAmount
+(ResponseElement or anything iterable/dict-like)
+Required: AmazonCaptureId+RefundReferenceId+RefundAmount</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.register_destination">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">register_destination</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.register_destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS RegisterDestination/2013-07-01 API call; quota=25 restore=0.50
+Specifies a new destination where you want to receive notifications.</p>
+<p>Element|Iter|Map: Destination
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+Destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.request_report">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">request_report</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.request_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS RequestReport/2009-01-01 API call; quota=15 restore=60.00
+Creates a report request and submits the request to Amazon MWS.</p>
+<p>Booleans: ReportOptions=ShowSalesChannel
+Lists: MarketplaceIdList.Id
+Required: ReportType</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.send_test_notification_to_destination">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">send_test_notification_to_destination</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.send_test_notification_to_destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS SendTestNotificationToDestination/2013-07-01 API call; quota=25 restore=0.50
+Sends a test notification to an existing destination.</p>
+<p>Element|Iter|Map: Destination
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+Destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.set_order_reference_details">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">set_order_reference_details</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.set_order_reference_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS SetOrderReferenceDetails/2013-01-01 API call; quota=10 restore=1.00
+Sets order reference details such as the order total and a</p>
+<blockquote>
+<div>description for the order.</div></blockquote>
+<p>Element|Iter|Map: OrderReferenceAttributes
+(ResponseElement or anything iterable/dict-like)
+Required: AmazonOrderReferenceId+OrderReferenceAttributes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.submit_feed">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">submit_feed</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.submit_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS SubmitFeed/2009-01-01 API call; quota=15 restore=120.00
+Uploads a feed for processing by Amazon MWS.</p>
+<p>Lists: MarketplaceIdList.Id
+Required HTTP Body: FeedContent
+Booleans: PurgeAndReplace
+Required: FeedType</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.update_inbound_shipment">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">update_inbound_shipment</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.update_inbound_shipment" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS UpdateInboundShipment/2010-10-01 API call; quota=30 restore=0.50
+Updates an existing inbound shipment.  Amazon documentation</p>
+<blockquote>
+<div>is ambiguous as to whether the InboundShipmentHeader and
+InboundShipmentItems arguments are required.</div></blockquote>
+<p>Element|Iter|Map: InboundShipmentHeader, InboundShipmentItems
+(ResponseElement or anything iterable/dict-like)
+Required: ShipmentId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.update_report_acknowledgements">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">update_report_acknowledgements</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.update_report_acknowledgements" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS UpdateReportAcknowledgements/2009-01-01 API call; quota=10 restore=45.00
+Updates the acknowledged status of one or more reports.</p>
+<p>Lists: ReportIdList.Id
+Booleans: Acknowledged
+Required: ReportIdList</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.connection.MWSConnection.update_subscription">
+<tt class="descclassname">MWSConnection.</tt><tt class="descname">update_subscription</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.connection.MWSConnection.update_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>MWS UpdateSubscription/2013-07-01 API call; quota=25 restore=0.50
+Updates the subscription for the specified notification type and</p>
+<blockquote>
+<div>destination.</div></blockquote>
+<p>Element|Iter|Map: Subscription
+(ResponseElement or anything iterable/dict-like)
+Required: MarketplaceId+Subscription</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.mws.exception">
+<span id="boto-mws-exception"></span><h2>boto.mws.exception<a class="headerlink" href="#module-boto.mws.exception" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="boto.mws.exception.InvalidAddress">
+<em class="property">exception </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">InvalidAddress</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.mws.exception.InvalidAddress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid address.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.mws.exception.InvalidParameter">
+<em class="property">exception </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">InvalidParameter</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.mws.exception.InvalidParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>One or more parameters in the request is invalid.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.mws.exception.InvalidParameterValue">
+<em class="property">exception </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">InvalidParameterValue</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.mws.exception.InvalidParameterValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>One or more parameter values in the request is invalid.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="boto.mws.exception.ResponseError">
+<em class="property">exception </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">ResponseError</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.mws.exception.ResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undefined response error.</p>
+<dl class="attribute">
+<dt id="boto.mws.exception.ResponseError.retry">
+<tt class="descname">retry</tt><em class="property"> = False</em><a class="headerlink" href="#boto.mws.exception.ResponseError.retry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.exception.ResponseErrorFactory">
+<em class="property">class </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">ResponseErrorFactory</tt><big>(</big><em>scopes=None</em><big>)</big><a class="headerlink" href="#boto.mws.exception.ResponseErrorFactory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="boto.mws.exception.RetriableResponseError">
+<em class="property">exception </em><tt class="descclassname">boto.mws.exception.</tt><tt class="descname">RetriableResponseError</tt><big>(</big><em>status</em>, <em>reason</em>, <em>body=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#boto.mws.exception.RetriableResponseError" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.exception.RetriableResponseError.retry">
+<tt class="descname">retry</tt><em class="property"> = True</em><a class="headerlink" href="#boto.mws.exception.RetriableResponseError.retry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-boto.mws.response">
+<span id="boto-mws-response"></span><h2>boto.mws.response<a class="headerlink" href="#module-boto.mws.response" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="boto.mws.response.AttributeSet">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">AttributeSet</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.AttributeSet" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.AttributeSet.ItemDimensions">
+<tt class="descname">ItemDimensions</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AttributeSet.ItemDimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AttributeSet.ListPrice">
+<tt class="descname">ListPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AttributeSet.ListPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AttributeSet.PackageDimensions">
+<tt class="descname">PackageDimensions</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AttributeSet.PackageDimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AttributeSet.SmallImage">
+<tt class="descname">SmallImage</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AttributeSet.SmallImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.AuthorizationDetails">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">AuthorizationDetails</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.AuthorizationDetails" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.AuthorizationDetails.AuthorizationAmount">
+<tt class="descname">AuthorizationAmount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AuthorizationDetails.AuthorizationAmount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AuthorizationDetails.AuthorizationFee">
+<tt class="descname">AuthorizationFee</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AuthorizationDetails.AuthorizationFee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AuthorizationDetails.AuthorizationStatus">
+<tt class="descname">AuthorizationStatus</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AuthorizationDetails.AuthorizationStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.AuthorizationDetails.CapturedAmount">
+<tt class="descname">CapturedAmount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AuthorizationDetails.CapturedAmount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.AuthorizeResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">AuthorizeResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.AuthorizeResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.AuthorizeResult.AuthorizationDetails">
+<tt class="descname">AuthorizationDetails</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.AuthorizeResult.AuthorizationDetails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CancelFeedSubmissionsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CancelFeedSubmissionsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CancelFeedSubmissionsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CancelReportRequestsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CancelReportRequestsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CancelReportRequestsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CaptureDetails">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CaptureDetails</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CaptureDetails" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CaptureDetails.CaptureAmount">
+<tt class="descname">CaptureAmount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CaptureDetails.CaptureAmount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CaptureDetails.CaptureFee">
+<tt class="descname">CaptureFee</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CaptureDetails.CaptureFee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CaptureDetails.CaptureStatus">
+<tt class="descname">CaptureStatus</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CaptureDetails.CaptureStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CaptureDetails.RefundedAmount">
+<tt class="descname">RefundedAmount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CaptureDetails.RefundedAmount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CaptureResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CaptureResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CaptureResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CaptureResult.CaptureDetails">
+<tt class="descname">CaptureDetails</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CaptureResult.CaptureDetails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Cart">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Cart</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Cart" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Cart.ActiveCartItemList">
+<tt class="descname">ActiveCartItemList</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Cart.ActiveCartItemList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Cart.SavedCartItemList">
+<tt class="descname">SavedCartItemList</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Cart.SavedCartItemList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CartItem">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CartItem</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CartItem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CartItem.CurrentPrice">
+<tt class="descname">CurrentPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CartItem.CurrentPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CartItem.SalePrice">
+<tt class="descname">SalePrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CartItem.SalePrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CompetitivePrice">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CompetitivePrice</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CompetitivePrice" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CompetitivePrice.Price">
+<tt class="descname">Price</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CompetitivePrice.Price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CompetitivePriceList">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CompetitivePriceList</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CompetitivePriceList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CompetitivePriceList.CompetitivePrice">
+<tt class="descname">CompetitivePrice</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.CompetitivePriceList.CompetitivePrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CompetitivePricing">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CompetitivePricing</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CompetitivePricing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CompetitivePricing.CompetitivePrices">
+<tt class="descname">CompetitivePrices</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CompetitivePricing.CompetitivePrices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CompetitivePricing.NumberOfOfferListings">
+<tt class="descname">NumberOfOfferListings</tt><em class="property"> = &lt;SimpleList_?/?_0x7feed3df21b0&gt;</em><a class="headerlink" href="#boto.mws.response.CompetitivePricing.NumberOfOfferListings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.CompetitivePricing.TradeInValue">
+<tt class="descname">TradeInValue</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.CompetitivePricing.TradeInValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ComplexAmount">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ComplexAmount</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexAmount" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.ComplexAmount.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexAmount.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ComplexAmount.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexAmount.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ComplexDimensions">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ComplexDimensions</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexDimensions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.ComplexDimensions.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexDimensions.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ComplexDimensions.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexDimensions.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ComplexMoney">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ComplexMoney</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexMoney" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ComplexType">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ComplexType</tt><a class="headerlink" href="#boto.mws.response.ComplexType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ComplexWeight">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ComplexWeight</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexWeight" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.ComplexWeight.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexWeight.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ComplexWeight.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ComplexWeight.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.CreateInboundShipmentPlanResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">CreateInboundShipmentPlanResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.CreateInboundShipmentPlanResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.CreateInboundShipmentPlanResult.InboundShipmentPlans">
+<tt class="descname">InboundShipmentPlans</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.CreateInboundShipmentPlanResult.InboundShipmentPlans" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Customer">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Customer</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Customer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Customer.AssociatedMarketplaces">
+<tt class="descname">AssociatedMarketplaces</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Customer.AssociatedMarketplaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Customer.PrimaryContactInfo">
+<tt class="descname">PrimaryContactInfo</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Customer.PrimaryContactInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Customer.ShippingAddressList">
+<tt class="descname">ShippingAddressList</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Customer.ShippingAddressList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.DeclarativeType">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">DeclarativeType</tt><big>(</big><em>_hint=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.DeclarativeType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.DeclarativeType.end">
+<tt class="descname">end</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.DeclarativeType.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.DeclarativeType.setup">
+<tt class="descname">setup</tt><big>(</big><em>parent</em>, <em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.DeclarativeType.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.DeclarativeType.start">
+<tt class="descname">start</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.DeclarativeType.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.DeclarativeType.teardown">
+<tt class="descname">teardown</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.DeclarativeType.teardown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Destination">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Destination</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Destination" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Destination.AttributeList">
+<tt class="descname">AttributeList</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.Destination.AttributeList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Dimension">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Dimension</tt><a class="headerlink" href="#boto.mws.response.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Element">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Element</tt><big>(</big><em>_hint=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.Element" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.Element.end">
+<tt class="descname">end</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.Element.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.Element.start">
+<tt class="descname">start</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.Element.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ElementList">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ElementList</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ElementList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.ElementList.end">
+<tt class="descname">end</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ElementList.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ElementList.start">
+<tt class="descname">start</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ElementList.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.FeedSubmissionInfo">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">FeedSubmissionInfo</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.FeedSubmissionInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.FulfillmentOrder">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">FulfillmentOrder</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.FulfillmentOrder" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.FulfillmentOrder.DestinationAddress">
+<tt class="descname">DestinationAddress</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentOrder.DestinationAddress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.FulfillmentOrder.NotificationEmailList">
+<tt class="descname">NotificationEmailList</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentOrder.NotificationEmailList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.FulfillmentPreview">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">FulfillmentPreview</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.FulfillmentPreview" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.FulfillmentPreview.EstimatedFees">
+<tt class="descname">EstimatedFees</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentPreview.EstimatedFees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.FulfillmentPreview.EstimatedShippingWeight">
+<tt class="descname">EstimatedShippingWeight</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentPreview.EstimatedShippingWeight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.FulfillmentPreview.FulfillmentPreviewShipments">
+<tt class="descname">FulfillmentPreviewShipments</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentPreview.FulfillmentPreviewShipments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.FulfillmentPreview.UnfulfillablePreviewItems">
+<tt class="descname">UnfulfillablePreviewItems</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentPreview.UnfulfillablePreviewItems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.FulfillmentPreviewItem">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">FulfillmentPreviewItem</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.FulfillmentPreviewItem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.FulfillmentPreviewItem.EstimatedShippingWeight">
+<tt class="descname">EstimatedShippingWeight</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.FulfillmentPreviewItem.EstimatedShippingWeight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetAuthorizationDetailsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetAuthorizationDetailsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetAuthorizationDetailsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetCaptureDetailsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetCaptureDetailsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetCaptureDetailsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetCartsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetCartsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetCartsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetCompetitivePricingForASINResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetCompetitivePricingForASINResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetCompetitivePricingForASINResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetCompetitivePricingForSKUResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetCompetitivePricingForSKUResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetCompetitivePricingForSKUResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetCustomersForCustomerIdResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetCustomersForCustomerIdResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetCustomersForCustomerIdResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetFeedSubmissionCountResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetFeedSubmissionCountResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetFeedSubmissionCountResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetFeedSubmissionListResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetFeedSubmissionListResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetFeedSubmissionListResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetFeedSubmissionListResult.FeedSubmissionInfo">
+<tt class="descname">FeedSubmissionInfo</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.GetFeedSubmissionListResult.FeedSubmissionInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetFulfillmentOrderResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetFulfillmentOrderResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetFulfillmentOrderResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetFulfillmentOrderResult.FulfillmentOrder">
+<tt class="descname">FulfillmentOrder</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.GetFulfillmentOrderResult.FulfillmentOrder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.GetFulfillmentOrderResult.FulfillmentOrderItem">
+<tt class="descname">FulfillmentOrderItem</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.GetFulfillmentOrderResult.FulfillmentOrderItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.GetFulfillmentOrderResult.FulfillmentShipment">
+<tt class="descname">FulfillmentShipment</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.GetFulfillmentOrderResult.FulfillmentShipment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetFulfillmentPreviewResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetFulfillmentPreviewResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetFulfillmentPreviewResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetFulfillmentPreviewResult.FulfillmentPreviews">
+<tt class="descname">FulfillmentPreviews</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.GetFulfillmentPreviewResult.FulfillmentPreviews" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetLowestOfferListingsForASINResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetLowestOfferListingsForASINResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetLowestOfferListingsForASINResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetLowestOfferListingsForSKUResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetLowestOfferListingsForSKUResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetLowestOfferListingsForSKUResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetMatchingProductForIdResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetMatchingProductForIdResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetMatchingProductForIdResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetMatchingProductForIdResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetMatchingProductForIdResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetMatchingProductForIdResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetMatchingProductResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetMatchingProductResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetMatchingProductResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetMyPriceForASINResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetMyPriceForASINResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetMyPriceForASINResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetMyPriceForSKUResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetMyPriceForSKUResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetMyPriceForSKUResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetOrderReferenceDetailsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetOrderReferenceDetailsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetOrderReferenceDetailsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetOrderResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetOrderResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetOrderResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetPackageTrackingDetailsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetPackageTrackingDetailsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetPackageTrackingDetailsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetPackageTrackingDetailsResult.ShipToAddress">
+<tt class="descname">ShipToAddress</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.GetPackageTrackingDetailsResult.ShipToAddress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.GetPackageTrackingDetailsResult.TrackingEvents">
+<tt class="descname">TrackingEvents</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.GetPackageTrackingDetailsResult.TrackingEvents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetProductCategoriesForASINResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetProductCategoriesForASINResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetProductCategoriesForASINResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetProductCategoriesForSKUResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetProductCategoriesForSKUResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetProductCategoriesForSKUResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetProductCategoriesResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetProductCategoriesResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetProductCategoriesResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetProductCategoriesResult.Self">
+<tt class="descname">Self</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.GetProductCategoriesResult.Self" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetRefundDetails">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetRefundDetails</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetRefundDetails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetReportListResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetReportListResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetReportListResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetReportListResult.ReportInfo">
+<tt class="descname">ReportInfo</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.GetReportListResult.ReportInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetReportRequestListResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetReportRequestListResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetReportRequestListResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetReportRequestListResult.ReportRequestInfo">
+<tt class="descname">ReportRequestInfo</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.GetReportRequestListResult.ReportRequestInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetReportScheduleListResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetReportScheduleListResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetReportScheduleListResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetServiceStatusResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetServiceStatusResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetServiceStatusResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetServiceStatusResult.Messages">
+<tt class="descname">Messages</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.GetServiceStatusResult.Messages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.GetSubscriptionResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">GetSubscriptionResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.GetSubscriptionResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.GetSubscriptionResult.Subscription">
+<tt class="descname">Subscription</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.GetSubscriptionResult.Subscription" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Image">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Image</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ItemAttributes">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ItemAttributes</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ItemAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ItemAttributes.Languages">
+<tt class="descname">Languages</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ItemAttributes.Languages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListAllFulfillmentOrdersResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListAllFulfillmentOrdersResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListAllFulfillmentOrdersResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListAllFulfillmentOrdersResult.FulfillmentOrders">
+<tt class="descname">FulfillmentOrders</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListAllFulfillmentOrdersResult.FulfillmentOrders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListCartsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListCartsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListCartsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListCartsResult.CartList">
+<tt class="descname">CartList</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListCartsResult.CartList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListCustomersResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListCustomersResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListCustomersResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListCustomersResult.CustomerList">
+<tt class="descname">CustomerList</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListCustomersResult.CustomerList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListInboundShipmentItemsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListInboundShipmentItemsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListInboundShipmentItemsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListInboundShipmentItemsResult.ItemData">
+<tt class="descname">ItemData</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListInboundShipmentItemsResult.ItemData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListInboundShipmentsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListInboundShipmentsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListInboundShipmentsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListInboundShipmentsResult.ShipmentData">
+<tt class="descname">ShipmentData</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListInboundShipmentsResult.ShipmentData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListInventorySupplyResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListInventorySupplyResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListInventorySupplyResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListInventorySupplyResult.InventorySupplyList">
+<tt class="descname">InventorySupplyList</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListInventorySupplyResult.InventorySupplyList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListMarketplaceParticipationsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListMarketplaceParticipationsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListMarketplaceParticipationsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListMarketplaceParticipationsResult.ListMarketplaces">
+<tt class="descname">ListMarketplaces</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListMarketplaceParticipationsResult.ListMarketplaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.ListMarketplaceParticipationsResult.ListParticipations">
+<tt class="descname">ListParticipations</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListMarketplaceParticipationsResult.ListParticipations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListMatchingProductsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListMatchingProductsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListMatchingProductsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListMatchingProductsResult.Products">
+<tt class="descname">Products</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListMatchingProductsResult.Products" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListOrderItemsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListOrderItemsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListOrderItemsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListOrderItemsResult.OrderItems">
+<tt class="descname">OrderItems</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListOrderItemsResult.OrderItems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListOrdersResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListOrdersResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListOrdersResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListOrdersResult.Orders">
+<tt class="descname">Orders</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ListOrdersResult.Orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListRecommendationsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListRecommendationsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListRecommendationsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListRecommendationsResult.ListingQualityRecommendations">
+<tt class="descname">ListingQualityRecommendations</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListRecommendationsResult.ListingQualityRecommendations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListRegisteredDestinationsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListRegisteredDestinationsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListRegisteredDestinationsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListRegisteredDestinationsResult.DestinationList">
+<tt class="descname">DestinationList</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListRegisteredDestinationsResult.DestinationList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ListSubscriptionsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ListSubscriptionsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ListSubscriptionsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ListSubscriptionsResult.SubscriptionList">
+<tt class="descname">SubscriptionList</tt><em class="property"> = &lt;MemberList_?/?_0x7feed4788820&gt;</em><a class="headerlink" href="#boto.mws.response.ListSubscriptionsResult.SubscriptionList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.LowestOfferListing">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">LowestOfferListing</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.LowestOfferListing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.LowestOfferListing.Price">
+<tt class="descname">Price</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.LowestOfferListing.Price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.LowestOfferListing.Qualifiers">
+<tt class="descname">Qualifiers</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.LowestOfferListing.Qualifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ManageReportScheduleResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ManageReportScheduleResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ManageReportScheduleResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ManageReportScheduleResult.ReportSchedule">
+<tt class="descname">ReportSchedule</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ManageReportScheduleResult.ReportSchedule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.MemberList">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">MemberList</tt><big>(</big><em>_member=None</em>, <em>_hint=None</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.MemberList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.MemberList.teardown">
+<tt class="descname">teardown</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.MemberList.teardown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Offer">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Offer</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Offer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Offer.BuyingPrice">
+<tt class="descname">BuyingPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Offer.BuyingPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Offer.RegularPrice">
+<tt class="descname">RegularPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Offer.RegularPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Order">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Order</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Order" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Order.OrderTotal">
+<tt class="descname">OrderTotal</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Order.OrderTotal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Order.PaymentExecutionDetail">
+<tt class="descname">PaymentExecutionDetail</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Order.PaymentExecutionDetail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Order.ShippingAddress">
+<tt class="descname">ShippingAddress</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Order.ShippingAddress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.OrderItem">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">OrderItem</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.OrderItem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.OrderItem.CODFee">
+<tt class="descname">CODFee</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.CODFee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.CODFeeDiscount">
+<tt class="descname">CODFeeDiscount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.CODFeeDiscount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.GiftWrapPrice">
+<tt class="descname">GiftWrapPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.GiftWrapPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.GiftWrapTax">
+<tt class="descname">GiftWrapTax</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.GiftWrapTax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.ItemPrice">
+<tt class="descname">ItemPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.ItemPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.ItemTax">
+<tt class="descname">ItemTax</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.ItemTax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.PromotionDiscount">
+<tt class="descname">PromotionDiscount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.PromotionDiscount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.PromotionIds">
+<tt class="descname">PromotionIds</tt><em class="property"> = &lt;SimpleList_?/?_0x7feed3df21b0&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.PromotionIds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.ShippingDiscount">
+<tt class="descname">ShippingDiscount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.ShippingDiscount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.ShippingPrice">
+<tt class="descname">ShippingPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.ShippingPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderItem.ShippingTax">
+<tt class="descname">ShippingTax</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderItem.ShippingTax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.OrderReferenceDetails">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">OrderReferenceDetails</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.Buyer">
+<tt class="descname">Buyer</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.Buyer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.Constraints">
+<tt class="descname">Constraints</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.Constraints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.Destination">
+<tt class="descname">Destination</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.Destination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.OrderReferenceStatus">
+<tt class="descname">OrderReferenceStatus</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.OrderReferenceStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.OrderTotal">
+<tt class="descname">OrderTotal</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.OrderTotal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.OrderReferenceDetails.SellerOrderAttributes">
+<tt class="descname">SellerOrderAttributes</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.OrderReferenceDetails.SellerOrderAttributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Price">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Price</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Price" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Price.LandedPrice">
+<tt class="descname">LandedPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Price.LandedPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Price.ListingPrice">
+<tt class="descname">ListingPrice</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Price.ListingPrice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Price.Shipping">
+<tt class="descname">Shipping</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Price.Shipping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Product">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Product</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Product" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Product.AttributeSets">
+<tt class="descname">AttributeSets</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.AttributeSets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.CompetitivePricing">
+<tt class="descname">CompetitivePricing</tt><em class="property"> = &lt;ElementList_?/?_0x7feed4980160&gt;</em><a class="headerlink" href="#boto.mws.response.Product.CompetitivePricing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.Identifiers">
+<tt class="descname">Identifiers</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.Identifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.LowestOfferListings">
+<tt class="descname">LowestOfferListings</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.LowestOfferListings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.Offers">
+<tt class="descname">Offers</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.Offers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.Relationships">
+<tt class="descname">Relationships</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.Relationships" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.Product.SalesRankings">
+<tt class="descname">SalesRankings</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Product.SalesRankings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ProductCategory">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ProductCategory</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ProductCategory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ProductsBulkOperationResponse">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ProductsBulkOperationResponse</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ProductsBulkOperationResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ProductsBulkOperationResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ProductsBulkOperationResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ProductsBulkOperationResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ProductsBulkOperationResult.Error">
+<tt class="descname">Error</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ProductsBulkOperationResult.Error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.ProductsBulkOperationResult.Product">
+<tt class="descname">Product</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.ProductsBulkOperationResult.Product" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.RefundDetails">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">RefundDetails</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.RefundDetails" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.RefundDetails.FeeRefunded">
+<tt class="descname">FeeRefunded</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.RefundDetails.FeeRefunded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.RefundDetails.RefundAmount">
+<tt class="descname">RefundAmount</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.RefundDetails.RefundAmount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.RefundDetails.RefundStatus">
+<tt class="descname">RefundStatus</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.RefundDetails.RefundStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.RefundResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">RefundResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.RefundResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.RefundResult.RefundDetails">
+<tt class="descname">RefundDetails</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.RefundResult.RefundDetails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ReportRequestInfo">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ReportRequestInfo</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ReportRequestInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.RequestReportResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">RequestReportResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.RequestReportResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.RequestReportResult.ReportRequestInfo">
+<tt class="descname">ReportRequestInfo</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.RequestReportResult.ReportRequestInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Response">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Response</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Response" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Response.ResponseMetadata">
+<tt class="descname">ResponseMetadata</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Response.ResponseMetadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.Response.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.Response.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ResponseElement">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ResponseElement</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseElement" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.ResponseElement.connection">
+<tt class="descname">connection</tt><a class="headerlink" href="#boto.mws.response.ResponseElement.connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ResponseElement.endElement">
+<tt class="descname">endElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseElement.endElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ResponseElement.startElement">
+<tt class="descname">startElement</tt><big>(</big><em>name</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseElement.startElement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ResponseFactory">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ResponseFactory</tt><big>(</big><em>scopes=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseFactory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.ResponseFactory.element_factory">
+<tt class="descname">element_factory</tt><big>(</big><em>name</em>, <em>parent</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseFactory.element_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ResponseFactory.find_element">
+<tt class="descname">find_element</tt><big>(</big><em>action</em>, <em>suffix</em>, <em>parent</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseFactory.find_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.ResponseFactory.search_scopes">
+<tt class="descname">search_scopes</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseFactory.search_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.ResponseResultList">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">ResponseResultList</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.ResponseResultList" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.SalesRank">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">SalesRank</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.SalesRank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.SetOrderReferenceDetailsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">SetOrderReferenceDetailsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.SetOrderReferenceDetailsResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.SetOrderReferenceDetailsResult.OrderReferenceDetails">
+<tt class="descname">OrderReferenceDetails</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.SetOrderReferenceDetailsResult.OrderReferenceDetails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.SimpleList">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">SimpleList</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.SimpleList" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="boto.mws.response.SimpleList.end">
+<tt class="descname">end</tt><big>(</big><em>name</em>, <em>value</em>, <em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.SimpleList.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="boto.mws.response.SimpleList.start">
+<tt class="descname">start</tt><big>(</big><em>*args</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#boto.mws.response.SimpleList.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.SubmitFeedResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">SubmitFeedResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.SubmitFeedResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.SubmitFeedResult.FeedSubmissionInfo">
+<tt class="descname">FeedSubmissionInfo</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.SubmitFeedResult.FeedSubmissionInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.Subscription">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">Subscription</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.Subscription" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.Subscription.Destination">
+<tt class="descname">Destination</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.Subscription.Destination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.UpdateReportAcknowledgementsResult">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">UpdateReportAcknowledgementsResult</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.UpdateReportAcknowledgementsResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="boto.mws.response.VariationRelationship">
+<em class="property">class </em><tt class="descclassname">boto.mws.response.</tt><tt class="descname">VariationRelationship</tt><big>(</big><em>connection=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>attrs=None</em><big>)</big><a class="headerlink" href="#boto.mws.response.VariationRelationship" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="boto.mws.response.VariationRelationship.GemType">
+<tt class="descname">GemType</tt><em class="property"> = &lt;SimpleList_?/?_0x7feed3df21b0&gt;</em><a class="headerlink" href="#boto.mws.response.VariationRelationship.GemType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.VariationRelationship.Identifiers">
+<tt class="descname">Identifiers</tt><em class="property"> = &lt;Element_?/?_0x7feed3875830&gt;</em><a class="headerlink" href="#boto.mws.response.VariationRelationship.Identifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.VariationRelationship.MaterialType">
+<tt class="descname">MaterialType</tt><em class="property"> = &lt;SimpleList_?/?_0x7feed3df21b0&gt;</em><a class="headerlink" href="#boto.mws.response.VariationRelationship.MaterialType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="boto.mws.response.VariationRelationship.OperatingSystem">
+<tt class="descname">OperatingSystem</tt><em class="property"> = &lt;SimpleList_?/?_0x7feed3df21b0&gt;</em><a class="headerlink" href="#boto.mws.response.VariationRelationship.OperatingSystem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="boto.mws.response.strip_namespace">
+<tt class="descclassname">boto.mws.response.</tt><tt class="descname">strip_namespace</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#boto.mws.response.strip_namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mws</a><ul>
+<li><a class="reference internal" href="#module-boto.mws">boto.mws</a></li>
+<li><a class="reference internal" href="#module-boto.mws.connection">boto.mws.connection</a></li>
+<li><a class="reference internal" href="#module-boto.mws.exception">boto.mws.exception</a></li>
+<li><a class="reference internal" href="#module-boto.mws.response">boto.mws.response</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mturk.html"
+                        title="previous chapter">mturk</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opsworks.html"
+                        title="next chapter">Opsworks</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ref/mws.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opsworks.html" title="Opsworks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mturk.html" title="mturk"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

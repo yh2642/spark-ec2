@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>boto v2.9.1 &mdash; boto v2.33.0</title>
+    
+    <link rel="stylesheet" href="../_static/boto.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="boto v2.33.0" href="../index.html" />
+    <link rel="next" title="boto v2.9.2" href="v2.9.2.html" />
+    <link rel="prev" title="boto v2.9.0" href="v2.9.0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.2.html" title="boto v2.9.2"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.0.html" title="boto v2.9.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="boto-v2-9-1">
+<h1>boto v2.9.1<a class="headerlink" href="#boto-v2-9-1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2013/04/30</td>
+</tr>
+</tbody>
+</table>
+<p>Primarily a bugfix release, this release also includes support for the new
+AWS Support API.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">AWS Support API - A client was added to support the new AWS Support API. It
+gives programmatic access to Support cases opened with AWS. A short example
+might look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">boto.support.layer1</span> <span class="kn">import</span> <span class="n">SupportConnection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">SupportConnection</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_case</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_case</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">subject</span><span class="o">=</span><span class="s">&#39;Description of the issue&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">service_code</span><span class="o">=</span><span class="s">&#39;amazon-cloudsearch&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">category_code</span><span class="o">=</span><span class="s">&#39;performance&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">communication_body</span><span class="o">=</span><span class="s">&quot;We&#39;re seeing some latency from one of our...&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">severity_code</span><span class="o">=</span><span class="s">&#39;low&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_case</span><span class="p">[</span><span class="s">&#39;caseId&#39;</span><span class="p">]</span>
+<span class="go">u&#39;case-...&#39;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../support_tut.html#support-tut"><em>Support Tutorial</em></a> has more information on how to use
+the new API. (<a class="reference external" href="https://github.com/boto/boto/commit/8c0451">commit 8c0451</a>)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The reintroduction of <tt class="docutils literal"><span class="pre">ResumableUploadHandler.get_upload_id</span></tt> that was
+accidentally removed in a previous commit. (<a class="reference external" href="https://github.com/boto/boto/commit/758322">commit 758322</a>)</p>
+</li>
+<li><p class="first">Added <tt class="docutils literal"><span class="pre">OrdinaryCallingFormat</span></tt> to support Google Storage&#8217;s certificate
+verification. (<a class="reference external" href="https://github.com/boto/boto/commit/4ca83b">commit 4ca83b</a>)</p>
+</li>
+<li><p class="first">Added the <tt class="docutils literal"><span class="pre">eu-west-1</span></tt> region for Redshift. (<a class="reference external" href="https://github.com/boto/boto/commit/e98b95">commit e98b95</a>)</p>
+</li>
+<li><p class="first">Added support for overriding the port any connection in <tt class="docutils literal"><span class="pre">boto</span></tt> uses.
+(<a class="reference external" href="https://github.com/boto/boto/commit/08e893">commit 08e893</a>)</p>
+</li>
+<li><p class="first">Added retry/checksumming support to the DynamoDB v2 client. (<a class="reference external" href="https://github.com/boto/boto/commit/969ae2">commit 969ae2</a>)</p>
+</li>
+<li><p class="first">Several documentation improvements/fixes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Incorrect docs on EC2&#8217;s <tt class="docutils literal"><span class="pre">import_key_pair</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/6ada7d">commit 6ada7d</a>)</li>
+<li>Clearer docs on the DynamoDB  <tt class="docutils literal"><span class="pre">count</span></tt> parameter. (<a class="reference external" href="https://github.com/boto/boto/commit/dfa456">commit dfa456</a>)</li>
+<li>Fixed a typo in the <tt class="docutils literal"><span class="pre">autoscale_tut</span></tt>. (<a class="reference external" href="https://github.com/boto/boto/commit/6df1ae">commit 6df1ae</a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">boto v2.9.1</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="v2.9.0.html"
+                        title="previous chapter">boto v2.9.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="v2.9.2.html"
+                        title="next chapter">boto v2.9.2</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/releasenotes/v2.9.1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div><a href="boto.pdf">PDF Version</a></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2.9.2.html" title="boto v2.9.2"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v2.9.0.html" title="boto v2.9.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">boto v2.33.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009,2010, Mitch Garnaat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
